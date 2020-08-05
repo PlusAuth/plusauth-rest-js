@@ -65,5 +65,5 @@ console.log(res)
 ```
 
 # Docs
-For API docs visit [here](https://plusauth.github.io/plusauth-js-rest/classes/plusauthrest.html)
+For API docs visit [here](https://plusauth.github.io/plusauth-rest-js/classes/plusauthrest.html)
 
