@@ -1,0 +1,15 @@
+{
+  "out": "./docs",
+  "mode": "file",
+  "readme": "none",
+  "stripInternal": true,
+  "excludeProtected": true,
+  "excludePrivate": true,
+  "plugin": [],
+  "module": "es2015",
+  "tsconfig": "./tsconfig.json",
+  "theme": "minimal",
+  "toc": [
+    "PlusAuthRest"
+  ]
+}

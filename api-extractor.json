@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+  "mainEntryPointFilePath": "<projectFolder>/types/index.d.ts",
+  "bundledPackages": [ ],
+  "compiler": {
+  },
+  "newlineKind": "lf",
+  "apiReport": {
+    "enabled": false,
+    "reportFolder": "<projectFolder>/docs/"
+  },
+  "docModel": {
+    "enabled": true
+  },
+  "dtsRollup": {
+    "enabled": true,
+    "untrimmedFilePath": "<projectFolder>/dist/plusauth-rest-js.d.ts",
+    "publicTrimmedFilePath": "<projectFolder>/dist/plusauth-rest-js.d.ts"
+  },
+  "tsdocMetadata": {
+    "enabled": false
+  },
+  "messages": {
+    "extractorMessageReporting": {
+      "ae-forgotten-export": {
+        "logLevel": "none"
+      }
+    }
+  }
+
+}
