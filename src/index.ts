@@ -70,6 +70,7 @@ export default class PlusAuthRestClient {
     this.customDomains = new CustomDomainService( apiUri, this.options );
     this.federated = new FederatedService( apiUri, this.options );
     this.hooks = new HookService( apiUri, this.options );
+    this.logs = new LogService( apiUri, this.options )
     this.roleGroups = new RoleGroupService( apiUri, this.options );
     this.roles = new RoleService( apiUri, this.options );
     this.templates = new TemplateService( apiUri, this.options );
