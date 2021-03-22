@@ -105,15 +105,14 @@ export class HttpService {
           token = headers.token
         }
         let fetchOptions: RequestInit = {
-          method,
-          credentials: 'include',
+          method:      method.toUpperCase(),
           mode:        'cors',
+          credentials: 'include',
           headers:     {
-            'Content-Type':     'application/json',
             'Accept':           'application/json',
+            'Content-Type':     'application/json',
             'X-Requested-With': 'XMLHttpRequest',
-            ...headers?.token ? { 'Authorization': `Bearer ${ headers.token }` } : {}
-
+            ...token ? { 'Authorization': `Bearer ${ token }` } : {}
           }
         }
         if ( args.length > 1 ){
