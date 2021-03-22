@@ -1,6 +1,6 @@
 {
   "name": "@plusauth/plusauth-rest-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "PlusAuth JavaScript Rest Client",
   "main": "dist/plusauth-rest-js.cjs.js",
   "module": "dist/plusauth-rest-js.esm.js",
@@ -8,7 +8,7 @@
   "types": "dist/plusauth-rest-js.d.ts",
   "exports": {
     "import": "dist/plusauth-rest-js.esm.js",
-    "require":  "dist/plusauth-rest-js.cjs.js",
+    "require": "dist/plusauth-rest-js.cjs.js",
     "node": "dist/plusauth-rest-js.cjs.js",
     "default": "dist/plusauth-rest-js.esm.js"
   },
