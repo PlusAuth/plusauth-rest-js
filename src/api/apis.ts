@@ -153,4 +153,35 @@ export class ApiService extends HttpService{
   async removePermission( apiId: string, permissionId: string ) {
     return this.http.delete( `/${ apiId }/permissions/${ permissionId }` );
   }
+
+  async getAuthorizedClients( apiId: string, pagination: IPagination ) {
+    return this.http.get( `/${ apiId }/authorized_clients${ encodedQueryString( pagination ) }` );
+  }
+
+  async authorizeClients( apiId: string, clientIds: string[] ) {
+    return this.http.post( `/${ apiId }/authorized_clients`, clientIds );
+  }
+
+  async unAuthorizeClients( apiId: string, clientIds: string[] ) {
+    return this.http.delete( `/${ apiId }/authorized_clients`, clientIds );
+  }
+
+  // AUTHORIZED CLIENT PERMISSIONS
+  async getAssignedPermissionsToClient( apiId: string, clientId: string ) {
+    return this.http.get( `/${ apiId }/authorized_clients/${ clientId }/permissions` );
+  }
+
+  async assignPermissionsToClient( apiId: string, clientId: string, permissionIds: string[] ) {
+    return this.http.post(
+      `/${ apiId }/authorized_clients/${ clientId }/permissions`,
+      permissionIds
+    );
+  }
+
+  async unassignPermissionsFromClient( apiId: string, clientId: string, permissionIds: string[] ) {
+    return this.http.delete(
+      `/${ apiId }/authorized_clients/${ clientId }/permissions`,
+      permissionIds
+    );
+  }
 }
