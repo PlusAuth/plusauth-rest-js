@@ -8,7 +8,7 @@ import {
   RoleService,
   RoleGroupService,
   TenantService, ViewService, TemplateService, HookService, FederatedService,
-  CustomDomainService, LogService
+  CustomDomainService, LogService, MFAService
 } from './api';
 
 
@@ -49,6 +49,8 @@ export default class PlusAuthRestClient {
 
   readonly logs: LogService;
 
+  readonly mfa: MFAService;
+
   readonly roleGroups: RoleGroupService;
 
   readonly roles: RoleService;
@@ -74,6 +76,7 @@ export default class PlusAuthRestClient {
     this.federated = new FederatedService( apiUri, this.options );
     this.hooks = new HookService( apiUri, this.options );
     this.logs = new LogService( apiUri, this.options )
+    this.mfa = new MFAService( apiUri, this.options )
     this.roleGroups = new RoleGroupService( apiUri, this.options );
     this.roles = new RoleService( apiUri, this.options );
     this.templates = new TemplateService( apiUri, this.options );
