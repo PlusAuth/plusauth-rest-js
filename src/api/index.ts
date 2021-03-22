@@ -1,5 +1,6 @@
 export * from './apis'
 export * from './clients'
+export * from './custom_domains'
 export * from './federated'
 export * from './hooks'
 export * from './role_groups'
