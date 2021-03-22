@@ -1,3 +1,23 @@
+# [0.1.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.0.2...v0.1.0) (2021-03-22)
+
+
+### Bug Fixes
+
+* cors fails because of lowercase method type ([f5b4f5c](https://github.com/PlusAuth/plusauth-rest-js/commit/f5b4f5c8574d329c879cf3ab36d2233691b6959a))
+* wrong content type for update view method ([54a697b](https://github.com/PlusAuth/plusauth-rest-js/commit/54a697b7222ad495d6a4ceddd8fd49ecd1087eca))
+
+
+### Features
+
+* add api authorized client methods ([bd01ec7](https://github.com/PlusAuth/plusauth-rest-js/commit/bd01ec7f661307222cc84e1b16fe85a8d8ef3224))
+* add template name param to template service methods ([9235449](https://github.com/PlusAuth/plusauth-rest-js/commit/923544964d483cd4e04ab24c16b0c79cddf23ddb))
+* custom domain service ([1ded7c1](https://github.com/PlusAuth/plusauth-rest-js/commit/1ded7c1e22b6957e9528a2384e249ffe2fde9492))
+* logs service ([de95bbb](https://github.com/PlusAuth/plusauth-rest-js/commit/de95bbb2b2a9318392e940f29756c1594921781d))
+* mfa service ([301e8b4](https://github.com/PlusAuth/plusauth-rest-js/commit/301e8b4691b41326a1230ad9234cf6dd0b74882a))
+* provider and admin invitation methods for tenants ([51e9ab2](https://github.com/PlusAuth/plusauth-rest-js/commit/51e9ab233bd1eec755d394a271c3af9e13d99500))
+* session related methods for users ([d9c8aa2](https://github.com/PlusAuth/plusauth-rest-js/commit/d9c8aa2495890a6be2211628ecfd805eca5bedaf))
+* token option as function ([0678785](https://github.com/PlusAuth/plusauth-rest-js/commit/0678785583b01d865174550e6aef8d7480f5803a))
+
 ## 0.0.2 (2020-08-05)
 
 ## [0.0.1](https://github.com/PlusAuth/plusauth-js-rest/compare/v0.0.1-alpha.2...v0.0.1) (2020-07-09)
