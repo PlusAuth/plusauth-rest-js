@@ -54,7 +54,7 @@ export default [
   ],
   [
     {
-      file: pkg.browser.replace('.min', ''),
+      file: pkg.browser.replace('.esm', ''),
       format: 'iife',
       name,
     },
@@ -62,7 +62,7 @@ export default [
   ],
   [
     {
-      file: pkg.browser,
+      file: pkg.browser.replace('.esm', '.min'),
       format: 'iife',
       sourcemap: true,
       name,
