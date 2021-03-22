@@ -17,6 +17,10 @@ export * from './interfaces'
 // export * from './http'
 // export * from './api'
 
+type Options = {
+  token?: string | ( () => string )
+} & Record<string, string>
+
 /**
  * Entrypoint and main class of the library.
  *
@@ -61,13 +65,13 @@ export default class PlusAuthRestClient {
 
   readonly views: ViewService;
 
-  options: { token?: string }
+  options: Options
 
   /**
    * @param apiUri - Your PlusAuth tenant url. It must be a valid url.
    * @param options - Object containing Authorization token to put in requests
    */
-  constructor( apiUri: string, options: { token?: string } & Record<string, string> = {} ) {
+  constructor( apiUri: string, options: Options = {} ) {
     this.options = options
 
     this.apis = new ApiService( apiUri, this.options );

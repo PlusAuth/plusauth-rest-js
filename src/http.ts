@@ -76,7 +76,7 @@ export class HttpService {
 
   ['constructor']!: typeof HttpService
 
-  constructor( apiURL: string, headers?: Record<string, string | undefined> ) {
+  constructor( apiURL: string, headers: Record<string, any> = {} ) {
     if ( !apiURL ){
       throw new Error( "'apiURL' must be provided" )
     }
@@ -86,7 +86,7 @@ export class HttpService {
       throw new Error( "'apiUrl' must be a valid uri" )
     }
 
-    if ( headers && typeof headers !== 'object' ){
+    if ( typeof headers !== 'object' ){
       throw new Error( "'headers' must be an object" )
     }
 
@@ -98,6 +98,12 @@ export class HttpService {
     const http: any = {};
     ['get', 'post', 'patch', 'delete'].forEach( method => {
       http[method] = function ( ...args: any[] ) {
+        let token
+        if ( headers && typeof headers.token === 'function' ){
+          token = headers.token.call( undefined )
+        } else {
+          token = headers.token
+        }
         let fetchOptions: RequestInit = {
           method,
           credentials: 'include',
