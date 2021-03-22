@@ -19,6 +19,14 @@ export class UserService extends HttpService {
     return this.http.get( `/${ userId }` )
   }
 
+  async getSessions( userId: string ) {
+    return this.http.get( `/${ userId }/session` );
+  }
+
+  async endSession( userId: string, sessionId: string ) {
+    return this.http.delete( `/${ userId }/session/${ sessionId }` );
+  }
+
   async create( userObject: Partial<IUser> ): Promise<IUser> {
     return this.http.post( '', userObject )
   }
