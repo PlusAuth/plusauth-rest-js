@@ -101,4 +101,43 @@ export class TenantService extends HttpService {
   async updateSettings( tenantId: string, settings: Partial<ITenantSettings> ): Promise<ITenant> {
     return this.http.patch( `/${ tenantId }/settings`, settings );
   }
+
+  async inviteAdmin( tenantId: string, email: string ) {
+    return this.http.post( `/${ tenantId }/invite`, { email } );
+  }
+
+  async getAdministrators( tenantId: string ) {
+    return this.http.get( `/${ tenantId }/administrators` );
+  }
+
+  async removeAdministrator( tenantId: string, email: string ) {
+    return this.http.delete( `/${ tenantId }/administrators/${ email }` );
+  }
+
+  async getStats( tenantId: string, pagination?: IPagination ) {
+    return this.http.get( `/${ tenantId }/stats${ encodedQueryString( pagination ) }` );
+  }
+
+  async getSMSProviderSettings( tenantId: string, provider?: string ){
+    return this.http.get( `/${ tenantId }/provider/sms${ provider ? `/${ provider }` : '' }` );
+  }
+
+  async updateSMSProviderSettings( tenantId: string, settings: {
+    provider: string,
+    settings: Record<string, string>
+  } ){
+    return this.http.patch( `/${ tenantId }/provider/sms`, settings );
+  }
+
+  async getEmailProviderSettings( tenantId: string, provider?: string ){
+    return this.http.get( `/${ tenantId }/provider/email${ provider ? `/${ provider }` : '' }` );
+  }
+
+  async updateEmailProviderSettings( tenantId: string, settings: {
+    provider: string,
+    from: string,
+    settings: Record<string, string>
+  } ){
+    return this.http.patch( `/${ tenantId }/provider/sms`, settings );
+  }
 }

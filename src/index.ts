@@ -7,7 +7,8 @@ import {
   ClientService,
   RoleService,
   RoleGroupService,
-  TenantService, ViewService, TemplateService, HookService, FederatedService
+  TenantService, ViewService, TemplateService, HookService, FederatedService,
+  CustomDomainService, LogService
 } from './api';
 
 
@@ -45,6 +46,8 @@ export default class PlusAuthRestClient {
   readonly federated: FederatedService;
 
   readonly hooks: HookService;
+
+  readonly logs: LogService;
 
   readonly roleGroups: RoleGroupService;
 
