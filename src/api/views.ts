@@ -16,7 +16,7 @@ export class ViewService extends HttpService {
   async update( type: string, text: string ): Promise<void> {
     return this.http.patch( `/${ type }`, text, {
       headers: {
-        'Content-Type': 'text/html'
+        'Content-Type': 'text/plain'
       }
     } );
   }
