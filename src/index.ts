@@ -1,6 +1,3 @@
-/**
- * @packageDocumentation
- */
 import {
   ApiService,
   UserService,
@@ -22,6 +19,7 @@ type Options = {
 } & Record<string, string>
 
 /**
+ *
  * Entrypoint and main class of the library.
  *
  * @example
@@ -36,6 +34,23 @@ type Options = {
  * const pa = new PlusAuthRestClient("https://mytenant.plusauth.com", { token: "ACCESS_TOKEN" });
  * ```
  *
+ * @example
+ * Retrieve token from a function
+ * ```js
+ * const pa = new PlusAuthRestClient("https://mytenant.plusauth.com", {
+ *    token: function(){
+ *      return "ACCESS_TOKEN"
+ *    }
+ * });
+ * ```
+ *
+ * After initialization, you can call methods from corresponding services.
+ * @example
+ * ```js
+ * const users = await pa.users.getAll()
+ * const apis = await pa.apis.getAll()
+ * //...
+ * ```
  * @public
  */
 export default class PlusAuthRestClient {

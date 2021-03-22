@@ -15,5 +15,20 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "typedocOptions": {
+    "out": "./docs",
+    "readme": "none",
+    "categorizeByGroup": false,
+    "entryPoints": ["src/index.ts","src/api"],
+    "excludeProtected": true,
+    "excludePrivate": true,
+    "plugin": [
+      "typedoc-plugin-merge-modules"
+    ],
+    "theme": "minimal",
+    "toc": [
+      "PlusAuthRest"
+    ]
+  }
 }
