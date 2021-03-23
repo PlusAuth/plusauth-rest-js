@@ -64,6 +64,20 @@ console.log(res)
 })
 ```
 
+## Custom HTTP Client
+You may provide your own http client to the library when you need to have more control over your requests.
+
+```js
+const axios = require('axios')
+const plusAuth = new PlusAuthRestClient('https://<YOUR_TENANT_ID>.plusauth.com', {
+    httpClient: function (url, options) {
+        options.url = url
+        options.data = options.body
+        return axios(options)
+    }
+})
+```
+
 # Docs
 For API docs visit [here](https://plusauth.github.io/plusauth-rest-js/classes/plusauthrestclient.html)
 
