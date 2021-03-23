@@ -8,7 +8,7 @@ Table Of Content
 3. [Docs](#docs)
 
 
-## Installation
+# Installation
 From PlusAuth CDN:
 ```html
 <!-- Latest release -->
