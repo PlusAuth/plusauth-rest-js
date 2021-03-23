@@ -11,19 +11,25 @@ export interface ITenant {
  * @public
  */
 export interface ITenantSettings {
+  tokenEndpointAuthMethods?: string[];
+  whitelistedJWA?: Record<string, string[]>;
   defaultStrategy: string;
   autoSignIn?: boolean;
   tenantLoginUrl?: string;
   registerEnabled?: boolean;
+  welcomeEmailsEnabled?: boolean;
   forceEmailVerification?: boolean;
   hashFunction: string;
   forgotPasswordEnabled?: boolean;
+  exposeUnsafeErrors?: boolean;
   mfa: {
     sms?: {
-      enabled: boolean;
-    };
-  };
+      enabled: boolean
+    }
+  },
   email?: any;
+  extraScopes?: string[];
+  extraParams?: string[];
   passwordPolicy: {
     min?: number;
     max?: number;
@@ -31,8 +37,10 @@ export interface ITenantSettings {
     lowerCase?: number;
     upperCase?: number;
     customChars?: string;
-    customRegexp?: string;
-  };
+    customRegexp?: { value: string, message?: string };
+  },
+  passwordHistory?: number,
+  social?: Record<string, any>;
   ttl?: {
     IdToken?: number;
     DeviceCode?: number;
@@ -40,5 +48,23 @@ export interface ITenantSettings {
     RefreshToken?: number;
     AuthorizationCode?: number;
     ClientCredentials?: number;
-  };
+  },
+  protection: {
+    bruteForce: {
+      allowedAttempts: number,
+      blockDuration: number,
+      duration: number,
+      enabled: boolean,
+      notification: boolean,
+      whiteList: string[],
+    },
+    accountBlockingPolicy: {
+      allowedAttempts: number,
+      allowUserUnblock: boolean,
+      blockDuration: number,
+      duration: number,
+      notification: boolean,
+      resetAfterSuccess: boolean
+    }
+  }
 }
