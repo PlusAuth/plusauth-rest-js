@@ -8,10 +8,10 @@ import { fetchPn } from './utils/fetch_wrapper'
  */
 async function parseFetchResponse( response: Response, options: CustomRequestOptions ) {
   const contentType = response.headers.get( 'content-type' )
-  if ( options.responseType === 'stream' ){
+  if ( options.responseType === 'stream' ) {
     return response.body?.getReader()
   } else if ( options.responseType === 'json' || contentType &&
-    contentType.indexOf( 'application/json' ) > -1 ){
+    contentType.indexOf( 'application/json' ) > -1 ) {
     return await response.json()
   } else {
     return await response.text()
@@ -22,15 +22,15 @@ async function parseFetchResponse( response: Response, options: CustomRequestOpt
  * @internal
  */
 function fetchAsPromise( url: string, options: CustomRequestOptions ) {
-  return new Promise( function ( resolve, reject ){
+  return new Promise( function ( resolve, reject ) {
     fetchPn( url, options ).then( ( rawResponse: Response ) => {
       const clone = rawResponse.clone()
-      if ( rawResponse.ok ){
+      if ( rawResponse.ok ) {
         parseFetchResponse( clone, options ).then( resolve ).catch( reject )
-      } else if ( rawResponse.status === 400 ){
+      } else if ( rawResponse.status === 400 ) {
         parseFetchResponse( clone, options ).then( value => {
           if ( value.error === 'xhr_request'
-          && value.location ){
+            && value.location ) {
             window.location.replace( value.location );
             return false;
           } else {
@@ -76,8 +76,8 @@ export class HttpService {
 
   ['constructor']!: typeof HttpService
 
-  constructor( apiURL: string, headers: Record<string, any> = {} ) {
-    if ( !apiURL ){
+  constructor( apiURL: string, options: Record<string, any> = {} ) {
+    if ( !apiURL ) {
       throw new Error( "'apiURL' must be provided" )
     }
     try {
@@ -86,44 +86,47 @@ export class HttpService {
       throw new Error( "'apiUrl' must be a valid uri" )
     }
 
-    if ( typeof headers !== 'object' ){
-      throw new Error( "'headers' must be an object" )
+    if ( typeof options !== 'object' ) {
+      throw new Error( "'options' must be an object" )
     }
 
-    const finalUri  = apiURL + ( /\/api\/v\d(\/)?$/.test( apiURL ) ? ''
+    if ( options.httpClient && typeof options.httpClient !== 'function' ) {
+      throw new Error( '"httpClient" must be function' )
+    }
+    const finalUri = apiURL + ( /\/api\/v\d(\/)?$/.test( apiURL ) ? ''
       : `${ apiURL.endsWith( '/' ) ? '' : '/' }api/v1` )
 
     const _baseUrl = finalUri + this.constructor.prefix;
 
+    const httpClient = options.httpClient || fetchAsPromise
     const http: any = {};
     ['get', 'post', 'patch', 'delete'].forEach( method => {
       http[method] = function ( ...args: any[] ) {
         let token
-        if ( headers && typeof headers.token === 'function' ){
-          token = headers.token.call( undefined )
+        if ( options && typeof options.token === 'function' ) {
+          token = options.token.call( undefined )
         } else {
-          token = headers.token
+          token = options.token
         }
         let fetchOptions: RequestInit = {
-          method:      method.toUpperCase(),
-          mode:        'cors',
-          credentials: 'include',
-          headers:     {
+          method:  method.toUpperCase(),
+          mode:    'cors',
+          headers: {
             'Accept':           'application/json',
             'Content-Type':     'application/json',
             'X-Requested-With': 'XMLHttpRequest',
             ...token ? { 'Authorization': `Bearer ${ token }` } : {}
           }
         }
-        if ( args.length > 1 ){
+        if ( args.length > 1 ) {
           method !== 'get' ?
             fetchOptions.body = typeof args[1] === 'object' ? JSON.stringify( args[1] ) : args[1]
             : null
         }
-        if ( !!args[2] && typeof args[2] === 'object' ){
+        if ( !!args[2] && typeof args[2] === 'object' ) {
           fetchOptions = deepmerge( fetchOptions, args[2] )
         }
-        return fetchAsPromise.call( null, _baseUrl + args[0], fetchOptions )
+        return httpClient.call( null, _baseUrl + args[0], fetchOptions )
       }
     } )
 
