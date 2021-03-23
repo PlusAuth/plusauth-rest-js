@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.1.2...v0.2.0) (2021-03-23)
+
+
+### Features
+
+* option for providing custom http client ([759d4f1](https://github.com/PlusAuth/plusauth-rest-js/commit/759d4f1bcd891c82d1022d6320bf14053ffefe8f))
+
 ## [0.1.2](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.1.1...v0.1.2) (2021-03-22)
 
 ## [0.1.1](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.1.0...v0.1.1) (2021-03-22)
