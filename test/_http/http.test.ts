@@ -18,7 +18,7 @@ describe('HTTP base class', () => {
     it('should throw an error when the headers are not an object', function () {
       // @ts-expect-error
       expect(() => new HttpService(API_URL, 'stringvalue')).
-        to.throw(Error, "'headers' must be an object");
+        to.throw(Error, "'options' must be an object");
     });
   })
 
