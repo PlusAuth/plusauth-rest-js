@@ -1,5 +1,10 @@
+import { EmailProvider, SMSProvider } from '../constants/providers';
 import { HttpService } from '../http';
 import { IPagination, ITenant, ITenantSettings, PaginatedResult } from '../interfaces';
+import {
+  IEmailProviderSettings,
+  ISMSProviderSettings,
+} from '../interfaces/provider';
 import { encodedQueryString } from '../utils';
 
 /**
@@ -118,26 +123,31 @@ export class TenantService extends HttpService {
     return this.http.get( `/${ tenantId }/stats${ encodedQueryString( pagination ) }` );
   }
 
-  async getSMSProviderSettings( tenantId: string, provider?: string ){
+  async getSMSProviderSettings(
+    tenantId: string,
+    provider?: SMSProvider
+  ): Promise<ISMSProviderSettings>{
     return this.http.get( `/${ tenantId }/provider/sms${ provider ? `/${ provider }` : '' }` );
   }
 
-  async updateSMSProviderSettings( tenantId: string, settings: {
-    provider: string,
-    settings: Record<string, string>
-  } ){
+  async updateSMSProviderSettings(
+    tenantId: string,
+    settings: ISMSProviderSettings
+  ): Promise<ISMSProviderSettings>{
     return this.http.patch( `/${ tenantId }/provider/sms`, settings );
   }
 
-  async getEmailProviderSettings( tenantId: string, provider?: string ){
+  async getEmailProviderSettings(
+    tenantId: string,
+    provider?: EmailProvider
+  ): Promise<IEmailProviderSettings>{
     return this.http.get( `/${ tenantId }/provider/email${ provider ? `/${ provider }` : '' }` );
   }
 
-  async updateEmailProviderSettings( tenantId: string, settings: {
-    provider: string,
-    from: string,
-    settings: Record<string, string>
-  } ){
+  async updateEmailProviderSettings(
+    tenantId: string,
+    settings: IEmailProviderSettings
+  ): Promise<IEmailProviderSettings>{
     return this.http.patch( `/${ tenantId }/provider/sms`, settings );
   }
 }

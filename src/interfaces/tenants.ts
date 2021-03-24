@@ -22,12 +22,6 @@ export interface ITenantSettings {
   hashFunction: string;
   forgotPasswordEnabled?: boolean;
   exposeUnsafeErrors?: boolean;
-  mfa: {
-    sms?: {
-      enabled: boolean
-    }
-  },
-  email?: any;
   extraScopes?: string[];
   extraParams?: string[];
   passwordPolicy: {
