@@ -13,8 +13,6 @@ const config = (output, browser= false, min= false ) =>({
   external: [],
   output,
   plugins: [
-    resolve({ extensions, browser}),
-    commonjs(),
     typescript( {
       clean: true,
       objectHashIgnoreUnknownHack: true,
@@ -25,6 +23,8 @@ const config = (output, browser= false, min= false ) =>({
         }
       }
     }),
+    resolve({ extensions, browser}),
+    commonjs(),
 
     babel({
       extensions,

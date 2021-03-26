@@ -1,3 +1,4 @@
+import { Response } from 'cross-fetch/lib.fetch';
 import deepmerge from 'deepmerge'
 
 import { fetchPn } from './utils/fetch_wrapper'
