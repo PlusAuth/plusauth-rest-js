@@ -11,7 +11,7 @@ import { expectPromise } from '../utils';
 
 
 const nock = fetchMock.sandbox()
-const fetchStub = sinon.stub(fetchWrapper, 'fetchPn').callsFake(nock)
+const fetchStub = sinon.stub(fetchWrapper, 'fetchPn').callsFake(nock as any)
 
 describe('Api Rest Service', () => {
   before(function () {

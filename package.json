@@ -1,6 +1,6 @@
 {
   "name": "@plusauth/plusauth-rest-js",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "PlusAuth JavaScript Rest Client",
   "main": "dist/plusauth-rest-js.cjs.js",
   "module": "dist/plusauth-rest-js.esm.js",

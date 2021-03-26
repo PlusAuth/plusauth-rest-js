@@ -1,3 +1,15 @@
+## [0.2.1](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.2.0...v0.2.1) (2021-03-26)
+
+
+### Bug Fixes
+
+* cross env build fails ([5e47f63](https://github.com/PlusAuth/plusauth-rest-js/commit/5e47f6312ce5eba02b82673112bbb7d2c583fa9d))
+
+
+### Features
+
+* sms and email provider type enums ([90297b7](https://github.com/PlusAuth/plusauth-rest-js/commit/90297b711f6a6bbdf3675123f7063ffa4c8f6a06))
+
 # [0.2.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.1.2...v0.2.0) (2021-03-23)
 
 
