@@ -1,2 +1,2 @@
-import fetchW from 'isomorphic-unfetch'
+import fetchW from 'cross-fetch'
 export const fetchPn = fetchW
