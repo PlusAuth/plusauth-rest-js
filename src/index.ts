@@ -3,6 +3,7 @@ import {
   UserService,
   ClientService,
   RoleService,
+  KeyService,
   RoleGroupService,
   TenantService, ViewService, TemplateService, HookService, FederatedService,
   CustomDomainService, LogService, MFAService
@@ -65,6 +66,8 @@ export default class PlusAuthRestClient {
 
   readonly federated: FederatedService;
 
+  readonly keys: KeyService;
+
   readonly hooks: HookService;
 
   readonly logs: LogService;
@@ -95,6 +98,7 @@ export default class PlusAuthRestClient {
     this.customDomains = new CustomDomainService( apiUri, this.options );
     this.federated = new FederatedService( apiUri, this.options );
     this.hooks = new HookService( apiUri, this.options );
+    this.keys = new KeyService( apiUri, this.options );
     this.logs = new LogService( apiUri, this.options )
     this.mfa = new MFAService( apiUri, this.options )
     this.roleGroups = new RoleGroupService( apiUri, this.options );
