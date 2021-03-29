@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.2.1...v0.3.0) (2021-03-29)
+
+
+### Features
+
+* key service ([3ce57c2](https://github.com/PlusAuth/plusauth-rest-js/commit/3ce57c22d6cb908503797618e186999664101460))
+
 ## [0.2.1](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.2.0...v0.2.1) (2021-03-26)
 
 
