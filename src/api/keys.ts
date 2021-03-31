@@ -10,7 +10,15 @@ export class KeyService extends HttpService{
     return this.http.get( '/signing' );
   }
 
-  async rotateSigningKey( keys?: JsonWebKey[] ): Promise<void> {
+  async rotateSigningKeys( keys?: JsonWebKey[] ): Promise<void> {
     return this.http.post( '/signing/rotate', { keys } );
+  }
+
+  async getEncryptionKeys( ): Promise<JsonWebKey[]> {
+    return this.http.get( '/encryption' );
+  }
+
+  async rotateEncryptionKeys( keys?: JsonWebKey[] ): Promise<void> {
+    return this.http.post( '/encryption/rotate', { keys } );
   }
 }
