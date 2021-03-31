@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.3.0...v0.3.1) (2021-03-31)
+
+
+### Features
+
+* encryption key retrieval/rotating methods ([c0f0f2d](https://github.com/PlusAuth/plusauth-rest-js/commit/c0f0f2d24fee745a7da9b419a8c14c41708831ce))
+
 # [0.3.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.2.1...v0.3.0) (2021-03-29)
 
 
