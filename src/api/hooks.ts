@@ -151,35 +151,4 @@ export class HookService extends HttpService {
       responseType: stream ? 'stream' : undefined
     } );
   }
-
-
-  /**
-   * Test a hook by executing it with sample data
-   *
-   * @param context - Context object which would be passed to the hook
-   * @param user - User object which would be passed to the hook
-   * @param hook - Hook object. It is necessary for resolving packages.
-   *
-   * @example
-   * ```js
-   *
-   * const hook = await plusAuth.hooks.get('an_existing_hook_id');
-   *
-   * hook.content = `function handle(data, callback){
-   *    const date = require('moment)().format()
-   *    data.user.metadata.joinDate = date
-   *    callback(null, data)
-   * }
-   * `
-   *
-   * const testContent = { client: {}, request: {}, accessToken: {} }
-   * const testUser = { id: 'someId', metadata: {}, username: 'johnDoe' }
-   *
-   * const hookResult = await plusAuth.hooks.execute( testContent, testUser, hook )
-   * console.log(hookResult)
-   * ```
-   */
-  execute( context: string, user: any, hook: IHook ): Promise<any> {
-    return this.http.post( '/hook-test', { context, user, hook } );
-  }
 }
