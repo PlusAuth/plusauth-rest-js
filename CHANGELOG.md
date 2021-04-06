@@ -1,3 +1,10 @@
+## [0.3.3](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.3.2...v0.3.3) (2021-04-06)
+
+
+### Bug Fixes
+
+* wrong endpoint for update email settings ([6f7dd51](https://github.com/PlusAuth/plusauth-rest-js/commit/6f7dd51fce41122e5a53260f96161a62bcf98991))
+
 ## [0.3.2](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.3.1...v0.3.2) (2021-04-06)
 
 
