@@ -148,6 +148,6 @@ export class TenantService extends HttpService {
     tenantId: string,
     settings: IEmailProviderSettings
   ): Promise<IEmailProviderSettings>{
-    return this.http.patch( `/${ tenantId }/provider/sms`, settings );
+    return this.http.patch( `/${ tenantId }/provider/email`, settings );
   }
 }
