@@ -1,3 +1,10 @@
+## [0.3.2](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.3.1...v0.3.2) (2021-04-06)
+
+
+### Features
+
+* signing/encryption key revoking methods ([8b2b34d](https://github.com/PlusAuth/plusauth-rest-js/commit/8b2b34df7f759a0d79e3af45bd0e9bb977a124f1))
+
 ## [0.3.1](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.3.0...v0.3.1) (2021-03-31)
 
 
