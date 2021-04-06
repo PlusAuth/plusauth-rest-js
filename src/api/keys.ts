@@ -14,11 +14,19 @@ export class KeyService extends HttpService{
     return this.http.post( '/signing/rotate', { keys } );
   }
 
+  async revokeSigningKey( kid: string ): Promise<void> {
+    return this.http.get( `/signing/revoke/${ kid }` );
+  }
+
   async getEncryptionKeys( ): Promise<JsonWebKey[]> {
     return this.http.get( '/encryption' );
   }
 
   async rotateEncryptionKeys( keys?: JsonWebKey[] ): Promise<void> {
     return this.http.post( '/encryption/rotate', { keys } );
+  }
+
+  async revokeEncryptionKey( kid: string ): Promise<void> {
+    return this.http.get( `/encryption/revoke/${ kid }` );
   }
 }
