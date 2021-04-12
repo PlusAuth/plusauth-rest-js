@@ -1,3 +1,15 @@
+# [0.4.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.3.3...v0.4.0) (2021-04-12)
+
+
+### Bug Fixes
+
+* unassigned roles and permissions are not passed to body ([6d767d1](https://github.com/PlusAuth/plusauth-rest-js/commit/6d767d114955111eb383fae90945bb85a4d3b87b))
+
+
+### Features
+
+* add get rbac list method ([b0611f9](https://github.com/PlusAuth/plusauth-rest-js/commit/b0611f9405a66f1bb0c72c90648a38ef3275678c))
+
 ## [0.3.3](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.3.2...v0.3.3) (2021-04-06)
 
 
