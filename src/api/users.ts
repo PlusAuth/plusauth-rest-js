@@ -78,4 +78,8 @@ export class UserService extends HttpService {
   async unAssignPermissions( userId: string, permissionIDs: string[] ): Promise<void> {
     return this.http.delete( `/${ userId }/permissions`, permissionIDs );
   }
+
+  async getRBAC( userId: string ){
+    return this.http.get( `/${ userId }/rbac` );
+  }
 }
