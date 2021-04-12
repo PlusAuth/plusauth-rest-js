@@ -41,6 +41,6 @@ export class RoleService extends HttpService{
   }
 
   async unAssignPermissions( roleId: string, permissionIDs: string[] ) {
-    return this.http.delete( `/${ roleId }/permissions/${ permissionIDs }` );
+    return this.http.delete( `/${ roleId }/permissions`, permissionIDs );
   }
 }

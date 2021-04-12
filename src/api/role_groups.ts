@@ -143,6 +143,6 @@ export class RoleGroupService extends HttpService{
    * ```
    */
   async unAssignRoles( roleGroupId: string, roleIDs: string[] ) {
-    return this.http.delete( `/${ roleGroupId }/roles/${ roleIDs }` );
+    return this.http.delete( `/${ roleGroupId }/roles`, roleIDs );
   }
 }
