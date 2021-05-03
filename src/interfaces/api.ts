@@ -4,14 +4,11 @@
 export interface IApi {
   name: string;
   description?: string;
-  audience?: string;
-  system?: boolean;
+  readonly audience?: string;
+  readonly system?: boolean;
 }
 
-/**
- * @public
- */
-export interface IApiPatch {
-  name?: string;
-  description?: string;
+export interface IAuthorizedClients {
+  client_id: string;
+  permissions: string[]
 }

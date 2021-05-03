@@ -36,11 +36,11 @@ export class RoleService extends HttpService{
     return this.http.get( `/${ roleId }/permissions${ encodedQueryString( pagination ) }` );
   }
 
-  async assignPermissions( roleId: string, permissionIDs: string[] ) {
+  async assignPermissions( roleId: string, permissionIDs: string[] ): Promise<void> {
     return this.http.post( `/${ roleId }/permissions`, permissionIDs );
   }
 
-  async unAssignPermissions( roleId: string, permissionIDs: string[] ) {
+  async unAssignPermissions( roleId: string, permissionIDs: string[] ): Promise<void> {
     return this.http.delete( `/${ roleId }/permissions`, permissionIDs );
   }
 }

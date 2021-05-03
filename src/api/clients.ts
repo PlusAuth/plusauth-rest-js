@@ -54,7 +54,7 @@ export class ClientService extends HttpService {
    * const client = await plusAuth.clients.create({ client_name: 'myClient', application_type: 'web' })
    * ```
    */
-  async create( clientObject: Partial<IClient> ){
+  async create( clientObject: Partial<IClient> ): Promise<IClient>{
     return this.http.post( '', clientObject )
   }
 

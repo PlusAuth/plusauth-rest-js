@@ -1,5 +1,5 @@
 import { HttpService } from '../http';
-import { PaginatedResult, IApi, IPagination, IPermission, IApiPatch } from '../interfaces';
+import { PaginatedResult, IApi, IPagination, IPermission, IAuthorizedClients } from '../interfaces';
 import { encodedQueryString } from '../utils';
 
 /**
@@ -17,7 +17,7 @@ export class ApiService extends HttpService{
    * @example
    * Retrieve all APIs
    * ```js
-   * const apis = apis.getAll()
+   * const apis = await plusAuth.apis.getAll()
    * ```
    *
    * @example
@@ -54,13 +54,12 @@ export class ApiService extends HttpService{
    * const api = await plusAuth.apis.create({ name: 'myApi', audience: 'https://api.example.com' })
    * ```
    */
-  async create( api: IApi ): Promise<IApi> {
+  async create( api: Omit<IApi, 'system'> ): Promise<IApi> {
     return this.http.post( '', api );
   }
 
   /**
    * Update an existing API.
-   * \> **NOTE:** `audience` is not updatable.
    *
    * @param apiId - Id of API to be updated
    * @param api - Object containing updated field/s with value/s
@@ -78,7 +77,7 @@ export class ApiService extends HttpService{
    * ```
    *
    */
-  async update( apiId: string, api: Partial<IApiPatch> ): Promise<void> {
+  async update( apiId: string, api: Partial<Omit<IApi, 'system' | 'audience'>> ): Promise<void> {
     return this.http.patch( `/${ apiId }`, api );
   }
 
@@ -102,7 +101,7 @@ export class ApiService extends HttpService{
   /**
    * Retrieve permissions created for the specified API
    *
-   * @param apiId - API id to retrieve permissions of
+   * @param apiId - ID of Api to retrieve permissions of
    * @param pagination - Object containing pagination options
    *
    * @example
@@ -125,7 +124,7 @@ export class ApiService extends HttpService{
   /**
    * Create permission for the API
    *
-   * @param apiId - API Id to create permission for
+   * @param apiId - ID of Api to create permission for
    * @param permission - Object containing permission properties
    *
    * @example
@@ -140,7 +139,7 @@ export class ApiService extends HttpService{
   /**
    * Delete an existing permission from the API
    *
-   * @param apiId - API Id to remove permission from
+   * @param apiId - ID of Api to remove permission from
    * @param permissionId - Permission Id to be removed
    *
    * @example
@@ -154,31 +153,127 @@ export class ApiService extends HttpService{
     return this.http.delete( `/${ apiId }/permissions/${ permissionId }` );
   }
 
-  async getAuthorizedClients( apiId: string, pagination: IPagination ) {
+  //  AUTHORIZED CLIENTS
+  /**
+   * Retrieve authorized clients to the specified API
+   *
+   * @param apiId - ID of Api to retrieve authorized clients from
+   * @param pagination - Object containing pagination options
+   *
+   * @example
+   * Retrieve all authorized clients to the API
+   * ```js
+   * const authorizedClients = await plusAuth.apis.getAuthorizedClients('API_ID')
+   * ```
+   *
+   * @example
+   * Retrieve first 5 permissions
+   * ```js
+   * const authorizedClients = await plusAuth.apis.getAuthorizedClients('API_ID', { itemsPerPage: 5})
+   * ```
+   */
+  async getAuthorizedClients(
+    apiId: string,
+    pagination: IPagination
+  ): Promise<PaginatedResult<IAuthorizedClients>> {
     return this.http.get( `/${ apiId }/authorized_clients${ encodedQueryString( pagination ) }` );
   }
 
-  async authorizeClients( apiId: string, clientIds: string[] ) {
+  /**
+   * Authorize client/s to the specified API
+   *
+   * @param apiId - ID of Api to authorize client/s to
+   * @param clientIds - IDs of to be authorized clients
+   *
+   * @example
+   * ```js
+   *  if( await plusAuth.apis.authorizeClients('API_ID', ['CLIENT_1_ID', 'CLIENT_2_ID']) ){
+   *    console.log('clients authorized')
+   *  }
+   * ```
+   */
+  async authorizeClients( apiId: string, clientIds: string[] ): Promise<void> {
     return this.http.post( `/${ apiId }/authorized_clients`, clientIds );
   }
 
-  async unAuthorizeClients( apiId: string, clientIds: string[] ) {
+  /**
+   * Unauthorize client/s from the specified API
+   *
+   * @param apiId - ID of Api to unauthorize client/s from
+   * @param clientIds - IDs of to be unauthorized clients
+   *
+   * @example
+   * ```js
+   *  if( await plusAuth.apis.unAuthorizeClients('API_ID', ['CLIENT_1_ID', 'CLIENT_2_ID']) ){
+   *    console.log('clients unauthorized')
+   *  }
+   * ```
+   */
+  async unAuthorizeClients( apiId: string, clientIds: string[] ): Promise<void> {
     return this.http.delete( `/${ apiId }/authorized_clients`, clientIds );
   }
 
   // AUTHORIZED CLIENT PERMISSIONS
-  async getAssignedPermissionsToClient( apiId: string, clientId: string ) {
+  /**
+   * Retrieve authorized permissions of authorized client of the specified API
+   *
+   * @param apiId - ID of Api to retrieve authorized clients from
+   * @param clientId - Authorized client id
+   *
+   * @example
+   * ```js
+   * const authorizedPermissions = await plusAuth.apis.getAssignedPermissionsToClient('API_ID', 'CLIENT_ID')
+   * ```
+   *
+   */
+  async getAssignedPermissionsToClient( apiId: string, clientId: string ): Promise<string[]> {
     return this.http.get( `/${ apiId }/authorized_clients/${ clientId }/permissions` );
   }
 
-  async assignPermissionsToClient( apiId: string, clientId: string, permissionIds: string[] ) {
+  /**
+   * Authorize permission/s to an authorized client of the specified API
+   *
+   * @param apiId - ID of Api to retrieve authorized clients from
+   * @param clientId - Authorized client id
+   * @param permissionIds - Permissions ID array to be authorized
+   *
+   * @example
+   * ```js
+   * if( await plusAuth.apis.assignPermissionsToClient('API_ID', 'CLIENT_ID', ['perm_id_1', 'perm_id_2']) ){
+   *   console.log('permissions authorized for client')
+   * }
+   * ```
+   *
+   */
+  async assignPermissionsToClient(
+    apiId: string,
+    clientId: string,
+    permissionIds: string[] ): Promise<void> {
     return this.http.post(
       `/${ apiId }/authorized_clients/${ clientId }/permissions`,
       permissionIds
     );
   }
 
-  async unassignPermissionsFromClient( apiId: string, clientId: string, permissionIds: string[] ) {
+  /**
+   * Unauthorize permission/s from an authorized client of the specified API
+   *
+   * @param apiId - ID of Api to retrieve authorized clients from
+   * @param clientId - Authorized client id
+   * @param permissionIds - Permissions ID array to be authorized
+   *
+   * @example
+   * ```js
+   * if( await plusAuth.apis.assignPermissionsToClient('API_ID', 'CLIENT_ID', ['perm_id_1', 'perm_id_2']) ){
+   *   console.log('permissions unauthorized from client')
+   * }
+   * ```
+   *
+   */
+  async unassignPermissionsFromClient(
+    apiId: string,
+    clientId: string,
+    permissionIds: string[] ): Promise<void> {
     return this.http.delete(
       `/${ apiId }/authorized_clients/${ clientId }/permissions`,
       permissionIds

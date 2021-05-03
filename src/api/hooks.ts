@@ -39,7 +39,7 @@ export class HookService extends HttpService {
    *
    * @example
    * ```js
-   * const hook = await plusAuth.hooks.get('hook_ID')
+   * const hook = await plusAuth.hooks.get('HOOK_ID')
    * ```
    */
   async get( hookId: string ): Promise<IHook> {
@@ -66,11 +66,14 @@ export class HookService extends HttpService {
    * @param hook - Object containing to be updated field with values
    * @example
    * ```js
-   * const updatedHook = await plusAuth.hooks.update('hook_ID', { name: 'updatedName' })
+   * const updatedHook = await plusAuth.hooks.update('HOOK_ID', { name: 'updatedName' })
    * ```
    */
   async update( hookId: string, hook: Partial<IHook> ): Promise<IHook> {
-    return this.http.patch( `${ hookId ? `/${ hookId }` : '' }`, hook );
+    if ( !hookId && !hook.id ){
+      throw new Error( 'hook id is required' )
+    }
+    return this.http.patch( `/${ hookId || hook.id }`, hook );
   }
 
 
@@ -81,7 +84,7 @@ export class HookService extends HttpService {
    *
    * @example
    * ```js
-   * if( await plusAuth.hooks.remove('hook_ID') ){
+   * if( await plusAuth.hooks.remove('HOOK_ID') ){
    *  console.log('hook removed')
    * }
    * ```

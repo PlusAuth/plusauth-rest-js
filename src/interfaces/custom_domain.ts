@@ -1,7 +1,7 @@
 export interface ICustomDomain {
   domain: string;
   readonly validated: boolean;
-  verification_values: {
+  verification_values?: {
     type: 'CNAME' | 'TXT',
     value: string
   }[]

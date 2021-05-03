@@ -125,7 +125,7 @@ export class RoleGroupService extends HttpService{
    * }
    * ```
    */
-  async assignRoles( roleGroupId: string, roleIDs: string[] ) {
+  async assignRoles( roleGroupId: string, roleIDs: string[] ): Promise<void> {
     return this.http.post( `/${ roleGroupId }/roles`, roleIDs );
   }
 
@@ -142,7 +142,7 @@ export class RoleGroupService extends HttpService{
    * }
    * ```
    */
-  async unAssignRoles( roleGroupId: string, roleIDs: string[] ) {
+  async unAssignRoles( roleGroupId: string, roleIDs: string[] ): Promise<void> {
     return this.http.delete( `/${ roleGroupId }/roles`, roleIDs );
   }
 }

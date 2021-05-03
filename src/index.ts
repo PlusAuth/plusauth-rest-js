@@ -16,7 +16,7 @@ export * from './interfaces'
 // export * from './api'
 
 type Options = {
-  httpClient? : ( uri: string, options: RequestInit ) => Promise<any>
+  httpClient?: ( uri: string, options: RequestInit ) => Promise<any>
   token?: string | ( () => string )
 } & Record<string, string>
 
