@@ -24,3 +24,12 @@ export interface IPermission {
   name: string;
   description?: string;
 }
+
+/**
+ * @public
+ */
+export interface IRbac {
+  role_groups: ( IRoleGroup & { roles: ( IRole & { permissions: IPermission[]} )[]} )[],
+  roles: ( IRole & { permissions: IPermission[]} )[],
+  permissions: IPermission[]
+}

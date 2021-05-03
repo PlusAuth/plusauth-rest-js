@@ -1,6 +1,8 @@
 import { HttpService } from '../http';
-import { IPagination, PaginatedResult, IUser,
-  ITenant, IPermission, IRoleGroup, IRole } from '../interfaces';
+import {
+  IPagination, PaginatedResult, IUser,
+  ITenant, IPermission, IRoleGroup, IRole, IRbac
+} from '../interfaces';
 
 import { encodedQueryString } from '../utils';
 /**
@@ -79,7 +81,7 @@ export class UserService extends HttpService {
     return this.http.delete( `/${ userId }/permissions`, permissionIDs );
   }
 
-  async getRBAC( userId: string ){
+  async getRBAC( userId: string ): Promise<IRbac>{
     return this.http.get( `/${ userId }/rbac` );
   }
 }
