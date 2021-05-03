@@ -1,17 +1,23 @@
 import { HttpService } from '../http';
-import { IPagination } from '../interfaces';
+import { ILogQuery } from '../interfaces/log';
 import { encodedQueryString } from '../utils';
 
 export class LogService extends HttpService {
   protected static prefix = '/logs'
 
+  /**
+   * Retrieve or filter your tenant's logs.
+   *
+   * @param query - Log query parameters
+   *
+   * @example
+   * ```js
+   * const logs = await plusAuth.logs.getAll({ from: 'now-1d', type: 'error,warn'})
+   * ```
+   */
   async getAll(
-    pagination: IPagination,
-    query: string | Record<string, string | number | boolean>
-  ){
-    if ( query && typeof query === 'object' ) {
-      query = JSON.stringify( query );
-    }
-    return this.http.get( encodedQueryString( { ...pagination, query } ) );
+    query: ILogQuery
+  ): Promise<string | Record<string, any>> {
+    return this.http.get( encodedQueryString( query ) );
   }
 }
