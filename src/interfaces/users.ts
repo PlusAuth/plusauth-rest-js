@@ -49,3 +49,23 @@ export interface IUser {
   blocked?: boolean;
   user_details?: IUserDetails;
 }
+
+export interface IUserSession {
+  id: string
+  ip: string
+  ua: string
+  exp: number
+  created_at: number
+  last_activity: number
+  location?: {
+    city: string
+    country: string
+    postal_code: string,
+    pos?: {
+      latitude: number
+      longitude: number
+      accuracy_radius: number
+      time_zone: string
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { HttpService } from '../http';
 import {
   IPagination, PaginatedResult, IUser,
-  ITenant, IPermission, IRoleGroup, IRole, IRbac
+  ITenant, IPermission, IRoleGroup, IRole, IRbac, IUserSession
 } from '../interfaces';
 
 import { encodedQueryString } from '../utils';
@@ -21,14 +21,6 @@ export class UserService extends HttpService {
     return this.http.get( `/${ userId }` )
   }
 
-  async getSessions( userId: string ) {
-    return this.http.get( `/${ userId }/session` );
-  }
-
-  async endSession( userId: string, sessionId: string ) {
-    return this.http.delete( `/${ userId }/session/${ sessionId }` );
-  }
-
   async create( userObject: Partial<IUser> ): Promise<IUser> {
     return this.http.post( '', userObject )
   }
@@ -41,10 +33,22 @@ export class UserService extends HttpService {
     return this.http.patch( `/${ userId }`, user );
   }
 
+  // USER SESSIONS
+  async getSessions( userId: string ): Promise<IUserSession[]> {
+    return this.http.get( `/${ userId }/session` );
+  }
+
+  async endSession( userId: string, sessionId: string ): Promise<void> {
+    return this.http.delete( `/${ userId }/session/${ sessionId }` );
+  }
+
+  // USER TENANTS
+
   async getTenants( userId: string ): Promise<ITenant> {
     return this.http.get( `/${ userId }/tenants` );
   }
 
+  // USER ROLE GROUPS
   async getRoleGroups( userId: string ): Promise<IRoleGroup> {
     return this.http.get( `/${ userId }/roleGroups` );
   }
@@ -56,6 +60,8 @@ export class UserService extends HttpService {
   async unAssignRoleGroups( userId: string, roleGroupIDs: string[] ): Promise<void> {
     return this.http.delete( `/${ userId }/roleGroups`, roleGroupIDs );
   }
+
+  // USER ROLES
 
   async getRoles( userId: string ): Promise<IRole> {
     return this.http.get( `/${ userId }/roles` );
@@ -69,6 +75,7 @@ export class UserService extends HttpService {
     return this.http.delete( `/${ userId }/roles`, roleIDs );
   }
 
+  // USER PERMISSIONS
   async getPermissions( userId: string ): Promise<IPermission> {
     return this.http.get( `/${ userId }/permissions` );
   }
@@ -81,6 +88,7 @@ export class UserService extends HttpService {
     return this.http.delete( `/${ userId }/permissions`, permissionIDs );
   }
 
+  // RBAC
   async getRBAC( userId: string ): Promise<IRbac>{
     return this.http.get( `/${ userId }/rbac` );
   }

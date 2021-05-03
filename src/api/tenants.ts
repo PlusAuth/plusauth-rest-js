@@ -1,6 +1,12 @@
 import { EmailProvider, SMSProvider } from '../constants/providers';
 import { HttpService } from '../http';
-import { IPagination, ITenant, ITenantSettings, PaginatedResult } from '../interfaces';
+import {
+  IPagination,
+  ITenant,
+  ITenantSettings,
+  PaginatedResult,
+  ITenantAdministrator, IStats
+} from '../interfaces';
 import {
   IEmailProviderSettings,
   ISMSProviderSettings,
@@ -107,19 +113,19 @@ export class TenantService extends HttpService {
     return this.http.patch( `/${ tenantId }/settings`, settings );
   }
 
-  async inviteAdmin( tenantId: string, email: string ) {
+  async inviteAdmin( tenantId: string, email: string ): Promise<void> {
     return this.http.post( `/${ tenantId }/invite`, { email } );
   }
 
-  async getAdministrators( tenantId: string ) {
+  async getAdministrators( tenantId: string ): Promise<ITenantAdministrator> {
     return this.http.get( `/${ tenantId }/administrators` );
   }
 
-  async removeAdministrator( tenantId: string, email: string ) {
+  async removeAdministrator( tenantId: string, email: string ): Promise<void> {
     return this.http.delete( `/${ tenantId }/administrators/${ email }` );
   }
 
-  async getStats( tenantId: string, pagination?: IPagination ) {
+  async getStats( tenantId: string, pagination?: IPagination ): Promise<IStats> {
     return this.http.get( `/${ tenantId }/stats${ encodedQueryString( pagination ) }` );
   }
 

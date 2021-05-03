@@ -62,3 +62,23 @@ export interface ITenantSettings {
     }
   }
 }
+
+
+export interface ITenantAdministrator {
+  email: string;
+  owner: boolean;
+  inviteAccepted: boolean;
+}
+
+
+export interface IStats {
+  usage: {
+    date: string,
+    data: {
+      new_user: number,
+      active_user: number
+    }
+  }[],
+  totalUsers: number,
+  totalHooks: number,
+}
