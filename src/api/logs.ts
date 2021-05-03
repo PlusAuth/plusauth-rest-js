@@ -1,5 +1,5 @@
 import { HttpService } from '../http';
-import { ILogQuery } from '../interfaces/log';
+import { ILogQuery } from '../interfaces';
 import { encodedQueryString } from '../utils';
 
 export class LogService extends HttpService {

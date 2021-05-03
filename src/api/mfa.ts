@@ -1,5 +1,6 @@
 import { MFAType } from '../constants';
 import { HttpService } from '../http';
+import { IMfa } from '../interfaces';
 
 /**
  * Service for interacting with API's defined in PlusAuth
@@ -8,15 +9,44 @@ import { HttpService } from '../http';
 export class MFAService extends HttpService{
   protected static prefix = '/mfa'
 
-  async getAll() {
+  /**
+   * Get MFA settings
+   *
+   * @example
+   * ```js
+   * const settings = await plusAuth.mfa.getAll()
+   * ```
+   */
+  async getAll(): Promise<Record<MFAType, IMfa>> {
     return this.http.get( '' );
   }
 
-  async get( type: MFAType ) {
+
+  /**
+   * Get specific MFA settings
+   *
+   * @param type - MFA type
+   * @example
+   * ```js
+   * const smsSettings = await plusAuth.mfa.get(MFAType.SMS)
+   * ```
+   */
+  async get( type: MFAType ): Promise<IMfa> {
     return this.http.get( `/${ type }` );
   }
 
-  async update( type: MFAType, props: any ) {
-    return this.http.patch( `/${ type }`, props );
+
+  /**
+   * Update specific MFA settings
+   *
+   * @param type - MFA type
+   * @param settings - Updated settings
+   * @example
+   * ```js
+   * const newSmsSettings = await plusAuth.mfa.update(MFAType.SMS, { enabled: false })
+   * ```
+   */
+  async update( type: MFAType, settings: Record<string, any> ): Promise<IMfa> {
+    return this.http.patch( `/${ type }`, settings );
   }
 }

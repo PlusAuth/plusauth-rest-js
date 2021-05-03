@@ -5,12 +5,11 @@ import {
   ITenant,
   ITenantSettings,
   PaginatedResult,
-  ITenantAdministrator, IStats
-} from '../interfaces';
-import {
+  ITenantAdministrator, IStats,
   IEmailProviderSettings,
   ISMSProviderSettings,
-} from '../interfaces/provider';
+} from '../interfaces';
+
 import { encodedQueryString } from '../utils';
 
 /**
@@ -113,20 +112,68 @@ export class TenantService extends HttpService {
     return this.http.patch( `/${ tenantId }/settings`, settings );
   }
 
+  /**
+   * Send admin invitation to an email.
+   *
+   * @param tenantId - Tenant to invite the admin
+   * @param email - Email of invitation recipient
+   *
+   * @example
+   * ```js
+   * if(await plusAuth.tenants.inviteAdmin('TENANT_ID', 'john@doe.com' )){
+   *   console.log('invitation sent')
+   * }
+   * ```
+   */
   async inviteAdmin( tenantId: string, email: string ): Promise<void> {
     return this.http.post( `/${ tenantId }/invite`, { email } );
   }
 
+
+  /**
+   * Retrieve administrators of tenant including all invited ones.
+   *
+   * @param tenantId - Id of the tenant
+   *
+   * @example
+   * ```js
+   * const administrators = await plusAuth.tenants.getAdministrators('TENANT_ID')
+   * ```
+   */
   async getAdministrators( tenantId: string ): Promise<ITenantAdministrator> {
     return this.http.get( `/${ tenantId }/administrators` );
   }
 
+  /**
+   * Remove and administrator from your tenant
+   *
+   * @param tenantId - Tenant to invite the admin
+   * @param email - Email of administrator
+   *
+   * @example
+   * ```js
+   * if(await plusAuth.tenants.removeAdministrator('TENANT_ID', 'john@doe.com' )){
+   *   console.log('administrator removed')
+   * }
+   * ```
+   */
   async removeAdministrator( tenantId: string, email: string ): Promise<void> {
     return this.http.delete( `/${ tenantId }/administrators/${ email }` );
   }
 
-  async getStats( tenantId: string, pagination?: IPagination ): Promise<IStats> {
-    return this.http.get( `/${ tenantId }/stats${ encodedQueryString( pagination ) }` );
+  /**
+   * Retrieve usage stats of tenant
+   *
+   * @param tenantId - Id of the tenant
+   * @param queryOptions - Additional filters
+   *
+   * @example
+   * ```js
+   * const stats = await plusAuth.tenants.getStats('TENANT_ID')
+   * ```
+   */
+  async getStats( tenantId: string, queryOptions?: Pick<IPagination, 'q'> ): Promise<IStats> {
+    return this.http.get( `/${ tenantId }/stats${ encodedQueryString( queryOptions ) }` );
   }
 
   async getSMSProviderSettings(

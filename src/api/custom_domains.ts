@@ -1,6 +1,6 @@
 import { HttpService } from '../http';
 import { IPagination, PaginatedResult } from '../interfaces';
-import { ICustomDomain } from '../interfaces/custom_domain';
+import { ICustomDomain } from '../interfaces';
 import { encodedQueryString } from '../utils';
 
 /**
