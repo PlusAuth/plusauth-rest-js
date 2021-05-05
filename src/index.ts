@@ -12,6 +12,7 @@ import {
 
 // export * from './constants'
 export * from './interfaces'
+export * from './error'
 // export * from './http'
 // export * from './api'
 
@@ -55,7 +56,7 @@ type Options = {
  * ```
  * @public
  */
-export default class PlusAuthRestClient {
+export class PlusAuthRestClient {
   readonly apis: ApiService;
 
   readonly users: UserService;
@@ -109,3 +110,4 @@ export default class PlusAuthRestClient {
     this.views = new ViewService( apiUri, this.options );
   }
 }
+export default PlusAuthRestClient

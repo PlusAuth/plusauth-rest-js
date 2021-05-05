@@ -21,7 +21,7 @@ export class UserService extends HttpService {
     return this.http.get( `/${ userId }` )
   }
 
-  async create( userObject: Partial<IUser> ): Promise<IUser> {
+  async create( userObject: Partial<Omit<IUser, 'id'>> ): Promise<IUser> {
     return this.http.post( '', userObject )
   }
 
@@ -29,7 +29,7 @@ export class UserService extends HttpService {
     return this.http.delete( `/${ userId }` )
   }
 
-  async update( userId: string, user: Partial<IUser> ): Promise<IUser> {
+  async update( userId: string, user: Partial<Omit<IUser, 'id'>> ): Promise<IUser> {
     return this.http.patch( `/${ userId }`, user );
   }
 

@@ -1,6 +1,7 @@
-import { Response } from 'cross-fetch/lib.fetch';
+import { Response } from 'cross-fetch';
 import deepmerge from 'deepmerge'
 
+import { PlusAuthRestError } from './error';
 import { fetchPn } from './utils/fetch_wrapper'
 
 
@@ -9,13 +10,19 @@ import { fetchPn } from './utils/fetch_wrapper'
  */
 async function parseFetchResponse( response: Response, options: CustomRequestOptions ) {
   const contentType = response.headers.get( 'content-type' )
-  if ( options.responseType === 'stream' ) {
+  if ( options.responseType === 'stream' && response.ok ) {
     return response.body?.getReader()
   } else if ( options.responseType === 'json' || contentType &&
     contentType.indexOf( 'application/json' ) > -1 ) {
     return await response.json()
   } else {
     return await response.text()
+  }
+}
+
+function wrapInError( reject: ( ...args: any ) => void ){
+  return function ( err: Error ) {
+    reject( new PlusAuthRestError( err ) )
   }
 }
 
@@ -27,21 +34,23 @@ function fetchAsPromise( url: string, options: CustomRequestOptions ) {
     fetchPn( url, options ).then( ( rawResponse: Response ) => {
       const clone = rawResponse.clone()
       if ( rawResponse.ok ) {
-        parseFetchResponse( clone, options ).then( resolve ).catch( reject )
+        parseFetchResponse( clone, options ).then( resolve ).catch( wrapInError( reject ) )
       } else if ( rawResponse.status === 400 ) {
         parseFetchResponse( clone, options ).then( value => {
           if ( value.error === 'xhr_request'
             && value.location ) {
-            window.location.replace( value.location );
+            window?.location?.replace( value.location );
             return false;
           } else {
             reject( value )
           }
-        } ).catch( reject )
+        } ).catch( wrapInError( reject ) )
       } else {
-        parseFetchResponse( clone, options ).then( reject ).catch( reject )
+        parseFetchResponse( clone, options )
+          .then( wrapInError( reject ) )
+          .catch( wrapInError( reject ) )
       }
-    } ).catch( reject )
+    } ).catch( wrapInError( reject ) )
   } )
 }
 

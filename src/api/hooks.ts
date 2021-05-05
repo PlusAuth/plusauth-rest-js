@@ -1,5 +1,3 @@
-import { ReadableStreamDefaultReader } from 'cross-fetch/lib.fetch';
-
 import { HttpService } from '../http';
 import { PaginatedResult, IPagination, HookPackage, IHook } from '../interfaces';
 
@@ -122,7 +120,7 @@ export class HookService extends HttpService {
    */
   async addPackages( hookId: string,
     packages: HookPackage[],
-    stream: true ): Promise<ReadableStreamDefaultReader>
+    stream: true ): Promise<any>
 
   async addPackages( hookId: string,
     packages: HookPackage[],
@@ -132,7 +130,7 @@ export class HookService extends HttpService {
     hookId: string,
     packages: HookPackage[],
     stream = false
-  ): Promise<string | ReadableStreamDefaultReader> {
+  ): Promise<string | any> {
     return this.http.post( `/${ hookId }/packages`, packages, {
       responseType: stream ? 'stream' : undefined
     } );
@@ -165,7 +163,7 @@ export class HookService extends HttpService {
    */
   async deletePackages( hookId: string,
     packages: HookPackage[],
-    stream: true ): Promise<ReadableStreamDefaultReader>
+    stream: true ): Promise<any>
 
   async deletePackages( hookId: string,
     packages: HookPackage[],
@@ -175,7 +173,7 @@ export class HookService extends HttpService {
     hookId: string,
     packages: HookPackage[],
     stream = false
-  ): Promise<string | ReadableStreamDefaultReader> {
+  ): Promise<string | any> {
     return this.http.delete( `/${ hookId }/packages`, packages, {
       responseType: stream ? 'stream' : undefined
     } );

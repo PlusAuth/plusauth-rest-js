@@ -42,6 +42,7 @@ export interface IUserDetails extends BaseModel {
  * @public
  */
 export interface IUser {
+  readonly id: string;
   salt?: string;
   func: number;
   username?: string;
