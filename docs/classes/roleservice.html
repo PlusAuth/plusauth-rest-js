@@ -2704,6 +2704,41 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class="current tsd-kind-class">
+			<a href="roleservice.html" class="tsd-kind-icon">Role<wbr>Service</a>
+			<ul>
+				<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+					<a href="roleservice.html#constructor" class="tsd-kind-icon">constructor</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a href="roleservice.html#constructor-1" class="tsd-kind-icon">constructor</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="roleservice.html#assignpermissions" class="tsd-kind-icon">assign<wbr>Permissions</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="roleservice.html#create" class="tsd-kind-icon">create</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="roleservice.html#get" class="tsd-kind-icon">get</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="roleservice.html#getall" class="tsd-kind-icon">get<wbr>All</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="roleservice.html#getpermissions" class="tsd-kind-icon">get<wbr>Permissions</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="roleservice.html#remove" class="tsd-kind-icon">remove</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="roleservice.html#unassignpermissions" class="tsd-kind-icon">un<wbr>Assign<wbr>Permissions</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="roleservice.html#update" class="tsd-kind-icon">update</a>
+				</li>
+			</ul>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
@@ -2773,7 +2808,7 @@ img {
 						<aside class="tsd-sources">
 							<p>Inherited from HttpService.constructor</p>
 							<ul>
-								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/545b5cc/src/http.ts#L78">http.ts:78</a></li>
+								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/2736c8d/src/http.ts#L78">http.ts:78</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2799,7 +2834,7 @@ img {
 				<aside class="tsd-sources">
 					<p>Inherited from HttpService.constructor</p>
 					<ul>
-						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/545b5cc/src/http.ts#L78">http.ts:78</a></li>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/2736c8d/src/http.ts#L78">http.ts:78</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2816,16 +2851,35 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/545b5cc/src/api/roles.ts#L39">api/roles.ts:39</a></li>
+								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/2736c8d/src/api/roles.ts#L128">api/roles.ts:128</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Assign permissions to a role</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><pre><code class="language-js"><span style="color: #AF00DB">if</span><span style="color: #000000"> ( </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">plusAuth</span><span style="color: #000000">.</span><span style="color: #001080">roles</span><span style="color: #000000">.</span><span style="color: #795E26">assignPermissions</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ROLE_GROUP_ID&#039;</span><span style="color: #000000">, [ </span><span style="color: #A31515">&#039;PERMISSION_ID_1&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;PERMISSION_ID_2&#039;</span><span style="color: #000000">] ) ){</span>
+<span style="color: #000000">  </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;permissions are assigned&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">}</span>
+</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>roleId: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Role id for assigning permissions to</p>
+								</div>
 							</li>
 							<li>
 								<h5>permissionIDs: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Array containing permission id&#39;s to be assigned</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -2842,13 +2896,27 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/545b5cc/src/api/roles.ts#L21">api/roles.ts:21</a></li>
+								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/2736c8d/src/api/roles.ts#L57">api/roles.ts:57</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Create a role</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">role</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">plusAuth</span><span style="color: #000000">.</span><span style="color: #001080">roles</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">({ </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;My Role&#039;</span><span style="color: #000000"> })</span>
+</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>role: <a href="../interfaces/irole.html" class="tsd-signature-type" data-tsd-kind="Interface">IRole</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Role object</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/irole.html" class="tsd-signature-type" data-tsd-kind="Interface">IRole</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -2865,13 +2933,27 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/545b5cc/src/api/roles.ts#L17">api/roles.ts:17</a></li>
+								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/2736c8d/src/api/roles.ts#L44">api/roles.ts:44</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Get role with id</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">role</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">plusAuth</span><span style="color: #000000">.</span><span style="color: #001080">roles</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ROLE_GROUP_ID&#039;</span><span style="color: #000000">)</span>
+</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>roleId: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Role id</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/irole.html" class="tsd-signature-type" data-tsd-kind="Interface">IRole</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -2888,13 +2970,33 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/545b5cc/src/api/roles.ts#L13">api/roles.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/2736c8d/src/api/roles.ts#L30">api/roles.ts:30</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Retrieve or filter created roles.</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Retrieve all roles</p>
+									<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">roles</span><span style="color: #000000"> = </span><span style="color: #001080">plusAuth</span><span style="color: #000000">.</span><span style="color: #001080">roles</span><span style="color: #000000">.</span><span style="color: #795E26">getAll</span><span style="color: #000000">()</span>
+</code></pre>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Retrieve first 5 roles</p>
+									<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">roles</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">plusAuth</span><span style="color: #000000">.</span><span style="color: #001080">roles</span><span style="color: #000000">.</span><span style="color: #795E26">getAll</span><span style="color: #000000">({ </span><span style="color: #001080">itemsPerPage:</span><span style="color: #000000"> </span><span style="color: #098658">5</span><span style="color: #000000"> })</span>
+</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> pagination: <a href="../interfaces/ipagination.html" class="tsd-signature-type" data-tsd-kind="Interface">IPagination</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Object containing pagination options</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/paginatedresult.html" class="tsd-signature-type" data-tsd-kind="Interface">PaginatedResult</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/irole.html" class="tsd-signature-type" data-tsd-kind="Interface">IRole</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -2911,16 +3013,39 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/545b5cc/src/api/roles.ts#L34">api/roles.ts:34</a></li>
+								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/2736c8d/src/api/roles.ts#L110">api/roles.ts:110</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Retrieve permissions assigned to the specified Role</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Retrieve all permissions assigned to the role</p>
+									<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">permissions</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">plusAuth</span><span style="color: #000000">.</span><span style="color: #001080">roles</span><span style="color: #000000">.</span><span style="color: #795E26">getPermissions</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ROLE_ID&#039;</span><span style="color: #000000">)</span>
+</code></pre>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Retrieve first 5 assigned permissions</p>
+									<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">permissions</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">plusAuth</span><span style="color: #000000">.</span><span style="color: #001080">roles</span><span style="color: #000000">.</span><span style="color: #795E26">getPermissions</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ROLE_ID&#039;</span><span style="color: #000000">, { </span><span style="color: #001080">itemsPerPage:</span><span style="color: #000000"> </span><span style="color: #098658">5</span><span style="color: #000000"> })</span>
+</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>roleId: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Role id to retrieve assigned roles of</p>
+								</div>
 							</li>
 							<li>
 								<h5>pagination: <a href="../interfaces/ipagination.html" class="tsd-signature-type" data-tsd-kind="Interface">IPagination</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Object containing pagination options</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/paginatedresult.html" class="tsd-signature-type" data-tsd-kind="Interface">PaginatedResult</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/ipermission.html" class="tsd-signature-type" data-tsd-kind="Interface">IPermission</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -2937,13 +3062,29 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/545b5cc/src/api/roles.ts#L29">api/roles.ts:29</a></li>
+								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/2736c8d/src/api/roles.ts#L87">api/roles.ts:87</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Remove an existing role</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><pre><code class="language-js"><span style="color: #AF00DB">if</span><span style="color: #000000">( </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">plusAuth</span><span style="color: #000000">.</span><span style="color: #001080">roles</span><span style="color: #000000">.</span><span style="color: #795E26">remove</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ROLE_ID&#039;</span><span style="color: #000000">) ){</span>
+<span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;role removed&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">}</span>
+</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>roleId: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Role Id to be removed</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -2960,16 +3101,35 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/545b5cc/src/api/roles.ts#L43">api/roles.ts:43</a></li>
+								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/2736c8d/src/api/roles.ts#L145">api/roles.ts:145</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Unassign permissions from a role</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><pre><code class="language-js"><span style="color: #AF00DB">if</span><span style="color: #000000"> ( </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">plusAuth</span><span style="color: #000000">.</span><span style="color: #001080">roles</span><span style="color: #000000">.</span><span style="color: #795E26">unAssignPermissions</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ROLE_GROUP_ID&#039;</span><span style="color: #000000">, [ </span><span style="color: #A31515">&#039;PERMISSION_ID_2&#039;</span><span style="color: #000000">] ) ){</span>
+<span style="color: #000000">  </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;permissions are unassigned&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">}</span>
+</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>roleId: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Role Group id for unassigning permissions from</p>
+								</div>
 							</li>
 							<li>
 								<h5>permissionIDs: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Array containing permission id&#39;s to be unassigned</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -2986,16 +3146,33 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/545b5cc/src/api/roles.ts#L25">api/roles.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/2736c8d/src/api/roles.ts#L71">api/roles.ts:71</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Update an existing role</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">updatedRole</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">plusAuth</span><span style="color: #000000">.</span><span style="color: #001080">roles</span><span style="color: #000000">.</span><span style="color: #795E26">update</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ROLE_ID&#039;</span><span style="color: #000000">, { </span><span style="color: #001080">description:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;updatedDescription&#039;</span><span style="color: #000000"> })</span>
+</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>roleId: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Id of role to be updated</p>
+								</div>
 							</li>
 							<li>
 								<h5>role: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/irole.html" class="tsd-signature-type" data-tsd-kind="Interface">IRole</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Object containing to be updated field with values</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
