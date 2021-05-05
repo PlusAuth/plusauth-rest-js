@@ -1,9 +1,8 @@
 require('dotenv').config();
-const PlusAuthRest = require('@plusauth/plusauth-rest-js')
+const {PlusAuthRestClient} = require('../../')
 const getAuthToken = require('./getAuthToken')
 
-
-const pa = new PlusAuthRest(process.env.PLUSAUTH_DOMAIN);
+const pa = new PlusAuthRestClient(process.env.PLUSAUTH_DOMAIN);
 
 (async function (){
 
