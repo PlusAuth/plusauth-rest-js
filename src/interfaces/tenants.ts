@@ -64,13 +64,18 @@ export interface ITenantSettings {
 }
 
 
+/**
+ * @public
+ */
 export interface ITenantAdministrator {
   email: string;
   owner: boolean;
   inviteAccepted: boolean;
 }
 
-
+/**
+ * @public
+ */
 export interface IStats {
   usage: {
     date: string,

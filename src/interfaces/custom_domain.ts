@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export interface ICustomDomain {
   domain: string;
   readonly validated: boolean;

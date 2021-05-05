@@ -50,6 +50,9 @@ export interface IUser {
   user_details?: IUserDetails;
 }
 
+/**
+ * @public
+ */
 export interface IUserSession {
   id: string
   ip: string

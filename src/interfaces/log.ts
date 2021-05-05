@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export interface ILogQuery {
   from?: string,
   to?: string,
