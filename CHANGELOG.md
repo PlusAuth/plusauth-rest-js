@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.5.0...v0.6.0) (2021-05-05)
+
+
+### Features
+
+* wrap fetch errors ([e88189a](https://github.com/PlusAuth/plusauth-rest-js/commit/e88189aebaee1cdd9763bd5199f4f50d3eb8929c))
+
 # [0.5.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.4.0...v0.5.0) (2021-05-05)
 
 # [0.4.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.3.3...v0.4.0) (2021-04-12)
