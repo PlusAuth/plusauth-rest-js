@@ -52,10 +52,10 @@ export class TenantService extends HttpService {
    * ```
    *
    * @example
-   * Create in 'eu' region.
+   * Create in 'tr' region.
    *
    * ```js
-   * const createdTenant = await plusAuth.tenants.create({ tenant_id: 'myuniquetenantid', region: 'eu' })
+   * const createdTenant = await plusAuth.tenants.create({ tenant_id: 'myuniquetenantid', region: 'tr' })
    * ```
    */
   async create( tenant: ITenant ): Promise<ITenant> {
@@ -176,6 +176,17 @@ export class TenantService extends HttpService {
     return this.http.get( `/${ tenantId }/stats${ encodedQueryString( queryOptions ) }` );
   }
 
+  /**
+   * Retrieve SMS provider settings
+   *
+   * @param tenantId - Your tenant ID
+   * @param provider - If necessary, specific provider type
+   *
+   * @example
+   * ```js
+   * const smsProviderSettings = await plusAuth.tenants.getSMSProviderSettings('MY_TENANT_ID')
+   * ```
+   */
   async getSMSProviderSettings(
     tenantId: string,
     provider?: SMSProvider
@@ -183,6 +194,25 @@ export class TenantService extends HttpService {
     return this.http.get( `/${ tenantId }/provider/sms${ provider ? `/${ provider }` : '' }` );
   }
 
+  /**
+   * Update SMS provider settings
+   *
+   * @param tenantId - Your tenant ID
+   * @param settings - SMS Provider settings
+   *
+   * @example
+   * ```js
+   * if(await plusAuth.tenants.updateSMSProviderSettings('MY_TENANT_ID', {
+   *   provider: SMSProvider.MESSAGEBIRD,
+   *   settings: {
+   *      apiKey: 'MESSAGE_BIRD_API_KEY',
+   *      originator: 'MESSAGE_BIRD_ORIGINATOR'
+   *   }
+   * })){
+   *   console.log('sms provider settings updated')
+   * }
+   * ```
+   */
   async updateSMSProviderSettings(
     tenantId: string,
     settings: ISMSProviderSettings
@@ -190,6 +220,18 @@ export class TenantService extends HttpService {
     return this.http.patch( `/${ tenantId }/provider/sms`, settings );
   }
 
+
+  /**
+   * Retrieve Email provider settings
+   *
+   * @param tenantId - Your tenant ID
+   * @param provider - If necessary, specific provider type
+   *
+   * @example
+   * ```js
+   * const emailProviderSettings = await plusAuth.tenants.getEmailProviderSettings('MY_TENANT_ID')
+   * ```
+   */
   async getEmailProviderSettings(
     tenantId: string,
     provider?: EmailProvider
@@ -197,6 +239,25 @@ export class TenantService extends HttpService {
     return this.http.get( `/${ tenantId }/provider/email${ provider ? `/${ provider }` : '' }` );
   }
 
+
+  /**
+   * Update Email provider settings
+   *
+   * @param tenantId - Your tenant ID
+   * @param settings - SMS Provider settings
+   *
+   * @example
+   * ```js
+   * if(await plusAuth.tenants.updateEmailProviderSettings('MY_TENANT_ID', {
+   *   provider: EmailProvider.SENDGRID,
+   *   settings: {
+   *      api_key: 'SENDGRID_API_KEY',
+   *   }
+   * })){
+   *   console.log('email provider settings updated')
+   * }
+   * ```
+   */
   async updateEmailProviderSettings(
     tenantId: string,
     settings: IEmailProviderSettings

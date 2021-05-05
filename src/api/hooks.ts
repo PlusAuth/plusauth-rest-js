@@ -163,7 +163,6 @@ export class HookService extends HttpService {
    * })
    * ```
    */
-
   async deletePackages( hookId: string,
     packages: HookPackage[],
     stream: true ): Promise<ReadableStreamDefaultReader>

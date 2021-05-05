@@ -11,18 +11,18 @@ export class RoleGroupService extends HttpService{
   protected static prefix = '/roleGroups'
 
   /**
-   * Retrieve or filter created roleGroups.
+   * Retrieve or filter created role groups.
    *
    * @param pagination - Object containing pagination options
    *
    * @example
-   * Retrieve all RoleGroups
+   * Retrieve all role groups
    * ```js
    * const roleGroups = roleGroups.getAll()
    * ```
    *
    * @example
-   * Retrieve first 5 roleGroups
+   * Retrieve first 5 role groups
    * ```js
    * const roleGroups = await plusAuth.roleGroups.getAll({ itemsPerPage: 5 })
    * ```
@@ -32,9 +32,9 @@ export class RoleGroupService extends HttpService{
   }
 
   /**
-   * Get roleGroup with id
+   * Get role group with id
    *
-   * @param roleGroupId - RoleGroup id
+   * @param roleGroupId - Role group id
    *
    * @example
    * ```js
@@ -46,8 +46,8 @@ export class RoleGroupService extends HttpService{
   }
 
   /**
-   * Create a roleGroup
-   * @param roleGroupObject - RoleGroup object
+   * Create a role group
+   * @param roleGroupObject - Role group object
    *
    * @example
    * ```js
@@ -59,9 +59,9 @@ export class RoleGroupService extends HttpService{
   }
 
   /**
-   * Update an existing roleGroup
+   * Update an existing role group
    *
-   * @param roleGroupId - Id of roleGroup to be updated
+   * @param roleGroupId - Id of role group to be updated
    * @param roleGroup - Object containing to be updated field with values
    * @example
    * ```js
@@ -73,9 +73,9 @@ export class RoleGroupService extends HttpService{
   }
 
   /**
-   * Remove an existing roleGroup
+   * Remove an existing role group
    *
-   * @param roleGroupId - RoleGroup Id to be removed
+   * @param roleGroupId - Role group Id to be removed
    *
    * @example
    * ```js
@@ -90,21 +90,21 @@ export class RoleGroupService extends HttpService{
 
   //  ROLES
   /**
-   * Retrieve roles assigned to the specified Role Group
+   * Retrieve roles assigned to the specified role group
    *
-   * @param roleGroupId - Role Group id to retrieve assigned roles of
+   * @param roleGroupId - Role group id to retrieve assigned roles of
    * @param pagination - Object containing pagination options
    *
    * @example
    * Retrieve all roles assigned to the role group
    * ```js
-   * const permissions = await plusAuth.roleGroups.getRoles('ROLE_GROUP_ID')
+   * const roles = await plusAuth.roleGroups.getRoles('ROLE_GROUP_ID')
    * ```
    *
    * @example
-   * Retrieve first 5 roles
+   * Retrieve first 5 assigned roles
    * ```js
-   * const permissions = await plusAuth.apis.getRoles('ROLE_GROUP_ID', \{ itemsPerPage: 5 \})
+   * const roles = await plusAuth.roleGroups.getRoles('ROLE_GROUP_ID', { itemsPerPage: 5 })
    * ```
    */
   async getRoles( roleGroupId: string, pagination: IPagination ):
@@ -115,7 +115,7 @@ export class RoleGroupService extends HttpService{
   /**
    * Assign roles to a role group
    *
-   * @param roleGroupId - Role Group id for assigning roles to
+   * @param roleGroupId - Role group id for assigning roles to
    * @param roleIDs - Array containing role id's to be assigned
    *
    * @example
@@ -132,7 +132,7 @@ export class RoleGroupService extends HttpService{
   /**
    * Unassign roles from a role group
    *
-   * @param roleGroupId - Role Group id for unassigning roles from
+   * @param roleGroupId - Role group id for unassigning roles from
    * @param roleIDs - Array containing role id's to be unassigned
    *
    * @example

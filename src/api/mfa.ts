@@ -1,6 +1,6 @@
 import { MFAType } from '../constants';
 import { HttpService } from '../http';
-import { IMfa } from '../interfaces';
+import { IMfa, IMFASettings } from '../interfaces';
 
 /**
  * Service for interacting with API's defined in PlusAuth
@@ -40,13 +40,13 @@ export class MFAService extends HttpService{
    * Update specific MFA settings
    *
    * @param type - MFA type
-   * @param settings - Updated settings
+   * @param mfaProps - Updated properties
    * @example
    * ```js
    * const newSmsSettings = await plusAuth.mfa.update(MFAType.SMS, { enabled: false })
    * ```
    */
-  async update( type: MFAType, settings: Record<string, any> ): Promise<IMfa> {
-    return this.http.patch( `/${ type }`, settings );
+  async update( type: MFAType, mfaProps: IMFASettings ): Promise<IMfa> {
+    return this.http.patch( `/${ type }`, mfaProps );
   }
 }
