@@ -1,10 +1,12 @@
-import { ConnectionStrategy } from '../constants';
+import { ConnectionStrategy, ConnectionType } from '../constants';
 
 /**
  * @public
  */
 export interface IConnection {
   name: string;
-  type?: ConnectionStrategy;
-  settings?: any;
+  enabled?: boolean;
+  type?: ConnectionType;
+  provider?: ConnectionStrategy;
+  settings?: Record<string, any>;
 }
