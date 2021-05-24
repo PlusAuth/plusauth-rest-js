@@ -1,3 +1,10 @@
+# [0.7.0-beta.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.6.0...v0.7.0-beta.0) (2021-05-24)
+
+
+### Features
+
+* connection type enum ([7a936cb](https://github.com/PlusAuth/plusauth-rest-js/commit/7a936cbc48bebe7715e4a9d5456134de2e3dd041))
+
 # [0.6.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.5.0...v0.6.0) (2021-05-05)
 
 

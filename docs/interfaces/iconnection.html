@@ -2708,7 +2708,13 @@ img {
 			<a href="iconnection.html" class="tsd-kind-icon">IConnection</a>
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="iconnection.html#enabled" class="tsd-kind-icon">enabled</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
 					<a href="iconnection.html#name" class="tsd-kind-icon">name</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="iconnection.html#provider" class="tsd-kind-icon">provider</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
 					<a href="iconnection.html#settings" class="tsd-kind-icon">settings</a>
@@ -2737,7 +2743,9 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iconnection.html#enabled" class="tsd-kind-icon">enabled</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iconnection.html#name" class="tsd-kind-icon">name</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iconnection.html#provider" class="tsd-kind-icon">provider</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iconnection.html#settings" class="tsd-kind-icon">settings</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iconnection.html#type" class="tsd-kind-icon">type</a></li>
 						</ul>
@@ -2748,32 +2756,52 @@ img {
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="enabled" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> enabled</h3>
+				<div class="tsd-signature tsd-kind-icon">enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/65e2ae3/src/interfaces/connection.ts#L8">src/interfaces/connection.ts:8</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="name" class="tsd-anchor"></a>
 				<h3>name</h3>
 				<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/e88189a/src/interfaces/connection.ts#L7">src/interfaces/connection.ts:7</a></li>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/65e2ae3/src/interfaces/connection.ts#L7">src/interfaces/connection.ts:7</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="provider" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> provider</h3>
+				<div class="tsd-signature tsd-kind-icon">provider<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConnectionStrategy</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/65e2ae3/src/interfaces/connection.ts#L10">src/interfaces/connection.ts:10</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="settings" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> settings</h3>
-				<div class="tsd-signature tsd-kind-icon">settings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+				<div class="tsd-signature tsd-kind-icon">settings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/e88189a/src/interfaces/connection.ts#L9">src/interfaces/connection.ts:9</a></li>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/65e2ae3/src/interfaces/connection.ts#L11">src/interfaces/connection.ts:11</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="type" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
-				<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConnectionStrategy</span></div>
+				<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConnectionType</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/e88189a/src/interfaces/connection.ts#L8">src/interfaces/connection.ts:8</a></li>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/65e2ae3/src/interfaces/connection.ts#L9">src/interfaces/connection.ts:9</a></li>
 					</ul>
 				</aside>
 			</section>
