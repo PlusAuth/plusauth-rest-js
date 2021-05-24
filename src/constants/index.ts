@@ -1,4 +1,5 @@
 export * from './connection_strategy'
+export * from './connection_type'
 export * from './email_template'
 export * from './hook_type'
 export * from './mfa_type'
