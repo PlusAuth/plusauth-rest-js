@@ -6,7 +6,7 @@ Table Of Content
 1. [Installation](#installation)
 2. [Usage](#usage)
 3. [Docs](#docs)
-3. [Examples](#examples)
+4. [Examples](#examples)
 
 
 # Installation
