@@ -81,3 +81,5 @@ const plusAuth = new PlusAuthRestClient('https://<YOUR_TENANT_ID>.plusauth.com',
 # Docs
 For API docs visit [here](https://plusauth.github.io/plusauth-rest-js/classes/plusauthrestclient.html)
 
+# Examples
+For more examples have a look at [examples](/examples) folder in this directory.
