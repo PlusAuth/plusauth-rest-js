@@ -4,6 +4,7 @@ import {
   ITenant, IPermission, IRoleGroup, IRole, IRbac, IUserSession
 } from '../interfaces';
 
+import { PartialDeepOmit } from '../interfaces/helpers';
 import { encodedQueryString } from '../utils';
 /**
  * Service for interacting PlusAuth users.
@@ -21,7 +22,7 @@ export class UserService extends HttpService {
     return this.http.get( `/${ userId }` )
   }
 
-  async create( userObject: Partial<Omit<IUser, 'id'>> ): Promise<IUser> {
+  async create( userObject: PartialDeepOmit<IUser, 'id' | 'user_id'> ): Promise<IUser> {
     return this.http.post( '', userObject )
   }
 
@@ -29,7 +30,7 @@ export class UserService extends HttpService {
     return this.http.delete( `/${ userId }` )
   }
 
-  async update( userId: string, user: Partial<Omit<IUser, 'id'>> ): Promise<IUser> {
+  async update( userId: string, user: PartialDeepOmit<IUser, 'id' | 'user_id'> ): Promise<IUser> {
     return this.http.patch( `/${ userId }`, user );
   }
 
