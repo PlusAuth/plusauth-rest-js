@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.7.0-beta.0...v0.7.0) (2021-08-09)
+
+
+### Features
+
+* finger vein mfa type ([d5da626](https://github.com/PlusAuth/plusauth-rest-js/commit/d5da626e429761cb6da03a87d86823453cb90c1c))
+
 # [0.7.0-beta.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.6.0...v0.7.0-beta.0) (2021-05-24)
 
 
