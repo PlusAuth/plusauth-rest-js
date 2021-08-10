@@ -8,7 +8,8 @@ import { fetchPn } from './utils/fetch_wrapper'
 /**
  * @internal
  */
-async function parseFetchResponse( response: Response, options: CustomRequestOptions ) {
+async function parseFetchResponse( response: Response, options: CustomRequestOptions ):
+Promise<any> {
   const contentType = response.headers.get( 'content-type' )
   if ( options.responseType === 'stream' && response.ok ) {
     return response.body?.getReader()
@@ -21,7 +22,7 @@ async function parseFetchResponse( response: Response, options: CustomRequestOpt
 }
 
 function wrapInError( reject: ( ...args: any ) => void ){
-  return function ( err: Error ) {
+  return function ( err: Error ): void {
     reject( new PlusAuthRestError( err ) )
   }
 }
@@ -29,7 +30,7 @@ function wrapInError( reject: ( ...args: any ) => void ){
 /**
  * @internal
  */
-function fetchAsPromise( url: string, options: CustomRequestOptions ) {
+function fetchAsPromise( url: string, options: CustomRequestOptions ): Promise<any> {
   return new Promise( function ( resolve, reject ) {
     fetchPn( url, options ).then( ( rawResponse: Response ) => {
       const clone = rawResponse.clone()
@@ -111,7 +112,7 @@ export class HttpService {
     const httpClient = options.httpClient || fetchAsPromise
     const http: any = {};
     ['get', 'post', 'patch', 'delete'].forEach( method => {
-      http[method] = function ( ...args: any[] ) {
+      http[method] = function ( ...args: any[] ): Promise<any> {
         let token
         if ( options && typeof options.token === 'function' ) {
           token = options.token.call( undefined )

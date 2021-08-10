@@ -1,7 +1,7 @@
 /**
  * @internal
  */
-export function encodedQueryString( data?: { [key: string]: any }, appendable = true ) {
+export function encodedQueryString( data?: { [key: string]: any }, appendable = true ): string {
   if ( !data ) return '';
   const ret: string[] = [];
   for ( const d in data ) {

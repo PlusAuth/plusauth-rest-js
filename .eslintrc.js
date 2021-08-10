@@ -22,6 +22,8 @@ module.exports = {
   ],
   rules: {
     "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/explicit-function-return-type": ["error"],
+    "@typescript-eslint/explicit-module-boundary-types": ["error"],
     "@typescript-eslint/indent": [ "error", 2, {
       "ArrayExpression": "first",
       "FunctionDeclaration": {
