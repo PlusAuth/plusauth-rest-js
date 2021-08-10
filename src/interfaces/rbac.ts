@@ -1,8 +1,9 @@
+import { HasApi, HasId, HasTenant, Timestamped } from './common';
+
 /**
  * @public
  */
-export interface IRoleGroup {
-  id: string;
+export interface IBaseRoleGroup {
   name: string;
   description?: string;
   assignOnSignup?: boolean;
@@ -11,8 +12,12 @@ export interface IRoleGroup {
 /**
  * @public
  */
-export interface IRole {
-  id: string;
+export type IRoleGroup = IBaseRoleGroup & HasId & HasTenant & Timestamped;
+
+/**
+ * @public
+ */
+export interface IBaseRole {
   name: string;
   description?: string;
   assignOnSignup?: boolean;
@@ -21,12 +26,20 @@ export interface IRole {
 /**
  * @public
  */
-export interface IPermission {
-  id: string;
-  api_id: string;
+export type IRole = IBaseRole & HasId & HasTenant & Timestamped;
+
+/**
+ * @public
+ */
+export interface IBasePermission {
   name: string;
   description?: string;
 }
+
+/**
+ * @public
+ */
+export type IPermission = IBasePermission & HasId & HasApi;
 
 /**
  * @public

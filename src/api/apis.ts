@@ -1,5 +1,12 @@
 import { HttpService } from '../http';
-import { PaginatedResult, IApi, IPagination, IPermission, IAuthorizedClients } from '../interfaces';
+import {
+  PaginatedResult,
+  IApi,
+  IPagination,
+  IPermission,
+  IAuthorizedClients,
+  IBasePermission, IBaseApi
+} from '../interfaces';
 import { encodedQueryString } from '../utils';
 
 /**
@@ -54,7 +61,7 @@ export class ApiService extends HttpService{
    * const api = await plusAuth.apis.create({ name: 'myApi', audience: 'https://api.example.com' })
    * ```
    */
-  async create( api: Omit<IApi, 'system'> ): Promise<IApi> {
+  async create( api: IBaseApi ): Promise<IApi> {
     return this.http.post( '', api );
   }
 
@@ -77,7 +84,10 @@ export class ApiService extends HttpService{
    * ```
    *
    */
-  async update( apiId: string, api: Partial<Omit<IApi, 'system' | 'audience'>> ): Promise<void> {
+  async update(
+    apiId: string,
+    api: Partial<Omit<IBaseApi, 'audience'>>
+  ): Promise<IApi> {
     return this.http.patch( `/${ apiId }`, api );
   }
 
@@ -132,7 +142,7 @@ export class ApiService extends HttpService{
    * const permission = await plusAuth.apis.createPermission('API_ID', { name: 'read:contacts' })
    * ```
    */
-  async createPermission( apiId: string, permission: Omit<IPermission, 'id'> ):
+  async createPermission( apiId: string, permission: IBasePermission ):
   Promise<IPermission> {
     return this.http.post( `/${ apiId }/permissions`, permission );
   }

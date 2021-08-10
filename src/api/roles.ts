@@ -1,5 +1,5 @@
 import { HttpService } from '../http';
-import { PaginatedResult, IRole, IPagination, IPermission } from '../interfaces';
+import { PaginatedResult, IRole, IPagination, IPermission, IBaseRole } from '../interfaces';
 import { encodedQueryString } from '../utils';
 
 /**
@@ -54,7 +54,7 @@ export class RoleService extends HttpService{
    * const role = await plusAuth.roles.create({ name: 'My Role' })
    * ```
    */
-  async create( role: Omit<IRole, 'id'> ): Promise<IRole> {
+  async create( role: IBaseRole ): Promise<IRole> {
     return this.http.post( '', role );
   }
 
@@ -68,7 +68,7 @@ export class RoleService extends HttpService{
    * const updatedRole = await plusAuth.roles.update('ROLE_ID', { description: 'updatedDescription' })
    * ```
    */
-  async update( roleId: string, role: Partial<Omit<IRole, 'id'>> ): Promise<void> {
+  async update( roleId: string, role: Partial<IBaseRole> ): Promise<IRole> {
     return this.http.patch( `/${ roleId }`, role );
   }
 

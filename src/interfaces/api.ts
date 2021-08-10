@@ -1,12 +1,18 @@
+import { HasId, HasTenant, Timestamped } from './common';
+
 /**
  * @public
  */
-export interface IApi {
+export interface IBaseApi {
   name: string;
   description?: string;
-  readonly audience?: string;
-  readonly system?: boolean;
+  readonly audience: string;
 }
+
+/**
+ * @public
+ */
+export type IApi = IBaseApi & HasId & HasTenant & Timestamped & { readonly system: boolean };
 
 /**
  * @public

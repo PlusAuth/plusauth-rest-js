@@ -1,10 +1,9 @@
 import { HttpService } from '../http';
 import {
   IPagination, PaginatedResult, IUser,
-  ITenant, IPermission, IRoleGroup, IRole, IRbac, IUserSession
+  ITenant, IPermission, IRoleGroup, IRole, IRbac, IUserSession, IBaseUser
 } from '../interfaces';
 
-import { PartialDeepOmit } from '../interfaces/helpers';
 import { encodedQueryString } from '../utils';
 /**
  * Service for interacting PlusAuth users.
@@ -22,7 +21,7 @@ export class UserService extends HttpService {
     return this.http.get( `/${ userId }` )
   }
 
-  async create( userObject: PartialDeepOmit<IUser, 'id' | 'user_id'> ): Promise<IUser> {
+  async create( userObject: IBaseUser ): Promise<IUser> {
     return this.http.post( '', userObject )
   }
 
@@ -30,7 +29,7 @@ export class UserService extends HttpService {
     return this.http.delete( `/${ userId }` )
   }
 
-  async update( userId: string, user: PartialDeepOmit<IUser, 'id' | 'user_id'> ): Promise<IUser> {
+  async update( userId: string, user: IBaseUser ): Promise<IUser> {
     return this.http.patch( `/${ userId }`, user );
   }
 
@@ -50,7 +49,7 @@ export class UserService extends HttpService {
   }
 
   // USER ROLE GROUPS
-  async getRoleGroups( userId: string ): Promise<IRoleGroup> {
+  async getRoleGroups( userId: string ): Promise<PaginatedResult<IRoleGroup>> {
     return this.http.get( `/${ userId }/roleGroups` );
   }
 
@@ -64,7 +63,7 @@ export class UserService extends HttpService {
 
   // USER ROLES
 
-  async getRoles( userId: string ): Promise<IRole> {
+  async getRoles( userId: string ): Promise<PaginatedResult<IRole>> {
     return this.http.get( `/${ userId }/roles` );
   }
 
@@ -77,7 +76,7 @@ export class UserService extends HttpService {
   }
 
   // USER PERMISSIONS
-  async getPermissions( userId: string ): Promise<IPermission> {
+  async getPermissions( userId: string ): Promise<PaginatedResult<IPermission>> {
     return this.http.get( `/${ userId }/permissions` );
   }
 

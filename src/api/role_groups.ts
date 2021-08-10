@@ -1,5 +1,5 @@
 import { HttpService } from '../http';
-import { PaginatedResult, IRoleGroup, IPagination, IRole } from '../interfaces';
+import { PaginatedResult, IRoleGroup, IPagination, IRole, IBaseRoleGroup } from '../interfaces';
 import { encodedQueryString } from '../utils';
 
 /**
@@ -54,7 +54,7 @@ export class RoleGroupService extends HttpService{
    * const roleGroup = await plusAuth.roleGroups.create({ name: 'myRoleGroup' })
    * ```
    */
-  async create( roleGroupObject: Omit<IRoleGroup, 'id'> ): Promise<IRoleGroup> {
+  async create( roleGroupObject: IBaseRoleGroup ): Promise<IRoleGroup> {
     return this.http.post( '', roleGroupObject );
   }
 
@@ -68,7 +68,7 @@ export class RoleGroupService extends HttpService{
    * const updatedRoleGroup = await plusAuth.roleGroups.update('ROLE_GROUP_ID', { description: 'updatedDescription' })
    * ```
    */
-  async update( roleGroupId: string, roleGroup: Partial<Omit<IRoleGroup, 'id'>> ): Promise<void> {
+  async update( roleGroupId: string, roleGroup: Partial<IBaseRoleGroup> ): Promise<IRoleGroup> {
     return this.http.patch( `/${ roleGroupId }`, roleGroup );
   }
 

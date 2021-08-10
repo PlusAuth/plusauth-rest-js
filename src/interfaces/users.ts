@@ -1,15 +1,9 @@
-/**
- * @public
- */
-export interface BaseModel {
-  id: string;
-}
+import { HasId, HasTenant, HasUser, Timestamped } from './common';
 
 /**
  * @public
  */
-export interface IUserDetails extends BaseModel {
-  user_id?: string;
+export interface IBaseUserDetails {
   name?: string;
   given_name?: string;
   family_name?: string;
@@ -28,28 +22,38 @@ export interface IUserDetails extends BaseModel {
   phone_number?: string;
   phone_verified?: boolean;
   address?: {
-    formatted: string;
-    street_address: string;
-    locality: string;
-    region: string;
-    postal_code: number;
-    country: string;
+    formatted?: string;
+    street_address?: string;
+    locality?: string;
+    region?: string;
+    postal_code?: number;
+    country?: string;
   };
-  metadata?: Record<string, string | number>;
+  metadata?: Record<string, string | number | boolean>;
 }
 
 /**
  * @public
  */
-export interface IUser {
-  readonly id: string;
-  salt?: string;
-  func: number;
+export type IUserDetails = IBaseUserDetails & HasUser;
+
+/**
+ * @public
+ */
+export interface IBaseUser {
   username?: string;
   password?: string;
   blocked?: boolean;
-  user_details?: IUserDetails;
+  user_details?: IBaseUserDetails;
 }
+
+/**
+ * @public
+ */
+export type IUser = IBaseUser & HasId & HasTenant & Timestamped & { user_details: IUserDetails} & {
+  salt: string;
+  func: number;
+};
 
 /**
  * @public
