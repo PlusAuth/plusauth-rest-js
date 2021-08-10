@@ -2,6 +2,7 @@
  * @public
  */
 export interface IRoleGroup {
+  id: string;
   name: string;
   description?: string;
   assignOnSignup?: boolean;
@@ -11,6 +12,7 @@ export interface IRoleGroup {
  * @public
  */
 export interface IRole {
+  id: string;
   name: string;
   description?: string;
   assignOnSignup?: boolean;
@@ -20,6 +22,7 @@ export interface IRole {
  * @public
  */
 export interface IPermission {
+  id: string;
   api_id: string;
   name: string;
   description?: string;

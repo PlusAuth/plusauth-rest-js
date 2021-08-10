@@ -54,7 +54,7 @@ export class RoleService extends HttpService{
    * const role = await plusAuth.roles.create({ name: 'My Role' })
    * ```
    */
-  async create( role: IRole ): Promise<IRole> {
+  async create( role: Omit<IRole, 'id'> ): Promise<IRole> {
     return this.http.post( '', role );
   }
 
@@ -68,7 +68,7 @@ export class RoleService extends HttpService{
    * const updatedRole = await plusAuth.roles.update('ROLE_ID', { description: 'updatedDescription' })
    * ```
    */
-  async update( roleId: string, role: Partial<IRole> ): Promise<void> {
+  async update( roleId: string, role: Partial<Omit<IRole, 'id'>> ): Promise<void> {
     return this.http.patch( `/${ roleId }`, role );
   }
 

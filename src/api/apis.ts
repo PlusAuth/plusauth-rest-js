@@ -132,7 +132,8 @@ export class ApiService extends HttpService{
    * const permission = await plusAuth.apis.createPermission('API_ID', { name: 'read:contacts' })
    * ```
    */
-  async createPermission( apiId: string, permission: IPermission ) {
+  async createPermission( apiId: string, permission: Omit<IPermission, 'id'> ):
+  Promise<IPermission> {
     return this.http.post( `/${ apiId }/permissions`, permission );
   }
 
@@ -149,7 +150,7 @@ export class ApiService extends HttpService{
    * }
    * ```
    */
-  async removePermission( apiId: string, permissionId: string ) {
+  async removePermission( apiId: string, permissionId: string ): Promise<void> {
     return this.http.delete( `/${ apiId }/permissions/${ permissionId }` );
   }
 
