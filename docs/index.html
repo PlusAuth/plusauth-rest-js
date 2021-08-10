@@ -2736,9 +2736,13 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Interfaces</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-interface"><a href="interfaces/BaseModel.html" class="tsd-kind-icon">Base<wbr>Model</a></li>
-							<li class="tsd-kind-interface"><a href="interfaces/IApi.html" class="tsd-kind-icon">IApi</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/IAuthorizedClients.html" class="tsd-kind-icon">IAuthorized<wbr>Clients</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/IBaseApi.html" class="tsd-kind-icon">IBase<wbr>Api</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/IBasePermission.html" class="tsd-kind-icon">IBase<wbr>Permission</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/IBaseRole.html" class="tsd-kind-icon">IBase<wbr>Role</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/IBaseRoleGroup.html" class="tsd-kind-icon">IBase<wbr>Role<wbr>Group</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/IBaseUser.html" class="tsd-kind-icon">IBase<wbr>User</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/IBaseUserDetails.html" class="tsd-kind-icon">IBase<wbr>User<wbr>Details</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/IClient.html" class="tsd-kind-icon">IClient</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/IConnection.html" class="tsd-kind-icon">IConnection</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/ICustomDomain.html" class="tsd-kind-icon">ICustom<wbr>Domain</a></li>
@@ -2748,18 +2752,13 @@ img {
 							<li class="tsd-kind-interface"><a href="interfaces/IMFASettings.html" class="tsd-kind-icon">IMFASettings</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/IMfa.html" class="tsd-kind-icon">IMfa</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/IPagination.html" class="tsd-kind-icon">IPagination</a></li>
-							<li class="tsd-kind-interface"><a href="interfaces/IPermission.html" class="tsd-kind-icon">IPermission</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/IRbac.html" class="tsd-kind-icon">IRbac</a></li>
-							<li class="tsd-kind-interface"><a href="interfaces/IRole.html" class="tsd-kind-icon">IRole</a></li>
-							<li class="tsd-kind-interface"><a href="interfaces/IRoleGroup.html" class="tsd-kind-icon">IRole<wbr>Group</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/ISMSProviderSettings.html" class="tsd-kind-icon">ISMSProvider<wbr>Settings</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/IStats.html" class="tsd-kind-icon">IStats</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/ITemplate.html" class="tsd-kind-icon">ITemplate</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/ITenant.html" class="tsd-kind-icon">ITenant</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/ITenantAdministrator.html" class="tsd-kind-icon">ITenant<wbr>Administrator</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/ITenantSettings.html" class="tsd-kind-icon">ITenant<wbr>Settings</a></li>
-							<li class="tsd-kind-interface"><a href="interfaces/IUser.html" class="tsd-kind-icon">IUser</a></li>
-							<li class="tsd-kind-interface"><a href="interfaces/IUserDetails.html" class="tsd-kind-icon">IUser<wbr>Details</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/IUserSession.html" class="tsd-kind-icon">IUser<wbr>Session</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/IView.html" class="tsd-kind-icon">IView</a></li>
 							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/PaginatedResult.html" class="tsd-kind-icon">Paginated<wbr>Result</a></li>
@@ -2769,6 +2768,12 @@ img {
 						<h3>Type aliases</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-type-alias"><a href="index.html#HookPackage" class="tsd-kind-icon">Hook<wbr>Package</a></li>
+							<li class="tsd-kind-type-alias"><a href="index.html#IApi" class="tsd-kind-icon">IApi</a></li>
+							<li class="tsd-kind-type-alias"><a href="index.html#IPermission" class="tsd-kind-icon">IPermission</a></li>
+							<li class="tsd-kind-type-alias"><a href="index.html#IRole" class="tsd-kind-icon">IRole</a></li>
+							<li class="tsd-kind-type-alias"><a href="index.html#IRoleGroup" class="tsd-kind-icon">IRole<wbr>Group</a></li>
+							<li class="tsd-kind-type-alias"><a href="index.html#IUser" class="tsd-kind-icon">IUser</a></li>
+							<li class="tsd-kind-type-alias"><a href="index.html#IUserDetails" class="tsd-kind-icon">IUser<wbr>Details</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2782,7 +2787,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Hook<wbr>Package<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>version<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/0209b95/src/interfaces/hook.ts#L6">src/interfaces/hook.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/bdc5077/src/interfaces/hook.ts#L6">src/interfaces/hook.ts:6</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -2796,6 +2801,66 @@ img {
 						</li>
 					</ul>
 				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias">
+				<a name="IApi" class="tsd-anchor"></a>
+				<h3>IApi</h3>
+				<div class="tsd-signature tsd-kind-icon">IApi<span class="tsd-signature-symbol">:</span> <a href="interfaces/IBaseApi.html" class="tsd-signature-type" data-tsd-kind="Interface">IBaseApi</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasId</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasTenant</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Timestamped</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>system<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/bdc5077/src/interfaces/api.ts#L15">src/interfaces/api.ts:15</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias">
+				<a name="IPermission" class="tsd-anchor"></a>
+				<h3>IPermission</h3>
+				<div class="tsd-signature tsd-kind-icon">IPermission<span class="tsd-signature-symbol">:</span> <a href="interfaces/IBasePermission.html" class="tsd-signature-type" data-tsd-kind="Interface">IBasePermission</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasId</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasApi</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/bdc5077/src/interfaces/rbac.ts#L42">src/interfaces/rbac.ts:42</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias">
+				<a name="IRole" class="tsd-anchor"></a>
+				<h3>IRole</h3>
+				<div class="tsd-signature tsd-kind-icon">IRole<span class="tsd-signature-symbol">:</span> <a href="interfaces/IBaseRole.html" class="tsd-signature-type" data-tsd-kind="Interface">IBaseRole</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasId</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasTenant</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Timestamped</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/bdc5077/src/interfaces/rbac.ts#L29">src/interfaces/rbac.ts:29</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias">
+				<a name="IRoleGroup" class="tsd-anchor"></a>
+				<h3>IRole<wbr>Group</h3>
+				<div class="tsd-signature tsd-kind-icon">IRole<wbr>Group<span class="tsd-signature-symbol">:</span> <a href="interfaces/IBaseRoleGroup.html" class="tsd-signature-type" data-tsd-kind="Interface">IBaseRoleGroup</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasId</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasTenant</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Timestamped</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/bdc5077/src/interfaces/rbac.ts#L15">src/interfaces/rbac.ts:15</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias">
+				<a name="IUser" class="tsd-anchor"></a>
+				<h3>IUser</h3>
+				<div class="tsd-signature tsd-kind-icon">IUser<span class="tsd-signature-symbol">:</span> <a href="interfaces/IBaseUser.html" class="tsd-signature-type" data-tsd-kind="Interface">IBaseUser</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasId</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasTenant</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Timestamped</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>user_details<span class="tsd-signature-symbol">: </span><a href="index.html#IUserDetails" class="tsd-signature-type" data-tsd-kind="Type alias">IUserDetails</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>func<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>salt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/bdc5077/src/interfaces/users.ts#L53">src/interfaces/users.ts:53</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias">
+				<a name="IUserDetails" class="tsd-anchor"></a>
+				<h3>IUser<wbr>Details</h3>
+				<div class="tsd-signature tsd-kind-icon">IUser<wbr>Details<span class="tsd-signature-symbol">:</span> <a href="interfaces/IBaseUserDetails.html" class="tsd-signature-type" data-tsd-kind="Interface">IBaseUserDetails</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">HasUser</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/PlusAuth/plusauth-rest-js/blob/bdc5077/src/interfaces/users.ts#L38">src/interfaces/users.ts:38</a></li>
+					</ul>
+				</aside>
 			</section>
 		</section>
 		<footer class="with-border-bottom">
