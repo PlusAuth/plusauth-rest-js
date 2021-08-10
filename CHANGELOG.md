@@ -1,3 +1,5 @@
+## [0.7.1](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.7.0...v0.7.1) (2021-08-10)
+
 # [0.7.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.7.0-beta.0...v0.7.0) (2021-08-09)
 
 
