@@ -1,6 +1,6 @@
 module.exports = {
   "hooks": {
-    "before:init": "yarn test && yarn build && yarn docs"
+    "before:init": "npm run test && npm run build && npm run docs"
   },
   "git": {
     "commitMessage": "chore: release v${version}",

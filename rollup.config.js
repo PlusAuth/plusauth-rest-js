@@ -1,11 +1,15 @@
-import resolve from '@rollup/plugin-node-resolve';
+import { DEFAULT_EXTENSIONS } from '@babel/core';
+
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
-import pkg from './package.json';
-import typescript from 'rollup-plugin-typescript2'
+import json from "@rollup/plugin-json";
+import resolve from '@rollup/plugin-node-resolve';
 
 import { terser } from "rollup-plugin-terser";
-import { DEFAULT_EXTENSIONS } from '@babel/core';
+import typescript from 'rollup-plugin-typescript2'
+
+import pkg from './package.json';
+
 const extensions= [...DEFAULT_EXTENSIONS]
 
 const config = (output, browser= false, min= false ) =>({
@@ -25,7 +29,9 @@ const config = (output, browser= false, min= false ) =>({
     }),
     resolve({ extensions, browser}),
     commonjs(),
-
+    json({
+      compact: true,
+    }),
     babel({
       extensions,
       babelHelpers: 'bundled',

@@ -6,9 +6,11 @@
     "esModuleInterop": true,
     "declarationMap": true,
     "declaration": true,
+    "resolveJsonModule": true,
     "declarationDir": "types",
     "alwaysStrict": true,
-    "strict": true
+    "strict": true,
+    "useUnknownInCatchVariables": true
   },
   "include": [
     "src"
@@ -25,10 +27,6 @@
     "excludePrivate": true,
     "plugin": [
       "typedoc-plugin-merge-modules"
-    ],
-    "theme": "minimal",
-    "toc": [
-      "PlusAuthRest"
     ]
   }
 }
