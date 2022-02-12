@@ -6,7 +6,7 @@ import { HasApi, HasId, HasTenant, Timestamped } from './common';
 export interface IBaseRoleGroup {
   name: string;
   description?: string;
-  assignOnSignup?: boolean;
+  assign_on_signup?: boolean;
 }
 
 /**
@@ -20,7 +20,7 @@ export type IRoleGroup = IBaseRoleGroup & HasId & HasTenant & Timestamped;
 export interface IBaseRole {
   name: string;
   description?: string;
-  assignOnSignup?: boolean;
+  assign_on_signup?: boolean;
 }
 
 /**

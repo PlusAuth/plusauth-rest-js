@@ -4,7 +4,7 @@ To try it out, create `.env` file containing correct values of environment varia
 
 ```shell script
 # Install dependencies
-$ yarn install
+$ npm install
 
 # Run index js
 $ node index

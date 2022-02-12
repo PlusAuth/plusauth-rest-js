@@ -2,9 +2,8 @@
  * @public
  */
 export interface IPagination {
-  page?: number;
-  itemsPerPage?: number;
-  sortBy?: string;
+  offset?: number;
+  limit?: number;
+  sort_by?: string;
   q?: string;
-  sortDesc?: boolean;
 }
