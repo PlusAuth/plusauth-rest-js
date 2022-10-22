@@ -4,7 +4,7 @@ import { IConnection, IPagination, PaginatedResult } from '../interfaces';
 import { encodedQueryString } from '../utils';
 
 /**
- * Service for interacting PlusAuth federated connections.
+ * Service for interacting PlusAuth external connections.
  *
  * @public
  */
@@ -12,21 +12,21 @@ export class ConnectionService extends HttpService {
   protected static prefix = '/connections'
 
   /**
-   * Retrieve or filter created federated connections.
+   * Retrieve or filter created external connections.
    *
    * @param type - Connection type
    * @param pagination - Object containing pagination options
    *
    * @example
-   * Retrieve all federated connections
+   * Retrieve all external connections
    * ```js
-   * const connections = federated.getAll()
+   * const connections = await plusAuth.connections.getAll()
    * ```
    *
    * @example
    * Retrieve first 5 connections
    * ```js
-   * const connections = await plusAuth.federated.getAll('social', { itemsPerPage: 5 })
+   * const connections = await plusAuth.connections.getAll('social', { itemsPerPage: 5 })
    * ```
    */
   async getAll(
@@ -44,7 +44,7 @@ export class ConnectionService extends HttpService {
    *
    * @example
    * ```js
-   * const connection = await plusAuth.federated.get('social', 'connection_ID')
+   * const connection = await plusAuth.connections.get('social', 'connection_ID')
    * ```
    */
   async get( type: ConnectionType, connectionId: string ): Promise<IConnection> {
@@ -55,7 +55,7 @@ export class ConnectionService extends HttpService {
    * Create a connection
    *
    * @param type - Connection type
-   * @param connection - Federated Connection object
+   * @param connection - External Connection object
    *
    * @example
    * ```js
