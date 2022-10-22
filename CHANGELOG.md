@@ -1,3 +1,7 @@
+
+
+## [0.7.4](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.7.3...v0.7.4) (2022-10-22)
+
 ## [0.7.3](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.7.2...v0.7.3) (2022-02-12)
 
 ## [0.7.2](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.7.1...v0.7.2) (2021-08-10)
@@ -131,4 +135,3 @@
 
 * add client remove method ([c6ea1ad](https://github.com/PlusAuth/plusauth-js-rest/commit/c6ea1add4f53dfbf696c4503f5ed0e6876e63f58))
 * add release and doc scripts ([d497cc9](https://github.com/PlusAuth/plusauth-js-rest/commit/d497cc999935c9a2a635bf553eb097a4951441eb))
-
