@@ -1,5 +1,12 @@
 
 
+## [0.7.6](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.7.5...v0.7.6) (2023-02-19)
+
+
+### Bug Fixes
+
+* incorrect uri query encoding ([96efadc](https://github.com/PlusAuth/plusauth-rest-js/commit/96efadc4bf7ed99d6c842185bfecc27d67b413d4))
+
 ## [0.7.5](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.7.4...v0.7.5) (2022-10-22)
 
 ## [0.7.4](https://github.com/PlusAuth/plusauth-rest-js/compare/v0.7.3...v0.7.4) (2022-10-22)
