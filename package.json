@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "PlusAuth JavaScript Rest Client",
   "type": "module",
+  "browser": "./dist/plusauth-rest-js.global.js",
   "main": "./dist/plusauth-rest-js.js",
   "module": "./dist/plusauth-rest-js.js",
-  "types": "./types/src/index.d.ts",
+  "types": "./dist/plusauth-rest-js.d.ts",
+  "typings": "./dist/plusauth-rest-js.d.ts",
   "exports": "./dist/plusauth-rest-js.js",
-  "packageManager": "pnpm@8.15.7",
+  "packageManager": "pnpm@9.0.0",
   "files": [
-    "dist",
-    "types"
+    "dist"
   ],
   "author": {
     "name": "Ismail H. Ayaz",
@@ -21,16 +22,22 @@
     "build": "pnpm --filter . run --parallel \"/build:/\"",
     "build:browser": "tsup --entry.plusauth-rest-js src/index.ts --format iife --minify",
     "build:esm": "tsup --entry.plusauth-rest-js src/index.ts --format esm",
-    "build:dts": "tsc --emitDeclarationOnly",
-    "lint": "eslint ./src --ext .ts --fix"
+    "build:dts": "tsc --emitDeclarationOnly && api-extractor run",
+    "lint": "eslint ./src --ext .ts --fix",
+    "release": "cross-env GITHUB_TOKEN=$GITHUB_TOKEN release-it"
   },
   "dependencies": {
     "cross-fetch": "^4.0.0",
     "deepmerge": "^4.3.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@microsoft/api-extractor": "^7.43.1",
+    "@release-it/conventional-changelog": "^8.0.1",
     "eslint": "^9.0.0",
     "eslint-plugin-import": "^2.29.1",
+    "release-it": "^17.2.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.7.0"

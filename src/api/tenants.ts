@@ -1,6 +1,5 @@
-import type { Tenant , CreateTenant , TenantAdministrator , TenantSettings , UpdateTenantSettings } from '../models.js';
-
-import { HttpService } from '../http.js';
+import { HttpService } from '../http';
+import { Tenant, CreateTenant, TenantAdministrator, TenantSettings, UpdateTenantSettings } from '../models';
 
 export class TenantService extends HttpService {
   async create( data: CreateTenant ): Promise<Tenant> {

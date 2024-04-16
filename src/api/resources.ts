@@ -1,10 +1,9 @@
-import type { PaginatedResult , Resource , CreateResource , UpdateResource , Permission , CreatePermission , ResourceAuthorizedClient , StringArray } from '../models.js';
-
-import { HttpService } from '../http.js';
-import { encodedQueryString } from '../utils.js';
+import { HttpService } from '../http';
+import { PaginatedResult, Resource, CreateResource, UpdateResource, Permission, CreatePermission, ResourceAuthorizedClient, StringArray } from '../models';
+import { encodedQueryString } from '../utils';
 
 export class ResourceService extends HttpService {
-  async getAll( queryParams?: { offset?: number; limit?: number; sort_by?: string; q?: string; } ): Promise<PaginatedResult<Resource>> {
+  async getAll( queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Resource>> {
     return this.http.get( `/resources${ encodedQueryString( queryParams ) }` );
   }
 
@@ -24,7 +23,7 @@ export class ResourceService extends HttpService {
     return this.http.delete( `/resources/${ resource_id }` );
   }
 
-  async getPermissions( resource_id: string, queryParams?: { offset?: number; limit?: number; sort_by?: string; q?: string; } ): Promise<PaginatedResult<Permission>> {
+  async getPermissions( resource_id: string, queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Permission>> {
     return this.http.get( `/resources/${ resource_id }/permissions${ encodedQueryString( queryParams ) }` );
   }
 
@@ -36,8 +35,8 @@ export class ResourceService extends HttpService {
     return this.http.delete( `/resources/${ resource_id }/permissions/${ permission_id }` );
   }
 
-  async getAuthorizedClients( resource_id: string ): Promise<PaginatedResult<ResourceAuthorizedClient>> {
-    return this.http.get( `/resources/${ resource_id }/authorized_clients` );
+  async getAuthorizedClients( resource_id: string, queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<ResourceAuthorizedClient>> {
+    return this.http.get( `/resources/${ resource_id }/authorized_clients${ encodedQueryString( queryParams ) }` );
   }
 
   async authorizeClients( resource_id: string, data: StringArray ): Promise<void> {
@@ -48,7 +47,7 @@ export class ResourceService extends HttpService {
     return this.http.delete( `/resources/${ resource_id }/authorized_clients`, data );
   }
 
-  async getAssignedPermissionsOfClient( resource_id: string, client_id: string, queryParams?: { offset?: number; limit?: number; sort_by?: string; } ): Promise<Permission[]> {
+  async getAssignedPermissionsOfClient( resource_id: string, client_id: string, queryParams?: {offset?: number; limit?: number; sort_by?: string;} ): Promise<Permission[]> {
     return this.http.get( `/resources/${ resource_id }/authorized_clients/${ client_id }/permissions${ encodedQueryString( queryParams ) }` );
   }
 

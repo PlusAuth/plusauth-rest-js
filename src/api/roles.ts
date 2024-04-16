@@ -1,10 +1,9 @@
-import type { PaginatedResult , Role , CreateRole , UpdateRole , Permission , User } from '../models.js';
-
-import { HttpService } from '../http.js';
-import { encodedQueryString } from '../utils.js';
+import { HttpService } from '../http';
+import { PaginatedResult, Role, CreateRole, UpdateRole, Permission, User } from '../models';
+import { encodedQueryString } from '../utils';
 
 export class RoleService extends HttpService {
-  async getAll( queryParams?: { offset?: number; limit?: number; sort_by?: string; q?: string; } ): Promise<PaginatedResult<Role>> {
+  async getAll( queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Role>> {
     return this.http.get( `/roles${ encodedQueryString( queryParams ) }` );
   }
 
@@ -24,7 +23,7 @@ export class RoleService extends HttpService {
     return this.http.delete( `/roles/${ role_id }` );
   }
 
-  async getPermissions( role_id: string, queryParams?: { offset?: number; limit?: number; sort_by?: string; q?: string; } ): Promise<PaginatedResult<Permission>> {
+  async getPermissions( role_id: string, queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Permission>> {
     return this.http.get( `/roles/${ role_id }/permissions${ encodedQueryString( queryParams ) }` );
   }
 
@@ -36,7 +35,7 @@ export class RoleService extends HttpService {
     return this.http.delete( `/roles/${ role_id }/permissions`, data );
   }
 
-  async getUsers( role_id: string, queryParams?: { offset?: number; limit?: number; sort_by?: string; } ): Promise<PaginatedResult<User>> {
+  async getUsers( role_id: string, queryParams?: {offset?: number; limit?: number; sort_by?: string;} ): Promise<PaginatedResult<User>> {
     return this.http.get( `/roles/${ role_id }/users${ encodedQueryString( queryParams ) }` );
   }
 }

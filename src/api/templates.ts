@@ -1,6 +1,5 @@
-import type { Template , TemplateType , UpdateTemplate } from '../models.js';
-
-import { HttpService } from '../http.js';
+import { HttpService } from '../http';
+import { Template, TemplateType, UpdateTemplate } from '../models';
 
 export class TemplateService extends HttpService {
   async get( type: TemplateType, name: undefined ): Promise<Template> {

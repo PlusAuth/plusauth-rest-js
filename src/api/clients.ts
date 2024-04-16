@@ -1,10 +1,9 @@
-import type { PaginatedResult , Client , CreateClient , UpdateClient } from '../models.js';
-
-import { HttpService } from '../http.js';
-import { encodedQueryString } from '../utils.js';
+import { HttpService } from '../http';
+import { PaginatedResult, Client, CreateClient, UpdateClient } from '../models';
+import { encodedQueryString } from '../utils';
 
 export class ClientService extends HttpService {
-  async getAll( queryParams?: { offset?: number; limit?: number; sort_by?: string; q?: string; } ): Promise<PaginatedResult<Client>> {
+  async getAll( queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Client>> {
     return this.http.get( `/clients${ encodedQueryString( queryParams ) }` );
   }
 

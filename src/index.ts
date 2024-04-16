@@ -13,7 +13,7 @@ import {
   ConnectionService,
   CustomDomainService,
   LogService, ProviderService
-} from './api.js';
+} from './api';
 
 type Options = {
   httpClient?: ( uri: string, options: RequestInit ) => Promise<any>
@@ -57,35 +57,35 @@ type Options = {
  * @public
  */
 export class PlusAuthRestClient {
-  readonly users: UserService;
+  readonly users: InstanceType<typeof UserService>;
 
-  readonly clients: ClientService;
+  readonly clients: InstanceType<typeof ClientService>;
 
-  readonly connections: ConnectionService;
+  readonly connections: InstanceType<typeof ConnectionService>;
 
-  readonly customDomains: CustomDomainService;
+  readonly customDomains: InstanceType<typeof CustomDomainService>;
 
-  readonly keys: KeyService;
+  readonly keys: InstanceType<typeof KeyService>;
 
-  readonly hooks: HookService;
+  readonly hooks: InstanceType<typeof HookService>;
 
-  readonly logs: LogService;
+  readonly logs: InstanceType<typeof LogService>;
 
-  readonly mfa: MfaService;
+  readonly mfa: InstanceType<typeof MfaService>;
 
-  readonly providers: ProviderService;
+  readonly providers: InstanceType<typeof ProviderService>;
 
-  readonly resources: ResourceService;
+  readonly resources: InstanceType<typeof ResourceService>;
 
-  readonly roleGroups: RoleGroupService;
+  readonly roleGroups: InstanceType<typeof RoleGroupService>;
 
-  readonly roles: RoleService;
+  readonly roles: InstanceType<typeof RoleService>;
 
-  readonly templates: TemplateService;
+  readonly templates: InstanceType<typeof TemplateService>;
 
-  readonly tenants: TenantService;
+  readonly tenants: InstanceType<typeof TenantService>;
 
-  readonly views: ViewService;
+  readonly views: InstanceType<typeof ViewService>;
 
   options: Options;
 

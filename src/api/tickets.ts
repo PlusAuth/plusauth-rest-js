@@ -1,6 +1,5 @@
-import type { CreateTicket } from '../models.js';
-
-import { HttpService } from '../http.js';
+import { HttpService } from '../http';
+import { CreateTicket } from '../models';
 
 export class TicketService extends HttpService {
   async createResetPassword( data: CreateTicket ): Promise<Record<string, any>> {

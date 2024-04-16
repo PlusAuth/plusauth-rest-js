@@ -1,6 +1,5 @@
-import type { View , ViewType } from '../models.js';
-
-import { HttpService } from '../http.js';
+import { HttpService } from '../http';
+import { View, ViewType } from '../models';
 
 export class ViewService extends HttpService {
   async get( type: ViewType ): Promise<View> {

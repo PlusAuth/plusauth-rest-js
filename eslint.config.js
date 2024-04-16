@@ -83,6 +83,7 @@ export default tseslint.config(
       'no-mixed-spaces-and-tabs': 'error',
       'no-multi-spaces': [ 'error', { exceptions: { VariableDeclarator: true } } ],
       'no-var': 'error',
+      'import/no-duplicates': 'error',
       'no-whitespace-before-property': 'error',
       'object-curly-spacing': [
         'error',

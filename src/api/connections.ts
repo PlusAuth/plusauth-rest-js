@@ -1,10 +1,9 @@
-import type { PaginatedResult , Connection , UpdateConnection } from '../models.js';
-
-import { HttpService } from '../http.js';
-import { encodedQueryString } from '../utils.js';
+import { HttpService } from '../http';
+import { PaginatedResult, Connection, UpdateConnection } from '../models';
+import { encodedQueryString } from '../utils';
 
 export class ConnectionService extends HttpService {
-  async getAll( queryParams?: { offset?: number; limit?: number; sort_by?: string; q?: string; } ): Promise<PaginatedResult<Connection>> {
+  async getAll( queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Connection>> {
     return this.http.get( `/connections${ encodedQueryString( queryParams ) }` );
   }
 

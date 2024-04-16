@@ -1,6 +1,5 @@
-import type { PublicKey , KeyType } from '../models.js';
-
-import { HttpService } from '../http.js';
+import { HttpService } from '../http';
+import { PublicKey, KeyType } from '../models';
 
 export class KeyService extends HttpService {
   async get( key_type: KeyType ): Promise<PublicKey[]> {

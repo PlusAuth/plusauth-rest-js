@@ -1,6 +1,5 @@
-import type { EmailProvider , Provider , UpdateEmailProvider } from '../models.js';
-
-import { HttpService } from '../http.js';
+import { HttpService } from '../http';
+import { EmailProvider, Provider, UpdateEmailProvider } from '../models';
 
 export class ProviderService extends HttpService {
   async getEmailSettings( ): Promise<EmailProvider> {

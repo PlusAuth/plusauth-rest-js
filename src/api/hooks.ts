@@ -1,10 +1,9 @@
-import type { PaginatedResult , Hook , CreateHook , UpdateHook } from '../models.js';
-
-import { HttpService } from '../http.js';
-import { encodedQueryString } from '../utils.js';
+import { HttpService } from '../http';
+import { PaginatedResult, Hook, CreateHook, UpdateHook } from '../models';
+import { encodedQueryString } from '../utils';
 
 export class HookService extends HttpService {
-  async getAll( queryParams?: { offset?: number; limit?: number; sort_by?: string; q?: string; } ): Promise<PaginatedResult<Hook>> {
+  async getAll( queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Hook>> {
     return this.http.get( `/hooks${ encodedQueryString( queryParams ) }` );
   }
 
