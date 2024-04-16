@@ -1,0 +1,5 @@
+eslint.config.js
+.gitignore
+example
+*.json
+dist

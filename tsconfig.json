@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "declarationMap": false,
+    "declaration": true,
+    "resolveJsonModule": true,
+    "declarationDir": "types",
+    "alwaysStrict": true,
+    "strict": true,
+    "useUnknownInCatchVariables": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

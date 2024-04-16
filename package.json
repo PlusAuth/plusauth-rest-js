@@ -1,0 +1,42 @@
+{
+  "name": "@plusauth/plusauth-rest-js",
+  "version": "1.0.0",
+  "description": "PlusAuth JavaScript Rest Client",
+  "type": "module",
+  "main": "./dist/plusauth-rest-js.js",
+  "module": "./dist/plusauth-rest-js.js",
+  "types": "./types/src/index.d.ts",
+  "exports": "./dist/plusauth-rest-js.js",
+  "packageManager": "pnpm@8.15.7",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "author": {
+    "name": "Ismail H. Ayaz",
+    "email": "ismail.ayaz@ekinokssoftware.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm --filter . run --parallel \"/build:/\"",
+    "build:browser": "tsup --entry.plusauth-rest-js src/index.ts --format iife --minify",
+    "build:esm": "tsup --entry.plusauth-rest-js src/index.ts --format esm",
+    "build:dts": "tsc --emitDeclarationOnly",
+    "lint": "eslint ./src --ext .ts --fix"
+  },
+  "dependencies": {
+    "cross-fetch": "^4.0.0",
+    "deepmerge": "^4.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.7.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}
