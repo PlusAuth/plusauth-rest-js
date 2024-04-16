@@ -23,7 +23,7 @@
     "build:browser": "tsup --entry.plusauth-rest-js src/index.ts --format iife --minify",
     "build:esm": "tsup --entry.plusauth-rest-js src/index.ts --format esm",
     "build:dts": "tsc --emitDeclarationOnly && api-extractor run",
-    "lint": "eslint ./src --ext .ts --fix",
+    "lint": "eslint ./src --fix",
     "release": "cross-env GITHUB_TOKEN=$GITHUB_TOKEN release-it"
   },
   "dependencies": {
