@@ -202,6 +202,9 @@ export interface Client {
   redirect_uris: string[]
   logout_uris: string[]
   grant_types: string[]
+  advanced: {
+    pkce_required?: boolean
+  }
   extra_metadata: {
     [k: string]: ( string | boolean | number | null )
   }
@@ -1610,6 +1613,9 @@ export interface CreateClient {
   redirect_uris?: string[]
   logout_uris?: string[]
   grant_types?: string[]
+  advanced?: {
+    pkce_required?: boolean
+  }
   extra_metadata?: {
     [k: string]: ( string | boolean | number | null )
   }
@@ -6791,6 +6797,9 @@ export interface UpdateClient {
   redirect_uris?: string[]
   logout_uris?: string[]
   grant_types?: string[]
+  advanced?: {
+    pkce_required?: boolean
+  }
   extra_metadata?: {
     [k: string]: ( string | boolean | number | null )
   }
