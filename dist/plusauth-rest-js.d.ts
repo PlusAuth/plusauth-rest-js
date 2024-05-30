@@ -1834,6 +1834,7 @@ export declare interface CreateTenant {
         welcome_emails_enabled?: boolean;
         force_email_verification?: boolean;
         extra_params?: string[];
+        acr_values?: string[];
         extra_scopes?: string[];
         api_version?: ('2021-07-04' | null);
         tenant_login_url?: (string | null);
@@ -3143,9 +3144,9 @@ export declare interface HookContext {
             body: (string | {
                 [k: string]: any;
             } | any[]);
-            headers: (string | string[] | {
+            headers: {
                 [k: string]: string;
-            });
+            };
             [k: string]: any;
         };
         [k: string]: any;
@@ -6636,6 +6637,7 @@ export declare interface Tenant {
         welcome_emails_enabled: boolean;
         force_email_verification: boolean;
         extra_params: string[];
+        acr_values?: string[];
         extra_scopes: string[];
         api_version: ('2021-07-04' | null);
         tenant_login_url: (string | null);
@@ -6866,6 +6868,7 @@ export declare interface TenantSettings {
     welcome_emails_enabled: boolean;
     force_email_verification: boolean;
     extra_params: string[];
+    acr_values?: string[];
     extra_scopes: string[];
     api_version: ('2021-07-04' | null);
     tenant_login_url: (string | null);
@@ -11146,6 +11149,7 @@ export declare interface UpdateTenantSettings {
     welcome_emails_enabled?: boolean;
     force_email_verification?: boolean;
     extra_params?: string[];
+    acr_values?: string[];
     extra_scopes?: string[];
     api_version?: ('2021-07-04' | null);
     tenant_login_url?: (string | null);
@@ -12134,8 +12138,8 @@ declare class UserService extends HttpService {
     getTenants(user_id: string): Promise<PaginatedResult<Tenant>>;
     getSessions(user_id: string): Promise<UserSession[]>;
     endAllSessions(user_id: string): Promise<void>;
-    removeCredential(user_id: string, credential_id: string): Promise<void>;
     endSession(user_id: string, sid: string): Promise<void>;
+    removeCredential(user_id: string, credential_id: string): Promise<void>;
 }
 
 /**
@@ -12206,7 +12210,7 @@ export declare interface UserSession {
 export declare interface View {
     is_default: boolean;
     content: string;
-    type: ('consent' | 'fill-missing' | 'login' | 'logout-success' | 'logout-confirm' | 'mfa' | 'mfa-email' | 'mfa-fv' | 'mfa-otp' | 'mfa-push' | 'mfa-sc' | 'mfa-sms' | 'mfa-webauthn' | 'password-recovery' | 'passwordless-email' | 'passwordless-otp' | 'passwordless-push' | 'passwordless-sms' | 'register' | 'reset-password' | 'verify-email' | 'error');
+    type: ('consent' | 'fill-missing' | 'login' | 'logout-success' | 'logout-confirm' | 'mfa' | 'mfa-email' | 'mfa-fv' | 'mfa-otp' | 'mfa-push' | 'mfa-sms' | 'mfa-webauthn' | 'password-recovery' | 'passwordless-email' | 'passwordless-otp' | 'passwordless-push' | 'passwordless-sms' | 'register' | 'reset-password' | 'verify-email' | 'error');
 }
 
 declare class ViewService extends HttpService {
@@ -12217,7 +12221,7 @@ declare class ViewService extends HttpService {
 /**
  * @public
  */
-export declare type ViewType = ('consent' | 'fill-missing' | 'login' | 'logout-success' | 'logout-confirm' | 'mfa' | 'mfa-email' | 'mfa-fv' | 'mfa-otp' | 'mfa-push' | 'mfa-sc' | 'mfa-sms' | 'mfa-webauthn' | 'password-recovery' | 'passwordless-email' | 'passwordless-otp' | 'passwordless-push' | 'passwordless-sms' | 'register' | 'reset-password' | 'verify-email' | 'error');
+export declare type ViewType = ('consent' | 'fill-missing' | 'login' | 'logout-success' | 'logout-confirm' | 'mfa' | 'mfa-email' | 'mfa-fv' | 'mfa-otp' | 'mfa-push' | 'mfa-sms' | 'mfa-webauthn' | 'password-recovery' | 'passwordless-email' | 'passwordless-otp' | 'passwordless-push' | 'passwordless-sms' | 'register' | 'reset-password' | 'verify-email' | 'error');
 
 /**
  * @public

@@ -465,11 +465,11 @@ var UserService = class extends HttpService {
   async endAllSessions(user_id) {
     return this.http.delete(`/users/${user_id}/session`);
   }
-  async removeCredential(user_id, credential_id) {
-    return this.http.delete(`/users/${user_id}/credentials/${credential_id}`);
-  }
   async endSession(user_id, sid) {
     return this.http.delete(`/users/${user_id}/session/${sid}`);
+  }
+  async removeCredential(user_id, credential_id) {
+    return this.http.delete(`/users/${user_id}/credentials/${credential_id}`);
   }
 };
 

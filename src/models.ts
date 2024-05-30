@@ -1812,6 +1812,7 @@ export interface CreateTenant {
     welcome_emails_enabled?: boolean
     force_email_verification?: boolean
     extra_params?: string[]
+    acr_values?: string[]
     extra_scopes?: string[]
     api_version?: ( '2021-07-04' | null )
     tenant_login_url?: ( string | null )
@@ -3082,9 +3083,9 @@ export interface HookContext {
       body: ( string | {
         [k: string]: any
       } | any[] )
-      headers: ( string | string[] | {
+      headers: {
         [k: string]: string
-      } )
+      }
       [k: string]: any
     }
     [k: string]: any
@@ -6356,6 +6357,7 @@ export interface Tenant {
     welcome_emails_enabled: boolean
     force_email_verification: boolean
     extra_params: string[]
+    acr_values?: string[]
     extra_scopes: string[]
     api_version: ( '2021-07-04' | null )
     tenant_login_url: ( string | null )
@@ -6540,6 +6542,7 @@ export interface TenantSettings {
   welcome_emails_enabled: boolean
   force_email_verification: boolean
   extra_params: string[]
+  acr_values?: string[]
   extra_scopes: string[]
   api_version: ( '2021-07-04' | null )
   tenant_login_url: ( string | null )
@@ -10697,6 +10700,7 @@ export interface UpdateTenantSettings {
   welcome_emails_enabled?: boolean
   force_email_verification?: boolean
   extra_params?: string[]
+  acr_values?: string[]
   extra_scopes?: string[]
   api_version?: ( '2021-07-04' | null )
   tenant_login_url?: ( string | null )
@@ -11719,12 +11723,12 @@ export interface UserSession {
 export interface View {
   is_default: boolean
   content: string
-  type: ( 'consent' | 'fill-missing' | 'login' | 'logout-success' | 'logout-confirm' | 'mfa' | 'mfa-email' | 'mfa-fv' | 'mfa-otp' | 'mfa-push' | 'mfa-sc' | 'mfa-sms' | 'mfa-webauthn' | 'password-recovery' | 'passwordless-email' | 'passwordless-otp' | 'passwordless-push' | 'passwordless-sms' | 'register' | 'reset-password' | 'verify-email' | 'error' )
+  type: ( 'consent' | 'fill-missing' | 'login' | 'logout-success' | 'logout-confirm' | 'mfa' | 'mfa-email' | 'mfa-fv' | 'mfa-otp' | 'mfa-push' | 'mfa-sms' | 'mfa-webauthn' | 'password-recovery' | 'passwordless-email' | 'passwordless-otp' | 'passwordless-push' | 'passwordless-sms' | 'register' | 'reset-password' | 'verify-email' | 'error' )
 }
 /**
 * @public
 */
-export type ViewType = ( 'consent' | 'fill-missing' | 'login' | 'logout-success' | 'logout-confirm' | 'mfa' | 'mfa-email' | 'mfa-fv' | 'mfa-otp' | 'mfa-push' | 'mfa-sc' | 'mfa-sms' | 'mfa-webauthn' | 'password-recovery' | 'passwordless-email' | 'passwordless-otp' | 'passwordless-push' | 'passwordless-sms' | 'register' | 'reset-password' | 'verify-email' | 'error' )
+export type ViewType = ( 'consent' | 'fill-missing' | 'login' | 'logout-success' | 'logout-confirm' | 'mfa' | 'mfa-email' | 'mfa-fv' | 'mfa-otp' | 'mfa-push' | 'mfa-sms' | 'mfa-webauthn' | 'password-recovery' | 'passwordless-email' | 'passwordless-otp' | 'passwordless-push' | 'passwordless-sms' | 'register' | 'reset-password' | 'verify-email' | 'error' )
 /**
 * @public
 */

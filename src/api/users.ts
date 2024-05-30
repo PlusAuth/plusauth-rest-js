@@ -75,11 +75,11 @@ export class UserService extends HttpService {
     return this.http.delete( `/users/${ user_id }/session` );
   }
 
-  async removeCredential( user_id: string, credential_id: string ): Promise<void> {
-    return this.http.delete( `/users/${ user_id }/credentials/${ credential_id }` );
-  }
-
   async endSession( user_id: string, sid: string ): Promise<void> {
     return this.http.delete( `/users/${ user_id }/session/${ sid }` );
+  }
+
+  async removeCredential( user_id: string, credential_id: string ): Promise<void> {
+    return this.http.delete( `/users/${ user_id }/credentials/${ credential_id }` );
   }
 }
