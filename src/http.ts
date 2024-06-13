@@ -1,8 +1,9 @@
-import deepmerge from 'deepmerge';
+import deepmerger from '@fastify/deepmerge';
 
 import { PlusAuthRestError } from './error.js';
 import { fetchPn } from './utils/fetch_wrapper.js';
 
+const deepmerge = deepmerger()
 /**
  * @internal
  */
