@@ -1,5 +1,5 @@
 // src/http.ts
-import deepmerge from "deepmerge";
+import deepmerger from "@fastify/deepmerge";
 
 // src/error.ts
 var PlusAuthRestError = class extends Error {
@@ -18,6 +18,7 @@ import fetchW from "cross-fetch";
 var fetchPn = fetchW;
 
 // src/http.ts
+var deepmerge = deepmerger();
 async function parseFetchResponse(response, options) {
   const contentType = response.headers.get("content-type");
   if (options.responseType === "stream" && response.ok) {
