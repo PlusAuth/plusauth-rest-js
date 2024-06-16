@@ -1184,7 +1184,7 @@ export type Connection = ( ( {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 } | {
@@ -1265,7 +1265,7 @@ export type Connection = ( ( {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 } ) | ( {
@@ -2794,7 +2794,7 @@ export type EnterpriseConnection = ( {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 } | {
@@ -2875,7 +2875,7 @@ export type EnterpriseConnection = ( {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 } ) )
@@ -3241,7 +3241,7 @@ export interface LDAPConnection {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 }
@@ -5333,7 +5333,7 @@ export interface SAMLConnection {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 }
@@ -7621,7 +7621,7 @@ export type UpdateConnection = ( ( {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 } | {
@@ -7695,7 +7695,7 @@ export type UpdateConnection = ( ( {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 } ) | ( {
@@ -8291,7 +8291,7 @@ export type UpdateEnterpriseConnection = ( {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 } | {
@@ -8365,7 +8365,7 @@ export type UpdateEnterpriseConnection = ( {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 } ) )
@@ -8493,7 +8493,7 @@ export interface UpdateLDAPConnection {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 }
@@ -9991,7 +9991,7 @@ export interface UpdateSAMLConnection {
       } ) )[]] | {
         value?: ( string | boolean | number )
         [k: string]: any
-      } )
+      } | boolean )
     }
   }
 }

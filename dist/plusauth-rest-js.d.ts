@@ -1199,7 +1199,7 @@ export declare type Connection = (({
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 } | {
@@ -1283,7 +1283,7 @@ export declare type Connection = (({
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 }) | ({
@@ -2875,7 +2875,7 @@ export declare type EnterpriseConnection = ({
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 } | {
@@ -2959,7 +2959,7 @@ export declare type EnterpriseConnection = ({
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 }));
@@ -3380,7 +3380,7 @@ export declare interface LDAPConnection {
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 }
@@ -3406,6 +3406,7 @@ declare class LogService extends HttpService {
         to?: string;
         type?: string;
         operation?: string;
+        include_api?: boolean;
     }): Promise<string[]>;
 }
 
@@ -5700,7 +5701,7 @@ export declare interface SAMLConnection {
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 }
@@ -8035,7 +8036,7 @@ export declare type UpdateConnection = (({
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 } | {
@@ -8112,7 +8113,7 @@ export declare type UpdateConnection = (({
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 }) | ({
@@ -8714,7 +8715,7 @@ export declare type UpdateEnterpriseConnection = ({
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 } | {
@@ -8791,7 +8792,7 @@ export declare type UpdateEnterpriseConnection = ({
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 }));
@@ -8925,7 +8926,7 @@ export declare interface UpdateLDAPConnection {
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 }
@@ -10435,7 +10436,7 @@ export declare interface UpdateSAMLConnection {
             ] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            });
+            } | boolean);
         };
     };
 }
