@@ -9,7 +9,7 @@
   "types": "./dist/plusauth-rest-js.d.ts",
   "typings": "./dist/plusauth-rest-js.d.ts",
   "exports": "./dist/plusauth-rest-js.js",
-  "packageManager": "pnpm@9.3.0",
+  "packageManager": "pnpm@9.4.0",
   "files": [
     "dist"
   ],
@@ -40,7 +40,7 @@
     "release-it": "^17.3.0",
     "tsup": "^8.1.0",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^7.13.0"
+    "typescript-eslint": "^7.13.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
