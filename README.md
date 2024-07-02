@@ -57,7 +57,7 @@ The example file also includes an example curl request.
 const initialToken = 'INITIAL_TOKEN'
 const plusAuth = new PlusAuthRestClient('https://<YOUR_TENANT_ID>.plusauth.com', { token: initialToken })
 
-plusAuth.apis.getAll().then( function (res){
+plusAuth.users.getAll().then( function (res){
 // retrieved with initial token
 console.log(res)
 })
@@ -65,7 +65,7 @@ console.log(res)
 // or: plusauth.options.token = 'NEW_TOKEN'
 plusAuth.token = 'NEW_TOKEN'
 
-plusAuth.apis.getAll().then(function (res){
+plusAuth.users.getAll().then(function (res){
 // Retrieved with new token
 console.log(res)
 })
