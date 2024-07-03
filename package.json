@@ -4,11 +4,14 @@
   "description": "PlusAuth JavaScript Rest Client",
   "type": "module",
   "browser": "./dist/plusauth-rest-js.global.js",
-  "main": "./dist/plusauth-rest-js.js",
+  "main": "./dist/plusauth-rest-js.cjs",
   "module": "./dist/plusauth-rest-js.js",
   "types": "./dist/plusauth-rest-js.d.ts",
   "typings": "./dist/plusauth-rest-js.d.ts",
-  "exports": "./dist/plusauth-rest-js.js",
+  "exports": {
+    "import": "./dist/plusauth-rest-js.js",
+    "require": "./dist/plusauth-rest-js.cjs"
+  },
   "packageManager": "pnpm@9.4.0",
   "files": [
     "dist"
@@ -22,6 +25,7 @@
     "build": "pnpm --filter . run --parallel \"/build:/\"",
     "build:browser": "tsup --entry.plusauth-rest-js src/index.ts --format iife --minify",
     "build:esm": "tsup --entry.plusauth-rest-js src/index.ts --format esm",
+    "build:cjs": "tsup --entry.plusauth-rest-js src/index.ts --format cjs",
     "build:dts": "tsc --emitDeclarationOnly && api-extractor run",
     "lint": "eslint ./src --fix",
     "release": "cross-env GITHUB_TOKEN=$GITHUB_TOKEN release-it"
