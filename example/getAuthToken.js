@@ -19,19 +19,17 @@ curl --location --request POST 'https://<DOMAIN>.plusauth.com/oauth2/token' \
  * @returns {Promise<{ access_token: string, expires_at: number, scope: string }>}
  */
 export default async function( uri, clientId, clientSecret, permissions = [] ){
-  return new Promise( ( resolve, reject ) => {
-    fetch( `${ uri }/oauth2/token`,{
-      method: 'POST',
-      headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams( {
-        client_id: clientId,
-        client_secret: clientSecret,
-        grant_type: 'client_credentials',
-        audience: `${ uri }/api/`,
-        scope: Array.isArray( permissions ) ? permissions.join( ' ' ) : permissions
-      } )
-    } ).then( function( result ){
-      resolve( result.data );
-    } ).catch( reject );
+  const response = await fetch( `${ uri }/oauth2/token`,{
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams( {
+      client_id: clientId,
+      client_secret: clientSecret,
+      grant_type: 'client_credentials',
+      audience: `${ uri }/api/`,
+      scope: Array.isArray( permissions ) ? permissions.join( ' ' ) : permissions
+    } )
   } );
+  
+  return response.json();
 }
