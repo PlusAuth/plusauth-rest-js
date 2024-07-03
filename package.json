@@ -39,12 +39,12 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@microsoft/api-extractor": "^7.47.0",
     "@release-it/conventional-changelog": "^8.0.1",
-    "eslint": "^9.5.0",
+    "eslint": "^9.6.0",
     "eslint-plugin-import": "^2.29.1",
-    "release-it": "^17.4.0",
+    "release-it": "^17.4.1",
     "tsup": "^8.1.0",
-    "typescript": "^5.5.2",
-    "typescript-eslint": "^7.14.1"
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.15.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
