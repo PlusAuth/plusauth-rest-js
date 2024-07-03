@@ -45,6 +45,14 @@ const authToken = '<ACCESS_TOKEN>'
 const plusAuth = new PlusAuthRestClient('https://<YOUR_TENANT_ID>.plusauth.com', { token: authToken })
 ```
 
+## CommonJS
+```js
+const { PlusAuthRestClient } = require('@plusauth/plusauth-rest-js')
+
+const authToken = '<ACCESS_TOKEN>'
+const plusAuth = new PlusAuthRestClient('https://<YOUR_TENANT_ID>.plusauth.com', { token: authToken })
+```
+
 ## Replacing Token
 Generally you may need to replace PlusAuth REST API token because its lifetime could end.
 In this case updating `options.token` or by using the `token` setter
