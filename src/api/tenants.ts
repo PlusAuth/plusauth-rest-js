@@ -1,5 +1,5 @@
 import { HttpService } from '../http';
-import { Tenant, CreateTenant, TenantAdministrator, TenantSettings, UpdateTenantSettings } from '../models';
+import { Tenant, CreateTenant, TenantAdministrator, TenantSettings, UpdateTenantSettings, TenantSubscription } from '../models';
 
 export class TenantService extends HttpService {
   async create( data: CreateTenant ): Promise<Tenant> {
@@ -40,5 +40,13 @@ export class TenantService extends HttpService {
 
   async updateSettings( tenant_id: string, data: UpdateTenantSettings ): Promise<Tenant> {
     return this.http.patch( `/tenants/${ tenant_id }/settings`, data );
+  }
+
+  async getSubscription( tenant_id: string ): Promise<TenantSubscription> {
+    return this.http.get( `/tenants/${ tenant_id }/subscription` );
+  }
+
+  async updateSubscription( tenant_id: string, data: TenantSubscription ): Promise<Tenant> {
+    return this.http.patch( `/tenants/${ tenant_id }/subscription`, data );
   }
 }

@@ -1856,14 +1856,14 @@ export declare interface CreateTenant {
          * Lifetime settings of generated tokens defined in seconds.
          */
         ttl?: {
-            id_token?: number;
-            session?: number;
-            device_code?: number;
             access_token?: number;
-            refresh_token?: number;
             authorization_code?: number;
-            client_credentials?: number;
             backchannel_authentication_request?: number;
+            client_credentials?: number;
+            device_code?: number;
+            id_token?: number;
+            refresh_token?: number;
+            session?: number;
         };
         hash_function?: ('bcrypt' | 'argon2' | 'pbkdf2');
         policies?: {
@@ -2768,7 +2768,7 @@ export declare interface EmailTemplate {
     content: string;
     is_default?: (boolean | null);
     type: 'email';
-    name: ('welcome' | 'verification-code' | 'magic-link' | 'verify-email' | 'reset-password' | 'invite-admin' | 'payment-failed' | 'plan_downgraded' | 'blocked-account' | 'blocked-ip' | 'test');
+    name: ('welcome' | 'verification-code' | 'magic-link' | 'verify-email' | 'reset-password' | 'invite-admin' | 'payment-failed' | 'plan-downgraded' | 'blocked-account' | 'blocked-ip' | 'test');
     details: {
         /**
          * `from` field for your emails
@@ -2784,7 +2784,7 @@ export declare interface EmailTemplate {
 /**
  * @public
  */
-export declare type EmailTemplateType = ('welcome' | 'verification-code' | 'magic-link' | 'verify-email' | 'reset-password' | 'invite-admin' | 'payment-failed' | 'plan_downgraded' | 'blocked-account' | 'blocked-ip' | 'test');
+export declare type EmailTemplateType = ('welcome' | 'verification-code' | 'magic-link' | 'verify-email' | 'reset-password' | 'invite-admin' | 'payment-failed' | 'plan-downgraded' | 'blocked-account' | 'blocked-ip' | 'test');
 
 /**
  * @public
@@ -3383,19 +3383,6 @@ export declare interface LDAPConnection {
             } | boolean);
         };
     };
-}
-
-/**
- * @public
- */
-export declare interface LdapProxySettings {
-    /**
-     * Is LDAP Proxy enabled for this connection.
-     */
-    enabled?: boolean;
-    otp_location?: ('append' | 'prepend');
-    separator?: (' ' | '-' | '_' | '|' | '=');
-    connections?: string[];
 }
 
 declare class LogService extends HttpService {
@@ -4581,9 +4568,10 @@ export declare interface Permission {
 }
 
 /**
+ * Applied plan name
  * @public
  */
-export declare type PlanType = ('free' | 'basic' | 'pro' | 'enterprise');
+export declare type PlanType = ('free' | 'basic' | 'pro' | 'enterprise' | 'on-premise');
 
 /**
  *
@@ -6574,6 +6562,95 @@ export declare interface SparkPostEmailProvider {
 export declare type StringArray = string[];
 
 /**
+ * Details about the subscription usage
+ * @public
+ */
+export declare interface SubscriptionUsage {
+    active_user?: (boolean | number | {
+        max?: number;
+        min?: number;
+        step?: number;
+        type?: 'range';
+    });
+    administrators?: (boolean | number);
+    /**
+     * Is feature enabled or not
+     */
+    ciba?: boolean;
+    'connections.passwordless'?: (boolean | number);
+    'connections.social'?: (boolean | number);
+    'connections.saml'?: (boolean | number);
+    'connections.e_devlet'?: (boolean | number);
+    'connections.ldap'?: (boolean | number);
+    /**
+     * Is feature enabled or not
+     */
+    custom_algorithm?: boolean;
+    custom_domain?: (boolean | number);
+    /**
+     * Is feature enabled or not
+     */
+    custom_password_policy?: boolean;
+    /**
+     * Is feature enabled or not
+     */
+    custom_token_ttl?: boolean;
+    /**
+     * Is feature enabled or not
+     */
+    fapi?: boolean;
+    hooks?: (boolean | number);
+    /**
+     * Log retention period in days
+     */
+    log_retention?: number;
+    /**
+     * Is feature enabled or not
+     */
+    log_shipping?: boolean;
+    /**
+     * Is feature enabled or not
+     */
+    log_signing?: boolean;
+    /**
+     * Number of defined feature
+     */
+    max_clients?: number;
+    /**
+     * Number of defined feature
+     */
+    max_resources?: number;
+    /**
+     * Number of defined feature
+     */
+    max_tenants?: number;
+    /**
+     * Number of defined feature
+     */
+    max_users?: number;
+    mfa?: (boolean | number);
+    'mfa.sms'?: boolean;
+    'mfa.otp'?: boolean;
+    'mfa.fv'?: boolean;
+    'mfa.push'?: boolean;
+    'mfa.email'?: boolean;
+    'mfa.e-sign'?: boolean;
+    'mfa.webauthn'?: boolean;
+    /**
+     * Is feature enabled or not
+     */
+    password_history?: boolean;
+    /**
+     * Is feature enabled or not
+     */
+    rbac_management?: boolean;
+    /**
+     * Is feature enabled or not
+     */
+    user_management?: boolean;
+}
+
+/**
  * @public
  */
 export declare type Template = ({
@@ -6584,7 +6661,7 @@ export declare type Template = ({
     content: string;
     is_default?: (boolean | null);
     type: 'email';
-    name: ('welcome' | 'verification-code' | 'magic-link' | 'verify-email' | 'reset-password' | 'invite-admin' | 'payment-failed' | 'plan_downgraded' | 'blocked-account' | 'blocked-ip' | 'test');
+    name: ('welcome' | 'verification-code' | 'magic-link' | 'verify-email' | 'reset-password' | 'invite-admin' | 'payment-failed' | 'plan-downgraded' | 'blocked-account' | 'blocked-ip' | 'test');
     details: {
         /**
          * `from` field for your emails
@@ -6660,14 +6737,14 @@ export declare interface Tenant {
          * Lifetime settings of generated tokens defined in seconds.
          */
         ttl: {
-            id_token: number;
-            session?: number;
-            device_code: number;
             access_token: number;
-            refresh_token: number;
             authorization_code: number;
-            client_credentials: number;
             backchannel_authentication_request: number;
+            client_credentials: number;
+            device_code: number;
+            id_token: number;
+            refresh_token: number;
+            session?: number;
         };
         hash_function: ('bcrypt' | 'argon2' | 'pbkdf2');
         policies: {
@@ -6796,16 +6873,108 @@ export declare interface Tenant {
         revoked_at?: (number | null);
         [k: string]: any;
     }[];
+    /**
+     * Subscription details of tenant
+     */
     subscription: {
-        id: string;
-        customer_id: string;
-        payment_source_id?: string;
-        details: {
+        id?: string;
+        user_id?: string;
+        issued_at?: string;
+        expires_at?: string;
+        /**
+         * Applied plan name
+         */
+        plan: ('free' | 'basic' | 'pro' | 'enterprise' | 'on-premise');
+        /**
+         * Details about the subscription usage
+         */
+        plan_details: {
+            active_user?: (boolean | number | {
+                max?: number;
+                min?: number;
+                step?: number;
+                type?: 'range';
+            });
+            administrators?: (boolean | number);
+            /**
+             * Is feature enabled or not
+             */
+            ciba?: boolean;
+            'connections.passwordless'?: (boolean | number);
+            'connections.social'?: (boolean | number);
+            'connections.saml'?: (boolean | number);
+            'connections.e_devlet'?: (boolean | number);
+            'connections.ldap'?: (boolean | number);
+            /**
+             * Is feature enabled or not
+             */
+            custom_algorithm?: boolean;
+            custom_domain?: (boolean | number);
+            /**
+             * Is feature enabled or not
+             */
+            custom_password_policy?: boolean;
+            /**
+             * Is feature enabled or not
+             */
+            custom_token_ttl?: boolean;
+            /**
+             * Is feature enabled or not
+             */
+            fapi?: boolean;
+            hooks?: (boolean | number);
+            /**
+             * Log retention period in days
+             */
+            log_retention?: number;
+            /**
+             * Is feature enabled or not
+             */
+            log_shipping?: boolean;
+            /**
+             * Is feature enabled or not
+             */
+            log_signing?: boolean;
+            /**
+             * Number of defined feature
+             */
+            max_clients?: number;
+            /**
+             * Number of defined feature
+             */
+            max_resources?: number;
+            /**
+             * Number of defined feature
+             */
+            max_tenants?: number;
+            /**
+             * Number of defined feature
+             */
+            max_users?: number;
+            mfa?: (boolean | number);
+            'mfa.sms'?: boolean;
+            'mfa.otp'?: boolean;
+            'mfa.fv'?: boolean;
+            'mfa.push'?: boolean;
+            'mfa.email'?: boolean;
+            'mfa.e-sign'?: boolean;
+            'mfa.webauthn'?: boolean;
+            /**
+             * Is feature enabled or not
+             */
+            password_history?: boolean;
+            /**
+             * Is feature enabled or not
+             */
+            rbac_management?: boolean;
+            /**
+             * Is feature enabled or not
+             */
+            user_management?: boolean;
+        };
+        metadata?: {
             [k: string]: any;
         };
-        next_invoice?: string;
-        plan: ('free' | 'basic' | 'pro' | 'enterprise');
-        [k: string]: any;
     };
 }
 
@@ -6852,6 +7021,8 @@ declare class TenantService extends HttpService {
     getStats(tenant_id: string): Promise<TenantAdministrator[]>;
     getSettings(tenant_id: string): Promise<TenantSettings>;
     updateSettings(tenant_id: string, data: UpdateTenantSettings): Promise<Tenant>;
+    getSubscription(tenant_id: string): Promise<TenantSubscription>;
+    updateSubscription(tenant_id: string, data: TenantSubscription): Promise<Tenant>;
 }
 
 /**
@@ -6891,14 +7062,14 @@ export declare interface TenantSettings {
      * Lifetime settings of generated tokens defined in seconds.
      */
     ttl: {
-        id_token: number;
-        session?: number;
-        device_code: number;
         access_token: number;
-        refresh_token: number;
         authorization_code: number;
-        client_credentials: number;
         backchannel_authentication_request: number;
+        client_credentials: number;
+        device_code: number;
+        id_token: number;
+        refresh_token: number;
+        session?: number;
     };
     hash_function: ('bcrypt' | 'argon2' | 'pbkdf2');
     policies: {
@@ -6985,6 +7156,111 @@ export declare interface TenantSettings {
              */
             white_list: string[];
         };
+    };
+}
+
+/**
+ * Subscription details of tenant
+ * @public
+ */
+export declare interface TenantSubscription {
+    id?: string;
+    user_id?: string;
+    issued_at?: string;
+    expires_at?: string;
+    /**
+     * Applied plan name
+     */
+    plan: ('free' | 'basic' | 'pro' | 'enterprise' | 'on-premise');
+    /**
+     * Details about the subscription usage
+     */
+    plan_details: {
+        active_user?: (boolean | number | {
+            max?: number;
+            min?: number;
+            step?: number;
+            type?: 'range';
+        });
+        administrators?: (boolean | number);
+        /**
+         * Is feature enabled or not
+         */
+        ciba?: boolean;
+        'connections.passwordless'?: (boolean | number);
+        'connections.social'?: (boolean | number);
+        'connections.saml'?: (boolean | number);
+        'connections.e_devlet'?: (boolean | number);
+        'connections.ldap'?: (boolean | number);
+        /**
+         * Is feature enabled or not
+         */
+        custom_algorithm?: boolean;
+        custom_domain?: (boolean | number);
+        /**
+         * Is feature enabled or not
+         */
+        custom_password_policy?: boolean;
+        /**
+         * Is feature enabled or not
+         */
+        custom_token_ttl?: boolean;
+        /**
+         * Is feature enabled or not
+         */
+        fapi?: boolean;
+        hooks?: (boolean | number);
+        /**
+         * Log retention period in days
+         */
+        log_retention?: number;
+        /**
+         * Is feature enabled or not
+         */
+        log_shipping?: boolean;
+        /**
+         * Is feature enabled or not
+         */
+        log_signing?: boolean;
+        /**
+         * Number of defined feature
+         */
+        max_clients?: number;
+        /**
+         * Number of defined feature
+         */
+        max_resources?: number;
+        /**
+         * Number of defined feature
+         */
+        max_tenants?: number;
+        /**
+         * Number of defined feature
+         */
+        max_users?: number;
+        mfa?: (boolean | number);
+        'mfa.sms'?: boolean;
+        'mfa.otp'?: boolean;
+        'mfa.fv'?: boolean;
+        'mfa.push'?: boolean;
+        'mfa.email'?: boolean;
+        'mfa.e-sign'?: boolean;
+        'mfa.webauthn'?: boolean;
+        /**
+         * Is feature enabled or not
+         */
+        password_history?: boolean;
+        /**
+         * Is feature enabled or not
+         */
+        rbac_management?: boolean;
+        /**
+         * Is feature enabled or not
+         */
+        user_management?: boolean;
+    };
+    metadata?: {
+        [k: string]: any;
     };
 }
 
@@ -11113,7 +11389,7 @@ export declare type UpdateTemplate = ({
     content?: string;
     is_default?: (boolean | null);
     type: 'email';
-    name?: ('welcome' | 'verification-code' | 'magic-link' | 'verify-email' | 'reset-password' | 'invite-admin' | 'payment-failed' | 'plan_downgraded' | 'blocked-account' | 'blocked-ip' | 'test');
+    name?: ('welcome' | 'verification-code' | 'magic-link' | 'verify-email' | 'reset-password' | 'invite-admin' | 'payment-failed' | 'plan-downgraded' | 'blocked-account' | 'blocked-ip' | 'test');
     details?: {
         /**
          * `from` field for your emails
@@ -11172,14 +11448,14 @@ export declare interface UpdateTenantSettings {
      * Lifetime settings of generated tokens defined in seconds.
      */
     ttl?: {
-        id_token?: number;
-        session?: number;
-        device_code?: number;
         access_token?: number;
-        refresh_token?: number;
         authorization_code?: number;
-        client_credentials?: number;
         backchannel_authentication_request?: number;
+        client_credentials?: number;
+        device_code?: number;
+        id_token?: number;
+        refresh_token?: number;
+        session?: number;
     };
     hash_function?: ('bcrypt' | 'argon2' | 'pbkdf2');
     policies?: {

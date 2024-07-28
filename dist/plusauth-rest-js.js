@@ -408,6 +408,12 @@ var TenantService = class extends HttpService {
   async updateSettings(tenant_id, data) {
     return this.http.patch(`/tenants/${tenant_id}/settings`, data);
   }
+  async getSubscription(tenant_id) {
+    return this.http.get(`/tenants/${tenant_id}/subscription`);
+  }
+  async updateSubscription(tenant_id, data) {
+    return this.http.patch(`/tenants/${tenant_id}/subscription`, data);
+  }
 };
 
 // src/api/users.ts
