@@ -12,7 +12,7 @@
     "import": "./dist/plusauth-rest-js.js",
     "require": "./dist/plusauth-rest-js.cjs"
   },
-  "packageManager": "pnpm@9.7.1",
+  "packageManager": "pnpm@9.9.0",
   "files": [
     "dist"
   ],
@@ -35,17 +35,17 @@
     "cross-fetch": "^4.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.4.0",
-    "@commitlint/config-conventional": "^19.2.2",
-    "@microsoft/api-extractor": "^7.47.6",
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
+    "@microsoft/api-extractor": "^7.47.7",
     "@release-it/conventional-changelog": "^8.0.1",
-    "@swc/core": "^1.7.14",
-    "eslint": "^9.9.0",
-    "eslint-plugin-import": "^2.29.1",
+    "@swc/core": "^1.7.24",
+    "eslint": "^9.10.0",
+    "eslint-plugin-import": "^2.30.0",
     "release-it": "^17.6.0",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^8.2.0"
+    "typescript-eslint": "^8.4.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
