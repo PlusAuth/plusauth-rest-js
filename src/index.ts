@@ -15,11 +15,11 @@ import {
   LogService, ProviderService
 } from './api';
 
-type Options = {
+interface Options {
   httpClient?: ( uri: string, options: RequestInit ) => Promise<any>
   token?: string | ( () => string )
   version?: string
-};
+}
 
 /**
  *

@@ -1,54 +1,63 @@
 // @ts-check
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import stylisticJs from '@stylistic/eslint-plugin';
 
 import importPlugin from 'eslint-plugin-import';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.stylistic,
+  {
+    ignores: [
+      '.gitignore',
+      'example',
+      '*.json',
+      'dist'
+    ]
+  },
   {
     languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: 'module',
       parserOptions: {
-        project: true,
-        tsconfigRootDir: dirname( fileURLToPath( import.meta.url ) ),
+        project:         'tsconfig.eslint.json',
+        tsconfigRootDir: import.meta.dirname,
       },
     },
     plugins: {
-      import: importPlugin,
+      import:   importPlugin,
+      '@style': stylisticJs,
     },
     rules: {
-      '@typescript-eslint/ban-ts-ignore': 'off',
-      '@typescript-eslint/explicit-function-return-type': [ 'error' ],
-      '@typescript-eslint/explicit-module-boundary-types': [ 'error' ],
-      '@typescript-eslint/indent': [ 'error', 2, {
-        ArrayExpression: 'first',
+      '@style/indent': ['error', 2, {
+        ArrayExpression:     'first',
         FunctionDeclaration: {
           parameters: 'first'
         },
-        ImportDeclaration: 1,
-        ObjectExpression: 1,
-        SwitchCase: 1,
+        ImportDeclaration:  1,
+        ObjectExpression:   1,
+        SwitchCase:         1,
         VariableDeclarator: 'first'
-      } ],
-      '@typescript-eslint/no-unsafe-argument': 'off',
-      '@typescript-eslint/no-unsafe-call': 'off',
-      '@typescript-eslint/no-unsafe-return': 'off',
+      }],
+      '@style/no-extra-parens':                            ['error'],
+      '@style/type-annotation-spacing':                    'error',
+      '@typescript-eslint/ban-ts-ignore':                  'off',
+      '@typescript-eslint/explicit-function-return-type':  ['error'],
+      '@typescript-eslint/explicit-module-boundary-types': ['error'],
+      '@typescript-eslint/interface-name-prefix':          'off',
+      '@typescript-eslint/no-explicit-any':                'off',
       '@typescript-eslint/no-redundant-type-constituents': 'off',
-      '@typescript-eslint/no-unsafe-assignment': 'off',
-      '@typescript-eslint/no-unsafe-member-access': 'off',
-      '@typescript-eslint/interface-name-prefix': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-extra-parens': [ 'error' ],
+      '@typescript-eslint/no-unsafe-argument':             'off',
+      '@typescript-eslint/no-unsafe-assignment':           'off',
+      '@typescript-eslint/no-unsafe-call':                 'off',
+      '@typescript-eslint/no-unsafe-member-access':        'off',
+      '@typescript-eslint/no-unsafe-return':               'off',
+      '@typescript-eslint/prefer-promise-reject-errors':   'off',
       '@typescript-eslint/prefer-string-starts-ends-with': 'error',
-      '@typescript-eslint/type-annotation-spacing': 'error',
-      'array-bracket-spacing': 'error',
-      'comma-spacing': [ 2, { before: false, after: true } ],
-      'computed-property-spacing': [ 'error', 'never', { enforceForClassMembers: true } ],
-      'import/first': 'error',
-      'import/no-useless-path-segments': [
+      'array-bracket-spacing':                             'error',
+      'comma-spacing':                                     [2, { before: false, after: true }],
+      'computed-property-spacing':                         ['error', 'never', { enforceForClassMembers: true }],
+      'import/first':                                      'error',
+      'import/no-duplicates':                              'error',
+      'import/no-useless-path-segments':                   [
         'error',
         {
           noUselessIndex: true
@@ -58,44 +67,43 @@ export default tseslint.config(
         'error',
         {
           'newlines-between': 'always-and-inside-groups',
-          'alphabetize': {
-            order: 'asc',
+          'alphabetize':      {
+            order:           'asc',
             caseInsensitive: true
           },
           'pathGroups': [
             {
               pattern: '~/**',
-              group: 'external'
+              group:   'external'
             }
           ]
         }
       ],
-      'indent': 'off',
-      'key-spacing': [ 'error', { align: 'value' } ],
-      'keyword-spacing': [ 'error' ],
+      'indent':          'off',
+      'key-spacing':     ['error', { align: 'value' }],
+      'keyword-spacing': ['error'],
       'linebreak-style': [
         'error',
         'unix'
       ],
-      'lines-between-class-members': [ 'error', 'always' ],
-      'no-debugger': 'error',
-      'no-extra-parens': 'off',
-      'no-mixed-spaces-and-tabs': 'error',
-      'no-multi-spaces': [ 'error', { exceptions: { VariableDeclarator: true } } ],
-      'no-var': 'error',
-      'import/no-duplicates': 'error',
+      'lines-between-class-members':   ['error', 'always'],
+      'no-debugger':                   'error',
+      'no-extra-parens':               'off',
+      'no-mixed-spaces-and-tabs':      'error',
+      'no-multi-spaces':               ['error', { exceptions: { VariableDeclarator: true } }],
+      'no-var':                        'error',
       'no-whitespace-before-property': 'error',
-      'object-curly-spacing': [
+      'object-curly-spacing':          [
         'error',
         'always',
         {
-          arraysInObjects: true,
+          arraysInObjects:  true,
           objectsInObjects: true
         }
       ],
-      'padded-blocks': [ 'error', 'never' ],
+      'padded-blocks':   ['error', 'never'],
       'prefer-template': 'error',
-      'quotes': [
+      'quotes':          [
         'error',
         'single',
         {
@@ -105,13 +113,13 @@ export default tseslint.config(
       'space-before-function-paren': [
         'error',
         {
-          anonymous: 'always',
+          anonymous:  'always',
           asyncArrow: 'always',
-          named: 'never'
+          named:      'never'
         }
       ],
-      'space-in-parens': [ 'error', 'always' ],
-      'template-curly-spacing': [ 'error', 'always' ]
+      'space-in-parens':        ['error', 'always'],
+      'template-curly-spacing': ['error', 'always']
     }
   }
 );

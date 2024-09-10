@@ -92,7 +92,7 @@ export class HttpService {
     }
     try {
       new URL( apiURL );
-    } catch ( e ) {
+    } catch {
       throw new Error( '\'apiUrl\' must be a valid uri' );
     }
 
@@ -130,9 +130,9 @@ export class HttpService {
           }
         };
         if ( args.length > 1 ) {
-          method !== 'get' ?
-            fetchOptions.body = typeof args[1] === 'object' ? JSON.stringify( args[1] ) : args[1]
-            : null;
+          if ( method !== 'get' ) {
+            fetchOptions.body = typeof args[1] === 'object' ? JSON.stringify( args[1] ) : args[1];
+          }
         }
         if ( !!args[2] && typeof args[2] === 'object' ) {
           fetchOptions = deepmerge( fetchOptions, args[2] );

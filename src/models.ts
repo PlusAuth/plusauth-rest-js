@@ -8,7 +8,7 @@ Instead, edit corresponding schema than regenerate this file!.
 /**
  * @public
  */
-export type PaginatedResult<T> = {
+export interface PaginatedResult<T> {
   results: T[];
   total: number;
 }
@@ -52,9 +52,7 @@ export interface AuthPlusAccount {
  * Creation date in the ISO 8601 format according to universal time.
  */
   created_at: string
-  details: {
-    [k: string]: any
-  }
+  details: Record<string, any>
   icon?: ( string | null )
   /**
  * Unique identifier of entity
@@ -114,9 +112,7 @@ export interface AuthPlusDevice {
   device_identifier: string
   model: string
   os: string
-  details?: {
-    [k: string]: any
-  }
+  details?: Record<string, any>
 }
 /**
 * @public
@@ -205,9 +201,7 @@ export interface Client {
   advanced: {
     pkce_required?: boolean
   }
-  extra_metadata: {
-    [k: string]: ( string | boolean | number | null )
-  }
+  extra_metadata: Record<string, string | boolean | number | null>
   connectors: {
     saml?: {
       enabled?: boolean
@@ -219,20 +213,11 @@ export interface Client {
       /**
  * Application specific resource in an IDP initiated Single Sign-On scenario. In most instances this is blank.
  */
-      relay_state?: string
-      mappings: {
-        /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-        [k: string]: any
-      }
-      /**
- * Your SAML SP's metadata URL.
- */
-      metadata_url?: string
+      relay_state?: ( string | null )
+      mappings: Record<string, any>
       request_binding: ( 'HTTP-POST' | 'HTTP-Redirect' )
       sign_assertions?: boolean
+      sign_out_binding?: ( 'HTTP-POST' | 'HTTP-Redirect' )
       sign_out_enabled?: boolean
       sign_out_url?: string
       signed_requests?: boolean
@@ -280,9 +265,7 @@ export interface CommonCredential {
   /**
  * Raw user object from the connection
  */
-  details: {
-    [k: string]: any
-  }
+  details: Record<string, any>
   /**
  * Creation date in the ISO 8601 format according to universal time.
  */
@@ -918,43 +901,6 @@ export type Connection = ( ( {
   }
 } | {
   type: 'social'
-  provider: 'e-devlet'
-  enabled: boolean
-  /**
- * Is connection using custom scripts
- */
-  is_custom?: boolean
-  /**
- * Connection name
- */
-  name: string
-  /**
- * Update date in the ISO 8601 format according to universal time.
- */
-  updated_at?: ( string | null )
-  /**
- * Creation date in the ISO 8601 format according to universal time.
- */
-  created_at?: string
-  settings: {
-    enabled_clients: string[]
-    /**
- * Enable/Disable user profile synchronization on each login
- */
-    sync_user_profile?: boolean
-    branding?: {
-      show_in_login?: boolean
-      logo_url?: string
-      display_name?: string
-      [k: string]: any
-    }
-    client_id: string
-    client_secret: string
-    is_test?: boolean
-    scopes: string[]
-  }
-} | {
-  type: 'social'
   provider: ( 'amazon' | 'dribbble' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' )
   enabled: boolean
   /**
@@ -1021,12 +967,8 @@ export type Connection = ( ( {
       display_name?: string
       [k: string]: any
     }
-    extra_params: {
-      [k: string]: string
-    }
-    extra_headers: {
-      [k: string]: string
-    }
+    extra_params: Record<string, string>
+    extra_headers: Record<string, string>
     client_id: string
     client_secret: string
     authorization_url: string
@@ -1168,24 +1110,53 @@ export type Connection = ( ( {
  * Enabling this option will reflect user updates and deletes to your LDAP connection. This means when user is deleted/updated from PlusAuth, it will be deleted from your LDAP too.
  */
     write_mode?: boolean
-    mappings: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
+    mappings: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
+  }
+} | {
+  type: 'enterprise'
+  provider: 'e-devlet'
+  enabled: boolean
+  /**
+ * Is connection using custom scripts
  */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
+  is_custom?: boolean
+  /**
+ * Connection name
+ */
+  name: string
+  /**
+ * Update date in the ISO 8601 format according to universal time.
+ */
+  updated_at?: ( string | null )
+  /**
+ * Creation date in the ISO 8601 format according to universal time.
+ */
+  created_at?: string
+  settings: {
+    enabled_clients: string[]
+    /**
+ * Enable/Disable user profile synchronization on each login
+ */
+    sync_user_profile?: boolean
+    branding?: {
+      show_in_login?: boolean
+      logo_url?: string
+      display_name?: string
+      [k: string]: any
     }
+    client_id: string
+    client_secret: string
+    is_test?: boolean
+    scopes: string[]
   }
 } | {
   type: 'enterprise'
@@ -1249,24 +1220,16 @@ export type Connection = ( ( {
  * SAML Request Binding
  */
     request_binding: ( 'HTTP-POST' | 'HTTP-Redirect' )
-    mappings: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
-    }
+    mappings: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
   }
 } ) | ( {
   type: 'otp'
@@ -1541,9 +1504,7 @@ export type CreateAuthPlusAccount = ( {
  * If `true` this account will be disabled whenever end-user's SIM card changes.
  */
     is_sim_bound?: boolean
-    sim_card_identifiers?: {
-      [k: string]: any
-    }[]
+    sim_card_identifiers?: Record<string, any>[]
     fcm_token: string
     device_identifier: string
   }
@@ -1577,9 +1538,7 @@ export interface CreateAuthPlusDevice {
   device_identifier: string
   model: string
   os: string
-  details?: {
-    [k: string]: any
-  }
+  details?: Record<string, any>
 }
 /**
 * @public
@@ -1616,9 +1575,7 @@ export interface CreateClient {
   advanced?: {
     pkce_required?: boolean
   }
-  extra_metadata?: {
-    [k: string]: ( string | boolean | number | null )
-  }
+  extra_metadata?: Record<string, string | boolean | number | null>
   connectors?: {
     saml?: {
       enabled?: boolean
@@ -1630,20 +1587,11 @@ export interface CreateClient {
       /**
  * Application specific resource in an IDP initiated Single Sign-On scenario. In most instances this is blank.
  */
-      relay_state?: string
-      mappings: {
-        /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-        [k: string]: any
-      }
-      /**
- * Your SAML SP's metadata URL.
- */
-      metadata_url?: string
+      relay_state?: ( string | null )
+      mappings: Record<string, any>
       request_binding: ( 'HTTP-POST' | 'HTTP-Redirect' )
       sign_assertions?: boolean
+      sign_out_binding?: ( 'HTTP-POST' | 'HTTP-Redirect' )
       sign_out_enabled?: boolean
       sign_out_url?: string
       signed_requests?: boolean
@@ -1805,9 +1753,7 @@ export interface CreateTenant {
     auto_sign_in?: boolean
     register_enabled?: boolean
     forgot_password_enabled?: boolean
-    environment_variables?: {
-      [k: string]: string
-    }
+    environment_variables?: Record<string, string>
     expose_unsafe_errors?: boolean
     welcome_emails_enabled?: boolean
     force_email_verification?: boolean
@@ -1934,9 +1880,7 @@ export interface CreateTenant {
 /**
 * @public
 */
-export type CreateTicket = ( {
-  [k: string]: any
-} & {
+export type CreateTicket = ( Record<string, any> & {
   type: ( 'verify-email' | 'forgot-password' | 'invite-admin' | 'unblock-ip' | 'unblock-account' )
   token?: string
   user_id?: string
@@ -1946,9 +1890,7 @@ export type CreateTicket = ( {
  * Ticket's validity in seconds. After specified time passed ticket will be expired.
  */
   ttl?: number
-  details?: {
-    [k: string]: string
-  }
+  details?: Record<string, string>
   used?: boolean
 } )
 /**
@@ -1963,9 +1905,7 @@ export type CreateUserCredential = ( {
   /**
  * Raw user object from the connection
  */
-  details: {
-    [k: string]: any
-  }
+  details: Record<string, any>
 } | {
   type: 'password'
   /**
@@ -2014,9 +1954,7 @@ export type CreateUserCredential = ( {
     ua: string
     device_identifier: string
     credentials: {
-      private_key: {
-        [k: string]: any
-      }
+      private_key: Record<string, any>
       /**
  * Public JWK. You can look at JWK specification from [here](https://www.rfc-editor.org/rfc/rfc7517)
  */
@@ -2050,9 +1988,7 @@ export type CreateUserCredential = ( {
   connection?: ( string | null )
   details: {
     hash?: string
-    templates: {
-      [k: string]: any
-    }
+    templates: Record<string, any>
   }
 } | {
   type: 'webauthn'
@@ -2062,13 +1998,7 @@ export type CreateUserCredential = ( {
   connection?: ( string | null )
   details: {
     credentialID: string
-    credentialPublicKey: {
-      /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(0|[1-9][0-9]*)$".
- */
-      [k: string]: number
-    }
+    credentialPublicKey: Record<string, number>
     counter: number
     transports?: ( 'ble' | 'cable' | 'hybrid' | 'internal' | 'nfc' | 'smart-card' | 'usb' )[]
   }
@@ -2086,20 +2016,16 @@ export interface CreateUserIdentity {
  */
   connection: string
   type: ( 'sms' | 'otp' | 'push' | 'email' | 'social' | 'enterprise' )
-  provider: ( 'twilio' | 'vonage' | 'netgsm' | '3gbilisim' | 'dataport' | 'messagebird' | 'custom' | 'hotp' | 'totp' | 'native' | 'expo' | 'one-signal' | 'aws_ses' | 'postmark' | 'sendgrid' | 'sparkpost' | 'smtp' | 'custom-oauth2' | 'amazon' | 'apple' | 'e-devlet' | 'dribbble' | 'dropbox' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' | 'twitter' | 'saml' | 'ldap' )
+  provider: ( 'twilio' | 'vonage' | 'netgsm' | '3gbilisim' | 'dataport' | 'messagebird' | 'custom' | 'hotp' | 'totp' | 'native' | 'expo' | 'one-signal' | 'aws_ses' | 'postmark' | 'sendgrid' | 'sparkpost' | 'smtp' | 'custom-oauth2' | 'amazon' | 'apple' | 'dribbble' | 'dropbox' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' | 'twitter' | 'saml' | 'e-devlet' | 'ldap' )
   /**
  * Raw user object from the connection
  */
-  details: {
-    [k: string]: any
-  }
+  details: Record<string, any>
 }
 /**
 * @public
 */
-export type CreateUser = ( {
-  [k: string]: any
-} & {
+export type CreateUser = ( Record<string, any> & {
 /**
  * End-User's username
  */
@@ -2214,13 +2140,7 @@ export type CreateUser = ( {
   /**
  * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `"null"` as value to make metadata consistent across other users.
  */
-  metadata?: {
-    /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-    [k: string]: ( string | boolean | number | null )
-  }
+  metadata?: Record<string, string | boolean | number | null>
   verify_email?: ( boolean | null )
   /**
  * End-User's password in plaintext. Defined password policy rules will be enforced.
@@ -2244,13 +2164,11 @@ export type CreateUser = ( {
  */
     connection: string
     type: ( 'sms' | 'otp' | 'push' | 'email' | 'social' | 'enterprise' )
-    provider: ( 'twilio' | 'vonage' | 'netgsm' | '3gbilisim' | 'dataport' | 'messagebird' | 'custom' | 'hotp' | 'totp' | 'native' | 'expo' | 'one-signal' | 'aws_ses' | 'postmark' | 'sendgrid' | 'sparkpost' | 'smtp' | 'custom-oauth2' | 'amazon' | 'apple' | 'e-devlet' | 'dribbble' | 'dropbox' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' | 'twitter' | 'saml' | 'ldap' )
+    provider: ( 'twilio' | 'vonage' | 'netgsm' | '3gbilisim' | 'dataport' | 'messagebird' | 'custom' | 'hotp' | 'totp' | 'native' | 'expo' | 'one-signal' | 'aws_ses' | 'postmark' | 'sendgrid' | 'sparkpost' | 'smtp' | 'custom-oauth2' | 'amazon' | 'apple' | 'dribbble' | 'dropbox' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' | 'twitter' | 'saml' | 'e-devlet' | 'ldap' )
     /**
  * Raw user object from the connection
  */
-    details: {
-      [k: string]: any
-    }
+    details: Record<string, any>
   }[]
 } )
 /**
@@ -2305,6 +2223,47 @@ export interface DataportSmsProvider {
  * Orginator value
  */
     from: string
+  }
+}
+/**
+* @public
+*/
+export interface EDevletConnection {
+  type: 'enterprise'
+  provider: 'e-devlet'
+  enabled: boolean
+  /**
+ * Is connection using custom scripts
+ */
+  is_custom?: boolean
+  /**
+ * Connection name
+ */
+  name: string
+  /**
+ * Update date in the ISO 8601 format according to universal time.
+ */
+  updated_at?: ( string | null )
+  /**
+ * Creation date in the ISO 8601 format according to universal time.
+ */
+  created_at?: string
+  settings: {
+    enabled_clients: string[]
+    /**
+ * Enable/Disable user profile synchronization on each login
+ */
+    sync_user_profile?: boolean
+    branding?: {
+      show_in_login?: boolean
+      logo_url?: string
+      display_name?: string
+      [k: string]: any
+    }
+    client_id: string
+    client_secret: string
+    is_test?: boolean
+    scopes: string[]
   }
 }
 /**
@@ -2778,24 +2737,53 @@ export type EnterpriseConnection = ( {
  * Enabling this option will reflect user updates and deletes to your LDAP connection. This means when user is deleted/updated from PlusAuth, it will be deleted from your LDAP too.
  */
     write_mode?: boolean
-    mappings: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
+    mappings: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
+  }
+} | {
+  type: 'enterprise'
+  provider: 'e-devlet'
+  enabled: boolean
+  /**
+ * Is connection using custom scripts
  */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
+  is_custom?: boolean
+  /**
+ * Connection name
+ */
+  name: string
+  /**
+ * Update date in the ISO 8601 format according to universal time.
+ */
+  updated_at?: ( string | null )
+  /**
+ * Creation date in the ISO 8601 format according to universal time.
+ */
+  created_at?: string
+  settings: {
+    enabled_clients: string[]
+    /**
+ * Enable/Disable user profile synchronization on each login
+ */
+    sync_user_profile?: boolean
+    branding?: {
+      show_in_login?: boolean
+      logo_url?: string
+      display_name?: string
+      [k: string]: any
     }
+    client_id: string
+    client_secret: string
+    is_test?: boolean
+    scopes: string[]
   }
 } | {
   type: 'enterprise'
@@ -2859,24 +2847,16 @@ export type EnterpriseConnection = ( {
  * SAML Request Binding
  */
     request_binding: ( 'HTTP-POST' | 'HTTP-Redirect' )
-    mappings: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
-    }
+    mappings: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
   }
 } ) )
 /**
@@ -2912,9 +2892,7 @@ export interface FVCredential {
   connection?: ( string | null )
   details: {
     hash?: string
-    templates: {
-      [k: string]: any
-    }
+    templates: Record<string, any>
   }
   /**
  * Creation date in the ISO 8601 format according to universal time.
@@ -3030,26 +3008,10 @@ export interface HOTPConnection {
 */
 export interface HookContext {
   context: {
-    connection?: {
-      [k: string]: any
-    }
-    externalUser?: {
-      [k: string]: any
-    }
-    accessToken?: {
-      /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: any
-    }
-    idToken?: {
-      /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: any
-    }
+    connection?: Record<string, any>
+    externalUser?: Record<string, any>
+    accessToken?: Record<string, any>
+    idToken?: Record<string, any>
     mfa?: {
       verified: boolean
       required: boolean
@@ -3080,19 +3042,13 @@ export interface HookContext {
       [k: string]: any
     }
     response: {
-      body: ( string | {
-        [k: string]: any
-      } | any[] )
-      headers: {
-        [k: string]: string
-      }
+      body: ( string | Record<string, any> | any[] )
+      headers: Record<string, string>
       [k: string]: any
     }
     [k: string]: any
   }
-  user: {
-    [k: string]: any
-  }
+  user: Record<string, any>
   [k: string]: any
 }
 /**
@@ -3225,24 +3181,16 @@ export interface LDAPConnection {
  * Enabling this option will reflect user updates and deletes to your LDAP connection. This means when user is deleted/updated from PlusAuth, it will be deleted from your LDAP too.
  */
     write_mode?: boolean
-    mappings: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
-    }
+    mappings: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
   }
 }
 /**
@@ -4832,9 +4780,7 @@ export interface PushAuthPlusAccount {
  * If `true` this account will be disabled whenever end-user's SIM card changes.
  */
     is_sim_bound?: boolean
-    sim_card_identifiers?: {
-      [k: string]: any
-    }[]
+    sim_card_identifiers?: Record<string, any>[]
     fcm_token: string
     device_identifier: string
   }
@@ -5033,9 +4979,7 @@ export interface PushCredential {
     ua: string
     device_identifier: string
     credentials: {
-      private_key: {
-        [k: string]: any
-      }
+      private_key: Record<string, any>
       /**
  * Public JWK. You can look at JWK specification from [here](https://www.rfc-editor.org/rfc/rfc7517)
  */
@@ -5306,24 +5250,16 @@ export interface SAMLConnection {
  * SAML Request Binding
  */
     request_binding: ( 'HTTP-POST' | 'HTTP-Redirect' )
-    mappings: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
-    }
+    mappings: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
   }
 }
 /**
@@ -5964,43 +5900,6 @@ export type SocialConnection = ( {
   }
 } | {
   type: 'social'
-  provider: 'e-devlet'
-  enabled: boolean
-  /**
- * Is connection using custom scripts
- */
-  is_custom?: boolean
-  /**
- * Connection name
- */
-  name: string
-  /**
- * Update date in the ISO 8601 format according to universal time.
- */
-  updated_at?: ( string | null )
-  /**
- * Creation date in the ISO 8601 format according to universal time.
- */
-  created_at?: string
-  settings: {
-    enabled_clients: string[]
-    /**
- * Enable/Disable user profile synchronization on each login
- */
-    sync_user_profile?: boolean
-    branding?: {
-      show_in_login?: boolean
-      logo_url?: string
-      display_name?: string
-      [k: string]: any
-    }
-    client_id: string
-    client_secret: string
-    is_test?: boolean
-    scopes: string[]
-  }
-} | {
-  type: 'social'
   provider: ( 'amazon' | 'dribbble' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' )
   enabled: boolean
   /**
@@ -6067,12 +5966,8 @@ export type SocialConnection = ( {
       display_name?: string
       [k: string]: any
     }
-    extra_params: {
-      [k: string]: string
-    }
-    extra_headers: {
-      [k: string]: string
-    }
+    extra_params: Record<string, string>
+    extra_headers: Record<string, string>
     client_id: string
     client_secret: string
     authorization_url: string
@@ -6406,6 +6301,7 @@ export interface TenantCustomDomain {
   id: string
   domain: string
   verified: boolean
+  enabled?: boolean
   verification_value: string
   mx_record: {
     value: string
@@ -6427,9 +6323,7 @@ export interface Tenant {
     auto_sign_in: boolean
     register_enabled: boolean
     forgot_password_enabled: boolean
-    environment_variables: {
-      [k: string]: string
-    }
+    environment_variables: Record<string, string>
     expose_unsafe_errors: boolean
     welcome_emails_enabled: boolean
     force_email_verification: boolean
@@ -6596,10 +6490,8 @@ export interface Tenant {
  * Subscription details of tenant
  */
   subscription: {
-    id?: string
-    user_id?: string
-    issued_at?: string
-    expires_at?: string
+    issued_at?: ( string | null )
+    expires_at?: ( string | null )
     /**
  * Applied plan name
  */
@@ -6691,9 +6583,7 @@ export interface Tenant {
  */
       user_management?: boolean
     }
-    metadata?: {
-      [k: string]: any
-    }
+    metadata?: Record<string, any>
   }
 }
 /**
@@ -6704,9 +6594,7 @@ export interface TenantSettings {
   auto_sign_in: boolean
   register_enabled: boolean
   forgot_password_enabled: boolean
-  environment_variables: {
-    [k: string]: string
-  }
+  environment_variables: Record<string, string>
   expose_unsafe_errors: boolean
   welcome_emails_enabled: boolean
   force_email_verification: boolean
@@ -6834,10 +6722,8 @@ export interface TenantSettings {
  * @public
 */
 export interface TenantSubscription {
-  id?: string
-  user_id?: string
-  issued_at?: string
-  expires_at?: string
+  issued_at?: ( string | null )
+  expires_at?: ( string | null )
   /**
  * Applied plan name
  */
@@ -6929,9 +6815,7 @@ export interface TenantSubscription {
  */
     user_management?: boolean
   }
-  metadata?: {
-    [k: string]: any
-  }
+  metadata?: Record<string, any>
 }
 /**
 * @public
@@ -6981,9 +6865,7 @@ export interface Ticket {
   user_id?: string
   email?: string
   client_id?: string
-  details?: {
-    [k: string]: string
-  }
+  details?: Record<string, string>
   used?: boolean
 }
 /**
@@ -7023,9 +6905,7 @@ export interface UpdateAuthPlusAccount {
  */
   order?: number
   category_id?: ( string | null )
-  details?: {
-    [k: string]: any
-  }
+  details?: Record<string, any>
 }
 /**
 * @public
@@ -7045,9 +6925,7 @@ export interface UpdateAuthPlusCategory {
 */
 export interface UpdateAuthPlusDevice {
   name?: ( string | null )
-  details?: {
-    [k: string]: any
-  }
+  details?: Record<string, any>
   os?: string
 }
 /**
@@ -7076,9 +6954,7 @@ export interface UpdateClient {
   advanced?: {
     pkce_required?: boolean
   }
-  extra_metadata?: {
-    [k: string]: ( string | boolean | number | null )
-  }
+  extra_metadata?: Record<string, string | boolean | number | null>
   connectors?: {
     saml?: {
       enabled?: boolean
@@ -7090,20 +6966,11 @@ export interface UpdateClient {
       /**
  * Application specific resource in an IDP initiated Single Sign-On scenario. In most instances this is blank.
  */
-      relay_state?: string
-      mappings?: {
-        /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-        [k: string]: any
-      }
-      /**
- * Your SAML SP's metadata URL.
- */
-      metadata_url?: string
+      relay_state?: ( string | null )
+      mappings?: Record<string, any>
       request_binding?: ( 'HTTP-POST' | 'HTTP-Redirect' )
       sign_assertions?: boolean
+      sign_out_binding?: ( 'HTTP-POST' | 'HTTP-Redirect' )
       sign_out_enabled?: boolean
       sign_out_url?: string
       signed_requests?: boolean
@@ -7670,36 +7537,6 @@ export type UpdateConnection = ( ( {
   is_default?: boolean
 } | {
   type?: 'social'
-  provider: 'e-devlet'
-  enabled?: boolean
-  /**
- * Update date in the ISO 8601 format according to universal time.
- */
-  updated_at?: ( string | null )
-  /**
- * Creation date in the ISO 8601 format according to universal time.
- */
-  created_at?: string
-  settings?: {
-    enabled_clients?: string[]
-    /**
- * Enable/Disable user profile synchronization on each login
- */
-    sync_user_profile?: boolean
-    branding?: {
-      show_in_login?: boolean
-      logo_url?: string
-      display_name?: string
-      [k: string]: any
-    }
-    client_id?: string
-    client_secret?: string
-    is_test?: boolean
-    scopes?: string[]
-  }
-  is_default?: boolean
-} | {
-  type?: 'social'
   provider: ( 'amazon' | 'dribbble' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' )
   enabled?: boolean
   /**
@@ -7751,12 +7588,8 @@ export type UpdateConnection = ( ( {
       display_name?: string
       [k: string]: any
     }
-    extra_params?: {
-      [k: string]: string
-    }
-    extra_headers?: {
-      [k: string]: string
-    }
+    extra_params?: Record<string, string>
+    extra_headers?: Record<string, string>
     client_id?: string
     client_secret?: string
     authorization_url?: string
@@ -7878,24 +7711,16 @@ export type UpdateConnection = ( ( {
  * Enabling this option will reflect user updates and deletes to your LDAP connection. This means when user is deleted/updated from PlusAuth, it will be deleted from your LDAP too.
  */
     write_mode?: boolean
-    mappings?: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
-    }
+    mappings?: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
   }
 } | {
   enabled?: boolean
@@ -7952,25 +7777,47 @@ export type UpdateConnection = ( ( {
  * SAML Request Binding
  */
     request_binding?: ( 'HTTP-POST' | 'HTTP-Redirect' )
-    mappings?: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
-    }
+    mappings?: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
   }
+} | {
+  type?: 'enterprise'
+  provider: 'e-devlet'
+  enabled?: boolean
+  /**
+ * Update date in the ISO 8601 format according to universal time.
+ */
+  updated_at?: ( string | null )
+  /**
+ * Creation date in the ISO 8601 format according to universal time.
+ */
+  created_at?: string
+  settings?: {
+    enabled_clients?: string[]
+    /**
+ * Enable/Disable user profile synchronization on each login
+ */
+    sync_user_profile?: boolean
+    branding?: {
+      show_in_login?: boolean
+      logo_url?: string
+      display_name?: string
+      [k: string]: any
+    }
+    client_id?: string
+    client_secret?: string
+    is_test?: boolean
+    scopes?: string[]
+  }
+  is_default?: boolean
 } ) | ( {
   enabled?: boolean
   /**
@@ -8146,6 +7993,40 @@ export type UpdateConnection = ( ( {
   created_at?: string
   is_default?: boolean
 } ) )
+/**
+* @public
+*/
+export interface UpdateEDevletConnection {
+  type?: 'enterprise'
+  provider: 'e-devlet'
+  enabled?: boolean
+  /**
+ * Update date in the ISO 8601 format according to universal time.
+ */
+  updated_at?: ( string | null )
+  /**
+ * Creation date in the ISO 8601 format according to universal time.
+ */
+  created_at?: string
+  settings?: {
+    enabled_clients?: string[]
+    /**
+ * Enable/Disable user profile synchronization on each login
+ */
+    sync_user_profile?: boolean
+    branding?: {
+      show_in_login?: boolean
+      logo_url?: string
+      display_name?: string
+      [k: string]: any
+    }
+    client_id?: string
+    client_secret?: string
+    is_test?: boolean
+    scopes?: string[]
+  }
+  is_default?: boolean
+}
 /**
 * @public
 */
@@ -8548,24 +8429,16 @@ export type UpdateEnterpriseConnection = ( {
  * Enabling this option will reflect user updates and deletes to your LDAP connection. This means when user is deleted/updated from PlusAuth, it will be deleted from your LDAP too.
  */
     write_mode?: boolean
-    mappings?: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
-    }
+    mappings?: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
   }
 } | {
   enabled?: boolean
@@ -8622,25 +8495,47 @@ export type UpdateEnterpriseConnection = ( {
  * SAML Request Binding
  */
     request_binding?: ( 'HTTP-POST' | 'HTTP-Redirect' )
-    mappings?: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
-    }
+    mappings?: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
   }
+} | {
+  type?: 'enterprise'
+  provider: 'e-devlet'
+  enabled?: boolean
+  /**
+ * Update date in the ISO 8601 format according to universal time.
+ */
+  updated_at?: ( string | null )
+  /**
+ * Creation date in the ISO 8601 format according to universal time.
+ */
+  created_at?: string
+  settings?: {
+    enabled_clients?: string[]
+    /**
+ * Enable/Disable user profile synchronization on each login
+ */
+    sync_user_profile?: boolean
+    branding?: {
+      show_in_login?: boolean
+      logo_url?: string
+      display_name?: string
+      [k: string]: any
+    }
+    client_id?: string
+    client_secret?: string
+    is_test?: boolean
+    scopes?: string[]
+  }
+  is_default?: boolean
 } ) )
 /**
 * @public
@@ -8750,24 +8645,16 @@ export interface UpdateLDAPConnection {
  * Enabling this option will reflect user updates and deletes to your LDAP connection. This means when user is deleted/updated from PlusAuth, it will be deleted from your LDAP too.
  */
     write_mode?: boolean
-    mappings?: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
-    }
+    mappings?: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
   }
 }
 /**
@@ -10248,24 +10135,16 @@ export interface UpdateSAMLConnection {
  * SAML Request Binding
  */
     request_binding?: ( 'HTTP-POST' | 'HTTP-Redirect' )
-    mappings?: {
-      /**
- * @minItems 1
- * 
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-      [k: string]: ( string | [( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ), ...( ( string | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } ) )[]] | {
-        value?: ( string | boolean | number )
-        [k: string]: any
-      } | boolean )
-    }
+    mappings?: Record<string, string | [( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ), ...( ( string | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } ) )[]] | {
+      value?: ( string | boolean | number )
+      [k: string]: any
+    } | boolean>
   }
 }
 /**
@@ -10774,36 +10653,6 @@ export type UpdateSocialConnection = ( {
   is_default?: boolean
 } | {
   type?: 'social'
-  provider: 'e-devlet'
-  enabled?: boolean
-  /**
- * Update date in the ISO 8601 format according to universal time.
- */
-  updated_at?: ( string | null )
-  /**
- * Creation date in the ISO 8601 format according to universal time.
- */
-  created_at?: string
-  settings?: {
-    enabled_clients?: string[]
-    /**
- * Enable/Disable user profile synchronization on each login
- */
-    sync_user_profile?: boolean
-    branding?: {
-      show_in_login?: boolean
-      logo_url?: string
-      display_name?: string
-      [k: string]: any
-    }
-    client_id?: string
-    client_secret?: string
-    is_test?: boolean
-    scopes?: string[]
-  }
-  is_default?: boolean
-} | {
-  type?: 'social'
   provider: ( 'amazon' | 'dribbble' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' )
   enabled?: boolean
   /**
@@ -10855,12 +10704,8 @@ export type UpdateSocialConnection = ( {
       display_name?: string
       [k: string]: any
     }
-    extra_params?: {
-      [k: string]: string
-    }
-    extra_headers?: {
-      [k: string]: string
-    }
+    extra_params?: Record<string, string>
+    extra_headers?: Record<string, string>
     client_id?: string
     client_secret?: string
     authorization_url?: string
@@ -10935,7 +10780,6 @@ export type UpdateTemplate = ( {
  */
   updated_at?: ( string | null )
   content?: string
-  is_default?: ( boolean | null )
   type: 'email'
   name?: ( 'welcome' | 'verification-code' | 'magic-link' | 'verify-email' | 'reset-password' | 'invite-admin' | 'payment-failed' | 'plan-downgraded' | 'blocked-account' | 'blocked-ip' | 'test' )
   details?: {
@@ -10954,7 +10798,6 @@ export type UpdateTemplate = ( {
  */
   updated_at?: ( string | null )
   content?: string
-  is_default?: ( boolean | null )
   type: 'sms'
   name?: ( 'verification-code' | 'test' )
 } )
@@ -10966,9 +10809,7 @@ export interface UpdateTenantSettings {
   auto_sign_in?: boolean
   register_enabled?: boolean
   forgot_password_enabled?: boolean
-  environment_variables?: {
-    [k: string]: string
-  }
+  environment_variables?: Record<string, string>
   expose_unsafe_errors?: boolean
   welcome_emails_enabled?: boolean
   force_email_verification?: boolean
@@ -11102,9 +10943,7 @@ export interface UpdateTicket {
  * Ticket's validity in seconds. After specified time passed ticket will be expired.
  */
   ttl?: number
-  details?: {
-    [k: string]: string
-  }
+  details?: Record<string, string>
   used?: boolean
 }
 /**
@@ -11225,13 +11064,7 @@ export interface UpdateUser {
   /**
  * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `"null"` as value to make metadata consistent across other users.
  */
-  metadata?: {
-    /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-    [k: string]: ( string | boolean | number | null )
-  }
+  metadata?: Record<string, string | boolean | number | null>
   verify_email?: ( boolean | null )
   /**
  * End-User's password in plaintext. Defined password policy rules will be enforced.
@@ -11281,9 +11114,7 @@ export type UserCredential = ( {
   /**
  * Raw user object from the connection
  */
-  details: {
-    [k: string]: any
-  }
+  details: Record<string, any>
   /**
  * Creation date in the ISO 8601 format according to universal time.
  */
@@ -11344,9 +11175,7 @@ export type UserCredential = ( {
     ua: string
     device_identifier: string
     credentials: {
-      private_key: {
-        [k: string]: any
-      }
+      private_key: Record<string, any>
       /**
  * Public JWK. You can look at JWK specification from [here](https://www.rfc-editor.org/rfc/rfc7517)
  */
@@ -11416,9 +11245,7 @@ export type UserCredential = ( {
   connection?: ( string | null )
   details: {
     hash?: string
-    templates: {
-      [k: string]: any
-    }
+    templates: Record<string, any>
   }
   /**
  * Creation date in the ISO 8601 format according to universal time.
@@ -11440,13 +11267,7 @@ export type UserCredential = ( {
   connection?: ( string | null )
   details: {
     credentialID: string
-    credentialPublicKey: {
-      /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(0|[1-9][0-9]*)$".
- */
-      [k: string]: number
-    }
+    credentialPublicKey: Record<string, number>
     counter: number
     transports?: ( 'ble' | 'cable' | 'hybrid' | 'internal' | 'nfc' | 'smart-card' | 'usb' )[]
   }
@@ -11484,13 +11305,11 @@ export interface UserIdentity {
  */
   user_id: string
   type: ( 'sms' | 'otp' | 'push' | 'email' | 'social' | 'enterprise' )
-  provider: ( 'twilio' | 'vonage' | 'netgsm' | '3gbilisim' | 'dataport' | 'messagebird' | 'custom' | 'hotp' | 'totp' | 'native' | 'expo' | 'one-signal' | 'aws_ses' | 'postmark' | 'sendgrid' | 'sparkpost' | 'smtp' | 'custom-oauth2' | 'amazon' | 'apple' | 'e-devlet' | 'dribbble' | 'dropbox' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' | 'twitter' | 'saml' | 'ldap' )
+  provider: ( 'twilio' | 'vonage' | 'netgsm' | '3gbilisim' | 'dataport' | 'messagebird' | 'custom' | 'hotp' | 'totp' | 'native' | 'expo' | 'one-signal' | 'aws_ses' | 'postmark' | 'sendgrid' | 'sparkpost' | 'smtp' | 'custom-oauth2' | 'amazon' | 'apple' | 'dribbble' | 'dropbox' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' | 'twitter' | 'saml' | 'e-devlet' | 'ldap' )
   /**
  * Raw user object from the connection
  */
-  details: {
-    [k: string]: any
-  }
+  details: Record<string, any>
 }
 /**
 * @public
@@ -11585,9 +11404,7 @@ export interface User {
     /**
  * Raw user object from the connection
  */
-    details: {
-      [k: string]: any
-    }
+    details: Record<string, any>
     /**
  * Creation date in the ISO 8601 format according to universal time.
  */
@@ -11648,9 +11465,7 @@ export interface User {
       ua: string
       device_identifier: string
       credentials: {
-        private_key: {
-          [k: string]: any
-        }
+        private_key: Record<string, any>
         /**
  * Public JWK. You can look at JWK specification from [here](https://www.rfc-editor.org/rfc/rfc7517)
  */
@@ -11720,9 +11535,7 @@ export interface User {
     connection?: ( string | null )
     details: {
       hash?: string
-      templates: {
-        [k: string]: any
-      }
+      templates: Record<string, any>
     }
     /**
  * Creation date in the ISO 8601 format according to universal time.
@@ -11744,13 +11557,7 @@ export interface User {
     connection?: ( string | null )
     details: {
       credentialID: string
-      credentialPublicKey: {
-        /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(0|[1-9][0-9]*)$".
- */
-        [k: string]: number
-      }
+      credentialPublicKey: Record<string, number>
       counter: number
       transports?: ( 'ble' | 'cable' | 'hybrid' | 'internal' | 'nfc' | 'smart-card' | 'usb' )[]
     }
@@ -11785,13 +11592,11 @@ export interface User {
  */
     user_id: string
     type: ( 'sms' | 'otp' | 'push' | 'email' | 'social' | 'enterprise' )
-    provider: ( 'twilio' | 'vonage' | 'netgsm' | '3gbilisim' | 'dataport' | 'messagebird' | 'custom' | 'hotp' | 'totp' | 'native' | 'expo' | 'one-signal' | 'aws_ses' | 'postmark' | 'sendgrid' | 'sparkpost' | 'smtp' | 'custom-oauth2' | 'amazon' | 'apple' | 'e-devlet' | 'dribbble' | 'dropbox' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' | 'twitter' | 'saml' | 'ldap' )
+    provider: ( 'twilio' | 'vonage' | 'netgsm' | '3gbilisim' | 'dataport' | 'messagebird' | 'custom' | 'hotp' | 'totp' | 'native' | 'expo' | 'one-signal' | 'aws_ses' | 'postmark' | 'sendgrid' | 'sparkpost' | 'smtp' | 'custom-oauth2' | 'amazon' | 'apple' | 'dribbble' | 'dropbox' | 'facebook' | 'github' | 'google' | 'linkedin' | 'microsoft' | 'slack' | 'spotify' | 'twitter' | 'saml' | 'e-devlet' | 'ldap' )
     /**
  * Raw user object from the connection
  */
-    details: {
-      [k: string]: any
-    }
+    details: Record<string, any>
   }[]
   id: string
   /**
@@ -11921,13 +11726,7 @@ export interface User {
   /**
  * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `"null"` as value to make metadata consistent across other users.
  */
-  metadata?: {
-    /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(.*)$".
- */
-    [k: string]: ( string | boolean | number | null )
-  }
+  metadata?: Record<string, string | boolean | number | null>
 }
 /**
 * @public
@@ -12069,13 +11868,7 @@ export interface WebAuthNCredential {
   connection?: ( string | null )
   details: {
     credentialID: string
-    credentialPublicKey: {
-      /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^(0|[1-9][0-9]*)$".
- */
-      [k: string]: number
-    }
+    credentialPublicKey: Record<string, number>
     counter: number
     transports?: ( 'ble' | 'cable' | 'hybrid' | 'internal' | 'nfc' | 'smart-card' | 'usb' )[]
   }
