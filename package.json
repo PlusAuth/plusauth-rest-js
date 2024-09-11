@@ -35,12 +35,12 @@
     "cross-fetch": "^4.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.4.1",
-    "@commitlint/config-conventional": "^19.4.1",
-    "@microsoft/api-extractor": "^7.47.7",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@microsoft/api-extractor": "^7.47.8",
     "@release-it/conventional-changelog": "^8.0.1",
     "@stylistic/eslint-plugin": "^2.8.0",
-    "@swc/core": "^1.7.24",
+    "@swc/core": "^1.7.25",
     "eslint": "^9.10.0",
     "eslint-plugin-import": "^2.30.0",
     "release-it": "^17.6.0",
