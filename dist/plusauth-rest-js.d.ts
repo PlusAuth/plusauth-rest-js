@@ -7719,13 +7719,13 @@ declare class TenantAdministratorService extends HttpService {
      * @param adminId Administrator identifier
      * @param permissionIdList List of permission IDs to be assigned
      */
-    assignPermissionsToAdmin(tenantId: string, adminId: string, permissionIdList: string[]): Promise<void>;
+    assignPermissions(tenantId: string, adminId: string, permissionIdList: string[]): Promise<void>;
     /**
      * @param tenantId Tenant identifier
      * @param adminId Administrator identifier
      * @param permissionIdList List of permission IDs to be unassigned
      */
-    unassignPermissionsFromAdmin(tenantId: string, adminId: string, permissionIdList: string[]): Promise<void>;
+    unassignPermissions(tenantId: string, adminId: string, permissionIdList: string[]): Promise<void>;
 }
 
 /**

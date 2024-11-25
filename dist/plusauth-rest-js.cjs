@@ -771,7 +771,7 @@ var TenantAdministratorService = class extends HttpService {
    * @param adminId Administrator identifier
    * @param permissionIdList List of permission IDs to be assigned
    */
-  async assignPermissionsToAdmin(tenantId, adminId, permissionIdList) {
+  async assignPermissions(tenantId, adminId, permissionIdList) {
     return await this.http.post(`/tenants/${tenantId}/administrators/${adminId}/permissions`, permissionIdList);
   }
   /**
@@ -779,7 +779,7 @@ var TenantAdministratorService = class extends HttpService {
    * @param adminId Administrator identifier
    * @param permissionIdList List of permission IDs to be unassigned
    */
-  async unassignPermissionsFromAdmin(tenantId, adminId, permissionIdList) {
+  async unassignPermissions(tenantId, adminId, permissionIdList) {
     return await this.http.delete(`/tenants/${tenantId}/administrators/${adminId}/permissions`, permissionIdList);
   }
 };

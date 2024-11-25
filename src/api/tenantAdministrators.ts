@@ -33,7 +33,7 @@ export class TenantAdministratorService extends HttpService {
    * @param adminId Administrator identifier
    * @param permissionIdList List of permission IDs to be assigned
    */
-  async assignPermissionsToAdmin(
+  async assignPermissions(
     tenantId: string,
     adminId: string,
     permissionIdList: string[],
@@ -49,7 +49,7 @@ export class TenantAdministratorService extends HttpService {
    * @param adminId Administrator identifier
    * @param permissionIdList List of permission IDs to be unassigned
    */
-  async unassignPermissionsFromAdmin(
+  async unassignPermissions(
     tenantId: string,
     adminId: string,
     permissionIdList: string[],
