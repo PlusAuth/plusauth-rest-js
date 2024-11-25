@@ -3135,7 +3135,7 @@ declare class CustomDomainService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    getCustomDomains(queryParams?: {
+    getAll(queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;
@@ -3145,19 +3145,19 @@ declare class CustomDomainService extends HttpService {
     /**
      * @param data Tenant Custom Domain object
      */
-    registerCustomDomain(data: CreateTenantCustomDomain): Promise<TenantCustomDomain>;
+    register(data: CreateTenantCustomDomain): Promise<TenantCustomDomain>;
     /**
      * @param domain Custom Domain specifier
      */
-    getCustomDomain(domain: string): Promise<TenantCustomDomain>;
+    get(domain: string): Promise<TenantCustomDomain>;
     /**
      * @param domain Custom Domain specifier
      */
-    removeCustomDomain(domain: string): Promise<void>;
+    remove(domain: string): Promise<void>;
     /**
      * @param domain Custom Domain specifier
      */
-    verifyCustomDomainOwnership(domain: string): Promise<Record<string, any>>;
+    verifyOwnership(domain: string): Promise<Record<string, any>>;
 }
 
 /**
@@ -6294,7 +6294,7 @@ declare class RoleGroupService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    getRoleGroups(queryParams?: {
+    getAll(queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;
@@ -6304,34 +6304,34 @@ declare class RoleGroupService extends HttpService {
     /**
      * @param data Role Group object
      */
-    createRoleGroup(data: CreateRoleGroup): Promise<RoleGroup>;
+    create(data: CreateRoleGroup): Promise<RoleGroup>;
     /**
      * @param roleGroupId Role Group identifier
      */
-    getRoleGroup(roleGroupId: string): Promise<RoleGroup>;
+    get(roleGroupId: string): Promise<RoleGroup>;
     /**
      * @param roleGroupId Role Group identifier
      * @param data Object containing to be updated values
      */
-    updateRoleGroup(roleGroupId: string, data: UpdateRoleGroup): Promise<RoleGroup>;
+    update(roleGroupId: string, data: UpdateRoleGroup): Promise<RoleGroup>;
     /**
      * @param roleGroupId Role Group identifier
      */
-    removeRoleGroup(roleGroupId: string): Promise<void>;
+    remove(roleGroupId: string): Promise<void>;
     /**
      * @param roleGroupId Role Group identifier
      */
-    getRoleGroupRoles(roleGroupId: string): Promise<Record<string, any>>;
+    getRoles(roleGroupId: string): Promise<Record<string, any>>;
     /**
      * @param roleGroupId Role Group identifier
      * @param roleIdList List of role ID's to be assigned to the role group
      */
-    assignRolesToRoleGroup(roleGroupId: string, roleIdList: string[]): Promise<void>;
+    assignRoles(roleGroupId: string, roleIdList: string[]): Promise<void>;
     /**
      * @param roleGroupId Role Group identifier
      * @param roleIdList List of role ID's to be unassigned from the role group
      */
-    unassignRolesFromRoleGroup(roleGroupId: string, roleIdList: string[]): Promise<void>;
+    unassignRoles(roleGroupId: string, roleIdList: string[]): Promise<void>;
     /**
      * @param roleGroupId Role Group identifier
      * @param queryParams Query parameters
@@ -6341,7 +6341,7 @@ declare class RoleGroupService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    getRoleGroupUsers(roleGroupId: string, queryParams?: {
+    getUsers(roleGroupId: string, queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;
@@ -7701,31 +7701,31 @@ declare class TenantAdministratorService extends HttpService {
      * @param tenantId Tenant identifier
      * @param invitationDetails Invitation details
      */
-    inviteTenantAdministrator(tenantId: string, invitationDetails: {
+    invite(tenantId: string, invitationDetails: {
         email: string;
         permissions?: string[];
     }): Promise<void>;
     /**
      * @param tenantId Tenant identifier
      */
-    getTenantAdministrators(tenantId: string): Promise<TenantAdministrator[]>;
+    getAll(tenantId: string): Promise<TenantAdministrator[]>;
     /**
      * @param tenantId Tenant identifier
      * @param adminId Administrator identifier
      */
-    removeTenantAdministrator(tenantId: string, adminId: string): Promise<void>;
+    remove(tenantId: string, adminId: string): Promise<void>;
     /**
      * @param tenantId Tenant identifier
      * @param adminId Administrator identifier
      * @param permissionIdList List of permission IDs to be assigned
      */
-    assignPermissionsToTenantAdmin(tenantId: string, adminId: string, permissionIdList: string[]): Promise<void>;
+    assignPermissionsToAdmin(tenantId: string, adminId: string, permissionIdList: string[]): Promise<void>;
     /**
      * @param tenantId Tenant identifier
      * @param adminId Administrator identifier
      * @param permissionIdList List of permission IDs to be unassigned
      */
-    unassignPermissionsFromTenantAdmin(tenantId: string, adminId: string, permissionIdList: string[]): Promise<void>;
+    unassignPermissionsFromAdmin(tenantId: string, adminId: string, permissionIdList: string[]): Promise<void>;
 }
 
 /**

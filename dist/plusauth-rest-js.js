@@ -221,31 +221,31 @@ var CustomDomainService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async getCustomDomains(queryParams) {
+  async getAll(queryParams) {
     return await this.http.get(`/custom-domain/${encodedQueryString(queryParams)}`);
   }
   /**
    * @param data Tenant Custom Domain object
    */
-  async registerCustomDomain(data) {
+  async register(data) {
     return await this.http.post(`/custom-domain/`, data);
   }
   /**
    * @param domain Custom Domain specifier
    */
-  async getCustomDomain(domain) {
+  async get(domain) {
     return await this.http.get(`/custom-domain/$${domain}`);
   }
   /**
    * @param domain Custom Domain specifier
    */
-  async removeCustomDomain(domain) {
+  async remove(domain) {
     return await this.http.delete(`/custom-domain/$${domain}`);
   }
   /**
    * @param domain Custom Domain specifier
    */
-  async verifyCustomDomainOwnership(domain) {
+  async verifyOwnership(domain) {
     return await this.http.get(`/custom-domain/$${domain}/verify`);
   }
 };
@@ -618,52 +618,52 @@ var RoleGroupService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async getRoleGroups(queryParams) {
+  async getAll(queryParams) {
     return await this.http.get(`/role-groups/${encodedQueryString(queryParams)}`);
   }
   /**
    * @param data Role Group object
    */
-  async createRoleGroup(data) {
+  async create(data) {
     return await this.http.post(`/role-groups/`, data);
   }
   /**
    * @param roleGroupId Role Group identifier
    */
-  async getRoleGroup(roleGroupId) {
+  async get(roleGroupId) {
     return await this.http.get(`/role-groups/${roleGroupId}`);
   }
   /**
    * @param roleGroupId Role Group identifier
    * @param data Object containing to be updated values
    */
-  async updateRoleGroup(roleGroupId, data) {
+  async update(roleGroupId, data) {
     return await this.http.patch(`/role-groups/${roleGroupId}`, data);
   }
   /**
    * @param roleGroupId Role Group identifier
    */
-  async removeRoleGroup(roleGroupId) {
+  async remove(roleGroupId) {
     return await this.http.delete(`/role-groups/${roleGroupId}`);
   }
   /**
    * @param roleGroupId Role Group identifier
    */
-  async getRoleGroupRoles(roleGroupId) {
+  async getRoles(roleGroupId) {
     return await this.http.get(`/role-groups/${roleGroupId}/roles`);
   }
   /**
    * @param roleGroupId Role Group identifier
    * @param roleIdList List of role ID's to be assigned to the role group
    */
-  async assignRolesToRoleGroup(roleGroupId, roleIdList) {
+  async assignRoles(roleGroupId, roleIdList) {
     return await this.http.post(`/role-groups/${roleGroupId}/roles`, roleIdList);
   }
   /**
    * @param roleGroupId Role Group identifier
    * @param roleIdList List of role ID's to be unassigned from the role group
    */
-  async unassignRolesFromRoleGroup(roleGroupId, roleIdList) {
+  async unassignRoles(roleGroupId, roleIdList) {
     return await this.http.delete(`/role-groups/${roleGroupId}/roles`, roleIdList);
   }
   /**
@@ -675,7 +675,7 @@ var RoleGroupService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async getRoleGroupUsers(roleGroupId, queryParams) {
+  async getUsers(roleGroupId, queryParams) {
     return await this.http.get(`/role-groups/${roleGroupId}/users${encodedQueryString(queryParams)}`);
   }
 };
@@ -712,20 +712,20 @@ var TenantAdministratorService = class extends HttpService {
    * @param tenantId Tenant identifier
    * @param invitationDetails Invitation details
    */
-  async inviteTenantAdministrator(tenantId, invitationDetails) {
+  async invite(tenantId, invitationDetails) {
     return await this.http.post(`/tenants/${tenantId}/invite`, invitationDetails);
   }
   /**
    * @param tenantId Tenant identifier
    */
-  async getTenantAdministrators(tenantId) {
+  async getAll(tenantId) {
     return await this.http.get(`/tenants/${tenantId}/administrators`);
   }
   /**
    * @param tenantId Tenant identifier
    * @param adminId Administrator identifier
    */
-  async removeTenantAdministrator(tenantId, adminId) {
+  async remove(tenantId, adminId) {
     return await this.http.delete(`/tenants/${tenantId}/administrators/${adminId}`);
   }
   /**
@@ -733,7 +733,7 @@ var TenantAdministratorService = class extends HttpService {
    * @param adminId Administrator identifier
    * @param permissionIdList List of permission IDs to be assigned
    */
-  async assignPermissionsToTenantAdmin(tenantId, adminId, permissionIdList) {
+  async assignPermissionsToAdmin(tenantId, adminId, permissionIdList) {
     return await this.http.post(`/tenants/${tenantId}/administrators/${adminId}/permissions`, permissionIdList);
   }
   /**
@@ -741,7 +741,7 @@ var TenantAdministratorService = class extends HttpService {
    * @param adminId Administrator identifier
    * @param permissionIdList List of permission IDs to be unassigned
    */
-  async unassignPermissionsFromTenantAdmin(tenantId, adminId, permissionIdList) {
+  async unassignPermissionsFromAdmin(tenantId, adminId, permissionIdList) {
     return await this.http.delete(`/tenants/${tenantId}/administrators/${adminId}/permissions`, permissionIdList);
   }
 };
