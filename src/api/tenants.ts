@@ -1,52 +1,52 @@
-import { HttpService } from '../http';
-import { Tenant, CreateTenant, TenantAdministrator, TenantSettings, UpdateTenantSettings, TenantSubscription } from '../models';
+import { HttpService } from "../http"
+import type { Tenant } from "../models"
+import type { CreateTenant } from "../models"
+import type { TenantStats } from "../models"
+import type { TenantSettings } from "../models"
+import type { UpdateTenantSettings } from "../models"
+import type { TenantSubscription } from "../models"
 
 export class TenantService extends HttpService {
-  async create( data: CreateTenant ): Promise<Tenant> {
-    return this.http.post( '/tenants', data );
+  /**
+   * @param data Tenant object
+   */
+  async create(data: CreateTenant): Promise<Tenant> {
+    return await this.http.post(`/tenants/`, data)
   }
 
-  async remove( tenant_id: string ): Promise<void> {
-    return this.http.delete( `/tenants/${ tenant_id }` );
+  /**
+   * @param tenantId Tenant identifier
+   */
+  async remove(tenantId: string): Promise<void> {
+    return await this.http.delete(`/tenants/${tenantId}/`)
   }
 
-  async inviteAdmin( tenant_id: string, data: Record<string, any> ): Promise<void> {
-    return this.http.post( `/tenants/${ tenant_id }/invite`, data );
+  /**
+   * @param tenantId Tenant identifier
+   */
+  async getStats(tenantId: string): Promise<TenantStats> {
+    return await this.http.get(`/tenants/${tenantId}/stats`)
   }
 
-  async getAdministrators( tenant_id: string ): Promise<TenantAdministrator[]> {
-    return this.http.get( `/tenants/${ tenant_id }/administrators` );
+  /**
+   * @param tenantId Tenant identifier
+   */
+  async getSettings(tenantId: string): Promise<TenantSettings> {
+    return await this.http.get(`/tenants/${tenantId}/settings`)
   }
 
-  async removeAdministrators( tenant_id: string, email: string ): Promise<void> {
-    return this.http.delete( `/tenants/${ tenant_id }/administrators/${ email }` );
+  /**
+   * @param tenantId Tenant identifier
+   * @param data Object containing to be updated values
+   */
+  async updateSettings(tenantId: string, data: UpdateTenantSettings): Promise<TenantSettings> {
+    return await this.http.patch(`/tenants/${tenantId}/settings`, data)
   }
 
-  async assignPermissionsToAdmin( tenant_id: string, admin_id: string, data: string[] ): Promise<void> {
-    return this.http.post( `/tenants/${ tenant_id }/administrators/${ admin_id }/permissions`, data );
-  }
-
-  async unassignPermissionsFromAdmin( tenant_id: string, admin_id: string, data: string[] ): Promise<void> {
-    return this.http.delete( `/tenants/${ tenant_id }/administrators/${ admin_id }/permissions`, data );
-  }
-
-  async getStats( tenant_id: string ): Promise<TenantAdministrator[]> {
-    return this.http.get( `/tenants/${ tenant_id }/stats` );
-  }
-
-  async getSettings( tenant_id: string ): Promise<TenantSettings> {
-    return this.http.get( `/tenants/${ tenant_id }/settings` );
-  }
-
-  async updateSettings( tenant_id: string, data: UpdateTenantSettings ): Promise<Tenant> {
-    return this.http.patch( `/tenants/${ tenant_id }/settings`, data );
-  }
-
-  async getSubscription( tenant_id: string ): Promise<TenantSubscription> {
-    return this.http.get( `/tenants/${ tenant_id }/subscription` );
-  }
-
-  async updateSubscription( tenant_id: string, data: TenantSubscription ): Promise<Tenant> {
-    return this.http.patch( `/tenants/${ tenant_id }/subscription`, data );
+  /**
+   * @param tenantId Tenant identifier
+   */
+  async getSubscription(tenantId: string): Promise<TenantSubscription> {
+    return await this.http.get(`/tenants/${tenantId}/subscription`)
   }
 }

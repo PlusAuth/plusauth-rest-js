@@ -1,41 +1,114 @@
-import { HttpService } from '../http';
-import { PaginatedResult, Role, CreateRole, UpdateRole, Permission, User } from '../models';
-import { encodedQueryString } from '../utils';
+import { HttpService } from "../http"
+import type { Role } from "../models"
+import type { CreateRole } from "../models"
+import type { UpdateRole } from "../models"
+import { encodedQueryString } from "../utils"
 
 export class RoleService extends HttpService {
-  async getAll( queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Role>> {
-    return this.http.get( `/roles${ encodedQueryString( queryParams ) }` );
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getAll(queryParams?: {
+    limit?: number
+    offset?: number
+    q?: string
+    sort_by?: string | string[]
+    fields?: string | string[]
+  }): Promise<Record<string, any>> {
+    return await this.http.get(`/roles/${encodedQueryString(queryParams)}`)
   }
 
-  async create( data: CreateRole ): Promise<Role> {
-    return this.http.post( '/roles', data );
+  /**
+   * @param data Role object
+   */
+  async create(data: CreateRole): Promise<Role> {
+    return await this.http.post(`/roles/`, data)
   }
 
-  async get( role_id: string ): Promise<Role> {
-    return this.http.get( `/roles/${ role_id }` );
+  /**
+   * @param roleId Role identifier
+   */
+  async get(roleId: string): Promise<Role> {
+    return await this.http.get(`/roles/${roleId}`)
   }
 
-  async update( role_id: string, data: UpdateRole ): Promise<Role> {
-    return this.http.patch( `/roles/${ role_id }`, data );
+  /**
+   * @param roleId Role identifier
+   * @param data Object containing to be updated values
+   */
+  async update(roleId: string, data: UpdateRole): Promise<Role> {
+    return await this.http.patch(`/roles/${roleId}`, data)
   }
 
-  async remove( role_id: string ): Promise<void> {
-    return this.http.delete( `/roles/${ role_id }` );
+  /**
+   * @param roleId Role identifier
+   */
+  async remove(roleId: string): Promise<void> {
+    return await this.http.delete(`/roles/${roleId}`)
   }
 
-  async getPermissions( role_id: string, queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Permission>> {
-    return this.http.get( `/roles/${ role_id }/permissions${ encodedQueryString( queryParams ) }` );
+  /**
+   * @param roleId Role identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async listPermissions(
+    roleId: string,
+    queryParams?: {
+      limit?: number
+      offset?: number
+      q?: string
+      sort_by?: string | string[]
+      fields?: string | string[]
+    },
+  ): Promise<Record<string, any>> {
+    return await this.http.get(`/roles/${roleId}/permissions${encodedQueryString(queryParams)}`)
   }
 
-  async addPermissions( role_id: string, data: string[] ): Promise<Permission> {
-    return this.http.post( `/roles/${ role_id }/permissions`, data );
+  /**
+   * @param roleId Role identifier
+   * @param permissionIdList List of permission ID's to be assigned to the role
+   */
+  async assignPermissions(roleId: string, permissionIdList: string[]): Promise<void> {
+    return await this.http.post(`/roles/${roleId}/permissions`, permissionIdList)
   }
 
-  async removePermissions( role_id: string, data: string[] ): Promise<void> {
-    return this.http.delete( `/roles/${ role_id }/permissions`, data );
+  /**
+   * @param roleId Role identifier
+   * @param permissionIdList List of permission ID's to be unassigned from the role
+   */
+  async unassignPermissions(roleId: string, permissionIdList: string[]): Promise<void> {
+    return await this.http.delete(`/roles/${roleId}/permissions`, permissionIdList)
   }
 
-  async getUsers( role_id: string, queryParams?: {offset?: number; limit?: number; sort_by?: string;} ): Promise<PaginatedResult<User>> {
-    return this.http.get( `/roles/${ role_id }/users${ encodedQueryString( queryParams ) }` );
+  /**
+   * @param roleId Role identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getUsers(
+    roleId: string,
+    queryParams?: {
+      limit?: number
+      offset?: number
+      q?: string
+      sort_by?: string | string[]
+      fields?: string | string[]
+    },
+  ): Promise<Record<string, any>> {
+    return await this.http.get(`/roles/${roleId}/users${encodedQueryString(queryParams)}`)
   }
 }

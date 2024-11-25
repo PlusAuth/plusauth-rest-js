@@ -1,0 +1,104 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
+  "vcs": {
+    "enabled": true,
+    "defaultBranch": "main",
+    "useIgnoreFile": true,
+    "clientKind": "git"
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "ignore": ["node_modules", "**/*/node_modules", "dist/", "types/"]
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "javascript": {
+    "formatter": {
+      "arrowParentheses": "always",
+      "bracketSameLine": false,
+      "bracketSpacing": true,
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "semicolons": "asNeeded",
+      "trailingCommas": "all"
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "attributePosition": "auto",
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "lineEnding": "lf"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "a11y": {
+        "useKeyWithClickEvents": "off"
+      },
+      "recommended": true,
+      "performance": {
+        "noDelete": "off"
+      },
+      "correctness": {
+        "noUnusedImports": {
+          "level": "error"
+        },
+        "noSwitchDeclarations": {
+          "level": "error",
+          "fix": "safe"
+        }
+      },
+      "complexity": {
+        "noBannedTypes": "off",
+        "useOptionalChain": {
+          "level": "error",
+          "fix": "safe"
+        },
+        "useLiteralKeys": {
+          "level": "info"
+        }
+      },
+      "style": {
+        "noArguments": "off",
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "off",
+        "noUnusedTemplateLiteral": "off",
+        "noUselessElse": {
+          "level": "error",
+          "fix": "safe"
+        },
+        "useImportType": "error",
+        "useSingleVarDeclarator": {
+          "level": "error",
+          "fix": "safe"
+        },
+        "useNodejsImportProtocol": {
+          "level": "error",
+          "fix": "safe"
+        },
+        "useTemplate": {
+          "level": "error",
+          "fix": "safe"
+        }
+      },
+      "suspicious": {
+        "noAssignInExpressions": "off",
+        "noExplicitAny": "off",
+        "noConfusingVoidType": "off",
+        "noGlobalIsFinite": {
+          "level": "error",
+          "fix": "safe"
+        },
+        "noGlobalIsNan": {
+          "level": "error",
+          "fix": "safe"
+        },
+        "noImplicitAnyLet": "off"
+      }
+    }
+  }
+}

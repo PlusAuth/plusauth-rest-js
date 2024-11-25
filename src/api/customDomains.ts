@@ -1,25 +1,52 @@
-import { HttpService } from '../http';
-import { PaginatedResult, TenantCustomDomain, CreateTenantCustomDomain } from '../models';
-import { encodedQueryString } from '../utils';
+import { HttpService } from "../http"
+import type { TenantCustomDomain } from "../models"
+import type { CreateTenantCustomDomain } from "../models"
+import { encodedQueryString } from "../utils"
 
 export class CustomDomainService extends HttpService {
-  async getAll( queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<TenantCustomDomain>> {
-    return this.http.get( `/custom-domain${ encodedQueryString( queryParams ) }` );
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getAll(queryParams?: {
+    limit?: number
+    offset?: number
+    q?: string
+    sort_by?: string | string[]
+    fields?: string | string[]
+  }): Promise<Record<string, any>> {
+    return await this.http.get(`/custom-domain/${encodedQueryString(queryParams)}`)
   }
 
-  async create( data: CreateTenantCustomDomain ): Promise<TenantCustomDomain> {
-    return this.http.post( '/custom-domain', data );
+  /**
+   * @param data Tenant Custom Domain object
+   */
+  async register(data: CreateTenantCustomDomain): Promise<TenantCustomDomain> {
+    return await this.http.post(`/custom-domain/`, data)
   }
 
-  async get( domain: string ): Promise<TenantCustomDomain> {
-    return this.http.get( `/custom-domain/${ domain }` );
+  /**
+   * @param domain Custom Domain specifier
+   */
+  async get(domain: string): Promise<TenantCustomDomain> {
+    return await this.http.get(`/custom-domain/$${domain}`)
   }
 
-  async remove( domain: string ): Promise<void> {
-    return this.http.delete( `/custom-domain/${ domain }` );
+  /**
+   * @param domain Custom Domain specifier
+   */
+  async remove(domain: string): Promise<void> {
+    return await this.http.delete(`/custom-domain/$${domain}`)
   }
 
-  async verifyOwnership( domain: string ): Promise<Record<string, any>> {
-    return this.http.get( `/custom-domain/${ domain }/verify` );
+  /**
+   * @param domain Custom Domain specifier
+   */
+  async verifyOwnership(domain: string): Promise<Record<string, any>> {
+    return await this.http.get(`/custom-domain/$${domain}/verify`)
   }
 }

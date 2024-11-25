@@ -1,85 +1,217 @@
-import { HttpService } from '../http';
-import { PaginatedResult, User, CreateUser, UserRbacTree, Permission, RoleGroup, Role, Tenant, UserSession } from '../models';
-import { encodedQueryString } from '../utils';
+import { HttpService } from "../http"
+import type { User } from "../models"
+import type { CreateUser } from "../models"
+import type { UpdateUser } from "../models"
+import type { UserRbacTree } from "../models"
+import type { Tenant } from "../models"
+import type { UserSession } from "../models"
+import { encodedQueryString } from "../utils"
 
 export class UserService extends HttpService {
-  async getAll( queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<User>> {
-    return this.http.get( `/users${ encodedQueryString( queryParams ) }` );
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getAll(queryParams?: {
+    limit?: number
+    offset?: number
+    q?: string
+    sort_by?: string | string[]
+    fields?: string | string[]
+  }): Promise<Record<string, any>> {
+    return await this.http.get(`/users/${encodedQueryString(queryParams)}`)
   }
 
-  async create( data: CreateUser ): Promise<User> {
-    return this.http.post( '/users', data );
+  /**
+ * For user creation at least one of identifier is required. Available identifiers are `username`, `email` and `phone_number`.
+
+ * @param data User object
+ */
+  async create(data: CreateUser): Promise<User> {
+    return await this.http.post(`/users/`, data)
   }
 
-  async get( user_id: string ): Promise<User> {
-    return this.http.get( `/users/${ user_id }` );
+  /**
+   * @param userId User identifier
+   */
+  async get(userId: string): Promise<User> {
+    return await this.http.get(`/users/${userId}`)
   }
 
-  async update( user_id: string, data: CreateUser ): Promise<User> {
-    return this.http.patch( `/users/${ user_id }`, data );
+  /**
+   * @param userId User identifier
+   * @param data Object containing to be updated values
+   */
+  async update(userId: string, data: UpdateUser): Promise<User> {
+    return await this.http.patch(`/users/${userId}`, data)
   }
 
-  async remove( user_id: string ): Promise<void> {
-    return this.http.delete( `/users/${ user_id }` );
+  /**
+   * @param userId User identifier
+   */
+  async remove(userId: string): Promise<void> {
+    return await this.http.delete(`/users/${userId}`)
   }
 
-  async getRbac( user_id: string ): Promise<UserRbacTree> {
-    return this.http.get( `/users/${ user_id }/rbac` );
+  /**
+   * @param userId User identifier
+   */
+  async getRbac(userId: string): Promise<UserRbacTree> {
+    return await this.http.get(`/users/${userId}/rbac`)
   }
 
-  async getPermissions( user_id: string ): Promise<PaginatedResult<Permission>> {
-    return this.http.get( `/users/${ user_id }/permissions` );
+  /**
+   * @param userId User identifier
+   */
+  async getTenants(userId: string): Promise<Tenant[]> {
+    return await this.http.get(`/users/${userId}/tenants`)
   }
 
-  async assignPermissions( user_id: string, data: string[] ): Promise<void> {
-    return this.http.post( `/users/${ user_id }/permissions`, data );
+  /**
+   * @param userId User identifier
+   * @param credentialId Credential identifier
+   */
+  async removeCredential(userId: string, credentialId: string): Promise<void> {
+    return await this.http.delete(`/users/${userId}/credentials/${credentialId}`)
   }
 
-  async unassignPermissions( user_id: string, data: string[] ): Promise<void> {
-    return this.http.delete( `/users/${ user_id }/permissions`, data );
+  /**
+   * @param userId User identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async listPermissions(
+    userId: string,
+    queryParams?: {
+      limit?: number
+      offset?: number
+      q?: string
+      sort_by?: string | string[]
+      fields?: string | string[]
+    },
+  ): Promise<Record<string, any>> {
+    return await this.http.get(`/users/${userId}/permissions/${encodedQueryString(queryParams)}`)
   }
 
-  async getRoleGroups( user_id: string ): Promise<PaginatedResult<RoleGroup>> {
-    return this.http.get( `/users/${ user_id }/role_groups` );
+  /**
+   * @param userId User identifier
+   * @param permissionIdList List of permission IDs to be assigned
+   */
+  async assignPermissions(userId: string, permissionIdList: string[]): Promise<void> {
+    return await this.http.post(`/users/${userId}/permissions/`, permissionIdList)
   }
 
-  async assignRoleGroups( user_id: string, data: string[] ): Promise<RoleGroup> {
-    return this.http.post( `/users/${ user_id }/role_groups`, data );
+  /**
+   * @param userId User identifier
+   * @param permissionIdList List of permission IDs to be unassigned
+   */
+  async unassignPermissions(userId: string, permissionIdList: string[]): Promise<void> {
+    return await this.http.delete(`/users/${userId}/permissions/`, permissionIdList)
   }
 
-  async unassignRoleGroups( user_id: string, data: string[] ): Promise<void> {
-    return this.http.delete( `/users/${ user_id }/role_groups`, data );
+  /**
+   * @param userId User identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async listRoles(
+    userId: string,
+    queryParams?: {
+      limit?: number
+      offset?: number
+      q?: string
+      sort_by?: string | string[]
+      fields?: string | string[]
+    },
+  ): Promise<Record<string, any>> {
+    return await this.http.get(`/users/${userId}/roles/${encodedQueryString(queryParams)}`)
   }
 
-  async getRoles( user_id: string ): Promise<PaginatedResult<Role>> {
-    return this.http.get( `/users/${ user_id }/roles` );
+  /**
+   * @param userId User identifier
+   * @param roleIdList List of role IDs to be assigned
+   */
+  async assignRoles(userId: string, roleIdList: string[]): Promise<void> {
+    return await this.http.post(`/users/${userId}/roles/`, roleIdList)
   }
 
-  async assignRoles( user_id: string, data: string[] ): Promise<void> {
-    return this.http.post( `/users/${ user_id }/roles`, data );
+  /**
+   * @param userId User identifier
+   * @param roleIdList List of role IDs to be unassigned
+   */
+  async unassignRoles(userId: string, roleIdList: string[]): Promise<void> {
+    return await this.http.delete(`/users/${userId}/roles/`, roleIdList)
   }
 
-  async unassignRoles( user_id: string, data: string[] ): Promise<void> {
-    return this.http.delete( `/users/${ user_id }/roles`, data );
+  /**
+   * @param userId User identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async listRoleGroups(
+    userId: string,
+    queryParams?: {
+      limit?: number
+      offset?: number
+      q?: string
+      sort_by?: string | string[]
+      fields?: string | string[]
+    },
+  ): Promise<Record<string, any>> {
+    return await this.http.get(`/users/${userId}/role-groups/${encodedQueryString(queryParams)}`)
   }
 
-  async getTenants( user_id: string ): Promise<PaginatedResult<Tenant>> {
-    return this.http.get( `/users/${ user_id }/tenants` );
+  /**
+   * @param userId User identifier
+   * @param roleGroupIdList List of role group IDs to be assigned
+   */
+  async assignRoleGroups(userId: string, roleGroupIdList: string[]): Promise<void> {
+    return await this.http.post(`/users/${userId}/role-groups/`, roleGroupIdList)
   }
 
-  async getSessions( user_id: string ): Promise<UserSession[]> {
-    return this.http.get( `/users/${ user_id }/session` );
+  /**
+   * @param userId User identifier
+   * @param roleGroupIdList List of role groups IDs to be unassigned
+   */
+  async unassignRoleGroups(userId: string, roleGroupIdList: string[]): Promise<void> {
+    return await this.http.delete(`/users/${userId}/role-groups/`, roleGroupIdList)
   }
 
-  async endAllSessions( user_id: string ): Promise<void> {
-    return this.http.delete( `/users/${ user_id }/session` );
+  /**
+   * @param userId User identifier
+   */
+  async getSessions(userId: string): Promise<UserSession[]> {
+    return await this.http.get(`/users/${userId}/session/`)
   }
 
-  async endSession( user_id: string, sid: string ): Promise<void> {
-    return this.http.delete( `/users/${ user_id }/session/${ sid }` );
+  /**
+   * @param userId User identifier
+   */
+  async endSessions(userId: string): Promise<void> {
+    return await this.http.delete(`/users/${userId}/session/`)
   }
 
-  async removeCredential( user_id: string, credential_id: string ): Promise<void> {
-    return this.http.delete( `/users/${ user_id }/credentials/${ credential_id }` );
+  /**
+   * @param userId User identifier
+   * @param sessionId Session identifier
+   */
+  async endSession(userId: string, sessionId: string): Promise<void> {
+    return await this.http.delete(`/users/${userId}/session/${sessionId}`)
   }
 }

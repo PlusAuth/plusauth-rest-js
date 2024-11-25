@@ -1,61 +1,181 @@
-import { HttpService } from '../http';
-import { PaginatedResult, Resource, CreateResource, UpdateResource, Permission, CreatePermission, ResourceAuthorizedClient, StringArray } from '../models';
-import { encodedQueryString } from '../utils';
+import { HttpService } from "../http"
+import type { Permission } from "../models"
+import type { CreatePermission } from "../models"
+import type { Resource } from "../models"
+import type { CreateResource } from "../models"
+import type { UpdateResource } from "../models"
+import { encodedQueryString } from "../utils"
 
 export class ResourceService extends HttpService {
-  async getAll( queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Resource>> {
-    return this.http.get( `/resources${ encodedQueryString( queryParams ) }` );
+  /**
+   * @param resourceId Resource identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async listPermissions(
+    resourceId: string,
+    queryParams?: {
+      limit?: number
+      offset?: number
+      q?: string
+      sort_by?: string | string[]
+      fields?: string | string[]
+    },
+  ): Promise<Record<string, any>> {
+    return await this.http.get(
+      `/resources/${resourceId}/permissions/${encodedQueryString(queryParams)}`,
+    )
   }
 
-  async create( data: CreateResource ): Promise<Resource> {
-    return this.http.post( '/resources', data );
+  /**
+   * @param resourceId Resource identifier
+   * @param data Permission object
+   */
+  async createPermission(resourceId: string, data: CreatePermission): Promise<Permission> {
+    return await this.http.post(`/resources/${resourceId}/permissions/`, data)
   }
 
-  async get( resource_id: string ): Promise<Resource> {
-    return this.http.get( `/resources/${ resource_id }` );
+  /**
+   * @param resourceId Resource identifier
+   * @param permissionId Permission identifier
+   */
+  async removePermission(resourceId: string, permissionId: string): Promise<void> {
+    return await this.http.delete(`/resources/${resourceId}/permissions/${permissionId}`)
   }
 
-  async update( resource_id: string, data: UpdateResource ): Promise<Resource> {
-    return this.http.patch( `/resources/${ resource_id }`, data );
+  /**
+   * @param resourceId Resource identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getAuthorizedClients(
+    resourceId: string,
+    queryParams?: {
+      limit?: number
+      offset?: number
+      q?: string
+      sort_by?: string | string[]
+      fields?: string | string[]
+    },
+  ): Promise<Record<string, any>> {
+    return await this.http.get(
+      `/resources/${resourceId}/authorized_clients/${encodedQueryString(queryParams)}`,
+    )
   }
 
-  async remove( resource_id: string ): Promise<void> {
-    return this.http.delete( `/resources/${ resource_id }` );
+  /**
+   * @param resourceId Resource identifier
+   * @param clientIdList List of client ID's to be authorized
+   */
+  async authorizeClients(resourceId: string, clientIdList: string[]): Promise<void> {
+    return await this.http.post(`/resources/${resourceId}/authorized_clients/`, clientIdList)
   }
 
-  async getPermissions( resource_id: string, queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Permission>> {
-    return this.http.get( `/resources/${ resource_id }/permissions${ encodedQueryString( queryParams ) }` );
+  /**
+   * @param resourceId Resource identifier
+   * @param clientIdList List of client ID's to be unauthorized
+   */
+  async unauthorizeClients(resourceId: string, clientIdList: string[]): Promise<void> {
+    return await this.http.delete(`/resources/${resourceId}/authorized_clients/`, clientIdList)
   }
 
-  async createPermission( resource_id: string, data: CreatePermission ): Promise<Permission> {
-    return this.http.post( `/resources/${ resource_id }/permissions`, data );
+  /**
+   * @param resourceId Resource identifier
+   * @param clientId Client identifier
+   */
+  async getAssignedPermissionsToClient(
+    resourceId: string,
+    clientId: string,
+  ): Promise<Record<string, any>> {
+    return await this.http.get(
+      `/resources/${resourceId}/authorized_clients/${clientId}/permissions/`,
+    )
   }
 
-  async deletePermission( resource_id: string, permission_id: string ): Promise<void> {
-    return this.http.delete( `/resources/${ resource_id }/permissions/${ permission_id }` );
+  /**
+   * @param resourceId Resource identifier
+   * @param clientId Client identifier
+   * @param permissionIdList List of permission ID's to be authorized
+   */
+  async authorizePermissionsToClient(
+    resourceId: string,
+    clientId: string,
+    permissionIdList: string[],
+  ): Promise<void> {
+    return await this.http.post(
+      `/resources/${resourceId}/authorized_clients/${clientId}/permissions/`,
+      permissionIdList,
+    )
   }
 
-  async getAuthorizedClients( resource_id: string, queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<ResourceAuthorizedClient>> {
-    return this.http.get( `/resources/${ resource_id }/authorized_clients${ encodedQueryString( queryParams ) }` );
+  /**
+   * @param resourceId Resource identifier
+   * @param clientId Client identifier
+   * @param permissionIdList List of permission ID's to be unauthorized
+   */
+  async unauthorizePermissionsFromClient(
+    resourceId: string,
+    clientId: string,
+    permissionIdList: string[],
+  ): Promise<void> {
+    return await this.http.delete(
+      `/resources/${resourceId}/authorized_clients/${clientId}/permissions/`,
+      permissionIdList,
+    )
   }
 
-  async authorizeClients( resource_id: string, data: StringArray ): Promise<void> {
-    return this.http.post( `/resources/${ resource_id }/authorized_clients`, data );
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getAll(queryParams?: {
+    limit?: number
+    offset?: number
+    q?: string
+    sort_by?: string | string[]
+    fields?: string | string[]
+  }): Promise<Record<string, any>> {
+    return await this.http.get(`/resources/${encodedQueryString(queryParams)}`)
   }
 
-  async unauthorizeClients( resource_id: string, data: StringArray ): Promise<void> {
-    return this.http.delete( `/resources/${ resource_id }/authorized_clients`, data );
+  /**
+   * @param data Resource Object with name and description properties.
+   */
+  async create(data: CreateResource): Promise<Resource> {
+    return await this.http.post(`/resources/`, data)
   }
 
-  async getAssignedPermissionsOfClient( resource_id: string, client_id: string, queryParams?: {offset?: number; limit?: number; sort_by?: string;} ): Promise<Permission[]> {
-    return this.http.get( `/resources/${ resource_id }/authorized_clients/${ client_id }/permissions${ encodedQueryString( queryParams ) }` );
+  /**
+   * @param resourceId Resource identifier
+   */
+  async get(resourceId: string): Promise<Resource> {
+    return await this.http.get(`/resources/${resourceId}`)
   }
 
-  async authorizePermissionForClient( resource_id: string, client_id: string, data: string[] ): Promise<void> {
-    return this.http.post( `/resources/${ resource_id }/authorized_clients/${ client_id }/permissions`, data );
+  /**
+   * @param resourceId Resource identifier
+   * @param data Resource Object with name and description properties.
+   */
+  async update(resourceId: string, data: UpdateResource): Promise<Resource> {
+    return await this.http.patch(`/resources/${resourceId}`, data)
   }
 
-  async unauthorizePermissionFromClient( resource_id: string, client_id: string, data: string[] ): Promise<void> {
-    return this.http.delete( `/resources/${ resource_id }/authorized_clients/${ client_id }/permissions`, data );
+  /**
+   * @param resourceId Resource identifier
+   */
+  async remove(resourceId: string): Promise<void> {
+    return await this.http.delete(`/resources/${resourceId}`)
   }
 }

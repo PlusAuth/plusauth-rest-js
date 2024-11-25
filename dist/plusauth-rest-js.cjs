@@ -46,7 +46,7 @@ var PlusAuthRestError = class extends Error {
     if (!(error instanceof Error)) {
       Object.assign(this, error);
     } else {
-      this._raw = error;
+      Object.defineProperty(this, "_raw", error);
     }
   }
 };
@@ -61,37 +61,29 @@ async function parseFetchResponse(response, options) {
   const contentType = response.headers.get("content-type");
   if (options.responseType === "stream" && response.ok) {
     return response.body?.getReader();
-  } else if (options.responseType === "json" || contentType && contentType.indexOf("application/json") > -1) {
-    return await response.json();
-  } else {
-    return await response.text();
   }
+  if (options.responseType === "json" || contentType && contentType.indexOf("application/json") > -1) {
+    return await response.json();
+  }
+  return await response.text();
 }
-function wrapInError(reject) {
-  return function(err) {
-    reject(new PlusAuthRestError(err));
-  };
-}
-function fetchAsPromise(url, options) {
-  return new Promise(function(resolve, reject) {
-    fetchPn(url, options).then((rawResponse) => {
-      const clone = rawResponse.clone();
-      if (rawResponse.ok) {
-        parseFetchResponse(clone, options).then(resolve).catch(wrapInError(reject));
-      } else if (rawResponse.status === 400) {
-        parseFetchResponse(clone, options).then((value) => {
-          if (value.error === "xhr_request" && value.location) {
-            window?.location?.replace(value.location);
-            return false;
-          } else {
-            reject(value);
-          }
-        }).catch(wrapInError(reject));
-      } else {
-        parseFetchResponse(clone, options).then(wrapInError(reject)).catch(wrapInError(reject));
-      }
-    }).catch(wrapInError(reject));
+async function fetchAsPromise(url, options) {
+  const rawResponse = await fetchPn(url, options).catch((err) => {
+    return Promise.reject(new PlusAuthRestError(err));
   });
+  const clone = rawResponse.clone();
+  if (rawResponse.ok) {
+    return await parseFetchResponse(clone, options);
+  }
+  if (rawResponse.status === 400) {
+    const parsedErr = await parseFetchResponse(clone, options);
+    if (parsedErr?.error === "xhr_request" && parsedErr.location) {
+      window?.location?.replace(parsedErr.location);
+      return false;
+    }
+    throw new PlusAuthRestError(parsedErr);
+  }
+  throw new PlusAuthRestError(await parseFetchResponse(clone, options));
 }
 var HttpService = class {
   constructor(apiURL, options = {}) {
@@ -100,7 +92,7 @@ var HttpService = class {
     }
     try {
       new URL(apiURL);
-    } catch (e) {
+    } catch {
       throw new Error("'apiUrl' must be a valid uri");
     }
     if (typeof options !== "object") {
@@ -113,8 +105,8 @@ var HttpService = class {
     const _baseUrl = finalUri + this.constructor.prefix;
     const httpClient = options.httpClient || fetchAsPromise;
     const http = {};
-    ["get", "post", "patch", "delete"].forEach((method) => {
-      http[method] = function(...args) {
+    for (const method of ["get", "post", "patch", "delete"]) {
+      http[method] = (...args) => {
         let token;
         if (options && typeof options.token === "function") {
           token = options.token.call(void 0);
@@ -125,7 +117,7 @@ var HttpService = class {
           method: method.toUpperCase(),
           mode: "cors",
           headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest",
             ...token ? { Authorization: `Bearer ${token}` } : {},
@@ -133,14 +125,16 @@ var HttpService = class {
           }
         };
         if (args.length > 1) {
-          method !== "get" ? fetchOptions.body = typeof args[1] === "object" ? JSON.stringify(args[1]) : args[1] : null;
+          if (method !== "get") {
+            fetchOptions.body = typeof args[1] === "object" ? JSON.stringify(args[1]) : args[1];
+          }
         }
         if (!!args[2] && typeof args[2] === "object") {
           fetchOptions = deepmerge(fetchOptions, args[2]);
         }
         return httpClient.call(null, _baseUrl + args[0], fetchOptions);
       };
-    });
+    }
     this._baseUrl = _baseUrl;
     this.http = http;
   }
@@ -163,368 +157,846 @@ function encodedQueryString(data, appendable = true) {
   }
   if (appendable) {
     return `?${ret.join("&")}`;
-  } else {
-    return ret.join("&");
   }
+  return ret.join("&");
 }
 
 // src/api/clients.ts
 var ClientService = class extends HttpService {
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
   async getAll(queryParams) {
-    return this.http.get(`/clients${encodedQueryString(queryParams)}`);
+    return await this.http.get(`/clients/${encodedQueryString(queryParams)}`);
   }
+  /**
+   * @param data Client object
+   */
   async create(data) {
-    return this.http.post("/clients", data);
+    return await this.http.post(`/clients/`, data);
   }
-  async get(client_id) {
-    return this.http.get(`/clients/${client_id}`);
+  /**
+   * @param clientId Client identifier
+   */
+  async get(clientId) {
+    return await this.http.get(`/clients/${clientId}`);
   }
-  async update(client_id, data) {
-    return this.http.patch(`/clients/${client_id}`, data);
+  /**
+   * @param clientId Client identifier
+   * @param data Object containing to be updated values
+   */
+  async update(clientId, data) {
+    return await this.http.patch(`/clients/${clientId}`, data);
   }
-  async remove(client_id) {
-    return this.http.delete(`/clients/${client_id}`);
+  /**
+   * @param clientId Client identifier
+   */
+  async remove(clientId) {
+    return await this.http.delete(`/clients/${clientId}`);
   }
 };
 
 // src/api/connections.ts
 var ConnectionService = class extends HttpService {
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
   async getAll(queryParams) {
-    return this.http.get(`/connections${encodedQueryString(queryParams)}`);
+    return await this.http.get(`/connections/${encodedQueryString(queryParams)}`);
   }
+  /**
+   * @param data Connection object
+   */
   async create(data) {
-    return this.http.post("/connections", data);
+    return await this.http.post(`/connections/`, data);
   }
+  /**
+   * @param name Connection name
+   */
   async get(name) {
-    return this.http.get(`/connections/${name}`);
+    return await this.http.get(`/connections/$${name}`);
   }
+  /**
+   * @param name Connection name
+   * @param data Object containing to be updated values
+   */
   async update(name, data) {
-    return this.http.patch(`/connections/${name}`, data);
+    return await this.http.patch(`/connections/$${name}`, data);
   }
+  /**
+   * @param name Connection name
+   */
   async remove(name) {
-    return this.http.delete(`/connections/${name}`);
+    return await this.http.delete(`/connections/$${name}`);
+  }
+  /**
+   * Only available for AD/LDAP connections
+  
+   * @param name Connection name
+   */
+  async sync(name) {
+    return await this.http.get(`/connections/$${name}/sync`);
   }
 };
 
 // src/api/customDomains.ts
 var CustomDomainService = class extends HttpService {
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
   async getAll(queryParams) {
-    return this.http.get(`/custom-domain${encodedQueryString(queryParams)}`);
+    return await this.http.get(`/custom-domain/${encodedQueryString(queryParams)}`);
   }
-  async create(data) {
-    return this.http.post("/custom-domain", data);
+  /**
+   * @param data Tenant Custom Domain object
+   */
+  async register(data) {
+    return await this.http.post(`/custom-domain/`, data);
   }
+  /**
+   * @param domain Custom Domain specifier
+   */
   async get(domain) {
-    return this.http.get(`/custom-domain/${domain}`);
+    return await this.http.get(`/custom-domain/$${domain}`);
   }
+  /**
+   * @param domain Custom Domain specifier
+   */
   async remove(domain) {
-    return this.http.delete(`/custom-domain/${domain}`);
+    return await this.http.delete(`/custom-domain/$${domain}`);
   }
+  /**
+   * @param domain Custom Domain specifier
+   */
   async verifyOwnership(domain) {
-    return this.http.get(`/custom-domain/${domain}/verify`);
+    return await this.http.get(`/custom-domain/$${domain}/verify`);
   }
 };
 
 // src/api/hooks.ts
 var HookService = class extends HttpService {
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
   async getAll(queryParams) {
-    return this.http.get(`/hooks${encodedQueryString(queryParams)}`);
+    return await this.http.get(`/hooks/${encodedQueryString(queryParams)}`);
   }
+  /**
+   * @param data Hook object
+   */
   async create(data) {
-    return this.http.post("/hooks", data);
+    return await this.http.post(`/hooks/`, data);
   }
-  async get(hook_id) {
-    return this.http.get(`/hooks/${hook_id}`);
+  /**
+   * @param hookId Hook identifier
+   */
+  async get(hookId) {
+    return await this.http.get(`/hooks/${hookId}`);
   }
-  async update(hook_id, data) {
-    return this.http.patch(`/hooks/${hook_id}`, data);
+  /**
+   * @param hookId Hook identifier
+   * @param data Object containing to be updated values
+   */
+  async update(hookId, data) {
+    return await this.http.patch(`/hooks/${hookId}`, data);
   }
-  async remove(hook_id) {
-    return this.http.delete(`/hooks/${hook_id}`);
+  /**
+   * @param hookId Hook identifier
+   */
+  async remove(hookId) {
+    return await this.http.delete(`/hooks/${hookId}`);
   }
 };
 
 // src/api/keys.ts
 var KeyService = class extends HttpService {
-  async get(key_type) {
-    return this.http.get(`/keys/${key_type}`);
+  /**
+   * @param type 
+   */
+  async get(type) {
+    return await this.http.get(`/keys/$${type}`);
   }
-  async rotate(key_type, data) {
-    return this.http.post(`/keys/${key_type}/rotate`, data);
+  /**
+   * @param type 
+   */
+  async rotate(type) {
+    return await this.http.post(`/keys/$${type}/rotate`);
   }
-  async revoke(key_type, kid) {
-    return this.http.get(`/keys/${key_type}/revoke/${kid}`);
+  /**
+   * @param type 
+   * @param kid 
+   */
+  async revoke(type, kid) {
+    return await this.http.get(`/keys/$${type}/revoke/$${kid}`);
   }
 };
 
 // src/api/logs.ts
 var LogService = class extends HttpService {
+  /**
+   * Query over every log generated by PlusAuth belongs to your tenant.
+  ### DateMath Reference[](#datemath-reference):
+  If you are used to ElasticSearch, Kibana or Grafana date math queries, than you can ignore this section as PlusAuth includes  same characteristics with them.
+  The expression starts with an anchor date, which can either be `now`, or a date string ending with `||`. This anchor date can optionally be followed by one or more maths expressions:
+  - `+1h`: Add one hour
+  - `-1d`: Subtract one day
+  - `/d`: Round down to the nearest day
+  The supported units are:
+  
+  | Time Unit | Duration |
+  | --- | --- |
+  | `y` | Years |
+  | `M` | Months |
+  | `w` | Weeks |
+  | `d` | Days |
+  | `h` | Hours |
+  | `H` | Hours |
+  | `m` | Minutes |
+  | `s` | Seconds |
+  
+  Assuming `now` is `2001-01-01 12:00:00`, some examples are:
+  
+  | Expression | Description | Resolves To |
+  | --- | --- | --- |
+  | `now+1h` | `now` in milliseconds plus one hour |  `2001-01-01 13:00:00` |
+  | `now-1h` | `now` in milliseconds minus one hour | `2001-01-01 11:00:00` |
+  | `now-1h/d` | `now` in milliseconds minus one hour, rounded down to UTC 00:00 | `2001-01-01 00:00:00` |
+  
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.from Filter logs occurred after this date. This can be a datetime string or date math expression.
+   * @param queryParams.to Filter logs occurred until this date. This can be a datetime string or date math expression.
+   * @param queryParams.type Type/s of logs to be retrieved. Comma separated. Comma separated.
+  Ex.: error,warning,info
+   * @param queryParams.operation Retrieve logs belongs to one or more operation. Comma separated.
+  Ex.: authorization.error,create.user
+   * @param queryParams.include_api Set `true` to include REST API logs
+   */
   async getAll(queryParams) {
-    return this.http.get(`/logs${encodedQueryString(queryParams)}`);
+    return await this.http.get(`/logs/${encodedQueryString(queryParams)}`);
   }
 };
 
 // src/api/mfa.ts
 var MfaService = class extends HttpService {
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
   async getAll(queryParams) {
-    return this.http.get(`/mfa${encodedQueryString(queryParams)}`);
+    return await this.http.get(`/mfa/${encodedQueryString(queryParams)}`);
   }
+  /**
+   * @param data Object containing to be updated values
+   */
   async create(data) {
-    return this.http.post("/mfa", data);
+    return await this.http.post(`/mfa/`, data);
   }
+  /**
+   * @param type Type of MFA
+   */
   async get(type) {
-    return this.http.get(`/mfa/${type}`);
+    return await this.http.get(`/mfa/$${type}`);
   }
+  /**
+   * @param type Type of MFA
+   * @param data Object containing to be updated values
+   */
   async update(type, data) {
-    return this.http.patch(`/mfa/${type}`, data);
+    return await this.http.patch(`/mfa/$${type}`, data);
   }
+  /**
+   * @param type Type of MFA
+   */
   async remove(type) {
-    return this.http.delete(`/mfa/${type}`);
-  }
-};
-
-// src/api/providers.ts
-var ProviderService = class extends HttpService {
-  async getEmailSettings() {
-    return this.http.get("/providers/email");
-  }
-  async updateEmailSettings(data) {
-    return this.http.patch("/providers/email", data);
+    return await this.http.delete(`/mfa/$${type}`);
   }
 };
 
 // src/api/resources.ts
 var ResourceService = class extends HttpService {
+  /**
+   * @param resourceId Resource identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async listPermissions(resourceId, queryParams) {
+    return await this.http.get(`/resources/${resourceId}/permissions/${encodedQueryString(queryParams)}`);
+  }
+  /**
+   * @param resourceId Resource identifier
+   * @param data Permission object
+   */
+  async createPermission(resourceId, data) {
+    return await this.http.post(`/resources/${resourceId}/permissions/`, data);
+  }
+  /**
+   * @param resourceId Resource identifier
+   * @param permissionId Permission identifier
+   */
+  async removePermission(resourceId, permissionId) {
+    return await this.http.delete(`/resources/${resourceId}/permissions/${permissionId}`);
+  }
+  /**
+   * @param resourceId Resource identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getAuthorizedClients(resourceId, queryParams) {
+    return await this.http.get(`/resources/${resourceId}/authorized_clients/${encodedQueryString(queryParams)}`);
+  }
+  /**
+   * @param resourceId Resource identifier
+   * @param clientIdList List of client ID's to be authorized
+   */
+  async authorizeClients(resourceId, clientIdList) {
+    return await this.http.post(`/resources/${resourceId}/authorized_clients/`, clientIdList);
+  }
+  /**
+   * @param resourceId Resource identifier
+   * @param clientIdList List of client ID's to be unauthorized
+   */
+  async unauthorizeClients(resourceId, clientIdList) {
+    return await this.http.delete(`/resources/${resourceId}/authorized_clients/`, clientIdList);
+  }
+  /**
+   * @param resourceId Resource identifier
+   * @param clientId Client identifier
+   */
+  async getAssignedPermissionsToClient(resourceId, clientId) {
+    return await this.http.get(`/resources/${resourceId}/authorized_clients/${clientId}/permissions/`);
+  }
+  /**
+   * @param resourceId Resource identifier
+   * @param clientId Client identifier
+   * @param permissionIdList List of permission ID's to be authorized
+   */
+  async authorizePermissionsToClient(resourceId, clientId, permissionIdList) {
+    return await this.http.post(`/resources/${resourceId}/authorized_clients/${clientId}/permissions/`, permissionIdList);
+  }
+  /**
+   * @param resourceId Resource identifier
+   * @param clientId Client identifier
+   * @param permissionIdList List of permission ID's to be unauthorized
+   */
+  async unauthorizePermissionsFromClient(resourceId, clientId, permissionIdList) {
+    return await this.http.delete(`/resources/${resourceId}/authorized_clients/${clientId}/permissions/`, permissionIdList);
+  }
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
   async getAll(queryParams) {
-    return this.http.get(`/resources${encodedQueryString(queryParams)}`);
+    return await this.http.get(`/resources/${encodedQueryString(queryParams)}`);
   }
+  /**
+   * @param data Resource Object with name and description properties.
+   */
   async create(data) {
-    return this.http.post("/resources", data);
+    return await this.http.post(`/resources/`, data);
   }
-  async get(resource_id) {
-    return this.http.get(`/resources/${resource_id}`);
+  /**
+   * @param resourceId Resource identifier
+   */
+  async get(resourceId) {
+    return await this.http.get(`/resources/${resourceId}`);
   }
-  async update(resource_id, data) {
-    return this.http.patch(`/resources/${resource_id}`, data);
+  /**
+   * @param resourceId Resource identifier
+   * @param data Resource Object with name and description properties.
+   */
+  async update(resourceId, data) {
+    return await this.http.patch(`/resources/${resourceId}`, data);
   }
-  async remove(resource_id) {
-    return this.http.delete(`/resources/${resource_id}`);
-  }
-  async getPermissions(resource_id, queryParams) {
-    return this.http.get(`/resources/${resource_id}/permissions${encodedQueryString(queryParams)}`);
-  }
-  async createPermission(resource_id, data) {
-    return this.http.post(`/resources/${resource_id}/permissions`, data);
-  }
-  async deletePermission(resource_id, permission_id) {
-    return this.http.delete(`/resources/${resource_id}/permissions/${permission_id}`);
-  }
-  async getAuthorizedClients(resource_id, queryParams) {
-    return this.http.get(`/resources/${resource_id}/authorized_clients${encodedQueryString(queryParams)}`);
-  }
-  async authorizeClients(resource_id, data) {
-    return this.http.post(`/resources/${resource_id}/authorized_clients`, data);
-  }
-  async unauthorizeClients(resource_id, data) {
-    return this.http.delete(`/resources/${resource_id}/authorized_clients`, data);
-  }
-  async getAssignedPermissionsOfClient(resource_id, client_id, queryParams) {
-    return this.http.get(`/resources/${resource_id}/authorized_clients/${client_id}/permissions${encodedQueryString(queryParams)}`);
-  }
-  async authorizePermissionForClient(resource_id, client_id, data) {
-    return this.http.post(`/resources/${resource_id}/authorized_clients/${client_id}/permissions`, data);
-  }
-  async unauthorizePermissionFromClient(resource_id, client_id, data) {
-    return this.http.delete(`/resources/${resource_id}/authorized_clients/${client_id}/permissions`, data);
+  /**
+   * @param resourceId Resource identifier
+   */
+  async remove(resourceId) {
+    return await this.http.delete(`/resources/${resourceId}`);
   }
 };
 
-// src/api/roleGroups.ts
-var RoleGroupService = class extends HttpService {
-  async getAll(queryParams) {
-    return this.http.get(`/role-groups${encodedQueryString(queryParams)}`);
+// src/api/providers.ts
+var ProviderService = class extends HttpService {
+  /**
+   */
+  async getEmailSettings() {
+    return await this.http.get(`/providers/email`);
   }
-  async create(data) {
-    return this.http.post("/role-groups", data);
-  }
-  async get(role_group_id) {
-    return this.http.get(`/role-groups/${role_group_id}`);
-  }
-  async update(role_group_id, data) {
-    return this.http.patch(`/role-groups/${role_group_id}`, data);
-  }
-  async remove(role_group_id) {
-    return this.http.delete(`/role-groups/${role_group_id}`);
-  }
-  async getRoles(role_group_id, queryParams) {
-    return this.http.get(`/role-groups/${role_group_id}/roles${encodedQueryString(queryParams)}`);
-  }
-  async addRoles(role_group_id, data) {
-    return this.http.post(`/role-groups/${role_group_id}/roles`, data);
-  }
-  async removeRoles(role_group_id, data) {
-    return this.http.delete(`/role-groups/${role_group_id}/roles`, data);
-  }
-  async getUsers(role_group_id, queryParams) {
-    return this.http.get(`/role-groups/${role_group_id}/users${encodedQueryString(queryParams)}`);
+  /**
+   * @param data Object containing to be updated values
+   */
+  async updateEmailSettings(data) {
+    return await this.http.patch(`/providers/email`, data);
   }
 };
 
 // src/api/roles.ts
 var RoleService = class extends HttpService {
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
   async getAll(queryParams) {
-    return this.http.get(`/roles${encodedQueryString(queryParams)}`);
+    return await this.http.get(`/roles/${encodedQueryString(queryParams)}`);
   }
+  /**
+   * @param data Role object
+   */
   async create(data) {
-    return this.http.post("/roles", data);
+    return await this.http.post(`/roles/`, data);
   }
-  async get(role_id) {
-    return this.http.get(`/roles/${role_id}`);
+  /**
+   * @param roleId Role identifier
+   */
+  async get(roleId) {
+    return await this.http.get(`/roles/${roleId}`);
   }
-  async update(role_id, data) {
-    return this.http.patch(`/roles/${role_id}`, data);
+  /**
+   * @param roleId Role identifier
+   * @param data Object containing to be updated values
+   */
+  async update(roleId, data) {
+    return await this.http.patch(`/roles/${roleId}`, data);
   }
-  async remove(role_id) {
-    return this.http.delete(`/roles/${role_id}`);
+  /**
+   * @param roleId Role identifier
+   */
+  async remove(roleId) {
+    return await this.http.delete(`/roles/${roleId}`);
   }
-  async getPermissions(role_id, queryParams) {
-    return this.http.get(`/roles/${role_id}/permissions${encodedQueryString(queryParams)}`);
+  /**
+   * @param roleId Role identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async listPermissions(roleId, queryParams) {
+    return await this.http.get(`/roles/${roleId}/permissions${encodedQueryString(queryParams)}`);
   }
-  async addPermissions(role_id, data) {
-    return this.http.post(`/roles/${role_id}/permissions`, data);
+  /**
+   * @param roleId Role identifier
+   * @param permissionIdList List of permission ID's to be assigned to the role
+   */
+  async assignPermissions(roleId, permissionIdList) {
+    return await this.http.post(`/roles/${roleId}/permissions`, permissionIdList);
   }
-  async removePermissions(role_id, data) {
-    return this.http.delete(`/roles/${role_id}/permissions`, data);
+  /**
+   * @param roleId Role identifier
+   * @param permissionIdList List of permission ID's to be unassigned from the role
+   */
+  async unassignPermissions(roleId, permissionIdList) {
+    return await this.http.delete(`/roles/${roleId}/permissions`, permissionIdList);
   }
-  async getUsers(role_id, queryParams) {
-    return this.http.get(`/roles/${role_id}/users${encodedQueryString(queryParams)}`);
+  /**
+   * @param roleId Role identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getUsers(roleId, queryParams) {
+    return await this.http.get(`/roles/${roleId}/users${encodedQueryString(queryParams)}`);
+  }
+};
+
+// src/api/roleGroups.ts
+var RoleGroupService = class extends HttpService {
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getAll(queryParams) {
+    return await this.http.get(`/role-groups/${encodedQueryString(queryParams)}`);
+  }
+  /**
+   * @param data Role Group object
+   */
+  async create(data) {
+    return await this.http.post(`/role-groups/`, data);
+  }
+  /**
+   * @param roleGroupId Role Group identifier
+   */
+  async get(roleGroupId) {
+    return await this.http.get(`/role-groups/${roleGroupId}`);
+  }
+  /**
+   * @param roleGroupId Role Group identifier
+   * @param data Object containing to be updated values
+   */
+  async update(roleGroupId, data) {
+    return await this.http.patch(`/role-groups/${roleGroupId}`, data);
+  }
+  /**
+   * @param roleGroupId Role Group identifier
+   */
+  async remove(roleGroupId) {
+    return await this.http.delete(`/role-groups/${roleGroupId}`);
+  }
+  /**
+   * @param roleGroupId Role Group identifier
+   */
+  async listRoles(roleGroupId) {
+    return await this.http.get(`/role-groups/${roleGroupId}/roles`);
+  }
+  /**
+   * @param roleGroupId Role Group identifier
+   * @param roleIdList List of role ID's to be assigned to the role group
+   */
+  async assignRoles(roleGroupId, roleIdList) {
+    return await this.http.post(`/role-groups/${roleGroupId}/roles`, roleIdList);
+  }
+  /**
+   * @param roleGroupId Role Group identifier
+   * @param roleIdList List of role ID's to be unassigned from the role group
+   */
+  async unassignRoles(roleGroupId, roleIdList) {
+    return await this.http.delete(`/role-groups/${roleGroupId}/roles`, roleIdList);
+  }
+  /**
+   * @param roleGroupId Role Group identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getUsers(roleGroupId, queryParams) {
+    return await this.http.get(`/role-groups/${roleGroupId}/users${encodedQueryString(queryParams)}`);
   }
 };
 
 // src/api/templates.ts
 var TemplateService = class extends HttpService {
+  /**
+   * @param type 
+   * @param name 
+   */
   async get(type, name) {
-    return this.http.get(`/templates/${type}/${name}`);
+    return await this.http.get(`/templates/$${type}/$${name}/`);
   }
+  /**
+   * @param type 
+   * @param name 
+   * @param data Object containing to be updated values
+   */
   async update(type, name, data) {
-    return this.http.patch(`/templates/${type}/${name}`, data);
+    return await this.http.patch(`/templates/$${type}/$${name}/`, data);
   }
+  /**
+   * @param type 
+   * @param name 
+   */
   async reset(type, name) {
-    return this.http.delete(`/templates/${type}/${name}`);
+    return await this.http.delete(`/templates/$${type}/$${name}/`);
+  }
+};
+
+// src/api/tenantAdministrators.ts
+var TenantAdministratorService = class extends HttpService {
+  /**
+   * @param tenantId Tenant identifier
+   * @param invitationDetails Invitation details
+   */
+  async invite(tenantId, invitationDetails) {
+    return await this.http.post(`/tenants/${tenantId}/invite`, invitationDetails);
+  }
+  /**
+   * @param tenantId Tenant identifier
+   */
+  async getAll(tenantId) {
+    return await this.http.get(`/tenants/${tenantId}/administrators`);
+  }
+  /**
+   * @param tenantId Tenant identifier
+   * @param adminId Administrator identifier
+   */
+  async remove(tenantId, adminId) {
+    return await this.http.delete(`/tenants/${tenantId}/administrators/${adminId}`);
+  }
+  /**
+   * @param tenantId Tenant identifier
+   * @param adminId Administrator identifier
+   * @param permissionIdList List of permission IDs to be assigned
+   */
+  async assignPermissionsToTenantAdmin(tenantId, adminId, permissionIdList) {
+    return await this.http.post(`/tenants/${tenantId}/administrators/${adminId}/permissions`, permissionIdList);
+  }
+  /**
+   * @param tenantId Tenant identifier
+   * @param adminId Administrator identifier
+   * @param permissionIdList List of permission IDs to be unassigned
+   */
+  async unassignPermissionsFromTenantAdmin(tenantId, adminId, permissionIdList) {
+    return await this.http.delete(`/tenants/${tenantId}/administrators/${adminId}/permissions`, permissionIdList);
   }
 };
 
 // src/api/tenants.ts
 var TenantService = class extends HttpService {
+  /**
+   * @param data Tenant object
+   */
   async create(data) {
-    return this.http.post("/tenants", data);
+    return await this.http.post(`/tenants/`, data);
   }
-  async remove(tenant_id) {
-    return this.http.delete(`/tenants/${tenant_id}`);
+  /**
+   * @param tenantId Tenant identifier
+   */
+  async remove(tenantId) {
+    return await this.http.delete(`/tenants/${tenantId}/`);
   }
-  async inviteAdmin(tenant_id, data) {
-    return this.http.post(`/tenants/${tenant_id}/invite`, data);
+  /**
+   * @param tenantId Tenant identifier
+   */
+  async getStats(tenantId) {
+    return await this.http.get(`/tenants/${tenantId}/stats`);
   }
-  async getAdministrators(tenant_id) {
-    return this.http.get(`/tenants/${tenant_id}/administrators`);
+  /**
+   * @param tenantId Tenant identifier
+   */
+  async getSettings(tenantId) {
+    return await this.http.get(`/tenants/${tenantId}/settings`);
   }
-  async removeAdministrators(tenant_id, email) {
-    return this.http.delete(`/tenants/${tenant_id}/administrators/${email}`);
+  /**
+   * @param tenantId Tenant identifier
+   * @param data Object containing to be updated values
+   */
+  async updateSettings(tenantId, data) {
+    return await this.http.patch(`/tenants/${tenantId}/settings`, data);
   }
-  async assignPermissionsToAdmin(tenant_id, admin_id, data) {
-    return this.http.post(`/tenants/${tenant_id}/administrators/${admin_id}/permissions`, data);
-  }
-  async unassignPermissionsFromAdmin(tenant_id, admin_id, data) {
-    return this.http.delete(`/tenants/${tenant_id}/administrators/${admin_id}/permissions`, data);
-  }
-  async getStats(tenant_id) {
-    return this.http.get(`/tenants/${tenant_id}/stats`);
-  }
-  async getSettings(tenant_id) {
-    return this.http.get(`/tenants/${tenant_id}/settings`);
-  }
-  async updateSettings(tenant_id, data) {
-    return this.http.patch(`/tenants/${tenant_id}/settings`, data);
-  }
-  async getSubscription(tenant_id) {
-    return this.http.get(`/tenants/${tenant_id}/subscription`);
-  }
-  async updateSubscription(tenant_id, data) {
-    return this.http.patch(`/tenants/${tenant_id}/subscription`, data);
+  /**
+   * @param tenantId Tenant identifier
+   */
+  async getSubscription(tenantId) {
+    return await this.http.get(`/tenants/${tenantId}/subscription`);
   }
 };
 
 // src/api/users.ts
 var UserService = class extends HttpService {
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
   async getAll(queryParams) {
-    return this.http.get(`/users${encodedQueryString(queryParams)}`);
+    return await this.http.get(`/users/${encodedQueryString(queryParams)}`);
   }
+  /**
+   * For user creation at least one of identifier is required. Available identifiers are `username`, `email` and `phone_number`.
+  
+   * @param data User object
+   */
   async create(data) {
-    return this.http.post("/users", data);
+    return await this.http.post(`/users/`, data);
   }
-  async get(user_id) {
-    return this.http.get(`/users/${user_id}`);
+  /**
+   * @param userId User identifier
+   */
+  async get(userId) {
+    return await this.http.get(`/users/${userId}`);
   }
-  async update(user_id, data) {
-    return this.http.patch(`/users/${user_id}`, data);
+  /**
+   * @param userId User identifier
+   * @param data Object containing to be updated values
+   */
+  async update(userId, data) {
+    return await this.http.patch(`/users/${userId}`, data);
   }
-  async remove(user_id) {
-    return this.http.delete(`/users/${user_id}`);
+  /**
+   * @param userId User identifier
+   */
+  async remove(userId) {
+    return await this.http.delete(`/users/${userId}`);
   }
-  async getRbac(user_id) {
-    return this.http.get(`/users/${user_id}/rbac`);
+  /**
+   * @param userId User identifier
+   */
+  async getRbac(userId) {
+    return await this.http.get(`/users/${userId}/rbac`);
   }
-  async getPermissions(user_id) {
-    return this.http.get(`/users/${user_id}/permissions`);
+  /**
+   * @param userId User identifier
+   */
+  async getTenants(userId) {
+    return await this.http.get(`/users/${userId}/tenants`);
   }
-  async assignPermissions(user_id, data) {
-    return this.http.post(`/users/${user_id}/permissions`, data);
+  /**
+   * @param userId User identifier
+   * @param credentialId Credential identifier
+   */
+  async removeCredential(userId, credentialId) {
+    return await this.http.delete(`/users/${userId}/credentials/${credentialId}`);
   }
-  async unassignPermissions(user_id, data) {
-    return this.http.delete(`/users/${user_id}/permissions`, data);
+  /**
+   * @param userId User identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async listPermissions(userId, queryParams) {
+    return await this.http.get(`/users/${userId}/permissions/${encodedQueryString(queryParams)}`);
   }
-  async getRoleGroups(user_id) {
-    return this.http.get(`/users/${user_id}/role_groups`);
+  /**
+   * @param userId User identifier
+   * @param permissionIdList List of permission IDs to be assigned
+   */
+  async assignPermissions(userId, permissionIdList) {
+    return await this.http.post(`/users/${userId}/permissions/`, permissionIdList);
   }
-  async assignRoleGroups(user_id, data) {
-    return this.http.post(`/users/${user_id}/role_groups`, data);
+  /**
+   * @param userId User identifier
+   * @param permissionIdList List of permission IDs to be unassigned
+   */
+  async unassignPermissions(userId, permissionIdList) {
+    return await this.http.delete(`/users/${userId}/permissions/`, permissionIdList);
   }
-  async unassignRoleGroups(user_id, data) {
-    return this.http.delete(`/users/${user_id}/role_groups`, data);
+  /**
+   * @param userId User identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async listRoles(userId, queryParams) {
+    return await this.http.get(`/users/${userId}/roles/${encodedQueryString(queryParams)}`);
   }
-  async getRoles(user_id) {
-    return this.http.get(`/users/${user_id}/roles`);
+  /**
+   * @param userId User identifier
+   * @param roleIdList List of role IDs to be assigned
+   */
+  async assignRoles(userId, roleIdList) {
+    return await this.http.post(`/users/${userId}/roles/`, roleIdList);
   }
-  async assignRoles(user_id, data) {
-    return this.http.post(`/users/${user_id}/roles`, data);
+  /**
+   * @param userId User identifier
+   * @param roleIdList List of role IDs to be unassigned
+   */
+  async unassignRoles(userId, roleIdList) {
+    return await this.http.delete(`/users/${userId}/roles/`, roleIdList);
   }
-  async unassignRoles(user_id, data) {
-    return this.http.delete(`/users/${user_id}/roles`, data);
+  /**
+   * @param userId User identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async listRoleGroups(userId, queryParams) {
+    return await this.http.get(`/users/${userId}/role-groups/${encodedQueryString(queryParams)}`);
   }
-  async getTenants(user_id) {
-    return this.http.get(`/users/${user_id}/tenants`);
+  /**
+   * @param userId User identifier
+   * @param roleGroupIdList List of role group IDs to be assigned
+   */
+  async assignRoleGroups(userId, roleGroupIdList) {
+    return await this.http.post(`/users/${userId}/role-groups/`, roleGroupIdList);
   }
-  async getSessions(user_id) {
-    return this.http.get(`/users/${user_id}/session`);
+  /**
+   * @param userId User identifier
+   * @param roleGroupIdList List of role groups IDs to be unassigned
+   */
+  async unassignRoleGroups(userId, roleGroupIdList) {
+    return await this.http.delete(`/users/${userId}/role-groups/`, roleGroupIdList);
   }
-  async endAllSessions(user_id) {
-    return this.http.delete(`/users/${user_id}/session`);
+  /**
+   * @param userId User identifier
+   */
+  async getSessions(userId) {
+    return await this.http.get(`/users/${userId}/session/`);
   }
-  async endSession(user_id, sid) {
-    return this.http.delete(`/users/${user_id}/session/${sid}`);
+  /**
+   * @param userId User identifier
+   */
+  async endSessions(userId) {
+    return await this.http.delete(`/users/${userId}/session/`);
   }
-  async removeCredential(user_id, credential_id) {
-    return this.http.delete(`/users/${user_id}/credentials/${credential_id}`);
+  /**
+   * @param userId User identifier
+   * @param sessionId Session identifier
+   */
+  async endSession(userId, sessionId) {
+    return await this.http.delete(`/users/${userId}/session/${sessionId}`);
   }
 };
 
 // src/api/views.ts
 var ViewService = class extends HttpService {
+  /**
+   * @param type 
+   */
   async get(type) {
-    return this.http.get(`/views/${type}`);
+    return await this.http.get(`/views/$${type}/`);
   }
+  /**
+   * @param type 
+   * @param data View content. Pass null or empty to reset to default
+   */
   async update(type, data) {
-    return this.http.patch(`/views/${type}`, data);
+    return await this.http.patch(`/views/$${type}/`, data);
   }
 };
 
@@ -534,12 +1006,12 @@ var PlusAuthRestClient = class {
     this.options.token = token;
   }
   /**
-   * @param apiUri - Your PlusAuth tenant url. It must be a valid url.
-   * @param options - Object containing Authorization token to put in requests
+   * @param apiUri  Your PlusAuth tenant url. It must be a valid url.
+   * @param options Object containing Authorization token to put in requests
    */
   constructor(apiUri, options = {}) {
     this.options = options;
-    this.resources = new ResourceService(apiUri, this.options);
+    this.administrators = new TenantAdministratorService(apiUri, this.options);
     this.clients = new ClientService(apiUri, this.options);
     this.connections = new ConnectionService(apiUri, this.options);
     this.customDomains = new CustomDomainService(apiUri, this.options);
@@ -548,6 +1020,7 @@ var PlusAuthRestClient = class {
     this.logs = new LogService(apiUri, this.options);
     this.mfa = new MfaService(apiUri, this.options);
     this.providers = new ProviderService(apiUri, this.options);
+    this.resources = new ResourceService(apiUri, this.options);
     this.roleGroups = new RoleGroupService(apiUri, this.options);
     this.roles = new RoleService(apiUri, this.options);
     this.templates = new TemplateService(apiUri, this.options);

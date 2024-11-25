@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
     "target": "es2020",
     "module": "esnext",
     "moduleResolution": "node",
@@ -13,12 +12,9 @@
     "declarationDir": "types",
     "alwaysStrict": true,
     "strict": true,
+    "types": ["@types/node"],
     "useUnknownInCatchVariables": true
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src", "types"],
+  "exclude": ["**/node_modules", "**/.*/"]
 }

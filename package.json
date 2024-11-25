@@ -12,10 +12,8 @@
     "import": "./dist/plusauth-rest-js.js",
     "require": "./dist/plusauth-rest-js.cjs"
   },
-  "packageManager": "pnpm@9.10.0",
-  "files": [
-    "dist"
-  ],
+  "packageManager": "pnpm@9.14.2",
+  "files": ["dist"],
   "author": {
     "name": "Ismail H. Ayaz",
     "email": "ismail.ayaz@ekinokssoftware.com"
@@ -26,8 +24,8 @@
     "build:browser": "tsup --entry.plusauth-rest-js src/index.ts --format iife --minify",
     "build:esm": "tsup --entry.plusauth-rest-js src/index.ts --format esm",
     "build:cjs": "tsup --entry.plusauth-rest-js src/index.ts --format cjs",
-    "build:dts": "tsc --emitDeclarationOnly && api-extractor run",
-    "lint": "eslint ./src --fix",
+    "build:dts": "rimraf types && tsc --emitDeclarationOnly && api-extractor run",
+    "lint": "biome check --fix --diagnostic-level=error",
     "release": "cross-env GITHUB_TOKEN=$GITHUB_TOKEN release-it"
   },
   "dependencies": {
@@ -35,18 +33,16 @@
     "cross-fetch": "^4.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@microsoft/api-extractor": "^7.47.8",
-    "@release-it/conventional-changelog": "^8.0.2",
-    "@stylistic/eslint-plugin": "^2.8.0",
-    "@swc/core": "^1.7.26",
-    "eslint": "^9.10.0",
-    "eslint-plugin-import": "^2.30.0",
-    "release-it": "^17.6.0",
-    "tsup": "^8.2.4",
-    "typescript": "^5.6.2",
-    "typescript-eslint": "^8.5.0"
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@microsoft/api-extractor": "^7.48.0",
+    "@release-it/conventional-changelog": "^9.0.3",
+    "@swc/core": "^1.9.3",
+    "release-it": "^17.10.0",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

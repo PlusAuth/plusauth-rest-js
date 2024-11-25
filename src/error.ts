@@ -2,14 +2,16 @@
  * @public
  */
 export class PlusAuthRestError extends Error {
-  _raw?: Error;
+  error?: string
+  error_description?: string
+  status?: number
 
-  constructor( error: Error | any ) {
-    super( error.message || error.error || error.name );
-    if ( !( error instanceof Error ) ) {
-      Object.assign( this, error );
+  constructor(error: Error | any) {
+    super(error.message || error.error || error.name)
+    if (!(error instanceof Error)) {
+      Object.assign(this, error)
     } else {
-      this._raw = error;
+      Object.defineProperty(this, "_raw", error)
     }
   }
 }

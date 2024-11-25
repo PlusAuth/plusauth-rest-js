@@ -1,25 +1,54 @@
-import { HttpService } from '../http';
-import { PaginatedResult, Client, CreateClient, UpdateClient } from '../models';
-import { encodedQueryString } from '../utils';
+import { HttpService } from "../http"
+import type { Client } from "../models"
+import type { CreateClient } from "../models"
+import type { UpdateClient } from "../models"
+import { encodedQueryString } from "../utils"
 
 export class ClientService extends HttpService {
-  async getAll( queryParams?: {offset?: number; limit?: number; sort_by?: string; q?: string;} ): Promise<PaginatedResult<Client>> {
-    return this.http.get( `/clients${ encodedQueryString( queryParams ) }` );
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getAll(queryParams?: {
+    limit?: number
+    offset?: number
+    q?: string
+    sort_by?: string | string[]
+    fields?: string | string[]
+  }): Promise<Record<string, any>> {
+    return await this.http.get(`/clients/${encodedQueryString(queryParams)}`)
   }
 
-  async create( data: CreateClient ): Promise<Client> {
-    return this.http.post( '/clients', data );
+  /**
+   * @param data Client object
+   */
+  async create(data: CreateClient): Promise<Client> {
+    return await this.http.post(`/clients/`, data)
   }
 
-  async get( client_id: string ): Promise<Client> {
-    return this.http.get( `/clients/${ client_id }` );
+  /**
+   * @param clientId Client identifier
+   */
+  async get(clientId: string): Promise<Client> {
+    return await this.http.get(`/clients/${clientId}`)
   }
 
-  async update( client_id: string, data: UpdateClient ): Promise<Client> {
-    return this.http.patch( `/clients/${ client_id }`, data );
+  /**
+   * @param clientId Client identifier
+   * @param data Object containing to be updated values
+   */
+  async update(clientId: string, data: UpdateClient): Promise<Client> {
+    return await this.http.patch(`/clients/${clientId}`, data)
   }
 
-  async remove( client_id: string ): Promise<void> {
-    return this.http.delete( `/clients/${ client_id }` );
+  /**
+   * @param clientId Client identifier
+   */
+  async remove(clientId: string): Promise<void> {
+    return await this.http.delete(`/clients/${clientId}`)
   }
 }
