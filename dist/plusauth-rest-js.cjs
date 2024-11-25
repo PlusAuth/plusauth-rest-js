@@ -259,31 +259,31 @@ var CustomDomainService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async getAll(queryParams) {
+  async getCustomDomains(queryParams) {
     return await this.http.get(`/custom-domain/${encodedQueryString(queryParams)}`);
   }
   /**
    * @param data Tenant Custom Domain object
    */
-  async register(data) {
+  async registerCustomDomain(data) {
     return await this.http.post(`/custom-domain/`, data);
   }
   /**
    * @param domain Custom Domain specifier
    */
-  async get(domain) {
+  async getCustomDomain(domain) {
     return await this.http.get(`/custom-domain/$${domain}`);
   }
   /**
    * @param domain Custom Domain specifier
    */
-  async remove(domain) {
+  async removeCustomDomain(domain) {
     return await this.http.delete(`/custom-domain/$${domain}`);
   }
   /**
    * @param domain Custom Domain specifier
    */
-  async verifyOwnership(domain) {
+  async verifyCustomDomainOwnership(domain) {
     return await this.http.get(`/custom-domain/$${domain}/verify`);
   }
 };
@@ -656,52 +656,52 @@ var RoleGroupService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async getAll(queryParams) {
+  async getRoleGroups(queryParams) {
     return await this.http.get(`/role-groups/${encodedQueryString(queryParams)}`);
   }
   /**
    * @param data Role Group object
    */
-  async create(data) {
+  async createRoleGroup(data) {
     return await this.http.post(`/role-groups/`, data);
   }
   /**
    * @param roleGroupId Role Group identifier
    */
-  async get(roleGroupId) {
+  async getRoleGroup(roleGroupId) {
     return await this.http.get(`/role-groups/${roleGroupId}`);
   }
   /**
    * @param roleGroupId Role Group identifier
    * @param data Object containing to be updated values
    */
-  async update(roleGroupId, data) {
+  async updateRoleGroup(roleGroupId, data) {
     return await this.http.patch(`/role-groups/${roleGroupId}`, data);
   }
   /**
    * @param roleGroupId Role Group identifier
    */
-  async remove(roleGroupId) {
+  async removeRoleGroup(roleGroupId) {
     return await this.http.delete(`/role-groups/${roleGroupId}`);
   }
   /**
    * @param roleGroupId Role Group identifier
    */
-  async getRoles(roleGroupId) {
+  async getRoleGroupRoles(roleGroupId) {
     return await this.http.get(`/role-groups/${roleGroupId}/roles`);
   }
   /**
    * @param roleGroupId Role Group identifier
    * @param roleIdList List of role ID's to be assigned to the role group
    */
-  async assignRoles(roleGroupId, roleIdList) {
+  async assignRolesToRoleGroup(roleGroupId, roleIdList) {
     return await this.http.post(`/role-groups/${roleGroupId}/roles`, roleIdList);
   }
   /**
    * @param roleGroupId Role Group identifier
    * @param roleIdList List of role ID's to be unassigned from the role group
    */
-  async unassignRoles(roleGroupId, roleIdList) {
+  async unassignRolesFromRoleGroup(roleGroupId, roleIdList) {
     return await this.http.delete(`/role-groups/${roleGroupId}/roles`, roleIdList);
   }
   /**
@@ -713,7 +713,7 @@ var RoleGroupService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async getUsers(roleGroupId, queryParams) {
+  async getRoleGroupUsers(roleGroupId, queryParams) {
     return await this.http.get(`/role-groups/${roleGroupId}/users${encodedQueryString(queryParams)}`);
   }
 };
@@ -750,20 +750,20 @@ var TenantAdministratorService = class extends HttpService {
    * @param tenantId Tenant identifier
    * @param invitationDetails Invitation details
    */
-  async invite(tenantId, invitationDetails) {
+  async inviteTenantAdministrator(tenantId, invitationDetails) {
     return await this.http.post(`/tenants/${tenantId}/invite`, invitationDetails);
   }
   /**
    * @param tenantId Tenant identifier
    */
-  async getAll(tenantId) {
+  async getTenantAdministrators(tenantId) {
     return await this.http.get(`/tenants/${tenantId}/administrators`);
   }
   /**
    * @param tenantId Tenant identifier
    * @param adminId Administrator identifier
    */
-  async remove(tenantId, adminId) {
+  async removeTenantAdministrator(tenantId, adminId) {
     return await this.http.delete(`/tenants/${tenantId}/administrators/${adminId}`);
   }
   /**

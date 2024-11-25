@@ -3135,7 +3135,7 @@ declare class CustomDomainService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    getAll(queryParams?: {
+    getCustomDomains(queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;
@@ -3145,19 +3145,19 @@ declare class CustomDomainService extends HttpService {
     /**
      * @param data Tenant Custom Domain object
      */
-    register(data: CreateTenantCustomDomain): Promise<TenantCustomDomain>;
+    registerCustomDomain(data: CreateTenantCustomDomain): Promise<TenantCustomDomain>;
     /**
      * @param domain Custom Domain specifier
      */
-    get(domain: string): Promise<TenantCustomDomain>;
+    getCustomDomain(domain: string): Promise<TenantCustomDomain>;
     /**
      * @param domain Custom Domain specifier
      */
-    remove(domain: string): Promise<void>;
+    removeCustomDomain(domain: string): Promise<void>;
     /**
      * @param domain Custom Domain specifier
      */
-    verifyOwnership(domain: string): Promise<Record<string, any>>;
+    verifyCustomDomainOwnership(domain: string): Promise<Record<string, any>>;
 }
 
 /**
@@ -6294,7 +6294,7 @@ declare class RoleGroupService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    getAll(queryParams?: {
+    getRoleGroups(queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;
@@ -6304,34 +6304,34 @@ declare class RoleGroupService extends HttpService {
     /**
      * @param data Role Group object
      */
-    create(data: CreateRoleGroup): Promise<RoleGroup>;
+    createRoleGroup(data: CreateRoleGroup): Promise<RoleGroup>;
     /**
      * @param roleGroupId Role Group identifier
      */
-    get(roleGroupId: string): Promise<RoleGroup>;
+    getRoleGroup(roleGroupId: string): Promise<RoleGroup>;
     /**
      * @param roleGroupId Role Group identifier
      * @param data Object containing to be updated values
      */
-    update(roleGroupId: string, data: UpdateRoleGroup): Promise<RoleGroup>;
+    updateRoleGroup(roleGroupId: string, data: UpdateRoleGroup): Promise<RoleGroup>;
     /**
      * @param roleGroupId Role Group identifier
      */
-    remove(roleGroupId: string): Promise<void>;
+    removeRoleGroup(roleGroupId: string): Promise<void>;
     /**
      * @param roleGroupId Role Group identifier
      */
-    getRoles(roleGroupId: string): Promise<Record<string, any>>;
+    getRoleGroupRoles(roleGroupId: string): Promise<Record<string, any>>;
     /**
      * @param roleGroupId Role Group identifier
      * @param roleIdList List of role ID's to be assigned to the role group
      */
-    assignRoles(roleGroupId: string, roleIdList: string[]): Promise<void>;
+    assignRolesToRoleGroup(roleGroupId: string, roleIdList: string[]): Promise<void>;
     /**
      * @param roleGroupId Role Group identifier
      * @param roleIdList List of role ID's to be unassigned from the role group
      */
-    unassignRoles(roleGroupId: string, roleIdList: string[]): Promise<void>;
+    unassignRolesFromRoleGroup(roleGroupId: string, roleIdList: string[]): Promise<void>;
     /**
      * @param roleGroupId Role Group identifier
      * @param queryParams Query parameters
@@ -6341,7 +6341,7 @@ declare class RoleGroupService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    getUsers(roleGroupId: string, queryParams?: {
+    getRoleGroupUsers(roleGroupId: string, queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;
@@ -7701,19 +7701,19 @@ declare class TenantAdministratorService extends HttpService {
      * @param tenantId Tenant identifier
      * @param invitationDetails Invitation details
      */
-    invite(tenantId: string, invitationDetails: {
+    inviteTenantAdministrator(tenantId: string, invitationDetails: {
         email: string;
         permissions?: string[];
     }): Promise<void>;
     /**
      * @param tenantId Tenant identifier
      */
-    getAll(tenantId: string): Promise<TenantAdministrator[]>;
+    getTenantAdministrators(tenantId: string): Promise<TenantAdministrator[]>;
     /**
      * @param tenantId Tenant identifier
      * @param adminId Administrator identifier
      */
-    remove(tenantId: string, adminId: string): Promise<void>;
+    removeTenantAdministrator(tenantId: string, adminId: string): Promise<void>;
     /**
      * @param tenantId Tenant identifier
      * @param adminId Administrator identifier

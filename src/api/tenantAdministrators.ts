@@ -6,7 +6,7 @@ export class TenantAdministratorService extends HttpService {
    * @param tenantId Tenant identifier
    * @param invitationDetails Invitation details
    */
-  async invite(
+  async inviteTenantAdministrator(
     tenantId: string,
     invitationDetails: { email: string; permissions?: string[] },
   ): Promise<void> {
@@ -16,7 +16,7 @@ export class TenantAdministratorService extends HttpService {
   /**
    * @param tenantId Tenant identifier
    */
-  async getAll(tenantId: string): Promise<TenantAdministrator[]> {
+  async getTenantAdministrators(tenantId: string): Promise<TenantAdministrator[]> {
     return await this.http.get(`/tenants/${tenantId}/administrators`)
   }
 
@@ -24,7 +24,7 @@ export class TenantAdministratorService extends HttpService {
    * @param tenantId Tenant identifier
    * @param adminId Administrator identifier
    */
-  async remove(tenantId: string, adminId: string): Promise<void> {
+  async removeTenantAdministrator(tenantId: string, adminId: string): Promise<void> {
     return await this.http.delete(`/tenants/${tenantId}/administrators/${adminId}`)
   }
 

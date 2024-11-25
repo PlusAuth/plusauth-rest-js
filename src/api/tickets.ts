@@ -6,7 +6,7 @@ export class TicketService extends HttpService {
   /**
    * @param data Ticket object
    */
-  async createPasswordReset(data: CreateTicket): Promise<Record<string, any>> {
+  async createPasswordResetTicket(data: CreateTicket): Promise<Record<string, any>> {
     return await this.http.post(`/tickets/reset-password`, data)
   }
 
@@ -18,7 +18,7 @@ export class TicketService extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async getVerifyEmail(queryParams?: {
+  async getVerifyEmailTickets(queryParams?: {
     limit?: number
     offset?: number
     q?: string
@@ -31,7 +31,7 @@ export class TicketService extends HttpService {
   /**
    * @param data Ticket object
    */
-  async createVerifyEmail(data: CreateTicket): Promise<Record<string, any>> {
+  async createVerifyEmailTicket(data: CreateTicket): Promise<Record<string, any>> {
     return await this.http.post(`/tickets/verify-email`, data)
   }
 }
