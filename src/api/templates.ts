@@ -22,7 +22,7 @@ export class TemplateService extends HttpService {
       | "blocked-ip"
       | "test",
   ): Promise<Template> {
-    return await this.http.get(`/templates/$${type}/$${name}/`)
+    return await this.http.get(`/templates/${type}/${name}/`)
   }
 
   /**
@@ -46,7 +46,7 @@ export class TemplateService extends HttpService {
       | "test",
     data: UpdateTemplate,
   ): Promise<Template> {
-    return await this.http.patch(`/templates/$${type}/$${name}/`, data)
+    return await this.http.patch(`/templates/${type}/${name}/`, data)
   }
 
   /**
@@ -68,6 +68,6 @@ export class TemplateService extends HttpService {
       | "blocked-ip"
       | "test",
   ): Promise<void> {
-    return await this.http.delete(`/templates/$${type}/$${name}/`)
+    return await this.http.delete(`/templates/${type}/${name}/`)
   }
 }

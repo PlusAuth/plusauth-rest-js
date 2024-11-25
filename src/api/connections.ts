@@ -34,7 +34,7 @@ export class ConnectionService extends HttpService {
    * @param name Connection name
    */
   async get(name: string): Promise<Connection> {
-    return await this.http.get(`/connections/$${name}`)
+    return await this.http.get(`/connections/${name}`)
   }
 
   /**
@@ -42,14 +42,14 @@ export class ConnectionService extends HttpService {
    * @param data Object containing to be updated values
    */
   async update(name: string, data: UpdateConnection): Promise<Connection> {
-    return await this.http.patch(`/connections/$${name}`, data)
+    return await this.http.patch(`/connections/${name}`, data)
   }
 
   /**
    * @param name Connection name
    */
   async remove(name: string): Promise<void> {
-    return await this.http.delete(`/connections/$${name}`)
+    return await this.http.delete(`/connections/${name}`)
   }
 
   /**
@@ -58,6 +58,6 @@ export class ConnectionService extends HttpService {
  * @param name Connection name
  */
   async sync(name: string): Promise<void> {
-    return await this.http.get(`/connections/$${name}/sync`)
+    return await this.http.get(`/connections/${name}/sync`)
   }
 }

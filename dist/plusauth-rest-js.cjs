@@ -224,20 +224,20 @@ var ConnectionService = class extends HttpService {
    * @param name Connection name
    */
   async get(name) {
-    return await this.http.get(`/connections/$${name}`);
+    return await this.http.get(`/connections/${name}`);
   }
   /**
    * @param name Connection name
    * @param data Object containing to be updated values
    */
   async update(name, data) {
-    return await this.http.patch(`/connections/$${name}`, data);
+    return await this.http.patch(`/connections/${name}`, data);
   }
   /**
    * @param name Connection name
    */
   async remove(name) {
-    return await this.http.delete(`/connections/$${name}`);
+    return await this.http.delete(`/connections/${name}`);
   }
   /**
    * Only available for AD/LDAP connections
@@ -245,7 +245,7 @@ var ConnectionService = class extends HttpService {
    * @param name Connection name
    */
   async sync(name) {
-    return await this.http.get(`/connections/$${name}/sync`);
+    return await this.http.get(`/connections/${name}/sync`);
   }
 };
 
@@ -272,19 +272,19 @@ var CustomDomainService = class extends HttpService {
    * @param domain Custom Domain specifier
    */
   async get(domain) {
-    return await this.http.get(`/custom-domain/$${domain}`);
+    return await this.http.get(`/custom-domain/${domain}`);
   }
   /**
    * @param domain Custom Domain specifier
    */
   async remove(domain) {
-    return await this.http.delete(`/custom-domain/$${domain}`);
+    return await this.http.delete(`/custom-domain/${domain}`);
   }
   /**
    * @param domain Custom Domain specifier
    */
   async verifyOwnership(domain) {
-    return await this.http.get(`/custom-domain/$${domain}/verify`);
+    return await this.http.get(`/custom-domain/${domain}/verify`);
   }
 };
 
@@ -334,20 +334,20 @@ var KeyService = class extends HttpService {
    * @param type 
    */
   async get(type) {
-    return await this.http.get(`/keys/$${type}`);
+    return await this.http.get(`/keys/${type}`);
   }
   /**
    * @param type 
    */
   async rotate(type) {
-    return await this.http.post(`/keys/$${type}/rotate`);
+    return await this.http.post(`/keys/${type}/rotate`);
   }
   /**
    * @param type 
    * @param kid 
    */
   async revoke(type, kid) {
-    return await this.http.get(`/keys/$${type}/revoke/$${kid}`);
+    return await this.http.get(`/keys/${type}/revoke/${kid}`);
   }
 };
 
@@ -421,20 +421,20 @@ var MfaService = class extends HttpService {
    * @param type Type of MFA
    */
   async get(type) {
-    return await this.http.get(`/mfa/$${type}`);
+    return await this.http.get(`/mfa/${type}`);
   }
   /**
    * @param type Type of MFA
    * @param data Object containing to be updated values
    */
   async update(type, data) {
-    return await this.http.patch(`/mfa/$${type}`, data);
+    return await this.http.patch(`/mfa/${type}`, data);
   }
   /**
    * @param type Type of MFA
    */
   async remove(type) {
-    return await this.http.delete(`/mfa/$${type}`);
+    return await this.http.delete(`/mfa/${type}`);
   }
 };
 
@@ -725,7 +725,7 @@ var TemplateService = class extends HttpService {
    * @param name 
    */
   async get(type, name) {
-    return await this.http.get(`/templates/$${type}/$${name}/`);
+    return await this.http.get(`/templates/${type}/${name}/`);
   }
   /**
    * @param type 
@@ -733,14 +733,14 @@ var TemplateService = class extends HttpService {
    * @param data Object containing to be updated values
    */
   async update(type, name, data) {
-    return await this.http.patch(`/templates/$${type}/$${name}/`, data);
+    return await this.http.patch(`/templates/${type}/${name}/`, data);
   }
   /**
    * @param type 
    * @param name 
    */
   async reset(type, name) {
-    return await this.http.delete(`/templates/$${type}/$${name}/`);
+    return await this.http.delete(`/templates/${type}/${name}/`);
   }
 };
 
@@ -989,14 +989,14 @@ var ViewService = class extends HttpService {
    * @param type 
    */
   async get(type) {
-    return await this.http.get(`/views/$${type}/`);
+    return await this.http.get(`/views/${type}/`);
   }
   /**
    * @param type 
    * @param data View content. Pass null or empty to reset to default
    */
   async update(type, data) {
-    return await this.http.patch(`/views/$${type}/`, data);
+    return await this.http.patch(`/views/${type}/`, data);
   }
 };
 

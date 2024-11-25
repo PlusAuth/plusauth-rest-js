@@ -34,7 +34,7 @@ export class MfaService extends HttpService {
    * @param type Type of MFA
    */
   async get(type: MFAType): Promise<MFA> {
-    return await this.http.get(`/mfa/$${type}`)
+    return await this.http.get(`/mfa/${type}`)
   }
 
   /**
@@ -42,13 +42,13 @@ export class MfaService extends HttpService {
    * @param data Object containing to be updated values
    */
   async update(type: MFAType, data: UpdateMFA): Promise<MFA> {
-    return await this.http.patch(`/mfa/$${type}`, data)
+    return await this.http.patch(`/mfa/${type}`, data)
   }
 
   /**
    * @param type Type of MFA
    */
   async remove(type: MFAType): Promise<void> {
-    return await this.http.delete(`/mfa/$${type}`)
+    return await this.http.delete(`/mfa/${type}`)
   }
 }

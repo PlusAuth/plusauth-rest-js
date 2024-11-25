@@ -33,20 +33,20 @@ export class CustomDomainService extends HttpService {
    * @param domain Custom Domain specifier
    */
   async get(domain: string): Promise<TenantCustomDomain> {
-    return await this.http.get(`/custom-domain/$${domain}`)
+    return await this.http.get(`/custom-domain/${domain}`)
   }
 
   /**
    * @param domain Custom Domain specifier
    */
   async remove(domain: string): Promise<void> {
-    return await this.http.delete(`/custom-domain/$${domain}`)
+    return await this.http.delete(`/custom-domain/${domain}`)
   }
 
   /**
    * @param domain Custom Domain specifier
    */
   async verifyOwnership(domain: string): Promise<Record<string, any>> {
-    return await this.http.get(`/custom-domain/$${domain}/verify`)
+    return await this.http.get(`/custom-domain/${domain}/verify`)
   }
 }

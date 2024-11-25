@@ -29,7 +29,7 @@ export class ViewService extends HttpService {
       | "verify-email"
       | "error",
   ): Promise<View> {
-    return await this.http.get(`/views/$${type}/`)
+    return await this.http.get(`/views/${type}/`)
   }
 
   /**
@@ -61,6 +61,6 @@ export class ViewService extends HttpService {
       | "error",
     data: string | null,
   ): Promise<View> {
-    return await this.http.patch(`/views/$${type}/`, data)
+    return await this.http.patch(`/views/${type}/`, data)
   }
 }
