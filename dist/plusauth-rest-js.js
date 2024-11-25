@@ -411,7 +411,7 @@ var ResourceService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async listPermissions(resourceId, queryParams) {
+  async getPermissions(resourceId, queryParams) {
     return await this.http.get(`/resources/${resourceId}/permissions/${encodedQueryString(queryParams)}`);
   }
   /**
@@ -577,7 +577,7 @@ var RoleService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async listPermissions(roleId, queryParams) {
+  async getPermissions(roleId, queryParams) {
     return await this.http.get(`/roles/${roleId}/permissions${encodedQueryString(queryParams)}`);
   }
   /**
@@ -649,7 +649,7 @@ var RoleGroupService = class extends HttpService {
   /**
    * @param roleGroupId Role Group identifier
    */
-  async listRoles(roleGroupId) {
+  async getRoles(roleGroupId) {
     return await this.http.get(`/role-groups/${roleGroupId}/roles`);
   }
   /**
@@ -855,7 +855,7 @@ var UserService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async listPermissions(userId, queryParams) {
+  async getPermissions(userId, queryParams) {
     return await this.http.get(`/users/${userId}/permissions/${encodedQueryString(queryParams)}`);
   }
   /**
@@ -881,7 +881,7 @@ var UserService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async listRoles(userId, queryParams) {
+  async getRoles(userId, queryParams) {
     return await this.http.get(`/users/${userId}/roles/${encodedQueryString(queryParams)}`);
   }
   /**
@@ -907,7 +907,7 @@ var UserService = class extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async listRoleGroups(userId, queryParams) {
+  async getRoleGroups(userId, queryParams) {
     return await this.http.get(`/users/${userId}/role-groups/${encodedQueryString(queryParams)}`);
   }
   /**

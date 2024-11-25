@@ -6147,7 +6147,7 @@ declare class ResourceService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    listPermissions(resourceId: string, queryParams?: {
+    getPermissions(resourceId: string, queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;
@@ -6321,7 +6321,7 @@ declare class RoleGroupService extends HttpService {
     /**
      * @param roleGroupId Role Group identifier
      */
-    listRoles(roleGroupId: string): Promise<Record<string, any>>;
+    getRoles(roleGroupId: string): Promise<Record<string, any>>;
     /**
      * @param roleGroupId Role Group identifier
      * @param roleIdList List of role ID's to be assigned to the role group
@@ -6392,7 +6392,7 @@ declare class RoleService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    listPermissions(roleId: string, queryParams?: {
+    getPermissions(roleId: string, queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;
@@ -13034,7 +13034,7 @@ declare class UserService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    listPermissions(userId: string, queryParams?: {
+    getPermissions(userId: string, queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;
@@ -13060,7 +13060,7 @@ declare class UserService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    listRoles(userId: string, queryParams?: {
+    getRoles(userId: string, queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;
@@ -13086,7 +13086,7 @@ declare class UserService extends HttpService {
      * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    listRoleGroups(userId: string, queryParams?: {
+    getRoleGroups(userId: string, queryParams?: {
         limit?: number;
         offset?: number;
         q?: string;

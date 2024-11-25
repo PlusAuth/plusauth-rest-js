@@ -18,7 +18,7 @@ export class TicketService extends HttpService {
    * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
    * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
    */
-  async listVerifyEmail(queryParams?: {
+  async getVerifyEmail(queryParams?: {
     limit?: number
     offset?: number
     q?: string

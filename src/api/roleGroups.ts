@@ -55,7 +55,7 @@ export class RoleGroupService extends HttpService {
   /**
    * @param roleGroupId Role Group identifier
    */
-  async listRoles(roleGroupId: string): Promise<Record<string, any>> {
+  async getRoles(roleGroupId: string): Promise<Record<string, any>> {
     return await this.http.get(`/role-groups/${roleGroupId}/roles`)
   }
 
