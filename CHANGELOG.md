@@ -1,5 +1,10 @@
 
 
+## <small>2.0.3 (2024-11-25)</small>
+
+* fix: incorrect variable interpolation ([4e99e8e](https://github.com/PlusAuth/plusauth-rest-js/commit/4e99e8e))
+* chore: lint ([34b2f54](https://github.com/PlusAuth/plusauth-rest-js/commit/34b2f54))
+
 ## <small>2.0.2 (2024-11-25)</small>
 
 * fix: regression in tenant administrator methods ([7751875](https://github.com/PlusAuth/plusauth-rest-js/commit/7751875))
