@@ -1,6 +1,6 @@
 {
   "name": "@plusauth/plusauth-rest-js",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "PlusAuth JavaScript Rest Client",
   "type": "module",
   "browser": "./dist/plusauth-rest-js.global.js",
@@ -13,7 +13,9 @@
     "require": "./dist/plusauth-rest-js.cjs"
   },
   "packageManager": "pnpm@9.14.2",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "author": {
     "name": "Ismail H. Ayaz",
     "email": "ismail.ayaz@ekinokssoftware.com"
