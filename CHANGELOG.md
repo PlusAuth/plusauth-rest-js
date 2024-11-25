@@ -1,3 +1,11 @@
+
+
+## <small>2.0.1 (2024-11-25)</small>
+
+* chore: update changelog ([3e42a04](https://github.com/PlusAuth/plusauth-rest-js/commit/3e42a04))
+* fix: regression in getter method namings ([1c5cd76](https://github.com/PlusAuth/plusauth-rest-js/commit/1c5cd76))
+* fix: regression in getter method namings ([c502ddf](https://github.com/PlusAuth/plusauth-rest-js/commit/c502ddf))
+
 ## 2.0.0 (2024-11-25)
 This version brings usability improvements along with some breaking changes.
 
@@ -24,4 +32,3 @@ This version brings usability improvements along with some breaking changes.
   | addRoles          | assignRoles         |
   | addRoleGroups     | assignRoleGroups    |
   | removeRoles       | unassignRoles       |
-
