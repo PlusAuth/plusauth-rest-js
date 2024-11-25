@@ -1,5 +1,11 @@
 
 
+## <small>2.0.2 (2024-11-25)</small>
+
+* fix: regression in tenant administrator methods ([7751875](https://github.com/PlusAuth/plusauth-rest-js/commit/7751875))
+* fix: regression in tenant administrator methods ([b5b25d0](https://github.com/PlusAuth/plusauth-rest-js/commit/b5b25d0))
+* chore: lint ([fc46872](https://github.com/PlusAuth/plusauth-rest-js/commit/fc46872))
+
 ## <small>2.0.1 (2024-11-25)</small>
 
 * chore: update changelog ([3e42a04](https://github.com/PlusAuth/plusauth-rest-js/commit/3e42a04))
