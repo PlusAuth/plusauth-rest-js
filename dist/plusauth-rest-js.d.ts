@@ -1625,7 +1625,7 @@ export declare interface CreateClient {
  * @public
  */
 export declare type CreateConnection = (({
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -1633,7 +1633,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -1642,39 +1642,38 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "email";
-    provider?: "aws_ses";
-    settings?: {
+    type: "email";
+    provider: "aws_ses";
+    settings: {
         /**
          * `from` field for your emails
          */
-        from?: string;
+        from: string;
         /**
          * AWS SES access key id.
          */
-        access_key_id?: string;
+        access_key_id: string;
         /**
          * AWS SES secret access key.
          */
-        secret_access_key?: string;
+        secret_access_key: string;
         /**
          * AWS SES region.
          */
-        region?: string;
+        region: string;
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        use_magic_link?: boolean;
-        enabled_clients?: string[];
+        code_ttl: number;
+        use_magic_link: boolean;
+        enabled_clients: string[];
     };
 } | {
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -1682,7 +1681,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -1691,31 +1690,30 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "email";
-    provider?: "postmark";
-    settings?: {
+    type: "email";
+    provider: "postmark";
+    settings: {
         /**
          * `from` field for your emails
          */
-        from?: string;
+        from: string;
         /**
          * Postmark API Key
          */
-        api_key?: string;
+        api_key: string;
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        use_magic_link?: boolean;
-        enabled_clients?: string[];
+        code_ttl: number;
+        use_magic_link: boolean;
+        enabled_clients: string[];
     };
 } | {
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -1723,7 +1721,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -1732,18 +1730,17 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "email";
-    provider?: "sendgrid";
-    settings?: {
+    type: "email";
+    provider: "sendgrid";
+    settings: {
         /**
          * `from` field for your emails
          */
-        from?: string;
+        from: string;
         /**
          * SendGrid API Key
          */
-        api_key?: string;
+        api_key: string;
         /**
          * SendGrid API User
          */
@@ -1751,16 +1748,16 @@ export declare type CreateConnection = (({
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        use_magic_link?: boolean;
-        enabled_clients?: string[];
+        code_ttl: number;
+        use_magic_link: boolean;
+        enabled_clients: string[];
     };
 } | {
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -1768,7 +1765,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -1777,44 +1774,43 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "email";
-    provider?: "smtp";
-    settings?: {
+    type: "email";
+    provider: "smtp";
+    settings: {
         /**
          * `from` field for your emails
          */
-        from?: string;
+        from: string;
         /**
          * Hostname of your SMTP provider
          */
-        host?: string;
+        host: string;
         /**
          * Port of your SMTP provider
          */
-        port?: number;
+        port: number;
         /**
          * Username for SMTP authentication
          */
-        username?: string;
+        username: string;
         /**
          * Password for SMTP authentication
          */
-        password?: string;
+        password: string;
         secure?: boolean;
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        use_magic_link?: boolean;
-        enabled_clients?: string[];
+        code_ttl: number;
+        use_magic_link: boolean;
+        enabled_clients: string[];
     };
 }) | ({
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -1822,7 +1818,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -1831,46 +1827,45 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "sms";
-    provider?: "dataport";
-    settings?: {
+    type: "sms";
+    provider: "dataport";
+    settings: {
         /**
          * DataPort username
          */
-        username?: string;
+        username: string;
         /**
          * DataPort user credentials.
          */
-        password?: string;
+        password: string;
         /**
          * Account number used for token retrieval
          */
-        account_id?: string;
+        account_id: string;
         /**
          * Operator identifier
          */
-        operator?: ("1" | "2" | "3" | "4");
+        operator: ("1" | "2" | "3" | "4");
         /**
          * Short code of operator used for sendind messages
          */
-        short_number?: string;
+        short_number: string;
         /**
          * Orginator value
          */
-        from?: string;
+        from: string;
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        enabled_clients?: string[];
+        code_ttl: number;
+        enabled_clients: string[];
     };
 } | {
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -1878,7 +1873,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -1887,30 +1882,29 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "sms";
-    provider?: "messagebird";
-    settings?: {
+    type: "sms";
+    provider: "messagebird";
+    settings: {
         /**
          * MessageBird API Key
          */
-        api_key?: string;
+        api_key: string;
         /**
          * MessageBird originator also known as Sender ID.
          */
-        originator?: string;
+        originator: string;
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        enabled_clients?: string[];
+        code_ttl: number;
+        enabled_clients: string[];
     };
 } | {
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -1918,7 +1912,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -1927,26 +1921,25 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "sms";
-    provider?: "custom";
-    settings?: {
+    type: "sms";
+    provider: "custom";
+    settings: {
         /**
          * SMS provider's hook context
          */
-        hook_context?: string;
+        hook_context: string;
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        enabled_clients?: string[];
+        code_ttl: number;
+        enabled_clients: string[];
     };
 } | {
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -1954,7 +1947,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -1963,42 +1956,41 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "sms";
-    provider?: "3gbilisim";
-    settings?: {
+    type: "sms";
+    provider: "3gbilisim";
+    settings: {
         /**
          * If provided, sms requests will be made to this endpoint
          */
-        endpoint?: string;
+        endpoint: string;
         /**
          * Username provided by your 3GBilisim dealer.
          */
-        username?: string;
+        username: string;
         /**
          * Password provided by your 3GBilisim dealer.
          */
-        password?: string;
+        password: string;
         /**
          * Dealer-specific code provided by your 3GBilisim dealer.
          */
-        company_code?: string;
+        company_code: string;
         /**
          * It is the message header defined in the NetGSM (your sender name). If you want your subscriber number to be your message header, write your subscriber number to this parameter without a leading zero. 8xxxxxxxxxx
          */
-        from?: string;
+        from: string;
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        enabled_clients?: string[];
+        code_ttl: number;
+        enabled_clients: string[];
     };
 } | {
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -2006,7 +1998,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -2015,35 +2007,34 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "sms";
-    provider?: "twilio";
-    settings?: {
+    type: "sms";
+    provider: "twilio";
+    settings: {
         /**
          * Your Twilio auth token
          */
-        auth_token?: string;
+        auth_token: string;
         /**
          * Your Twilio account sid.
          */
-        sid?: string;
-        strategy?: ("copilot" | "from");
+        sid: string;
+        strategy: ("copilot" | "from");
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
-        from?: string;
+        from: string;
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        enabled_clients?: string[];
+        code_ttl: number;
+        enabled_clients: string[];
     };
 } | {
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -2051,7 +2042,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -2060,34 +2051,33 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "sms";
-    provider?: "vonage";
-    settings?: {
+    type: "sms";
+    provider: "vonage";
+    settings: {
         /**
          * Vonage API Key
          */
-        api_key?: string;
+        api_key: string;
         /**
          * Vonage API Secret
          */
-        api_secret?: string;
+        api_secret: string;
         /**
          * Originating phone number
          */
-        from?: string;
+        from: string;
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        enabled_clients?: string[];
+        code_ttl: number;
+        enabled_clients: string[];
     };
 } | {
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -2095,7 +2085,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -2104,45 +2094,51 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    is_default?: boolean;
-    type?: "sms";
-    provider?: "netgsm";
-    settings?: {
+    type: "sms";
+    provider: "netgsm";
+    settings: {
         /**
          * Subscriber number obtained from Netgsm service. For ex: 850xxxxxxx, 312XXXXXXX
          */
-        username?: string;
+        username: string;
         /**
          * Sub-user password with defined API authorization.
          */
-        password?: string;
+        password: string;
         /**
          * If you are a dealer member, your dealer-specific code.
          */
-        merchant_code?: string;
+        merchant_code: string;
         /**
          * The ID information of the application published from your developer account.
          */
-        app_key?: string;
+        app_key: string;
         /**
          * It is the message header defined in the NetGSM (your sender name). If you want your subscriber number to be your message header, write your subscriber number to this parameter without a leading zero. 8xxxxxxxxxx
          */
-        from?: string;
+        from: string;
         /**
          * The length of the OTP code.
          */
-        code_length?: number;
+        code_length: number;
         /**
          * The expiration of the generated code in seconds
          */
-        code_ttl?: number;
-        enabled_clients?: string[];
+        code_ttl: number;
+        enabled_clients: string[];
     };
 }) | ({
-    is_default?: boolean;
     type: "social";
-    provider?: "apple";
-    enabled?: boolean;
+    provider: "apple";
+    enabled: boolean;
+    /**
+     * Is connection using custom scripts
+     */
+    is_custom?: boolean;
+    /**
+     * Connection name
+     */
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -2151,7 +2147,7 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    settings?: {
+    settings: {
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2162,17 +2158,24 @@ export declare type CreateConnection = (({
             logo_url?: string;
             display_name?: string;
         };
-        client_id?: string;
-        key_id?: string;
-        private_key?: string;
-        team_id?: string;
+        client_id: string;
+        key_id: string;
+        private_key: string;
+        team_id: string;
         scopes?: string[];
     };
 } | {
-    is_default?: boolean;
     type: "social";
-    provider?: ("amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify");
-    enabled?: boolean;
+    provider: ("amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify");
+    enabled: boolean;
+    /**
+     * Is connection using custom scripts
+     */
+    is_custom?: boolean;
+    /**
+     * Connection name
+     */
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -2181,7 +2184,7 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    settings?: {
+    settings: {
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2192,15 +2195,22 @@ export declare type CreateConnection = (({
             logo_url?: string;
             display_name?: string;
         };
-        client_id?: string;
-        client_secret?: string;
+        client_id: string;
+        client_secret: string;
         scopes?: string[];
     };
 } | {
-    is_default?: boolean;
     type: "social";
-    provider?: "custom-oauth2";
-    enabled?: boolean;
+    provider: "custom-oauth2";
+    enabled: boolean;
+    /**
+     * Is connection using custom scripts
+     */
+    is_custom?: boolean;
+    /**
+     * Connection name
+     */
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -2209,7 +2219,7 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    settings?: {
+    settings: {
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2220,31 +2230,38 @@ export declare type CreateConnection = (({
             logo_url?: string;
             display_name?: string;
         };
-        extra_params?: {
+        extra_params: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
             [k: string]: string;
         };
-        extra_headers?: {
+        extra_headers: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
             [k: string]: string;
         };
-        client_id?: string;
-        client_secret?: string;
-        authorization_url?: string;
-        token_url?: string;
+        client_id: string;
+        client_secret: string;
+        authorization_url: string;
+        token_url: string;
         scopes?: string[];
     };
 } | {
-    is_default?: boolean;
     type: "social";
-    provider?: "dropbox";
-    enabled?: boolean;
+    provider: "dropbox";
+    enabled: boolean;
+    /**
+     * Is connection using custom scripts
+     */
+    is_custom?: boolean;
+    /**
+     * Connection name
+     */
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -2253,7 +2270,7 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    settings?: {
+    settings: {
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2264,15 +2281,22 @@ export declare type CreateConnection = (({
             logo_url?: string;
             display_name?: string;
         };
-        app_key?: string;
-        app_secret?: string;
+        app_key: string;
+        app_secret: string;
         scopes?: string[];
     };
 } | {
-    is_default?: boolean;
     type: "social";
-    provider?: "twitter";
-    enabled?: boolean;
+    provider: "twitter";
+    enabled: boolean;
+    /**
+     * Is connection using custom scripts
+     */
+    is_custom?: boolean;
+    /**
+     * Connection name
+     */
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -2281,7 +2305,7 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    settings?: {
+    settings: {
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2292,18 +2316,31 @@ export declare type CreateConnection = (({
             logo_url?: string;
             display_name?: string;
         };
-        consumer_key?: string;
-        consumer_secret?: string;
+        consumer_key: string;
+        consumer_secret: string;
         scopes?: string[];
     };
 }) | ({
-    enabled?: boolean;
-    updated_at?: (string | null);
-    created_at?: string;
-    is_default?: boolean;
     type: "enterprise";
     provider: "ldap";
-    settings?: {
+    enabled: boolean;
+    /**
+     * Is connection using custom scripts
+     */
+    is_custom?: boolean;
+    /**
+     * Connection name
+     */
+    name: string;
+    /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
+    updated_at?: (string | null);
+    /**
+     * Creation date in the ISO 8601 format according to universal time.
+     */
+    created_at?: string;
+    settings: {
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2317,23 +2354,23 @@ export declare type CreateConnection = (({
         /**
          * Your LDAP server's URL in format `<ldap/s>://<host>:<port>`
          */
-        url?: string;
+        url: string;
         /**
          * Password of LDAP admin account which defined in `bind_dn`
          */
-        bind_credentials?: string;
+        bind_credentials: string;
         /**
          * DN of LDAP admin, which will be used by PlusAuth to access LDAP server
          */
-        bind_dn?: string;
+        bind_dn: string;
         /**
          * Full DN of LDAP tree where your users are. This DN is the parent of LDAP users. Assuming that your typical user will have DN like `uid=john,ou=users,dc=example,dc=com`, this value would be `ou=users,dc=example,dc=com`
          */
-        search_base?: string;
+        search_base: string;
         /**
          * LDAP filter for user lookup. Make sure it is wrapped with parentheses. For ex: `(uid={{username}})`
          */
-        search_filter?: string;
+        search_filter: string;
         /**
          * Specify the portion of the target subtree that should be considered
          */
@@ -2346,7 +2383,7 @@ export declare type CreateConnection = (({
          * Enabling this option will reflect user updates and deletes to your LDAP connection. This means when user is deleted/updated from PlusAuth, it will be deleted from your LDAP too.
          */
         write_mode?: boolean;
-        mappings?: {
+        mappings: {
             /**
              * @minItems 1
              *
@@ -2372,13 +2409,62 @@ export declare type CreateConnection = (({
         };
     };
 } | {
-    enabled?: boolean;
+    type: "enterprise";
+    provider: "e-devlet";
+    enabled: boolean;
+    /**
+     * Is connection using custom scripts
+     */
+    is_custom?: boolean;
+    /**
+     * Connection name
+     */
+    name: string;
+    /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
     updated_at?: (string | null);
+    /**
+     * Creation date in the ISO 8601 format according to universal time.
+     */
     created_at?: string;
-    is_default?: boolean;
+    settings: {
+        enabled_clients?: string[];
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        client_id: string;
+        client_secret: string;
+        scopes?: string[];
+        is_test?: boolean;
+    };
+} | {
     type: "enterprise";
     provider: "saml";
-    settings?: {
+    enabled: boolean;
+    /**
+     * Is connection using custom scripts
+     */
+    is_custom?: boolean;
+    /**
+     * Connection name
+     */
+    name: string;
+    /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
+    updated_at?: (string | null);
+    /**
+     * Creation date in the ISO 8601 format according to universal time.
+     */
+    created_at?: string;
+    settings: {
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2396,11 +2482,11 @@ export declare type CreateConnection = (({
         /**
          * Your SAML IdP's entity_id
          */
-        entity_id?: string;
+        entity_id: string;
         /**
          * Your SAML IdP's login URL in format `<http/s>://<host>:<port?>`
          */
-        sign_in_url?: string;
+        sign_in_url: string;
         /**
          * If enabled, when user logs out from PlusAuth a SAML logout request will be sent to SAML IdP.
          */
@@ -2414,12 +2500,12 @@ export declare type CreateConnection = (({
          * Enable/Disable the SAML authentication request signing.
          */
         sign_request?: boolean;
-        sign_request_algorithm?: ("sha512" | "sha256" | "sha1");
+        sign_request_algorithm: ("sha512" | "sha256" | "sha1");
         /**
          * SAML Request Binding
          */
-        request_binding?: ("HTTP-POST" | "HTTP-Redirect");
-        mappings?: {
+        request_binding: ("HTTP-POST" | "HTTP-Redirect");
+        mappings: {
             /**
              * @minItems 1
              *
@@ -2444,31 +2530,8 @@ export declare type CreateConnection = (({
             } | boolean);
         };
     };
-} | {
-    enabled?: boolean;
-    updated_at?: (string | null);
-    created_at?: string;
-    is_default?: boolean;
-    type: "enterprise";
-    provider: "e-devlet";
-    settings?: {
-        enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
-        branding?: {
-            show_in_login?: boolean;
-            logo_url?: string;
-            display_name?: string;
-        };
-        client_id?: string;
-        client_secret?: string;
-        scopes?: string[];
-        is_test?: boolean;
-    };
 }) | {
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Is connection using custom scripts
      */
@@ -2476,7 +2539,7 @@ export declare type CreateConnection = (({
     /**
      * Connection name
      */
-    name?: string;
+    name: string;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
@@ -2485,9 +2548,9 @@ export declare type CreateConnection = (({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    type?: "push";
-    provider?: "native";
-    settings?: {
+    type: "push";
+    provider: "native";
+    settings: {
         /**
          * Firebase Cloud Messaging configuration settings.
          * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
@@ -2496,24 +2559,24 @@ export declare type CreateConnection = (({
          * - Click "Generate new private key", then confirm by clicking "Generate key".
          * - Clicking "Generate key" downloads the generated service account json file.
          */
-        fcm?: {
+        fcm: {
             /**
              * `project_id` field located in your service account json
              */
-            project_id?: string;
+            project_id: string;
             /**
              * `client_email` field located in your service account json
              */
-            client_email?: string;
+            client_email: string;
             /**
              * `private_key` field located in your service account json
              */
-            private_key?: string;
+            private_key: string;
         };
         /**
          * Apple Push Notification Service configuration settings.
          */
-        apns?: {
+        apns: {
             /**
              * p8 of your Apple Developer account. To generate one follow these steps:
              * - Head over to Certificates, Identifiers & Profiles > Keys.
@@ -2522,26 +2585,26 @@ export declare type CreateConnection = (({
              * - Click the Continue button and on the next page, select Register.
              * - Download the .p8 key file.
              */
-            key?: string;
+            key: string;
             /**
              * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
              */
-            key_id?: string;
+            key_id: string;
             /**
              * This is available in your Apple developer account.
              */
-            team_id?: string;
+            team_id: string;
             /**
              * This is the ID of your app. You can find it in the app info section of your Apple developer account.
              */
-            bundle_id?: string;
-            production?: boolean;
+            bundle_id: string;
+            production: boolean;
         };
-        enabled_clients?: string[];
+        enabled_clients: string[];
         /**
          * Push notification strategy
          */
-        strategy?: ("code" | "prompt");
+        strategy: ("code" | "prompt");
     };
 });
 
