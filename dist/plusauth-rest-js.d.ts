@@ -2619,7 +2619,7 @@ export declare interface CreateHook {
     /**
      * Defines hook's area of usage
      */
-    type: ("pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c");
+    type: ("link-account" | "pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c");
     /**
      * Additional information for the hook
      */
@@ -3977,7 +3977,7 @@ export declare interface Hook {
     /**
      * Defines hook's area of usage
      */
-    type: ("pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c");
+    type: ("link-account" | "pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c");
     /**
      * Additional information for the hook
      */
@@ -13252,19 +13252,19 @@ export declare interface UserSession {
 export declare interface View {
     is_default: boolean;
     content: string;
-    type: ("consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error");
+    type: ("account-linking" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error");
 }
 
 declare class ViewService extends HttpService {
     /**
      * @param type
      */
-    get(type: "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error"): Promise<View>;
+    get(type: "account-linking" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error"): Promise<View>;
     /**
      * @param type
      * @param data View content. Pass null or empty to reset to default
      */
-    update(type: "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error", data: string | null): Promise<View>;
+    update(type: "account-linking" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error", data: string | null): Promise<View>;
 }
 
 /**

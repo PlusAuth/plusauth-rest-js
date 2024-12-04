@@ -2709,6 +2709,7 @@ export interface CreateHook {
    * Defines hook's area of usage
    */
   type:
+    | "link-account"
     | "pre-register"
     | "post-register"
     | "pre-login"
@@ -4318,6 +4319,7 @@ export interface Hook {
    * Defines hook's area of usage
    */
   type:
+    | "link-account"
     | "pre-register"
     | "post-register"
     | "pre-login"
@@ -13196,6 +13198,7 @@ export interface View {
   is_default: boolean
   content: string
   type:
+    | "account-linking"
     | "consent"
     | "fill-missing"
     | "login"
