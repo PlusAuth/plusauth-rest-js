@@ -12,8 +12,10 @@
     "import": "./dist/plusauth-rest-js.js",
     "require": "./dist/plusauth-rest-js.cjs"
   },
-  "packageManager": "pnpm@9.14.4",
-  "files": ["dist"],
+  "packageManager": "pnpm@9.15.0",
+  "files": [
+    "dist"
+  ],
   "author": {
     "name": "Ismail H. Ayaz",
     "email": "ismail.ayaz@ekinokssoftware.com"
@@ -38,7 +40,7 @@
     "@commitlint/config-conventional": "^19.6.0",
     "@microsoft/api-extractor": "^7.48.0",
     "@release-it/conventional-changelog": "^9.0.3",
-    "@swc/core": "^1.9.3",
+    "@swc/core": "^1.10.1",
     "release-it": "^17.10.0",
     "rimraf": "^6.0.1",
     "tsup": "^8.3.5",
