@@ -13,7 +13,9 @@
     "require": "./dist/plusauth-rest-js.cjs"
   },
   "packageManager": "pnpm@9.15.0",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "author": {
     "name": "Ismail H. Ayaz",
     "email": "ismail.ayaz@ekinokssoftware.com"
