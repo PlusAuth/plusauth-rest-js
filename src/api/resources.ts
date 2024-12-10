@@ -94,7 +94,7 @@ export class ResourceService extends HttpService {
   async getAssignedPermissionsToClient(
     resourceId: string,
     clientId: string,
-  ): Promise<Record<string, any>> {
+  ): Promise<Permission[]> {
     return await this.http.get(
       `/resources/${resourceId}/authorized_clients/${clientId}/permissions/`,
     )

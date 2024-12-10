@@ -201,16 +201,10 @@ export declare interface Client {
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: (string | [
-                (string | {
+                [k: string]: (string | (string | {
                     value?: (string | boolean | number);
                     [k: string]: any;
-                }),
-                ...((string | {
-                    value?: (string | boolean | number);
-                    [k: string]: any;
-                }))[]
-                ] | {
+                })[] | {
                     value?: (string | boolean | number);
                     [k: string]: any;
                 } | boolean);
@@ -248,41 +242,9 @@ export declare interface Client {
         /**
          * @maxItems 4
          */
-        keys: [] | [
-            {
+        keys: {
             [k: string]: any;
-        }
-        ] | [
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        }
-        ] | [
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        }
-        ] | [
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        }
-        ];
+        }[];
     };
 }
 
@@ -1122,16 +1084,10 @@ export declare type Connection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -1234,6 +1190,10 @@ export declare type Connection = (({
          * SAML Request Binding
          */
         request_binding: ("HTTP-POST" | "HTTP-Redirect");
+        /**
+         * SAML Logout Request Binding
+         */
+        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings: {
             /**
              * @minItems 1
@@ -1244,16 +1204,10 @@ export declare type Connection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -1536,16 +1490,10 @@ export declare interface CreateClient {
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: (string | [
-                (string | {
+                [k: string]: (string | (string | {
                     value?: (string | boolean | number);
                     [k: string]: any;
-                }),
-                ...((string | {
-                    value?: (string | boolean | number);
-                    [k: string]: any;
-                }))[]
-                ] | {
+                })[] | {
                     value?: (string | boolean | number);
                     [k: string]: any;
                 } | boolean);
@@ -1583,41 +1531,9 @@ export declare interface CreateClient {
         /**
          * @maxItems 4
          */
-        keys: [] | [
-            {
+        keys: {
             [k: string]: any;
-        }
-        ] | [
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        }
-        ] | [
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        }
-        ] | [
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        }
-        ];
+        }[];
     };
 }
 
@@ -2393,16 +2309,10 @@ export declare type CreateConnection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -2505,6 +2415,10 @@ export declare type CreateConnection = (({
          * SAML Request Binding
          */
         request_binding: ("HTTP-POST" | "HTTP-Redirect");
+        /**
+         * SAML Logout Request Binding
+         */
+        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings: {
             /**
              * @minItems 1
@@ -2515,16 +2429,10 @@ export declare type CreateConnection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -2619,7 +2527,7 @@ export declare interface CreateHook {
     /**
      * Defines hook's area of usage
      */
-    type: ("link-account" | "pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c");
+    type: ("sms" | "link-account" | "pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c");
     /**
      * Additional information for the hook
      */
@@ -3737,16 +3645,10 @@ export declare type EnterpriseConnection = ({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -3849,6 +3751,10 @@ export declare type EnterpriseConnection = ({
          * SAML Request Binding
          */
         request_binding: ("HTTP-POST" | "HTTP-Redirect");
+        /**
+         * SAML Logout Request Binding
+         */
+        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings: {
             /**
              * @minItems 1
@@ -3859,16 +3765,10 @@ export declare type EnterpriseConnection = ({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -3977,7 +3877,7 @@ export declare interface Hook {
     /**
      * Defines hook's area of usage
      */
-    type: ("link-account" | "pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c");
+    type: ("sms" | "link-account" | "pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c");
     /**
      * Additional information for the hook
      */
@@ -4334,16 +4234,10 @@ export declare interface LDAPConnection {
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -6257,7 +6151,7 @@ declare class ResourceService extends HttpService {
      * @param resourceId Resource identifier
      * @param clientId Client identifier
      */
-    getAssignedPermissionsToClient(resourceId: string, clientId: string): Promise<Record<string, any>>;
+    getAssignedPermissionsToClient(resourceId: string, clientId: string): Promise<Permission[]>;
     /**
      * @param resourceId Resource identifier
      * @param clientId Client identifier
@@ -6554,6 +6448,10 @@ export declare interface SAMLConnection {
          * SAML Request Binding
          */
         request_binding: ("HTTP-POST" | "HTTP-Redirect");
+        /**
+         * SAML Logout Request Binding
+         */
+        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings: {
             /**
              * @minItems 1
@@ -6561,16 +6459,10 @@ export declare interface SAMLConnection {
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -7317,88 +7209,88 @@ export declare type SocialConnection = ({
  * @public
  */
 export declare interface SubscriptionUsage {
-    active_user: (boolean | number | {
+    active_user?: (boolean | number | {
         max: number;
         min: number;
         step: number;
         type: "range";
     });
-    administrators: (boolean | number);
+    administrators?: (boolean | number);
     /**
      * Is feature enabled or not
      */
-    ciba: boolean;
-    "connections.passwordless": (boolean | number);
-    "connections.social": (boolean | number);
-    "connections.saml": (boolean | number);
-    "connections.e_devlet": (boolean | number);
-    "connections.ldap": (boolean | number);
+    ciba?: boolean;
+    "connections.passwordless"?: (boolean | number);
+    "connections.social"?: (boolean | number);
+    "connections.saml"?: (boolean | number);
+    "connections.e_devlet"?: (boolean | number);
+    "connections.ldap"?: (boolean | number);
     /**
      * Is feature enabled or not
      */
-    custom_algorithm: boolean;
-    custom_domain: (boolean | number);
+    custom_algorithm?: boolean;
+    custom_domain?: (boolean | number);
     /**
      * Is feature enabled or not
      */
-    custom_password_policy: boolean;
+    custom_password_policy?: boolean;
     /**
      * Is feature enabled or not
      */
-    custom_token_ttl: boolean;
+    custom_token_ttl?: boolean;
     /**
      * Is feature enabled or not
      */
-    fapi: boolean;
-    hooks: (boolean | number);
+    fapi?: boolean;
+    hooks?: (boolean | number);
     /**
      * Log retention period in days
      */
-    log_retention: number;
+    log_retention?: number;
     /**
      * Is feature enabled or not
      */
-    log_shipping: boolean;
+    log_shipping?: boolean;
     /**
      * Is feature enabled or not
      */
-    log_signing: boolean;
+    log_signing?: boolean;
     /**
      * Number of defined feature
      */
-    max_clients: number;
+    max_clients?: number;
     /**
      * Number of defined feature
      */
-    max_resources: number;
+    max_resources?: number;
     /**
      * Number of defined feature
      */
-    max_tenants: number;
+    max_tenants?: number;
     /**
      * Number of defined feature
      */
-    max_users: number;
-    mfa: (boolean | number);
-    "mfa.sms": boolean;
-    "mfa.otp": boolean;
-    "mfa.fv": boolean;
-    "mfa.push": boolean;
-    "mfa.email": boolean;
-    "mfa.e-sign": boolean;
-    "mfa.webauthn": boolean;
+    max_users?: number;
+    mfa?: (boolean | number);
+    "mfa.sms"?: boolean;
+    "mfa.otp"?: boolean;
+    "mfa.fv"?: boolean;
+    "mfa.push"?: boolean;
+    "mfa.email"?: boolean;
+    "mfa.e-sign"?: boolean;
+    "mfa.webauthn"?: boolean;
     /**
      * Is feature enabled or not
      */
-    password_history: boolean;
+    password_history?: boolean;
     /**
      * Is feature enabled or not
      */
-    rbac_management: boolean;
+    rbac_management?: boolean;
     /**
      * Is feature enabled or not
      */
-    user_management: boolean;
+    user_management?: boolean;
 }
 
 /**
@@ -8355,16 +8247,10 @@ export declare interface UpdateClient {
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: (string | [
-                (string | {
+                [k: string]: (string | (string | {
                     value?: (string | boolean | number);
                     [k: string]: any;
-                }),
-                ...((string | {
-                    value?: (string | boolean | number);
-                    [k: string]: any;
-                }))[]
-                ] | {
+                })[] | {
                     value?: (string | boolean | number);
                     [k: string]: any;
                 } | boolean);
@@ -8402,41 +8288,9 @@ export declare interface UpdateClient {
         /**
          * @maxItems 4
          */
-        keys?: [] | [
-            {
+        keys?: {
             [k: string]: any;
-        }
-        ] | [
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        }
-        ] | [
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        }
-        ] | [
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        },
-            {
-            [k: string]: any;
-        }
-        ];
+        }[];
     };
 }
 
@@ -9175,16 +9029,10 @@ export declare type UpdateConnection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -9238,6 +9086,10 @@ export declare type UpdateConnection = (({
          * SAML Request Binding
          */
         request_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        /**
+         * SAML Logout Request Binding
+         */
+        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings?: {
             /**
              * @minItems 1
@@ -9248,16 +9100,10 @@ export declare type UpdateConnection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -9759,16 +9605,10 @@ export declare type UpdateEnterpriseConnection = ({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -9822,6 +9662,10 @@ export declare type UpdateEnterpriseConnection = ({
          * SAML Request Binding
          */
         request_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        /**
+         * SAML Logout Request Binding
+         */
+        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings?: {
             /**
              * @minItems 1
@@ -9832,16 +9676,10 @@ export declare type UpdateEnterpriseConnection = ({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -9999,16 +9837,10 @@ export declare interface UpdateLDAPConnection {
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);
@@ -11329,6 +11161,10 @@ export declare interface UpdateSAMLConnection {
          * SAML Request Binding
          */
         request_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        /**
+         * SAML Logout Request Binding
+         */
+        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings?: {
             /**
              * @minItems 1
@@ -11336,16 +11172,10 @@ export declare interface UpdateSAMLConnection {
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | [
-            (string | {
+            [k: string]: (string | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            }),
-            ...((string | {
-                value?: (string | boolean | number);
-                [k: string]: any;
-            }))[]
-            ] | {
+            })[] | {
                 value?: (string | boolean | number);
                 [k: string]: any;
             } | boolean);

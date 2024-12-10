@@ -213,22 +213,13 @@ export interface Client {
          */
         [k: string]:
           | string
-          | [
-              (
-                | string
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-              ),
-              ...(
-                | string
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-              )[],
-            ]
+          | (
+              | string
+              | {
+                  value?: string | boolean | number
+                  [k: string]: any
+                }
+            )[]
           | {
               value?: string | boolean | number
               [k: string]: any
@@ -268,46 +259,9 @@ export interface Client {
     /**
      * @maxItems 4
      */
-    keys:
-      | []
-      | [
-          {
-            [k: string]: any
-          },
-        ]
-      | [
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-        ]
-      | [
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-        ]
-      | [
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-        ]
+    keys: {
+      [k: string]: any
+    }[]
   }
 }
 
@@ -1147,22 +1101,13 @@ export type Connection =
                */
               [k: string]:
                 | string
-                | [
-                    (
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    ),
-                    ...(
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    )[],
-                  ]
+                | (
+                    | string
+                    | {
+                        value?: string | boolean | number
+                        [k: string]: any
+                      }
+                  )[]
                 | {
                     value?: string | boolean | number
                     [k: string]: any
@@ -1269,6 +1214,10 @@ export type Connection =
              * SAML Request Binding
              */
             request_binding: "HTTP-POST" | "HTTP-Redirect"
+            /**
+             * SAML Logout Request Binding
+             */
+            sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
             mappings: {
               /**
                * @minItems 1
@@ -1281,22 +1230,13 @@ export type Connection =
                */
               [k: string]:
                 | string
-                | [
-                    (
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    ),
-                    ...(
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    )[],
-                  ]
+                | (
+                    | string
+                    | {
+                        value?: string | boolean | number
+                        [k: string]: any
+                      }
+                  )[]
                 | {
                     value?: string | boolean | number
                     [k: string]: any
@@ -1555,22 +1495,13 @@ export interface CreateClient {
          */
         [k: string]:
           | string
-          | [
-              (
-                | string
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-              ),
-              ...(
-                | string
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-              )[],
-            ]
+          | (
+              | string
+              | {
+                  value?: string | boolean | number
+                  [k: string]: any
+                }
+            )[]
           | {
               value?: string | boolean | number
               [k: string]: any
@@ -1610,46 +1541,9 @@ export interface CreateClient {
     /**
      * @maxItems 4
      */
-    keys:
-      | []
-      | [
-          {
-            [k: string]: any
-          },
-        ]
-      | [
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-        ]
-      | [
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-        ]
-      | [
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-        ]
+    keys: {
+      [k: string]: any
+    }[]
   }
 }
 
@@ -2460,22 +2354,13 @@ export type CreateConnection =
                */
               [k: string]:
                 | string
-                | [
-                    (
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    ),
-                    ...(
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    )[],
-                  ]
+                | (
+                    | string
+                    | {
+                        value?: string | boolean | number
+                        [k: string]: any
+                      }
+                  )[]
                 | {
                     value?: string | boolean | number
                     [k: string]: any
@@ -2582,6 +2467,10 @@ export type CreateConnection =
              * SAML Request Binding
              */
             request_binding: "HTTP-POST" | "HTTP-Redirect"
+            /**
+             * SAML Logout Request Binding
+             */
+            sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
             mappings: {
               /**
                * @minItems 1
@@ -2594,22 +2483,13 @@ export type CreateConnection =
                */
               [k: string]:
                 | string
-                | [
-                    (
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    ),
-                    ...(
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    )[],
-                  ]
+                | (
+                    | string
+                    | {
+                        value?: string | boolean | number
+                        [k: string]: any
+                      }
+                  )[]
                 | {
                     value?: string | boolean | number
                     [k: string]: any
@@ -2709,6 +2589,7 @@ export interface CreateHook {
    * Defines hook's area of usage
    */
   type:
+    | "sms"
     | "link-account"
     | "pre-register"
     | "post-register"
@@ -3923,22 +3804,13 @@ export type EnterpriseConnection = {
            */
           [k: string]:
             | string
-            | [
-                (
-                  | string
-                  | {
-                      value?: string | boolean | number
-                      [k: string]: any
-                    }
-                ),
-                ...(
-                  | string
-                  | {
-                      value?: string | boolean | number
-                      [k: string]: any
-                    }
-                )[],
-              ]
+            | (
+                | string
+                | {
+                    value?: string | boolean | number
+                    [k: string]: any
+                  }
+              )[]
             | {
                 value?: string | boolean | number
                 [k: string]: any
@@ -4045,6 +3917,10 @@ export type EnterpriseConnection = {
          * SAML Request Binding
          */
         request_binding: "HTTP-POST" | "HTTP-Redirect"
+        /**
+         * SAML Logout Request Binding
+         */
+        sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
         mappings: {
           /**
            * @minItems 1
@@ -4057,22 +3933,13 @@ export type EnterpriseConnection = {
            */
           [k: string]:
             | string
-            | [
-                (
-                  | string
-                  | {
-                      value?: string | boolean | number
-                      [k: string]: any
-                    }
-                ),
-                ...(
-                  | string
-                  | {
-                      value?: string | boolean | number
-                      [k: string]: any
-                    }
-                )[],
-              ]
+            | (
+                | string
+                | {
+                    value?: string | boolean | number
+                    [k: string]: any
+                  }
+              )[]
             | {
                 value?: string | boolean | number
                 [k: string]: any
@@ -4319,6 +4186,7 @@ export interface Hook {
    * Defines hook's area of usage
    */
   type:
+    | "sms"
     | "link-account"
     | "pre-register"
     | "post-register"
@@ -4467,22 +4335,13 @@ export interface LDAPConnection {
        */
       [k: string]:
         | string
-        | [
-            (
-              | string
-              | {
-                  value?: string | boolean | number
-                  [k: string]: any
-                }
-            ),
-            ...(
-              | string
-              | {
-                  value?: string | boolean | number
-                  [k: string]: any
-                }
-            )[],
-          ]
+        | (
+            | string
+            | {
+                value?: string | boolean | number
+                [k: string]: any
+              }
+          )[]
         | {
             value?: string | boolean | number
             [k: string]: any
@@ -6338,6 +6197,10 @@ export interface SAMLConnection {
      * SAML Request Binding
      */
     request_binding: "HTTP-POST" | "HTTP-Redirect"
+    /**
+     * SAML Logout Request Binding
+     */
+    sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
     mappings: {
       /**
        * @minItems 1
@@ -6347,22 +6210,13 @@ export interface SAMLConnection {
        */
       [k: string]:
         | string
-        | [
-            (
-              | string
-              | {
-                  value?: string | boolean | number
-                  [k: string]: any
-                }
-            ),
-            ...(
-              | string
-              | {
-                  value?: string | boolean | number
-                  [k: string]: any
-                }
-            )[],
-          ]
+        | (
+            | string
+            | {
+                value?: string | boolean | number
+                [k: string]: any
+              }
+          )[]
         | {
             value?: string | boolean | number
             [k: string]: any
@@ -7142,7 +6996,7 @@ export type SocialConnection = {
  * @public
  */
 export interface SubscriptionUsage {
-  active_user:
+  active_user?:
     | boolean
     | number
     | {
@@ -7151,82 +7005,82 @@ export interface SubscriptionUsage {
         step: number
         type: "range"
       }
-  administrators: boolean | number
+  administrators?: boolean | number
   /**
    * Is feature enabled or not
    */
-  ciba: boolean
-  "connections.passwordless": boolean | number
-  "connections.social": boolean | number
-  "connections.saml": boolean | number
-  "connections.e_devlet": boolean | number
-  "connections.ldap": boolean | number
+  ciba?: boolean
+  "connections.passwordless"?: boolean | number
+  "connections.social"?: boolean | number
+  "connections.saml"?: boolean | number
+  "connections.e_devlet"?: boolean | number
+  "connections.ldap"?: boolean | number
   /**
    * Is feature enabled or not
    */
-  custom_algorithm: boolean
-  custom_domain: boolean | number
+  custom_algorithm?: boolean
+  custom_domain?: boolean | number
   /**
    * Is feature enabled or not
    */
-  custom_password_policy: boolean
+  custom_password_policy?: boolean
   /**
    * Is feature enabled or not
    */
-  custom_token_ttl: boolean
+  custom_token_ttl?: boolean
   /**
    * Is feature enabled or not
    */
-  fapi: boolean
-  hooks: boolean | number
+  fapi?: boolean
+  hooks?: boolean | number
   /**
    * Log retention period in days
    */
-  log_retention: number
+  log_retention?: number
   /**
    * Is feature enabled or not
    */
-  log_shipping: boolean
+  log_shipping?: boolean
   /**
    * Is feature enabled or not
    */
-  log_signing: boolean
+  log_signing?: boolean
   /**
    * Number of defined feature
    */
-  max_clients: number
+  max_clients?: number
   /**
    * Number of defined feature
    */
-  max_resources: number
+  max_resources?: number
   /**
    * Number of defined feature
    */
-  max_tenants: number
+  max_tenants?: number
   /**
    * Number of defined feature
    */
-  max_users: number
-  mfa: boolean | number
-  "mfa.sms": boolean
-  "mfa.otp": boolean
-  "mfa.fv": boolean
-  "mfa.push": boolean
-  "mfa.email": boolean
-  "mfa.e-sign": boolean
-  "mfa.webauthn": boolean
+  max_users?: number
+  mfa?: boolean | number
+  "mfa.sms"?: boolean
+  "mfa.otp"?: boolean
+  "mfa.fv"?: boolean
+  "mfa.push"?: boolean
+  "mfa.email"?: boolean
+  "mfa.e-sign"?: boolean
+  "mfa.webauthn"?: boolean
   /**
    * Is feature enabled or not
    */
-  password_history: boolean
+  password_history?: boolean
   /**
    * Is feature enabled or not
    */
-  rbac_management: boolean
+  rbac_management?: boolean
   /**
    * Is feature enabled or not
    */
-  user_management: boolean
+  user_management?: boolean
 }
 
 /**
@@ -8142,22 +7996,13 @@ export interface UpdateClient {
          */
         [k: string]:
           | string
-          | [
-              (
-                | string
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-              ),
-              ...(
-                | string
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-              )[],
-            ]
+          | (
+              | string
+              | {
+                  value?: string | boolean | number
+                  [k: string]: any
+                }
+            )[]
           | {
               value?: string | boolean | number
               [k: string]: any
@@ -8197,46 +8042,9 @@ export interface UpdateClient {
     /**
      * @maxItems 4
      */
-    keys?:
-      | []
-      | [
-          {
-            [k: string]: any
-          },
-        ]
-      | [
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-        ]
-      | [
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-        ]
-      | [
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-          {
-            [k: string]: any
-          },
-        ]
+    keys?: {
+      [k: string]: any
+    }[]
   }
 }
 
@@ -9010,22 +8818,13 @@ export type UpdateConnection =
                */
               [k: string]:
                 | string
-                | [
-                    (
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    ),
-                    ...(
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    )[],
-                  ]
+                | (
+                    | string
+                    | {
+                        value?: string | boolean | number
+                        [k: string]: any
+                      }
+                  )[]
                 | {
                     value?: string | boolean | number
                     [k: string]: any
@@ -9082,6 +8881,10 @@ export type UpdateConnection =
              * SAML Request Binding
              */
             request_binding?: "HTTP-POST" | "HTTP-Redirect"
+            /**
+             * SAML Logout Request Binding
+             */
+            sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
             mappings?: {
               /**
                * @minItems 1
@@ -9094,22 +8897,13 @@ export type UpdateConnection =
                */
               [k: string]:
                 | string
-                | [
-                    (
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    ),
-                    ...(
-                      | string
-                      | {
-                          value?: string | boolean | number
-                          [k: string]: any
-                        }
-                    )[],
-                  ]
+                | (
+                    | string
+                    | {
+                        value?: string | boolean | number
+                        [k: string]: any
+                      }
+                  )[]
                 | {
                     value?: string | boolean | number
                     [k: string]: any
@@ -9649,22 +9443,13 @@ export type UpdateEnterpriseConnection = {
            */
           [k: string]:
             | string
-            | [
-                (
-                  | string
-                  | {
-                      value?: string | boolean | number
-                      [k: string]: any
-                    }
-                ),
-                ...(
-                  | string
-                  | {
-                      value?: string | boolean | number
-                      [k: string]: any
-                    }
-                )[],
-              ]
+            | (
+                | string
+                | {
+                    value?: string | boolean | number
+                    [k: string]: any
+                  }
+              )[]
             | {
                 value?: string | boolean | number
                 [k: string]: any
@@ -9721,6 +9506,10 @@ export type UpdateEnterpriseConnection = {
          * SAML Request Binding
          */
         request_binding?: "HTTP-POST" | "HTTP-Redirect"
+        /**
+         * SAML Logout Request Binding
+         */
+        sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
         mappings?: {
           /**
            * @minItems 1
@@ -9733,22 +9522,13 @@ export type UpdateEnterpriseConnection = {
            */
           [k: string]:
             | string
-            | [
-                (
-                  | string
-                  | {
-                      value?: string | boolean | number
-                      [k: string]: any
-                    }
-                ),
-                ...(
-                  | string
-                  | {
-                      value?: string | boolean | number
-                      [k: string]: any
-                    }
-                )[],
-              ]
+            | (
+                | string
+                | {
+                    value?: string | boolean | number
+                    [k: string]: any
+                  }
+              )[]
             | {
                 value?: string | boolean | number
                 [k: string]: any
@@ -9892,22 +9672,13 @@ export interface UpdateLDAPConnection {
        */
       [k: string]:
         | string
-        | [
-            (
-              | string
-              | {
-                  value?: string | boolean | number
-                  [k: string]: any
-                }
-            ),
-            ...(
-              | string
-              | {
-                  value?: string | boolean | number
-                  [k: string]: any
-                }
-            )[],
-          ]
+        | (
+            | string
+            | {
+                value?: string | boolean | number
+                [k: string]: any
+              }
+          )[]
         | {
             value?: string | boolean | number
             [k: string]: any
@@ -11272,6 +11043,10 @@ export interface UpdateSAMLConnection {
      * SAML Request Binding
      */
     request_binding?: "HTTP-POST" | "HTTP-Redirect"
+    /**
+     * SAML Logout Request Binding
+     */
+    sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
     mappings?: {
       /**
        * @minItems 1
@@ -11281,22 +11056,13 @@ export interface UpdateSAMLConnection {
        */
       [k: string]:
         | string
-        | [
-            (
-              | string
-              | {
-                  value?: string | boolean | number
-                  [k: string]: any
-                }
-            ),
-            ...(
-              | string
-              | {
-                  value?: string | boolean | number
-                  [k: string]: any
-                }
-            )[],
-          ]
+        | (
+            | string
+            | {
+                value?: string | boolean | number
+                [k: string]: any
+              }
+          )[]
         | {
             value?: string | boolean | number
             [k: string]: any
