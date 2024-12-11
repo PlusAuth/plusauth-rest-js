@@ -19,7 +19,7 @@ export class HookService extends HttpService {
     q?: string
     sort_by?: string | string[]
     fields?: string | string[]
-  }): Promise<Record<string, any>> {
+  }): Promise<{ total: number; results: Hook[] }> {
     return await this.http.get(`/hooks/${encodedQueryString(queryParams)}`)
   }
 

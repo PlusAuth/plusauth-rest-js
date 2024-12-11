@@ -18,7 +18,7 @@ export class CustomDomainService extends HttpService {
     q?: string
     sort_by?: string | string[]
     fields?: string | string[]
-  }): Promise<Record<string, any>> {
+  }): Promise<{ total: number; results: TenantCustomDomain[] }> {
     return await this.http.get(`/custom-domain/${encodedQueryString(queryParams)}`)
   }
 
@@ -46,7 +46,9 @@ export class CustomDomainService extends HttpService {
   /**
    * @param domain Custom Domain specifier
    */
-  async verifyOwnership(domain: string): Promise<Record<string, any>> {
+  async verifyOwnership(
+    domain: string,
+  ): Promise<{ verified: boolean; verification_value?: string }> {
     return await this.http.get(`/custom-domain/${domain}/verify`)
   }
 }

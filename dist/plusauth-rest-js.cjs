@@ -886,6 +886,13 @@ var UserService = class extends HttpService {
   }
   /**
    * @param userId User identifier
+   * @param data 
+   */
+  async linkIdentity(userId, data) {
+    return await this.http.post(`/users/${userId}/identities/`, data);
+  }
+  /**
+   * @param userId User identifier
    * @param queryParams Query parameters
    * @param queryParams.limit Limit the number of results returned
    * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.

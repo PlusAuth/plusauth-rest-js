@@ -263,7 +263,10 @@ declare class ClientService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: Client[];
+    }>;
     /**
      * @param data Client object
      */
@@ -1306,7 +1309,10 @@ declare class ConnectionService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: Connection[];
+    }>;
     /**
      * @param data Connection object
      */
@@ -3112,7 +3118,10 @@ declare class CustomDomainService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: TenantCustomDomain[];
+    }>;
     /**
      * @param data Tenant Custom Domain object
      */
@@ -3128,7 +3137,10 @@ declare class CustomDomainService extends HttpService {
     /**
      * @param domain Custom Domain specifier
      */
-    verifyOwnership(domain: string): Promise<Record<string, any>>;
+    verifyOwnership(domain: string): Promise<{
+        verified: boolean;
+        verification_value?: string;
+    }>;
 }
 
 /**
@@ -4007,7 +4019,10 @@ declare class HookService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: Hook[];
+    }>;
     /**
      * @param data Hook object
      */
@@ -4979,7 +4994,10 @@ declare class MfaService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: MFA[];
+    }>;
     /**
      * @param data Object containing to be updated values
      */
@@ -6110,7 +6128,10 @@ declare class ResourceService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: Permission[];
+    }>;
     /**
      * @param resourceId Resource identifier
      * @param data Permission object
@@ -6136,7 +6157,10 @@ declare class ResourceService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: ResourceAuthorizedClient[];
+    }>;
     /**
      * @param resourceId Resource identifier
      * @param clientIdList List of client ID's to be authorized
@@ -6178,7 +6202,10 @@ declare class ResourceService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: Resource[];
+    }>;
     /**
      * @param data Resource Object with name and description properties.
      */
@@ -6257,7 +6284,10 @@ declare class RoleGroupService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: RoleGroup[];
+    }>;
     /**
      * @param data Role Group object
      */
@@ -6278,7 +6308,10 @@ declare class RoleGroupService extends HttpService {
     /**
      * @param roleGroupId Role Group identifier
      */
-    getRoles(roleGroupId: string): Promise<Record<string, any>>;
+    getRoles(roleGroupId: string): Promise<{
+        total: number;
+        results: Role[];
+    }>;
     /**
      * @param roleGroupId Role Group identifier
      * @param roleIdList List of role ID's to be assigned to the role group
@@ -6304,7 +6337,10 @@ declare class RoleGroupService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: User[];
+    }>;
 }
 
 declare class RoleService extends HttpService {
@@ -6322,7 +6358,10 @@ declare class RoleService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: Role[];
+    }>;
     /**
      * @param data Role object
      */
@@ -6355,7 +6394,10 @@ declare class RoleService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: Permission[];
+    }>;
     /**
      * @param roleId Role identifier
      * @param permissionIdList List of permission ID's to be assigned to the role
@@ -6381,7 +6423,10 @@ declare class RoleService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: User[];
+    }>;
 }
 
 /**
@@ -12885,7 +12930,10 @@ declare class UserService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: User[];
+    }>;
     /**
      * For user creation at least one of identifier is required. Available identifiers are `username`, `email` and `phone_number`.
 
@@ -12920,6 +12968,16 @@ declare class UserService extends HttpService {
     removeCredential(userId: string, credentialId: string): Promise<void>;
     /**
      * @param userId User identifier
+     * @param data
+     */
+    linkIdentity(userId: string, data: {
+        user_id: string;
+    } | {
+        id_token: string;
+        connection?: string;
+    }): Promise<void>;
+    /**
+     * @param userId User identifier
      * @param queryParams Query parameters
      * @param queryParams.limit Limit the number of results returned
      * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
@@ -12933,7 +12991,10 @@ declare class UserService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: Permission[];
+    }>;
     /**
      * @param userId User identifier
      * @param permissionIdList List of permission IDs to be assigned
@@ -12959,7 +13020,10 @@ declare class UserService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: Role[];
+    }>;
     /**
      * @param userId User identifier
      * @param roleIdList List of role IDs to be assigned
@@ -12985,7 +13049,10 @@ declare class UserService extends HttpService {
         q?: string;
         sort_by?: string | string[];
         fields?: string | string[];
-    }): Promise<Record<string, any>>;
+    }): Promise<{
+        total: number;
+        results: RoleGroup[];
+    }>;
     /**
      * @param userId User identifier
      * @param roleGroupIdList List of role group IDs to be assigned

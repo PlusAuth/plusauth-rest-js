@@ -19,7 +19,7 @@ export class ConnectionService extends HttpService {
     q?: string
     sort_by?: string | string[]
     fields?: string | string[]
-  }): Promise<Record<string, any>> {
+  }): Promise<{ total: number; results: Connection[] }> {
     return await this.http.get(`/connections/${encodedQueryString(queryParams)}`)
   }
 

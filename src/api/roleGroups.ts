@@ -2,6 +2,8 @@ import { HttpService } from "../http"
 import type { RoleGroup } from "../models"
 import type { CreateRoleGroup } from "../models"
 import type { UpdateRoleGroup } from "../models"
+import type { Role } from "../models"
+import type { User } from "../models"
 import { encodedQueryString } from "../utils"
 
 export class RoleGroupService extends HttpService {
@@ -19,7 +21,7 @@ export class RoleGroupService extends HttpService {
     q?: string
     sort_by?: string | string[]
     fields?: string | string[]
-  }): Promise<Record<string, any>> {
+  }): Promise<{ total: number; results: RoleGroup[] }> {
     return await this.http.get(`/role-groups/${encodedQueryString(queryParams)}`)
   }
 
@@ -55,7 +57,7 @@ export class RoleGroupService extends HttpService {
   /**
    * @param roleGroupId Role Group identifier
    */
-  async getRoles(roleGroupId: string): Promise<Record<string, any>> {
+  async getRoles(roleGroupId: string): Promise<{ total: number; results: Role[] }> {
     return await this.http.get(`/role-groups/${roleGroupId}/roles`)
   }
 
@@ -93,7 +95,7 @@ export class RoleGroupService extends HttpService {
       sort_by?: string | string[]
       fields?: string | string[]
     },
-  ): Promise<Record<string, any>> {
+  ): Promise<{ total: number; results: User[] }> {
     return await this.http.get(
       `/role-groups/${roleGroupId}/users${encodedQueryString(queryParams)}`,
     )

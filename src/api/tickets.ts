@@ -6,7 +6,7 @@ export class TicketService extends HttpService {
   /**
    * @param data Ticket object
    */
-  async createPasswordResetTicket(data: CreateTicket): Promise<Record<string, any>> {
+  async createPasswordResetTicket(data: CreateTicket): Promise<{ link: string }> {
     return await this.http.post(`/tickets/reset-password`, data)
   }
 
@@ -24,14 +24,28 @@ export class TicketService extends HttpService {
     q?: string
     sort_by?: string | string[]
     fields?: string | string[]
-  }): Promise<Record<string, any>> {
+  }): Promise<{
+    total: number
+    results: {
+      id: string
+      expires_at: string
+      used?: boolean
+      created_at: string
+      user_id?: string
+      email?: string
+      client_id?: string
+      details?: Record<string, any>
+      token?: string
+      type: string
+    }[]
+  }> {
     return await this.http.get(`/tickets/verify-email${encodedQueryString(queryParams)}`)
   }
 
   /**
    * @param data Ticket object
    */
-  async createVerifyEmailTicket(data: CreateTicket): Promise<Record<string, any>> {
+  async createVerifyEmailTicket(data: CreateTicket): Promise<{ link: string }> {
     return await this.http.post(`/tickets/verify-email`, data)
   }
 }

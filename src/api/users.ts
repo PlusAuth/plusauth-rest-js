@@ -4,6 +4,9 @@ import type { CreateUser } from "../models"
 import type { UpdateUser } from "../models"
 import type { UserRbacTree } from "../models"
 import type { Tenant } from "../models"
+import type { Permission } from "../models"
+import type { Role } from "../models"
+import type { RoleGroup } from "../models"
 import type { UserSession } from "../models"
 import { encodedQueryString } from "../utils"
 
@@ -22,7 +25,7 @@ export class UserService extends HttpService {
     q?: string
     sort_by?: string | string[]
     fields?: string | string[]
-  }): Promise<Record<string, any>> {
+  }): Promise<{ total: number; results: User[] }> {
     return await this.http.get(`/users/${encodedQueryString(queryParams)}`)
   }
 
@@ -108,7 +111,7 @@ export class UserService extends HttpService {
       sort_by?: string | string[]
       fields?: string | string[]
     },
-  ): Promise<Record<string, any>> {
+  ): Promise<{ total: number; results: Permission[] }> {
     return await this.http.get(`/users/${userId}/permissions/${encodedQueryString(queryParams)}`)
   }
 
@@ -146,7 +149,7 @@ export class UserService extends HttpService {
       sort_by?: string | string[]
       fields?: string | string[]
     },
-  ): Promise<Record<string, any>> {
+  ): Promise<{ total: number; results: Role[] }> {
     return await this.http.get(`/users/${userId}/roles/${encodedQueryString(queryParams)}`)
   }
 
@@ -184,7 +187,7 @@ export class UserService extends HttpService {
       sort_by?: string | string[]
       fields?: string | string[]
     },
-  ): Promise<Record<string, any>> {
+  ): Promise<{ total: number; results: RoleGroup[] }> {
     return await this.http.get(`/users/${userId}/role-groups/${encodedQueryString(queryParams)}`)
   }
 

@@ -1,6 +1,7 @@
 import { HttpService } from "../http"
 import type { Permission } from "../models"
 import type { CreatePermission } from "../models"
+import type { ResourceAuthorizedClient } from "../models"
 import type { Resource } from "../models"
 import type { CreateResource } from "../models"
 import type { UpdateResource } from "../models"
@@ -25,7 +26,7 @@ export class ResourceService extends HttpService {
       sort_by?: string | string[]
       fields?: string | string[]
     },
-  ): Promise<Record<string, any>> {
+  ): Promise<{ total: number; results: Permission[] }> {
     return await this.http.get(
       `/resources/${resourceId}/permissions/${encodedQueryString(queryParams)}`,
     )
@@ -65,7 +66,7 @@ export class ResourceService extends HttpService {
       sort_by?: string | string[]
       fields?: string | string[]
     },
-  ): Promise<Record<string, any>> {
+  ): Promise<{ total: number; results: ResourceAuthorizedClient[] }> {
     return await this.http.get(
       `/resources/${resourceId}/authorized_clients/${encodedQueryString(queryParams)}`,
     )
@@ -146,7 +147,7 @@ export class ResourceService extends HttpService {
     q?: string
     sort_by?: string | string[]
     fields?: string | string[]
-  }): Promise<Record<string, any>> {
+  }): Promise<{ total: number; results: Resource[] }> {
     return await this.http.get(`/resources/${encodedQueryString(queryParams)}`)
   }
 

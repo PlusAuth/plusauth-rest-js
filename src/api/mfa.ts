@@ -19,7 +19,7 @@ export class MfaService extends HttpService {
     q?: string
     sort_by?: string | string[]
     fields?: string | string[]
-  }): Promise<Record<string, any>> {
+  }): Promise<{ total: number; results: MFA[] }> {
     return await this.http.get(`/mfa/${encodedQueryString(queryParams)}`)
   }
 
