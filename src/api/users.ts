@@ -81,6 +81,17 @@ export class UserService extends HttpService {
 
   /**
    * @param userId User identifier
+   * @param data
+   */
+  async linkIdentity(
+    userId: string,
+    data: { user_id: string } | { id_token: string; connection?: string },
+  ): Promise<void> {
+    return await this.http.post(`/users/${userId}/identities/`, data)
+  }
+
+  /**
+   * @param userId User identifier
    * @param queryParams Query parameters
    * @param queryParams.limit Limit the number of results returned
    * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
