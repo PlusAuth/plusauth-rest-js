@@ -41,6 +41,10 @@
           {
             "type": "style",
             "section": "Stylistic Updates"
+          },
+          {
+            "type": "chore",
+            "hidden": true
           }
         ]
       },
