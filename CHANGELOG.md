@@ -2,14 +2,9 @@
 
 ## 2.1.0 (2024-12-11)
 
-* chore: lint ([6d2e1bd](https://github.com/PlusAuth/plusauth-rest-js/commit/6d2e1bd))
-* chore: update dependencies ([b9bbe79](https://github.com/PlusAuth/plusauth-rest-js/commit/b9bbe79))
-* chore: update dependencies ([98fdea2](https://github.com/PlusAuth/plusauth-rest-js/commit/98fdea2))
-* chore: update readme ([355686d](https://github.com/PlusAuth/plusauth-rest-js/commit/355686d))
-* chore: upgrade deps ([3670e74](https://github.com/PlusAuth/plusauth-rest-js/commit/3670e74))
 * type: more specific types ([f9372fe](https://github.com/PlusAuth/plusauth-rest-js/commit/f9372fe))
 * type: use correct type for client permissions ([744617b](https://github.com/PlusAuth/plusauth-rest-js/commit/744617b))
-* feat: account linking method ([fa74984](https://github.com/PlusAuth/plusauth-rest-js/commit/fa74984))
+* feat: user account linking method ([fa74984](https://github.com/PlusAuth/plusauth-rest-js/commit/fa74984))
 * feat: account linking views, hooks ([590fd97](https://github.com/PlusAuth/plusauth-rest-js/commit/590fd97))
 * fix: create connection schema missing some required props ([1a1d891](https://github.com/PlusAuth/plusauth-rest-js/commit/1a1d891))
 
