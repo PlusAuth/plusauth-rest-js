@@ -183,7 +183,17 @@ export interface Client {
   logout_uris: string[]
   grant_types: string[]
   advanced: {
-    pkce_required: boolean
+    pkce_required?: boolean
+    devices?: {
+      android?: {
+        package_name?: string | null
+        sha256_cert_fingerprints?: string[]
+      }
+      ios?: {
+        bundle_identifier?: string | null
+        team_id?: string | null
+      }
+    }
   }
   extra_metadata: {
     /**
@@ -1465,7 +1475,17 @@ export interface CreateClient {
   logout_uris?: string[]
   grant_types?: string[]
   advanced?: {
-    pkce_required: boolean
+    pkce_required?: boolean
+    devices?: {
+      android?: {
+        package_name?: string | null
+        sha256_cert_fingerprints?: string[]
+      }
+      ios?: {
+        bundle_identifier?: string | null
+        team_id?: string | null
+      }
+    }
   }
   extra_metadata?: {
     /**
@@ -7967,6 +7987,16 @@ export interface UpdateClient {
   grant_types?: string[]
   advanced?: {
     pkce_required?: boolean
+    devices?: {
+      android?: {
+        package_name?: string | null
+        sha256_cert_fingerprints?: string[]
+      }
+      ios?: {
+        bundle_identifier?: string | null
+        team_id?: string | null
+      }
+    }
   }
   extra_metadata?: {
     /**
