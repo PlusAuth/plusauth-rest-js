@@ -12,7 +12,7 @@
     "import": "./dist/plusauth-rest-js.js",
     "require": "./dist/plusauth-rest-js.cjs"
   },
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@9.15.1",
   "files": [
     "dist"
   ],
