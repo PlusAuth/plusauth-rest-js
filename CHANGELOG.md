@@ -1,5 +1,15 @@
 
 
+## [2.2.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v2.1.0...v2.2.0) (2024-12-20)
+
+### Features
+
+* allow user self deletion ([e1ac3ea](https://github.com/PlusAuth/plusauth-rest-js/commit/e1ac3ea7d097cc8d4df29fddbcd4bde77a208718))
+
+### Type Improvements
+
+* well-known endpoint configuration for universal links support in mobile devices ([6b07433](https://github.com/PlusAuth/plusauth-rest-js/commit/6b074339c7140eb9f2dc3c9c81445c2a1a9903cd))
+
 ## 2.1.0 (2024-12-11)
 
 * type: more specific types ([f9372fe](https://github.com/PlusAuth/plusauth-rest-js/commit/f9372fe))
