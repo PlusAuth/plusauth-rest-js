@@ -8,6 +8,7 @@ export class ViewService extends HttpService {
   async get(
     type:
       | "account-linking"
+      | "account-deletion"
       | "consent"
       | "fill-missing"
       | "login"
@@ -40,6 +41,7 @@ export class ViewService extends HttpService {
   async update(
     type:
       | "account-linking"
+      | "account-deletion"
       | "consent"
       | "fill-missing"
       | "login"

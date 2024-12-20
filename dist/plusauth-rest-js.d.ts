@@ -2656,6 +2656,13 @@ export declare interface CreateTenant {
     region: "tr-1";
     settings?: {
         default_strategy?: (string | null);
+        user_self_deletion?: {
+            /**
+             * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
+             */
+            enabled?: boolean;
+            [k: string]: any;
+        };
         auto_sign_in?: boolean;
         register_enabled?: boolean;
         forgot_password_enabled?: boolean;
@@ -7427,6 +7434,13 @@ export declare interface Tenant {
     region: "tr-1";
     settings: {
         default_strategy?: (string | null);
+        user_self_deletion?: {
+            /**
+             * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
+             */
+            enabled?: boolean;
+            [k: string]: any;
+        };
         auto_sign_in: boolean;
         register_enabled: boolean;
         forgot_password_enabled: boolean;
@@ -7800,6 +7814,13 @@ declare class TenantService extends HttpService {
  */
 export declare interface TenantSettings {
     default_strategy?: (string | null);
+    user_self_deletion?: {
+        /**
+         * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
+         */
+        enabled?: boolean;
+        [k: string]: any;
+    };
     auto_sign_in: boolean;
     register_enabled: boolean;
     forgot_password_enabled: boolean;
@@ -11987,6 +12008,13 @@ export declare type UpdateTemplate = ({
  */
 export declare interface UpdateTenantSettings {
     default_strategy?: (string | null);
+    user_self_deletion?: {
+        /**
+         * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
+         */
+        enabled?: boolean;
+        [k: string]: any;
+    };
     auto_sign_in?: boolean;
     register_enabled?: boolean;
     forgot_password_enabled?: boolean;
@@ -13179,19 +13207,19 @@ export declare interface UserSession {
 export declare interface View {
     is_default: boolean;
     content: string;
-    type: ("account-linking" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error");
+    type: ("account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error");
 }
 
 declare class ViewService extends HttpService {
     /**
      * @param type
      */
-    get(type: "account-linking" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error"): Promise<View>;
+    get(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error"): Promise<View>;
     /**
      * @param type
      * @param data View content. Pass null or empty to reset to default
      */
-    update(type: "account-linking" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error", data: string | null): Promise<View>;
+    update(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error", data: string | null): Promise<View>;
 }
 
 /**

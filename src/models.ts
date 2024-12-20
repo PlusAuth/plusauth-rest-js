@@ -2750,6 +2750,13 @@ export interface CreateTenant {
   region: "tr-1"
   settings?: {
     default_strategy?: string | null
+    user_self_deletion?: {
+      /**
+       * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
+       */
+      enabled?: boolean
+      [k: string]: any
+    }
     auto_sign_in?: boolean
     register_enabled?: boolean
     forgot_password_enabled?: boolean
@@ -7270,6 +7277,13 @@ export interface Tenant {
   region: "tr-1"
   settings: {
     default_strategy?: string | null
+    user_self_deletion?: {
+      /**
+       * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
+       */
+      enabled?: boolean
+      [k: string]: any
+    }
     auto_sign_in: boolean
     register_enabled: boolean
     forgot_password_enabled: boolean
@@ -7562,6 +7576,13 @@ export interface Tenant {
  */
 export interface TenantSettings {
   default_strategy?: string | null
+  user_self_deletion?: {
+    /**
+     * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
+     */
+    enabled?: boolean
+    [k: string]: any
+  }
   auto_sign_in: boolean
   register_enabled: boolean
   forgot_password_enabled: boolean
@@ -11875,6 +11896,13 @@ export type UpdateTemplate =
  */
 export interface UpdateTenantSettings {
   default_strategy?: string | null
+  user_self_deletion?: {
+    /**
+     * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
+     */
+    enabled?: boolean
+    [k: string]: any
+  }
   auto_sign_in?: boolean
   register_enabled?: boolean
   forgot_password_enabled?: boolean
@@ -12995,6 +13023,7 @@ export interface View {
   content: string
   type:
     | "account-linking"
+    | "account-deletion"
     | "consent"
     | "fill-missing"
     | "login"
