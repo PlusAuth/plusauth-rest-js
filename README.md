@@ -13,7 +13,7 @@ Table Of Content
 From PlusAuth CDN:
 ```html
 <!-- Latest release -->
-<script src="https://unpkg.com/@plusauth/plusauth-rest-js@2.0.3/dist/plusauth-rest-js.min.js"></script>
+<script src="https://unpkg.com/@plusauth/plusauth-rest-js@2.2.0/dist/plusauth-rest-js.min.js"></script>
 ```
 
 With npm:
