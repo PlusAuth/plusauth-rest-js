@@ -58,7 +58,7 @@ Generally you may need to replace PlusAuth REST API token because its lifetime c
 In this case updating `options.token` or by using the `token` setter
 of PlusAuthClient instance will be enough to change used token.
 
-> To generate access token consult [docs](#docs) or have a look at [example/getAuthToken.js](./example/getAuthToken.js).
+> To generate access token consult [docs](https://docs.plusauth.com/api/core/authorization) or have a look at [example/getAuthToken.js](./example/getAuthToken.js).
 The example file also includes an example curl request.
 
 ```js
