@@ -2675,7 +2675,7 @@ export interface CreateResource {
   description?: string | null
   settings?: {
     access_token_ttl?: number
-    [k: string]: any
+    include_user_roles?: boolean
   }
 }
 
@@ -6112,7 +6112,7 @@ export interface Resource {
   system: boolean
   settings?: {
     access_token_ttl?: number
-    [k: string]: any
+    include_user_roles?: boolean
   }
 }
 
@@ -7039,9 +7039,9 @@ export interface SubscriptionUsage {
   ciba?: boolean
   "connections.passwordless"?: boolean | number
   "connections.social"?: boolean | number
-  "connections.saml"?: boolean | number
-  "connections.e_devlet"?: boolean | number
-  "connections.ldap"?: boolean | number
+  "connections.enterprise.saml"?: boolean | number
+  "connections.enterprise.e_devlet"?: boolean | number
+  "connections.enterprise.ldap"?: boolean | number
   /**
    * Is feature enabled or not
    */
@@ -7495,9 +7495,9 @@ export interface Tenant {
       ciba?: boolean
       "connections.passwordless"?: boolean | number
       "connections.social"?: boolean | number
-      "connections.saml"?: boolean | number
-      "connections.e_devlet"?: boolean | number
-      "connections.ldap"?: boolean | number
+      "connections.enterprise.saml"?: boolean | number
+      "connections.enterprise.e_devlet"?: boolean | number
+      "connections.enterprise.ldap"?: boolean | number
       /**
        * Is feature enabled or not
        */
@@ -7768,9 +7768,9 @@ export interface TenantSubscription {
     ciba?: boolean
     "connections.passwordless"?: boolean | number
     "connections.social"?: boolean | number
-    "connections.saml"?: boolean | number
-    "connections.e_devlet"?: boolean | number
-    "connections.ldap"?: boolean | number
+    "connections.enterprise.saml"?: boolean | number
+    "connections.enterprise.e_devlet"?: boolean | number
+    "connections.enterprise.ldap"?: boolean | number
     /**
      * Is feature enabled or not
      */
@@ -11003,7 +11003,7 @@ export interface UpdateResource {
   description?: string | null
   settings?: {
     access_token_ttl?: number
-    [k: string]: any
+    include_user_roles?: boolean
   }
 }
 

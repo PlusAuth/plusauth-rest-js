@@ -835,12 +835,6 @@ var UserService = class extends HttpService {
   }
   /**
    * @param userId User identifier
-   */
-  async getTenants(userId) {
-    return await this.http.get(`/users/${userId}/tenants`);
-  }
-  /**
-   * @param userId User identifier
    * @param credentialId Credential identifier
    */
   async removeCredential(userId, credentialId) {

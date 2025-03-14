@@ -3,7 +3,6 @@ import type { User } from "../models"
 import type { CreateUser } from "../models"
 import type { UpdateUser } from "../models"
 import type { UserRbacTree } from "../models"
-import type { Tenant } from "../models"
 import type { Permission } from "../models"
 import type { Role } from "../models"
 import type { RoleGroup } from "../models"
@@ -65,13 +64,6 @@ export class UserService extends HttpService {
    */
   async getRbac(userId: string): Promise<UserRbacTree> {
     return await this.http.get(`/users/${userId}/rbac`)
-  }
-
-  /**
-   * @param userId User identifier
-   */
-  async getTenants(userId: string): Promise<Tenant[]> {
-    return await this.http.get(`/users/${userId}/tenants`)
   }
 
   /**
