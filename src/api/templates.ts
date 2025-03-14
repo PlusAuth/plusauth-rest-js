@@ -20,7 +20,7 @@ export class TemplateService extends HttpService {
       | "plan-downgraded"
       | "blocked-account"
       | "blocked-ip"
-      | "test"
+      | "test",
   ): Promise<Template> {
     return await this.http.get(`/templates/${type}/${name}/`)
   }
@@ -44,7 +44,7 @@ export class TemplateService extends HttpService {
       | "blocked-account"
       | "blocked-ip"
       | "test",
-    data: UpdateTemplate
+    data: UpdateTemplate,
   ): Promise<Template> {
     return await this.http.patch(`/templates/${type}/${name}/`, data)
   }
@@ -66,7 +66,7 @@ export class TemplateService extends HttpService {
       | "plan-downgraded"
       | "blocked-account"
       | "blocked-ip"
-      | "test"
+      | "test",
   ): Promise<void> {
     return await this.http.delete(`/templates/${type}/${name}/`)
   }

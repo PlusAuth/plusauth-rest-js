@@ -7349,7 +7349,7 @@ export declare interface SubscriptionUsage {
     "mfa.fv"?: boolean;
     "mfa.push"?: boolean;
     "mfa.email"?: boolean;
-    "mfa.e-sign"?: boolean;
+    "mfa.e_sign"?: boolean;
     "mfa.webauthn"?: boolean;
     /**
      * Is feature enabled or not
@@ -7695,7 +7695,7 @@ export declare interface Tenant {
             "mfa.fv"?: boolean;
             "mfa.push"?: boolean;
             "mfa.email"?: boolean;
-            "mfa.e-sign"?: boolean;
+            "mfa.e_sign"?: boolean;
             "mfa.webauthn"?: boolean;
             /**
              * Is feature enabled or not
@@ -8058,7 +8058,7 @@ export declare interface TenantSubscription {
         "mfa.fv"?: boolean;
         "mfa.push"?: boolean;
         "mfa.email"?: boolean;
-        "mfa.e-sign"?: boolean;
+        "mfa.e_sign"?: boolean;
         "mfa.webauthn"?: boolean;
         /**
          * Is feature enabled or not

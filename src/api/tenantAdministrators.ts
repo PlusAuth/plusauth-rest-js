@@ -6,7 +6,10 @@ export class TenantAdministratorService extends HttpService {
    * @param tenantId Tenant identifier
    * @param invitationDetails Invitation details
    */
-  async invite(tenantId: string, invitationDetails: { email: string; permissions?: string[] }): Promise<void> {
+  async invite(
+    tenantId: string,
+    invitationDetails: { email: string; permissions?: string[] },
+  ): Promise<void> {
     return await this.http.post(`/tenants/${tenantId}/invite`, invitationDetails)
   }
 
@@ -30,8 +33,15 @@ export class TenantAdministratorService extends HttpService {
    * @param adminId Administrator identifier
    * @param permissionIdList List of permission IDs to be assigned
    */
-  async assignPermissions(tenantId: string, adminId: string, permissionIdList: string[]): Promise<void> {
-    return await this.http.post(`/tenants/${tenantId}/administrators/${adminId}/permissions`, permissionIdList)
+  async assignPermissions(
+    tenantId: string,
+    adminId: string,
+    permissionIdList: string[],
+  ): Promise<void> {
+    return await this.http.post(
+      `/tenants/${tenantId}/administrators/${adminId}/permissions`,
+      permissionIdList,
+    )
   }
 
   /**
@@ -39,7 +49,14 @@ export class TenantAdministratorService extends HttpService {
    * @param adminId Administrator identifier
    * @param permissionIdList List of permission IDs to be unassigned
    */
-  async unassignPermissions(tenantId: string, adminId: string, permissionIdList: string[]): Promise<void> {
-    return await this.http.delete(`/tenants/${tenantId}/administrators/${adminId}/permissions`, permissionIdList)
+  async unassignPermissions(
+    tenantId: string,
+    adminId: string,
+    permissionIdList: string[],
+  ): Promise<void> {
+    return await this.http.delete(
+      `/tenants/${tenantId}/administrators/${adminId}/permissions`,
+      permissionIdList,
+    )
   }
 }

@@ -71,7 +71,7 @@ export class RoleService extends HttpService {
       q?: string
       sort_by?: string | string[]
       fields?: string | string[]
-    }
+    },
   ): Promise<{ total: number; results: Permission[] }> {
     return await this.http.get(`/roles/${roleId}/permissions${encodedQueryString(queryParams)}`)
   }
@@ -109,7 +109,7 @@ export class RoleService extends HttpService {
       q?: string
       sort_by?: string | string[]
       fields?: string | string[]
-    }
+    },
   ): Promise<{ total: number; results: User[] }> {
     return await this.http.get(`/roles/${roleId}/users${encodedQueryString(queryParams)}`)
   }

@@ -94,8 +94,10 @@ export class RoleGroupService extends HttpService {
       q?: string
       sort_by?: string | string[]
       fields?: string | string[]
-    }
+    },
   ): Promise<{ total: number; results: User[] }> {
-    return await this.http.get(`/role-groups/${roleGroupId}/users${encodedQueryString(queryParams)}`)
+    return await this.http.get(
+      `/role-groups/${roleGroupId}/users${encodedQueryString(queryParams)}`,
+    )
   }
 }

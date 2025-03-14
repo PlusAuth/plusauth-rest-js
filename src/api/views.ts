@@ -29,7 +29,7 @@ export class ViewService extends HttpService {
       | "register"
       | "reset-password"
       | "verify-email"
-      | "error"
+      | "error",
   ): Promise<View> {
     return await this.http.get(`/views/${type}/`)
   }
@@ -63,7 +63,7 @@ export class ViewService extends HttpService {
       | "reset-password"
       | "verify-email"
       | "error",
-    data: string | null
+    data: string | null,
   ): Promise<View> {
     return await this.http.patch(`/views/${type}/`, data)
   }
