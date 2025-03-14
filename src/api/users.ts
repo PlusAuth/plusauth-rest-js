@@ -80,7 +80,7 @@ export class UserService extends HttpService {
    */
   async linkIdentity(
     userId: string,
-    data: { user_id: string } | { id_token: string; connection?: string },
+    data: { user_id: string } | { id_token: string; connection?: string }
   ): Promise<void> {
     return await this.http.post(`/users/${userId}/identities/`, data)
   }
@@ -102,7 +102,7 @@ export class UserService extends HttpService {
       q?: string
       sort_by?: string | string[]
       fields?: string | string[]
-    },
+    }
   ): Promise<{ total: number; results: Permission[] }> {
     return await this.http.get(`/users/${userId}/permissions/${encodedQueryString(queryParams)}`)
   }
@@ -140,7 +140,7 @@ export class UserService extends HttpService {
       q?: string
       sort_by?: string | string[]
       fields?: string | string[]
-    },
+    }
   ): Promise<{ total: number; results: Role[] }> {
     return await this.http.get(`/users/${userId}/roles/${encodedQueryString(queryParams)}`)
   }
@@ -178,7 +178,7 @@ export class UserService extends HttpService {
       q?: string
       sort_by?: string | string[]
       fields?: string | string[]
-    },
+    }
   ): Promise<{ total: number; results: RoleGroup[] }> {
     return await this.http.get(`/users/${userId}/role-groups/${encodedQueryString(queryParams)}`)
   }

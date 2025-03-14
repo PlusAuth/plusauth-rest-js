@@ -13,10 +13,7 @@ async function parseFetchResponse(response: Response, options: CustomRequestOpti
   if (options.responseType === "stream" && response.ok) {
     return response.body?.getReader()
   }
-  if (
-    options.responseType === "json" ||
-    (contentType && contentType.indexOf("application/json") > -1)
-  ) {
+  if (options.responseType === "json" || (contentType && contentType.indexOf("application/json") > -1)) {
     return await response.json()
   }
   return await response.text()
@@ -78,7 +75,7 @@ export class HttpService {
 
   protected static prefix = ""
 
-  private _baseUrl: string
+  private _baseUrl: string;
 
   declare ["constructor"]: typeof HttpService
 
@@ -99,8 +96,7 @@ export class HttpService {
     if (options.httpClient && typeof options.httpClient !== "function") {
       throw new Error('"httpClient" must be function')
     }
-    const finalUri =
-      apiURL + (/\/api\/v\d(\/)?$/.test(apiURL) ? "" : `${apiURL.endsWith("/") ? "" : "/"}api/v1`)
+    const finalUri = apiURL + (/\/api\/v\d(\/)?$/.test(apiURL) ? "" : `${apiURL.endsWith("/") ? "" : "/"}api/v1`)
 
     const _baseUrl = finalUri + this.constructor.prefix
 
@@ -122,8 +118,8 @@ export class HttpService {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest",
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
-            ...(options.version ? { "X-PlusAuth-Version": options.version } : {}),
-          },
+            ...(options.version ? { "X-PlusAuth-Version": options.version } : {})
+          }
         }
         if (args.length > 1) {
           if (method !== "get") {

@@ -27,8 +27,8 @@ export default async function (uri, clientId, clientSecret, permissions = []) {
       client_secret: clientSecret,
       grant_type: "client_credentials",
       audience: `${uri}/api/`,
-      scope: Array.isArray(permissions) ? permissions.join(" ") : permissions,
-    }),
+      scope: Array.isArray(permissions) ? permissions.join(" ") : permissions
+    })
   })
 
   return response.json()

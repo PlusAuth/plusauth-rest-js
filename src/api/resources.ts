@@ -25,11 +25,9 @@ export class ResourceService extends HttpService {
       q?: string
       sort_by?: string | string[]
       fields?: string | string[]
-    },
+    }
   ): Promise<{ total: number; results: Permission[] }> {
-    return await this.http.get(
-      `/resources/${resourceId}/permissions/${encodedQueryString(queryParams)}`,
-    )
+    return await this.http.get(`/resources/${resourceId}/permissions/${encodedQueryString(queryParams)}`)
   }
 
   /**
@@ -65,11 +63,9 @@ export class ResourceService extends HttpService {
       q?: string
       sort_by?: string | string[]
       fields?: string | string[]
-    },
+    }
   ): Promise<{ total: number; results: ResourceAuthorizedClient[] }> {
-    return await this.http.get(
-      `/resources/${resourceId}/authorized_clients/${encodedQueryString(queryParams)}`,
-    )
+    return await this.http.get(`/resources/${resourceId}/authorized_clients/${encodedQueryString(queryParams)}`)
   }
 
   /**
@@ -92,13 +88,8 @@ export class ResourceService extends HttpService {
    * @param resourceId Resource identifier
    * @param clientId Client identifier
    */
-  async getAssignedPermissionsToClient(
-    resourceId: string,
-    clientId: string,
-  ): Promise<Permission[]> {
-    return await this.http.get(
-      `/resources/${resourceId}/authorized_clients/${clientId}/permissions/`,
-    )
+  async getAssignedPermissionsToClient(resourceId: string, clientId: string): Promise<Permission[]> {
+    return await this.http.get(`/resources/${resourceId}/authorized_clients/${clientId}/permissions/`)
   }
 
   /**
@@ -106,14 +97,10 @@ export class ResourceService extends HttpService {
    * @param clientId Client identifier
    * @param permissionIdList List of permission ID's to be authorized
    */
-  async authorizePermissionsToClient(
-    resourceId: string,
-    clientId: string,
-    permissionIdList: string[],
-  ): Promise<void> {
+  async authorizePermissionsToClient(resourceId: string, clientId: string, permissionIdList: string[]): Promise<void> {
     return await this.http.post(
       `/resources/${resourceId}/authorized_clients/${clientId}/permissions/`,
-      permissionIdList,
+      permissionIdList
     )
   }
 
@@ -125,11 +112,11 @@ export class ResourceService extends HttpService {
   async unauthorizePermissionsFromClient(
     resourceId: string,
     clientId: string,
-    permissionIdList: string[],
+    permissionIdList: string[]
   ): Promise<void> {
     return await this.http.delete(
       `/resources/${resourceId}/authorized_clients/${clientId}/permissions/`,
-      permissionIdList,
+      permissionIdList
     )
   }
 
