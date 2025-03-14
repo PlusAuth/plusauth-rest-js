@@ -14,7 +14,7 @@ import {
   TenantAdministratorService,
   TenantService,
   UserService,
-  ViewService,
+  ViewService
 } from "./api"
 
 interface Options {
@@ -120,8 +120,7 @@ export class PlusAuthRestClient {
   }
 }
 
-export default (apiUri: string, options: Options = {}): PlusAuthRestClient =>
-  new PlusAuthRestClient(apiUri, options)
+export default (apiUri: string, options: Options = {}): PlusAuthRestClient => new PlusAuthRestClient(apiUri, options)
 
 export type * from "./models.js"
 

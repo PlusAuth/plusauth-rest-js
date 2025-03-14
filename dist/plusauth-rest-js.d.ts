@@ -2605,7 +2605,7 @@ export declare interface CreateResource {
     description?: (string | null);
     settings?: {
         access_token_ttl?: number;
-        [k: string]: any;
+        include_user_roles?: boolean;
     };
 }
 
@@ -6121,7 +6121,7 @@ export declare interface Resource {
     system: boolean;
     settings?: {
         access_token_ttl?: number;
-        [k: string]: any;
+        include_user_roles?: boolean;
     };
 }
 
@@ -7294,9 +7294,9 @@ export declare interface SubscriptionUsage {
     ciba?: boolean;
     "connections.passwordless"?: (boolean | number);
     "connections.social"?: (boolean | number);
-    "connections.saml"?: (boolean | number);
-    "connections.e_devlet"?: (boolean | number);
-    "connections.ldap"?: (boolean | number);
+    "connections.enterprise.saml"?: (boolean | number);
+    "connections.enterprise.e_devlet"?: (boolean | number);
+    "connections.enterprise.ldap"?: (boolean | number);
     /**
      * Is feature enabled or not
      */
@@ -7640,9 +7640,9 @@ export declare interface Tenant {
             ciba?: boolean;
             "connections.passwordless"?: (boolean | number);
             "connections.social"?: (boolean | number);
-            "connections.saml"?: (boolean | number);
-            "connections.e_devlet"?: (boolean | number);
-            "connections.ldap"?: (boolean | number);
+            "connections.enterprise.saml"?: (boolean | number);
+            "connections.enterprise.e_devlet"?: (boolean | number);
+            "connections.enterprise.ldap"?: (boolean | number);
             /**
              * Is feature enabled or not
              */
@@ -8003,9 +8003,9 @@ export declare interface TenantSubscription {
         ciba?: boolean;
         "connections.passwordless"?: (boolean | number);
         "connections.social"?: (boolean | number);
-        "connections.saml"?: (boolean | number);
-        "connections.e_devlet"?: (boolean | number);
-        "connections.ldap"?: (boolean | number);
+        "connections.enterprise.saml"?: (boolean | number);
+        "connections.enterprise.e_devlet"?: (boolean | number);
+        "connections.enterprise.ldap"?: (boolean | number);
         /**
          * Is feature enabled or not
          */
@@ -11166,7 +11166,7 @@ export declare interface UpdateResource {
     description?: (string | null);
     settings?: {
         access_token_ttl?: number;
-        [k: string]: any;
+        include_user_roles?: boolean;
     };
 }
 
@@ -13015,10 +13015,6 @@ declare class UserService extends HttpService {
      * @param userId User identifier
      */
     getRbac(userId: string): Promise<UserRbacTree>;
-    /**
-     * @param userId User identifier
-     */
-    getTenants(userId: string): Promise<Tenant[]>;
     /**
      * @param userId User identifier
      * @param credentialId Credential identifier

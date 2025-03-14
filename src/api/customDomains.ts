@@ -46,9 +46,7 @@ export class CustomDomainService extends HttpService {
   /**
    * @param domain Custom Domain specifier
    */
-  async verifyOwnership(
-    domain: string,
-  ): Promise<{ verified: boolean; verification_value?: string }> {
+  async verifyOwnership(domain: string): Promise<{ verified: boolean; verification_value?: string }> {
     return await this.http.get(`/custom-domain/${domain}/verify`)
   }
 }
