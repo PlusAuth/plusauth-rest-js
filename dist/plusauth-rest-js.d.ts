@@ -7358,6 +7358,10 @@ export declare interface SubscriptionUsage {
     /**
      * Is feature enabled or not
      */
+    radius?: boolean;
+    /**
+     * Is feature enabled or not
+     */
     rbac_management?: boolean;
     /**
      * Is feature enabled or not
@@ -7701,6 +7705,10 @@ export declare interface Tenant {
              * Is feature enabled or not
              */
             password_history?: boolean;
+            /**
+             * Is feature enabled or not
+             */
+            radius?: boolean;
             /**
              * Is feature enabled or not
              */
@@ -8064,6 +8072,10 @@ export declare interface TenantSubscription {
          * Is feature enabled or not
          */
         password_history?: boolean;
+        /**
+         * Is feature enabled or not
+         */
+        radius?: boolean;
         /**
          * Is feature enabled or not
          */
