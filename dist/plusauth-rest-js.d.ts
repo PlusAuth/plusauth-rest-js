@@ -5053,6 +5053,47 @@ export declare type MFAType = ("sms" | "otp" | "push" | "webauthn" | "email" | "
 /**
  * @public
  */
+export declare type ModuleSettings = {
+    /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
+    updated_at?: (string | null);
+    name: "radius";
+    metadata: {
+        address: string;
+        secret: string;
+    };
+    settings: {
+        enabled?: boolean;
+        /**
+         * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
+         */
+        connection?: string;
+        /**
+         * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
+         */
+        use_inline_factor_challenge?: boolean;
+        challenge_separator?: string;
+        address_allow_list?: string[];
+    };
+    [k: string]: any;
+};
+
+declare class ModuleSettingService extends HttpService {
+    /**
+     * @param name
+     */
+    get(name: "radius"): Promise<ModuleSettings>;
+    /**
+     * @param name
+     * @param data Object containing to be updated values
+     */
+    update(name: "radius", data: UpdateModuleSettings): Promise<ModuleSettings>;
+}
+
+/**
+ * @public
+ */
 export declare interface NativePushProvider {
     type: "push";
     /**
@@ -5421,6 +5462,7 @@ export declare class PlusAuthRestClient {
     readonly keys: InstanceType<typeof KeyService>;
     readonly logs: InstanceType<typeof LogService>;
     readonly mfa: InstanceType<typeof MfaService>;
+    readonly moduleSettings: InstanceType<typeof ModuleSettingService>;
     readonly providers: InstanceType<typeof ProviderService>;
     readonly resources: InstanceType<typeof ResourceService>;
     readonly roleGroups: InstanceType<typeof RoleGroupService>;
@@ -6096,6 +6138,35 @@ export declare type PushNotificationProvider = ({
         };
     };
 });
+
+/**
+ * @public
+ */
+export declare interface RadiusSettings {
+    /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
+    updated_at?: (string | null);
+    name: "radius";
+    metadata: {
+        address: string;
+        secret: string;
+    };
+    settings: {
+        enabled?: boolean;
+        /**
+         * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
+         */
+        connection?: string;
+        /**
+         * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
+         */
+        use_inline_factor_challenge?: boolean;
+        challenge_separator?: string;
+        address_allow_list?: string[];
+    };
+    [k: string]: any;
+}
 
 /**
  * Resource Object with name and description properties.
@@ -10598,6 +10669,27 @@ export declare type UpdateMFA = ({
         enabled_clients?: string[];
     };
 });
+
+/**
+ * @public
+ */
+export declare type UpdateModuleSettings = {
+    name: "radius";
+    settings: {
+        enabled?: boolean;
+        /**
+         * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
+         */
+        connection?: string;
+        /**
+         * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
+         */
+        use_inline_factor_challenge?: boolean;
+        challenge_separator?: string;
+        address_allow_list?: string[];
+    };
+    [k: string]: any;
+};
 
 /**
  * @public

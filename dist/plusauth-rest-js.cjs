@@ -86,6 +86,9 @@ async function fetchAsPromise(url, options) {
   throw new PlusAuthRestError(await parseFetchResponse(clone, options));
 }
 var HttpService = class {
+  static {
+    this.prefix = "";
+  }
   constructor(apiURL, options = {}) {
     if (!apiURL) {
       throw new Error("'apiURL' must be provided");
@@ -142,7 +145,6 @@ var HttpService = class {
     return this._baseUrl;
   }
 };
-HttpService.prefix = "";
 
 // src/utils/index.ts
 function encodedQueryString(data, appendable = true) {
@@ -435,6 +437,23 @@ var MfaService = class extends HttpService {
    */
   async remove(type) {
     return await this.http.delete(`/mfa/${type}`);
+  }
+};
+
+// src/api/moduleSettings.ts
+var ModuleSettingService = class extends HttpService {
+  /**
+   * @param name 
+   */
+  async get(name) {
+    return await this.http.get(`/module-settings/${name}/`);
+  }
+  /**
+   * @param name 
+   * @param data Object containing to be updated values
+   */
+  async update(name, data) {
+    return await this.http.patch(`/module-settings/${name}/`, data);
   }
 };
 
@@ -1020,6 +1039,7 @@ var PlusAuthRestClient = class {
     this.keys = new KeyService(apiUri, this.options);
     this.logs = new LogService(apiUri, this.options);
     this.mfa = new MfaService(apiUri, this.options);
+    this.moduleSettings = new ModuleSettingService(apiUri, this.options);
     this.providers = new ProviderService(apiUri, this.options);
     this.resources = new ResourceService(apiUri, this.options);
     this.roleGroups = new RoleGroupService(apiUri, this.options);

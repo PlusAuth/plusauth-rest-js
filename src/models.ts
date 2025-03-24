@@ -5077,6 +5077,35 @@ export interface MessagebirdSmsProvider {
 /**
  * @public
  */
+export type ModuleSettings = {
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null
+  name: "radius"
+  metadata: {
+    address: string
+    secret: string
+  }
+  settings: {
+    enabled?: boolean
+    /**
+     * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
+     */
+    connection?: string
+    /**
+     * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
+     */
+    use_inline_factor_challenge?: boolean
+    challenge_separator?: string
+    address_allow_list?: string[]
+  }
+  [k: string]: any
+}
+
+/**
+ * @public
+ */
 export interface NativePushProvider {
   type: "push"
   /**
@@ -6072,6 +6101,35 @@ export type PushNotificationProvider = {
       production: boolean
     }
   }
+}
+
+/**
+ * @public
+ */
+export interface RadiusSettings {
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null
+  name: "radius"
+  metadata: {
+    address: string
+    secret: string
+  }
+  settings: {
+    enabled?: boolean
+    /**
+     * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
+     */
+    connection?: string
+    /**
+     * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
+     */
+    use_inline_factor_challenge?: boolean
+    challenge_separator?: string
+    address_allow_list?: string[]
+  }
+  [k: string]: any
 }
 
 /**
@@ -10416,6 +10474,27 @@ export type UpdateMFA =
         enabled_clients?: string[]
       }
     }
+
+/**
+ * @public
+ */
+export type UpdateModuleSettings = {
+  name: "radius"
+  settings: {
+    enabled?: boolean
+    /**
+     * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
+     */
+    connection?: string
+    /**
+     * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
+     */
+    use_inline_factor_challenge?: boolean
+    challenge_separator?: string
+    address_allow_list?: string[]
+  }
+  [k: string]: any
+}
 
 /**
  * @public

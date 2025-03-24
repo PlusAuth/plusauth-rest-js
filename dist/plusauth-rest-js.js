@@ -400,6 +400,23 @@ var MfaService = class extends HttpService {
   }
 };
 
+// src/api/moduleSettings.ts
+var ModuleSettingService = class extends HttpService {
+  /**
+   * @param name 
+   */
+  async get(name) {
+    return await this.http.get(`/module-settings/${name}/`);
+  }
+  /**
+   * @param name 
+   * @param data Object containing to be updated values
+   */
+  async update(name, data) {
+    return await this.http.patch(`/module-settings/${name}/`, data);
+  }
+};
+
 // src/api/resources.ts
 var ResourceService = class extends HttpService {
   /**
@@ -982,6 +999,7 @@ var PlusAuthRestClient = class {
     this.keys = new KeyService(apiUri, this.options);
     this.logs = new LogService(apiUri, this.options);
     this.mfa = new MfaService(apiUri, this.options);
+    this.moduleSettings = new ModuleSettingService(apiUri, this.options);
     this.providers = new ProviderService(apiUri, this.options);
     this.resources = new ResourceService(apiUri, this.options);
     this.roleGroups = new RoleGroupService(apiUri, this.options);

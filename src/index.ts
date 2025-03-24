@@ -6,6 +6,7 @@ import {
   KeyService,
   LogService,
   MfaService,
+  ModuleSettingService,
   ProviderService,
   ResourceService,
   RoleGroupService,
@@ -72,6 +73,8 @@ export class PlusAuthRestClient {
 
   readonly mfa: InstanceType<typeof MfaService>
 
+  readonly moduleSettings: InstanceType<typeof ModuleSettingService>
+
   readonly providers: InstanceType<typeof ProviderService>
 
   readonly resources: InstanceType<typeof ResourceService>
@@ -109,6 +112,7 @@ export class PlusAuthRestClient {
     this.keys = new KeyService(apiUri, this.options)
     this.logs = new LogService(apiUri, this.options)
     this.mfa = new MfaService(apiUri, this.options)
+    this.moduleSettings = new ModuleSettingService(apiUri, this.options)
     this.providers = new ProviderService(apiUri, this.options)
     this.resources = new ResourceService(apiUri, this.options)
     this.roleGroups = new RoleGroupService(apiUri, this.options)
