@@ -24,8 +24,8 @@
   "scripts": {
     "build": "pnpm --filter . run --parallel \"/build:/\"",
     "build:browser": "tsup --entry.plusauth-rest-js src/index.ts --format iife --minify",
-    "build:esm": "tsup --entry.plusauth-rest-js src/index.ts --format esm",
-    "build:cjs": "tsup --entry.plusauth-rest-js src/index.ts --format cjs",
+    "build:esm": "tsup --entry.plusauth-rest-js src/index.ts --format esm --target es2020,node20",
+    "build:cjs": "tsup --entry.plusauth-rest-js src/index.ts --format cjs --target node20",
     "build:dts": "rimraf types && tsc --emitDeclarationOnly && api-extractor run",
     "lint": "biome check --fix --diagnostic-level=error",
     "release": "cross-env GITHUB_TOKEN=$GITHUB_TOKEN release-it"
