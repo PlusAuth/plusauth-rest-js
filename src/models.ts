@@ -5085,6 +5085,7 @@ export type ModuleSettings = {
   name: "radius"
   metadata: {
     address: string
+    port: number
     secret: string
   }
   settings: {
@@ -6114,6 +6115,7 @@ export interface RadiusSettings {
   name: "radius"
   metadata: {
     address: string
+    port: number
     secret: string
   }
   settings: {
