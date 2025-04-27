@@ -138,6 +138,8 @@ export interface BruteForcePolicy {
   notification: boolean
   /**
    * Whitelisted IP addresses.
+   *
+   * @maxItems 1000
    */
   white_list: string[]
 }
@@ -151,6 +153,10 @@ export interface Client {
    * Unique client identifier.
    */
   client_id: string
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null
   /**
    * Unique client identifier.
    */
@@ -179,8 +185,17 @@ export interface Client {
     | "none"
   )[]
   oidc_conformant?: boolean | null
+  /**
+   * @maxItems 50
+   */
   redirect_uris: string[]
+  /**
+   * @maxItems 50
+   */
   logout_uris: string[]
+  /**
+   * @maxItems 20
+   */
   grant_types: string[]
   advanced: {
     pkce_required?: boolean
@@ -355,6 +370,9 @@ export type Connection =
              */
             code_ttl: number
             use_magic_link: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -396,6 +414,9 @@ export type Connection =
              */
             code_ttl: number
             use_magic_link: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -441,6 +462,9 @@ export type Connection =
              */
             code_ttl: number
             use_magic_link: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -495,6 +519,9 @@ export type Connection =
              */
             code_ttl: number
             use_magic_link: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -553,6 +580,9 @@ export type Connection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -593,6 +623,9 @@ export type Connection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -629,6 +662,9 @@ export type Connection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -681,6 +717,9 @@ export type Connection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -726,6 +765,9 @@ export type Connection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -770,6 +812,9 @@ export type Connection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -822,6 +867,9 @@ export type Connection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -848,6 +896,9 @@ export type Connection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -862,6 +913,9 @@ export type Connection =
             key_id: string
             private_key: string
             team_id: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -895,6 +949,9 @@ export type Connection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -907,6 +964,9 @@ export type Connection =
             }
             client_id: string
             client_secret: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -931,6 +991,9 @@ export type Connection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -959,6 +1022,9 @@ export type Connection =
             client_secret: string
             authorization_url: string
             token_url: string
+            /**
+             * @maxItems 1000
+             */
             scopes?: string[]
           }
         }
@@ -983,6 +1049,9 @@ export type Connection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -995,6 +1064,9 @@ export type Connection =
             }
             app_key: string
             app_secret: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -1019,6 +1091,9 @@ export type Connection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -1031,6 +1106,9 @@ export type Connection =
             }
             consumer_key: string
             consumer_secret: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -1057,6 +1135,9 @@ export type Connection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -1147,6 +1228,9 @@ export type Connection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -1159,6 +1243,9 @@ export type Connection =
             }
             client_id: string
             client_secret: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
             is_test?: boolean
           }
@@ -1184,6 +1271,9 @@ export type Connection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -1326,6 +1416,9 @@ export type Connection =
           bundle_id: string
           production: boolean
         }
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
         /**
          * Push notification strategy
@@ -1444,6 +1537,10 @@ export interface CreateClient {
    */
   client_id?: string
   /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null
+  /**
    * Unique client identifier.
    */
   client_secret?: string
@@ -1471,8 +1568,17 @@ export interface CreateClient {
     | "none"
   )[]
   oidc_conformant?: boolean | null
+  /**
+   * @maxItems 50
+   */
   redirect_uris?: string[]
+  /**
+   * @maxItems 50
+   */
   logout_uris?: string[]
+  /**
+   * @maxItems 20
+   */
   grant_types?: string[]
   advanced?: {
     pkce_required?: boolean
@@ -1618,6 +1724,9 @@ export type CreateConnection =
              */
             code_ttl: number
             use_magic_link: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -1659,6 +1768,9 @@ export type CreateConnection =
              */
             code_ttl: number
             use_magic_link: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -1704,6 +1816,9 @@ export type CreateConnection =
              */
             code_ttl: number
             use_magic_link: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -1758,6 +1873,9 @@ export type CreateConnection =
              */
             code_ttl: number
             use_magic_link: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -1816,6 +1934,9 @@ export type CreateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -1856,6 +1977,9 @@ export type CreateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -1892,6 +2016,9 @@ export type CreateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -1944,6 +2071,9 @@ export type CreateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -1989,6 +2119,9 @@ export type CreateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -2033,6 +2166,9 @@ export type CreateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -2085,6 +2221,9 @@ export type CreateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -2111,6 +2250,9 @@ export type CreateConnection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -2125,6 +2267,9 @@ export type CreateConnection =
             key_id: string
             private_key: string
             team_id: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -2158,6 +2303,9 @@ export type CreateConnection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -2170,6 +2318,9 @@ export type CreateConnection =
             }
             client_id: string
             client_secret: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -2194,6 +2345,9 @@ export type CreateConnection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -2222,6 +2376,9 @@ export type CreateConnection =
             client_secret: string
             authorization_url: string
             token_url: string
+            /**
+             * @maxItems 1000
+             */
             scopes?: string[]
           }
         }
@@ -2246,6 +2403,9 @@ export type CreateConnection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -2258,6 +2418,9 @@ export type CreateConnection =
             }
             app_key: string
             app_secret: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -2282,6 +2445,9 @@ export type CreateConnection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -2294,6 +2460,9 @@ export type CreateConnection =
             }
             consumer_key: string
             consumer_secret: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -2320,6 +2489,9 @@ export type CreateConnection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -2410,6 +2582,9 @@ export type CreateConnection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -2422,6 +2597,9 @@ export type CreateConnection =
             }
             client_id: string
             client_secret: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
             is_test?: boolean
           }
@@ -2447,6 +2625,9 @@ export type CreateConnection =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -2589,6 +2770,9 @@ export type CreateConnection =
           bundle_id: string
           production: boolean
         }
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
         /**
          * Push notification strategy
@@ -2770,8 +2954,17 @@ export interface CreateTenant {
     expose_unsafe_errors?: boolean
     welcome_emails_enabled?: boolean
     force_email_verification?: boolean
+    /**
+     * @maxItems 50
+     */
     extra_params?: string[]
+    /**
+     * @maxItems 50
+     */
     acr_values?: string[]
+    /**
+     * @maxItems 50
+     */
     extra_scopes?: string[]
     api_version?: "2021-07-04"
     tenant_login_url?: string | null
@@ -2884,6 +3077,8 @@ export interface CreateTenant {
         notification?: boolean
         /**
          * Whitelisted IP addresses.
+         *
+         * @maxItems 1000
          */
         white_list?: string[]
       }
@@ -3097,9 +3292,7 @@ export interface CreateUserIdentity {
 /**
  * @public
  */
-export type CreateUser = {
-  [k: string]: any
-} & {
+export interface CreateUser {
   /**
    * End-User's username
    */
@@ -3361,6 +3554,9 @@ export interface EDevletConnection {
    */
   created_at?: string
   settings: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
     /**
      * Enable/Disable user profile synchronization on each login
@@ -3373,6 +3569,9 @@ export interface EDevletConnection {
     }
     client_id: string
     client_secret: string
+    /**
+     * @maxItems 50
+     */
     scopes?: string[]
     is_test?: boolean
   }
@@ -3402,6 +3601,9 @@ export interface ESignConnection {
    */
   created_at?: string
   settings: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
   }
 }
@@ -3459,6 +3661,9 @@ export type EmailConnection = {
          */
         code_ttl: number
         use_magic_link: boolean
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -3500,6 +3705,9 @@ export type EmailConnection = {
          */
         code_ttl: number
         use_magic_link: boolean
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -3545,6 +3753,9 @@ export type EmailConnection = {
          */
         code_ttl: number
         use_magic_link: boolean
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -3599,6 +3810,9 @@ export type EmailConnection = {
          */
         code_ttl: number
         use_magic_link: boolean
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -3777,6 +3991,9 @@ export type EnterpriseConnection = {
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -3867,6 +4084,9 @@ export type EnterpriseConnection = {
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -3879,6 +4099,9 @@ export type EnterpriseConnection = {
         }
         client_id: string
         client_secret: string
+        /**
+         * @maxItems 50
+         */
         scopes?: string[]
         is_test?: boolean
       }
@@ -3904,6 +4127,9 @@ export type EnterpriseConnection = {
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -4030,6 +4256,9 @@ export interface FvConnection {
    */
   created_at?: string
   settings: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients: string[]
     seed: string
   }
@@ -4095,6 +4324,9 @@ export interface HOTPConnection {
    */
   created_at?: string
   settings: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
     /**
      * The length of the OTP code.
@@ -4135,39 +4367,39 @@ export interface HookContext {
       verified: boolean
       required: boolean
       sms?: {
-        enabled: boolean
-        required: boolean
-        verified: boolean
+        enabled?: boolean
+        required?: boolean
+        verified?: boolean
         [k: string]: any
       }
       email?: {
-        enabled: boolean
-        required: boolean
-        verified: boolean
+        enabled?: boolean
+        required?: boolean
+        verified?: boolean
         [k: string]: any
       }
       fv?: {
-        enabled: boolean
-        required: boolean
-        verified: boolean
+        enabled?: boolean
+        required?: boolean
+        verified?: boolean
         [k: string]: any
       }
       otp?: {
-        enabled: boolean
-        required: boolean
-        verified: boolean
+        enabled?: boolean
+        required?: boolean
+        verified?: boolean
         [k: string]: any
       }
       webauthn?: {
-        enabled: boolean
-        required: boolean
-        verified: boolean
+        enabled?: boolean
+        required?: boolean
+        verified?: boolean
         [k: string]: any
       }
       push?: {
-        enabled: boolean
-        required: boolean
-        verified: boolean
+        enabled?: boolean
+        required?: boolean
+        verified?: boolean
         [k: string]: any
       }
       [k: string]: any
@@ -4311,6 +4543,9 @@ export interface LDAPConnection {
    */
   created_at?: string
   settings: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
     /**
      * Enable/Disable user profile synchronization on each login
@@ -4448,6 +4683,9 @@ export type MFA =
           bundle_id: string
           production: boolean
         }
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
         /**
          * Push notification strategy
@@ -4497,6 +4735,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4533,6 +4774,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4573,6 +4817,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4622,6 +4869,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4676,6 +4926,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4712,6 +4965,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4744,6 +5000,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4792,6 +5051,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4833,6 +5095,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4873,6 +5138,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4921,6 +5189,9 @@ export type MFA =
              * The expiration of the generated code in seconds
              */
             code_ttl: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients: string[]
           }
         }
@@ -4943,6 +5214,9 @@ export type MFA =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * The length of the OTP code.
@@ -4970,6 +5244,9 @@ export type MFA =
            */
           created_at?: string
           settings: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * The length of the OTP code.
@@ -4998,6 +5275,9 @@ export type MFA =
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
         seed: string
       }
@@ -5019,6 +5299,9 @@ export type MFA =
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -5039,6 +5322,9 @@ export type MFA =
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -5084,7 +5370,6 @@ export type ModuleSettings = {
   updated_at?: string | null
   name: "radius"
   metadata: {
-    address: string
     port: number
     secret: string
   }
@@ -5232,6 +5517,9 @@ export type OTPConnection = {
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * The length of the OTP code.
@@ -5263,6 +5551,9 @@ export type OTPConnection = {
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * The length of the OTP code.
@@ -5957,6 +6248,9 @@ export type PushConnection = {
       bundle_id: string
       production: boolean
     }
+    /**
+     * @maxItems 1000
+     */
     enabled_clients: string[]
     /**
      * Push notification strategy
@@ -6114,7 +6408,6 @@ export interface RadiusSettings {
   updated_at?: string | null
   name: "radius"
   metadata: {
-    address: string
     port: number
     secret: string
   }
@@ -6244,6 +6537,9 @@ export interface SAMLConnection {
    */
   created_at?: string
   settings: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
     /**
      * Enable/Disable user profile synchronization on each login
@@ -6373,6 +6669,9 @@ export type SmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -6413,6 +6712,9 @@ export type SmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -6449,6 +6751,9 @@ export type SmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -6501,6 +6806,9 @@ export type SmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -6546,6 +6854,9 @@ export type SmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -6590,6 +6901,9 @@ export type SmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -6642,6 +6956,9 @@ export type SmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[]
       }
     }
@@ -6890,6 +7207,9 @@ export type SocialConnection = {
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -6904,6 +7224,9 @@ export type SocialConnection = {
         key_id: string
         private_key: string
         team_id: string
+        /**
+         * @maxItems 50
+         */
         scopes?: string[]
       }
     }
@@ -6937,6 +7260,9 @@ export type SocialConnection = {
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -6949,6 +7275,9 @@ export type SocialConnection = {
         }
         client_id: string
         client_secret: string
+        /**
+         * @maxItems 50
+         */
         scopes?: string[]
       }
     }
@@ -6973,6 +7302,9 @@ export type SocialConnection = {
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -7001,6 +7333,9 @@ export type SocialConnection = {
         client_secret: string
         authorization_url: string
         token_url: string
+        /**
+         * @maxItems 1000
+         */
         scopes?: string[]
       }
     }
@@ -7025,6 +7360,9 @@ export type SocialConnection = {
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -7037,6 +7375,9 @@ export type SocialConnection = {
         }
         app_key: string
         app_secret: string
+        /**
+         * @maxItems 50
+         */
         scopes?: string[]
       }
     }
@@ -7061,6 +7402,9 @@ export type SocialConnection = {
        */
       created_at?: string
       settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -7073,6 +7417,9 @@ export type SocialConnection = {
         }
         consumer_key: string
         consumer_secret: string
+        /**
+         * @maxItems 50
+         */
         scopes?: string[]
       }
     }
@@ -7234,6 +7581,9 @@ export interface TOTPConnection {
    */
   created_at?: string
   settings: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
     /**
      * The length of the OTP code.
@@ -7361,8 +7711,17 @@ export interface Tenant {
     expose_unsafe_errors: boolean
     welcome_emails_enabled: boolean
     force_email_verification: boolean
+    /**
+     * @maxItems 50
+     */
     extra_params: string[]
+    /**
+     * @maxItems 50
+     */
     acr_values: string[]
+    /**
+     * @maxItems 50
+     */
     extra_scopes: string[]
     api_version?: "2021-07-04"
     tenant_login_url: string | null
@@ -7475,6 +7834,8 @@ export interface Tenant {
         notification: boolean
         /**
          * Whitelisted IP addresses.
+         *
+         * @maxItems 1000
          */
         white_list: string[]
       }
@@ -7664,8 +8025,17 @@ export interface TenantSettings {
   expose_unsafe_errors: boolean
   welcome_emails_enabled: boolean
   force_email_verification: boolean
+  /**
+   * @maxItems 50
+   */
   extra_params: string[]
+  /**
+   * @maxItems 50
+   */
   acr_values: string[]
+  /**
+   * @maxItems 50
+   */
   extra_scopes: string[]
   api_version?: "2021-07-04"
   tenant_login_url: string | null
@@ -7778,6 +8148,8 @@ export interface TenantSettings {
       notification: boolean
       /**
        * Whitelisted IP addresses.
+       *
+       * @maxItems 1000
        */
       white_list: string[]
     }
@@ -8052,6 +8424,10 @@ export interface UpdateAuthPlusDevice {
  */
 export interface UpdateClient {
   /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null
+  /**
    * Client name for displaying purposes.
    */
   client_name?: string
@@ -8075,8 +8451,17 @@ export interface UpdateClient {
     | "none"
   )[]
   oidc_conformant?: boolean | null
+  /**
+   * @maxItems 50
+   */
   redirect_uris?: string[]
+  /**
+   * @maxItems 50
+   */
   logout_uris?: string[]
+  /**
+   * @maxItems 20
+   */
   grant_types?: string[]
   advanced?: {
     pkce_required?: boolean
@@ -8223,6 +8608,9 @@ export type UpdateConnection =
              */
             code_ttl?: number
             use_magic_link?: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8265,6 +8653,9 @@ export type UpdateConnection =
              */
             code_ttl?: number
             use_magic_link?: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8311,6 +8702,9 @@ export type UpdateConnection =
              */
             code_ttl?: number
             use_magic_link?: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8366,6 +8760,9 @@ export type UpdateConnection =
              */
             code_ttl?: number
             use_magic_link?: boolean
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8425,6 +8822,9 @@ export type UpdateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8466,6 +8866,9 @@ export type UpdateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8503,6 +8906,9 @@ export type UpdateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8556,6 +8962,9 @@ export type UpdateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8602,6 +9011,9 @@ export type UpdateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8647,6 +9059,9 @@ export type UpdateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8700,6 +9115,9 @@ export type UpdateConnection =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -8719,6 +9137,9 @@ export type UpdateConnection =
            */
           created_at?: string
           settings?: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -8733,6 +9154,9 @@ export type UpdateConnection =
             key_id?: string
             private_key?: string
             team_id?: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -8759,6 +9183,9 @@ export type UpdateConnection =
            */
           created_at?: string
           settings?: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -8771,6 +9198,9 @@ export type UpdateConnection =
             }
             client_id?: string
             client_secret?: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -8788,6 +9218,9 @@ export type UpdateConnection =
            */
           created_at?: string
           settings?: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -8816,6 +9249,9 @@ export type UpdateConnection =
             client_secret?: string
             authorization_url?: string
             token_url?: string
+            /**
+             * @maxItems 1000
+             */
             scopes?: string[]
           }
         }
@@ -8833,6 +9269,9 @@ export type UpdateConnection =
            */
           created_at?: string
           settings?: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -8845,6 +9284,9 @@ export type UpdateConnection =
             }
             app_key?: string
             app_secret?: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -8862,6 +9304,9 @@ export type UpdateConnection =
            */
           created_at?: string
           settings?: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -8874,6 +9319,9 @@ export type UpdateConnection =
             }
             consumer_key?: string
             consumer_secret?: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
           }
         }
@@ -8887,6 +9335,9 @@ export type UpdateConnection =
           type: "enterprise"
           provider: "ldap"
           settings?: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -8964,6 +9415,9 @@ export type UpdateConnection =
           type: "enterprise"
           provider: "saml"
           settings?: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -9043,6 +9497,9 @@ export type UpdateConnection =
           type: "enterprise"
           provider: "e-devlet"
           settings?: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * Enable/Disable user profile synchronization on each login
@@ -9055,6 +9512,9 @@ export type UpdateConnection =
             }
             client_id?: string
             client_secret?: string
+            /**
+             * @maxItems 50
+             */
             scopes?: string[]
             is_test?: boolean
           }
@@ -9130,6 +9590,9 @@ export type UpdateConnection =
           bundle_id?: string
           production?: boolean
         }
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Push notification strategy
@@ -9149,6 +9612,9 @@ export interface UpdateEDevletConnection {
   type: "enterprise"
   provider: "e-devlet"
   settings?: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
     /**
      * Enable/Disable user profile synchronization on each login
@@ -9161,6 +9627,9 @@ export interface UpdateEDevletConnection {
     }
     client_id?: string
     client_secret?: string
+    /**
+     * @maxItems 50
+     */
     scopes?: string[]
     is_test?: boolean
   }
@@ -9182,6 +9651,9 @@ export interface UpdateESignConnection {
    */
   created_at?: string
   settings?: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
   }
 }
@@ -9240,6 +9712,9 @@ export type UpdateEmailConnection = {
          */
         code_ttl?: number
         use_magic_link?: boolean
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -9282,6 +9757,9 @@ export type UpdateEmailConnection = {
          */
         code_ttl?: number
         use_magic_link?: boolean
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -9328,6 +9806,9 @@ export type UpdateEmailConnection = {
          */
         code_ttl?: number
         use_magic_link?: boolean
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -9383,6 +9864,9 @@ export type UpdateEmailConnection = {
          */
         code_ttl?: number
         use_magic_link?: boolean
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -9512,6 +9996,9 @@ export type UpdateEnterpriseConnection = {
       type: "enterprise"
       provider: "ldap"
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9589,6 +10076,9 @@ export type UpdateEnterpriseConnection = {
       type: "enterprise"
       provider: "saml"
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9668,6 +10158,9 @@ export type UpdateEnterpriseConnection = {
       type: "enterprise"
       provider: "e-devlet"
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9680,6 +10173,9 @@ export type UpdateEnterpriseConnection = {
         }
         client_id?: string
         client_secret?: string
+        /**
+         * @maxItems 50
+         */
         scopes?: string[]
         is_test?: boolean
       }
@@ -9702,6 +10198,9 @@ export interface UpdateFvConnection {
    */
   created_at?: string
   settings?: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
     seed?: string
   }
@@ -9744,6 +10243,9 @@ export interface UpdateLDAPConnection {
   type: "enterprise"
   provider: "ldap"
   settings?: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
     /**
      * Enable/Disable user profile synchronization on each login
@@ -9881,6 +10383,9 @@ export type UpdateMFA =
           bundle_id?: string
           production?: boolean
         }
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Push notification strategy
@@ -9931,6 +10436,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -9968,6 +10476,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -10009,6 +10520,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -10059,6 +10573,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -10114,6 +10631,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -10151,6 +10671,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -10184,6 +10707,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -10233,6 +10759,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -10275,6 +10804,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -10316,6 +10848,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -10365,6 +10900,9 @@ export type UpdateMFA =
              * The expiration of the generated code in seconds
              */
             code_ttl?: number
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
           }
         }
@@ -10388,6 +10926,9 @@ export type UpdateMFA =
           type?: "otp"
           provider?: "hotp"
           settings?: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * The length of the OTP code.
@@ -10416,6 +10957,9 @@ export type UpdateMFA =
           type?: "otp"
           provider?: "totp"
           settings?: {
+            /**
+             * @maxItems 1000
+             */
             enabled_clients?: string[]
             /**
              * The length of the OTP code.
@@ -10440,6 +10984,9 @@ export type UpdateMFA =
        */
       created_at?: string
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         seed?: string
       }
@@ -10457,6 +11004,9 @@ export type UpdateMFA =
        */
       created_at?: string
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -10473,6 +11023,9 @@ export type UpdateMFA =
        */
       created_at?: string
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -10527,6 +11080,9 @@ export type UpdateOTPConnection = {
       type?: "otp"
       provider?: "hotp"
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * The length of the OTP code.
@@ -10559,6 +11115,9 @@ export type UpdateOTPConnection = {
       type?: "otp"
       provider?: "totp"
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * The length of the OTP code.
@@ -11007,6 +11566,9 @@ export type UpdatePushConnection = {
       bundle_id?: string
       production?: boolean
     }
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
     /**
      * Push notification strategy
@@ -11147,6 +11709,9 @@ export interface UpdateSAMLConnection {
   type: "enterprise"
   provider: "saml"
   settings?: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
     /**
      * Enable/Disable user profile synchronization on each login
@@ -11277,6 +11842,9 @@ export type UpdateSmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl?: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -11318,6 +11886,9 @@ export type UpdateSmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl?: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -11355,6 +11926,9 @@ export type UpdateSmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl?: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -11408,6 +11982,9 @@ export type UpdateSmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl?: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -11454,6 +12031,9 @@ export type UpdateSmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl?: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -11499,6 +12079,9 @@ export type UpdateSmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl?: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -11552,6 +12135,9 @@ export type UpdateSmsConnection = {
          * The expiration of the generated code in seconds
          */
         code_ttl?: number
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
       }
     }
@@ -11779,6 +12365,9 @@ export type UpdateSocialConnection = {
        */
       created_at?: string
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -11793,6 +12382,9 @@ export type UpdateSocialConnection = {
         key_id?: string
         private_key?: string
         team_id?: string
+        /**
+         * @maxItems 50
+         */
         scopes?: string[]
       }
     }
@@ -11819,6 +12411,9 @@ export type UpdateSocialConnection = {
        */
       created_at?: string
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -11831,6 +12426,9 @@ export type UpdateSocialConnection = {
         }
         client_id?: string
         client_secret?: string
+        /**
+         * @maxItems 50
+         */
         scopes?: string[]
       }
     }
@@ -11848,6 +12446,9 @@ export type UpdateSocialConnection = {
        */
       created_at?: string
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -11876,6 +12477,9 @@ export type UpdateSocialConnection = {
         client_secret?: string
         authorization_url?: string
         token_url?: string
+        /**
+         * @maxItems 1000
+         */
         scopes?: string[]
       }
     }
@@ -11893,6 +12497,9 @@ export type UpdateSocialConnection = {
        */
       created_at?: string
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -11905,6 +12512,9 @@ export type UpdateSocialConnection = {
         }
         app_key?: string
         app_secret?: string
+        /**
+         * @maxItems 50
+         */
         scopes?: string[]
       }
     }
@@ -11922,6 +12532,9 @@ export type UpdateSocialConnection = {
        */
       created_at?: string
       settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[]
         /**
          * Enable/Disable user profile synchronization on each login
@@ -11934,6 +12547,9 @@ export type UpdateSocialConnection = {
         }
         consumer_key?: string
         consumer_secret?: string
+        /**
+         * @maxItems 50
+         */
         scopes?: string[]
       }
     }
@@ -12009,8 +12625,17 @@ export interface UpdateTenantSettings {
   expose_unsafe_errors?: boolean
   welcome_emails_enabled?: boolean
   force_email_verification?: boolean
+  /**
+   * @maxItems 50
+   */
   extra_params?: string[]
+  /**
+   * @maxItems 50
+   */
   acr_values?: string[]
+  /**
+   * @maxItems 50
+   */
   extra_scopes?: string[]
   api_version?: "2021-07-04"
   tenant_login_url?: string | null
@@ -12123,6 +12748,8 @@ export interface UpdateTenantSettings {
       notification?: boolean
       /**
        * Whitelisted IP addresses.
+       *
+       * @maxItems 1000
        */
       white_list?: string[]
     }
@@ -12294,6 +12921,9 @@ export interface UpdateWebAuthNConnection {
    */
   created_at?: string
   settings?: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
   }
 }
@@ -13193,6 +13823,9 @@ export interface WebAuthNConnection {
    */
   created_at?: string
   settings: {
+    /**
+     * @maxItems 1000
+     */
     enabled_clients?: string[]
   }
 }

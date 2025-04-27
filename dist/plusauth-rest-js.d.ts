@@ -136,6 +136,8 @@ export declare interface BruteForcePolicy {
     notification: boolean;
     /**
      * Whitelisted IP addresses.
+     *
+     * @maxItems 1000
      */
     white_list: string[];
 }
@@ -149,6 +151,10 @@ export declare interface Client {
      * Unique client identifier.
      */
     client_id: string;
+    /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
+    updated_at?: (string | null);
     /**
      * Unique client identifier.
      */
@@ -169,8 +175,17 @@ export declare interface Client {
     token_endpoint_auth_method: string;
     response_types: ("code id_token token" | "code id_token" | "code token" | "code" | "id_token token" | "id_token" | "none")[];
     oidc_conformant?: (boolean | null);
+    /**
+     * @maxItems 50
+     */
     redirect_uris: string[];
+    /**
+     * @maxItems 50
+     */
     logout_uris: string[];
+    /**
+     * @maxItems 20
+     */
     grant_types: string[];
     advanced: {
         pkce_required?: boolean;
@@ -374,6 +389,9 @@ export declare type Connection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -414,6 +432,9 @@ export declare type Connection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -458,6 +479,9 @@ export declare type Connection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -511,6 +535,9 @@ export declare type Connection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 }) | ({
@@ -566,6 +593,9 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -605,6 +635,9 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -640,6 +673,9 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -691,6 +727,9 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -735,6 +774,9 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -778,6 +820,9 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -829,6 +874,9 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 }) | ({
@@ -852,6 +900,9 @@ export declare type Connection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -866,6 +917,9 @@ export declare type Connection = (({
         key_id: string;
         private_key: string;
         team_id: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -889,6 +943,9 @@ export declare type Connection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -901,6 +958,9 @@ export declare type Connection = (({
         };
         client_id: string;
         client_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -924,6 +984,9 @@ export declare type Connection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -952,6 +1015,9 @@ export declare type Connection = (({
         client_secret: string;
         authorization_url: string;
         token_url: string;
+        /**
+         * @maxItems 1000
+         */
         scopes?: string[];
     };
 } | {
@@ -975,6 +1041,9 @@ export declare type Connection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -987,6 +1056,9 @@ export declare type Connection = (({
         };
         app_key: string;
         app_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -1010,6 +1082,9 @@ export declare type Connection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -1022,6 +1097,9 @@ export declare type Connection = (({
         };
         consumer_key: string;
         consumer_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 }) | ({
@@ -1045,6 +1123,9 @@ export declare type Connection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -1127,6 +1208,9 @@ export declare type Connection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -1139,6 +1223,9 @@ export declare type Connection = (({
         };
         client_id: string;
         client_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
         is_test?: boolean;
     };
@@ -1163,6 +1250,9 @@ export declare type Connection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -1296,6 +1386,9 @@ export declare type Connection = (({
             bundle_id: string;
             production: boolean;
         };
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
         /**
          * Push notification strategy
@@ -1455,6 +1548,10 @@ export declare interface CreateClient {
      */
     client_id?: string;
     /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
+    updated_at?: (string | null);
+    /**
      * Unique client identifier.
      */
     client_secret?: string;
@@ -1474,8 +1571,17 @@ export declare interface CreateClient {
     token_endpoint_auth_method?: string;
     response_types?: ("code id_token token" | "code id_token" | "code token" | "code" | "id_token token" | "id_token" | "none")[];
     oidc_conformant?: (boolean | null);
+    /**
+     * @maxItems 50
+     */
     redirect_uris?: string[];
+    /**
+     * @maxItems 50
+     */
     logout_uris?: string[];
+    /**
+     * @maxItems 20
+     */
     grant_types?: string[];
     advanced?: {
         pkce_required?: boolean;
@@ -1612,6 +1718,9 @@ export declare type CreateConnection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -1652,6 +1761,9 @@ export declare type CreateConnection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -1696,6 +1808,9 @@ export declare type CreateConnection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -1749,6 +1864,9 @@ export declare type CreateConnection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 }) | ({
@@ -1804,6 +1922,9 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -1843,6 +1964,9 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -1878,6 +2002,9 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -1929,6 +2056,9 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -1973,6 +2103,9 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -2016,6 +2149,9 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -2067,6 +2203,9 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 }) | ({
@@ -2090,6 +2229,9 @@ export declare type CreateConnection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2104,6 +2246,9 @@ export declare type CreateConnection = (({
         key_id: string;
         private_key: string;
         team_id: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -2127,6 +2272,9 @@ export declare type CreateConnection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2139,6 +2287,9 @@ export declare type CreateConnection = (({
         };
         client_id: string;
         client_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -2162,6 +2313,9 @@ export declare type CreateConnection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2190,6 +2344,9 @@ export declare type CreateConnection = (({
         client_secret: string;
         authorization_url: string;
         token_url: string;
+        /**
+         * @maxItems 1000
+         */
         scopes?: string[];
     };
 } | {
@@ -2213,6 +2370,9 @@ export declare type CreateConnection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2225,6 +2385,9 @@ export declare type CreateConnection = (({
         };
         app_key: string;
         app_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -2248,6 +2411,9 @@ export declare type CreateConnection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2260,6 +2426,9 @@ export declare type CreateConnection = (({
         };
         consumer_key: string;
         consumer_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 }) | ({
@@ -2283,6 +2452,9 @@ export declare type CreateConnection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2365,6 +2537,9 @@ export declare type CreateConnection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2377,6 +2552,9 @@ export declare type CreateConnection = (({
         };
         client_id: string;
         client_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
         is_test?: boolean;
     };
@@ -2401,6 +2579,9 @@ export declare type CreateConnection = (({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -2534,6 +2715,9 @@ export declare type CreateConnection = (({
             bundle_id: string;
             production: boolean;
         };
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
         /**
          * Push notification strategy
@@ -2676,8 +2860,17 @@ export declare interface CreateTenant {
         expose_unsafe_errors?: boolean;
         welcome_emails_enabled?: boolean;
         force_email_verification?: boolean;
+        /**
+         * @maxItems 50
+         */
         extra_params?: string[];
+        /**
+         * @maxItems 50
+         */
         acr_values?: string[];
+        /**
+         * @maxItems 50
+         */
         extra_scopes?: string[];
         api_version?: "2021-07-04";
         tenant_login_url?: (string | null);
@@ -2790,6 +2983,8 @@ export declare interface CreateTenant {
                 notification?: boolean;
                 /**
                  * Whitelisted IP addresses.
+                 *
+                 * @maxItems 1000
                  */
                 white_list?: string[];
             };
@@ -2840,9 +3035,7 @@ export declare interface CreateTicket {
 /**
  * @public
  */
-export declare type CreateUser = ({
-    [k: string]: any;
-} & {
+export declare interface CreateUser {
     /**
      * End-User's username
      */
@@ -2987,7 +3180,7 @@ export declare type CreateUser = ({
             [k: string]: any;
         };
     }[];
-});
+}
 
 /**
  * @public
@@ -3266,6 +3459,9 @@ export declare interface EDevletConnection {
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -3278,6 +3474,9 @@ export declare interface EDevletConnection {
         };
         client_id: string;
         client_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
         is_test?: boolean;
     };
@@ -3335,6 +3534,9 @@ export declare type EmailConnection = ({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -3375,6 +3577,9 @@ export declare type EmailConnection = ({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -3419,6 +3624,9 @@ export declare type EmailConnection = ({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -3472,6 +3680,9 @@ export declare type EmailConnection = ({
          */
         code_ttl: number;
         use_magic_link: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 }));
@@ -3632,6 +3843,9 @@ export declare type EnterpriseConnection = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -3714,6 +3928,9 @@ export declare type EnterpriseConnection = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -3726,6 +3943,9 @@ export declare type EnterpriseConnection = ({
         };
         client_id: string;
         client_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
         is_test?: boolean;
     };
@@ -3750,6 +3970,9 @@ export declare type EnterpriseConnection = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -3839,6 +4062,9 @@ export declare interface ESignConnection {
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 }
@@ -3867,6 +4093,9 @@ export declare interface FvConnection {
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
         seed: string;
     };
@@ -3972,39 +4201,39 @@ export declare interface HookContext {
             verified: boolean;
             required: boolean;
             sms?: {
-                enabled: boolean;
-                required: boolean;
-                verified: boolean;
+                enabled?: boolean;
+                required?: boolean;
+                verified?: boolean;
                 [k: string]: any;
             };
             email?: {
-                enabled: boolean;
-                required: boolean;
-                verified: boolean;
+                enabled?: boolean;
+                required?: boolean;
+                verified?: boolean;
                 [k: string]: any;
             };
             fv?: {
-                enabled: boolean;
-                required: boolean;
-                verified: boolean;
+                enabled?: boolean;
+                required?: boolean;
+                verified?: boolean;
                 [k: string]: any;
             };
             otp?: {
-                enabled: boolean;
-                required: boolean;
-                verified: boolean;
+                enabled?: boolean;
+                required?: boolean;
+                verified?: boolean;
                 [k: string]: any;
             };
             webauthn?: {
-                enabled: boolean;
-                required: boolean;
-                verified: boolean;
+                enabled?: boolean;
+                required?: boolean;
+                verified?: boolean;
                 [k: string]: any;
             };
             push?: {
-                enabled: boolean;
-                required: boolean;
-                verified: boolean;
+                enabled?: boolean;
+                required?: boolean;
+                verified?: boolean;
                 [k: string]: any;
             };
             [k: string]: any;
@@ -4129,6 +4358,9 @@ export declare interface HOTPConnection {
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * The length of the OTP code.
@@ -4227,6 +4459,9 @@ export declare interface LDAPConnection {
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -4433,6 +4668,9 @@ export declare type MFA = ({
             bundle_id: string;
             production: boolean;
         };
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
         /**
          * Push notification strategy
@@ -4480,6 +4718,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -4515,6 +4756,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -4554,6 +4798,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -4602,6 +4849,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 }) | ({
@@ -4653,6 +4903,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -4688,6 +4941,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -4719,6 +4975,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -4766,6 +5025,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -4806,6 +5068,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -4845,6 +5110,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -4892,6 +5160,9 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 }) | ({
@@ -4911,6 +5182,9 @@ export declare type MFA = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * The length of the OTP code.
@@ -4937,6 +5211,9 @@ export declare type MFA = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * The length of the OTP code.
@@ -4963,6 +5240,9 @@ export declare type MFA = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
         seed: string;
     };
@@ -4983,6 +5263,9 @@ export declare type MFA = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -5002,6 +5285,9 @@ export declare type MFA = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 });
@@ -5060,7 +5346,6 @@ export declare type ModuleSettings = {
     updated_at?: (string | null);
     name: "radius";
     metadata: {
-        address: string;
         port: number;
         secret: string;
     };
@@ -5225,6 +5510,9 @@ export declare type OTPConnection = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * The length of the OTP code.
@@ -5255,6 +5543,9 @@ export declare type OTPConnection = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * The length of the OTP code.
@@ -6002,6 +6293,9 @@ export declare type PushConnection = ({
             bundle_id: string;
             production: boolean;
         };
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
         /**
          * Push notification strategy
@@ -6150,7 +6444,6 @@ export declare interface RadiusSettings {
     updated_at?: (string | null);
     name: "radius";
     metadata: {
-        address: string;
         port: number;
         secret: string;
     };
@@ -6553,6 +6846,9 @@ export declare interface SAMLConnection {
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -6674,6 +6970,9 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -6713,6 +7012,9 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -6748,6 +7050,9 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -6799,6 +7104,9 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -6843,6 +7151,9 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -6886,6 +7197,9 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 } | {
@@ -6937,6 +7251,9 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients: string[];
     };
 }));
@@ -7175,6 +7492,9 @@ export declare type SocialConnection = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -7189,6 +7509,9 @@ export declare type SocialConnection = ({
         key_id: string;
         private_key: string;
         team_id: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -7212,6 +7535,9 @@ export declare type SocialConnection = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -7224,6 +7550,9 @@ export declare type SocialConnection = ({
         };
         client_id: string;
         client_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -7247,6 +7576,9 @@ export declare type SocialConnection = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -7275,6 +7607,9 @@ export declare type SocialConnection = ({
         client_secret: string;
         authorization_url: string;
         token_url: string;
+        /**
+         * @maxItems 1000
+         */
         scopes?: string[];
     };
 } | {
@@ -7298,6 +7633,9 @@ export declare type SocialConnection = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -7310,6 +7648,9 @@ export declare type SocialConnection = ({
         };
         app_key: string;
         app_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -7333,6 +7674,9 @@ export declare type SocialConnection = ({
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -7345,6 +7689,9 @@ export declare type SocialConnection = ({
         };
         consumer_key: string;
         consumer_secret: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 }));
@@ -7531,8 +7878,17 @@ export declare interface Tenant {
         expose_unsafe_errors: boolean;
         welcome_emails_enabled: boolean;
         force_email_verification: boolean;
+        /**
+         * @maxItems 50
+         */
         extra_params: string[];
+        /**
+         * @maxItems 50
+         */
         acr_values: string[];
+        /**
+         * @maxItems 50
+         */
         extra_scopes: string[];
         api_version?: "2021-07-04";
         tenant_login_url: (string | null);
@@ -7645,6 +8001,8 @@ export declare interface Tenant {
                 notification: boolean;
                 /**
                  * Whitelisted IP addresses.
+                 *
+                 * @maxItems 1000
                  */
                 white_list: string[];
             };
@@ -7915,8 +8273,17 @@ export declare interface TenantSettings {
     expose_unsafe_errors: boolean;
     welcome_emails_enabled: boolean;
     force_email_verification: boolean;
+    /**
+     * @maxItems 50
+     */
     extra_params: string[];
+    /**
+     * @maxItems 50
+     */
     acr_values: string[];
+    /**
+     * @maxItems 50
+     */
     extra_scopes: string[];
     api_version?: "2021-07-04";
     tenant_login_url: (string | null);
@@ -8029,6 +8396,8 @@ export declare interface TenantSettings {
             notification: boolean;
             /**
              * Whitelisted IP addresses.
+             *
+             * @maxItems 1000
              */
             white_list: string[];
         };
@@ -8281,6 +8650,9 @@ export declare interface TOTPConnection {
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * The length of the OTP code.
@@ -8371,6 +8743,10 @@ export declare interface UpdateAuthPlusDevice {
  */
 export declare interface UpdateClient {
     /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
+    updated_at?: (string | null);
+    /**
      * Client name for displaying purposes.
      */
     client_name?: string;
@@ -8386,8 +8762,17 @@ export declare interface UpdateClient {
     token_endpoint_auth_method?: string;
     response_types?: ("code id_token token" | "code id_token" | "code token" | "code" | "id_token token" | "id_token" | "none")[];
     oidc_conformant?: (boolean | null);
+    /**
+     * @maxItems 50
+     */
     redirect_uris?: string[];
+    /**
+     * @maxItems 50
+     */
     logout_uris?: string[];
+    /**
+     * @maxItems 20
+     */
     grant_types?: string[];
     advanced?: {
         pkce_required?: boolean;
@@ -8525,6 +8910,9 @@ export declare type UpdateConnection = (({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -8566,6 +8954,9 @@ export declare type UpdateConnection = (({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -8611,6 +9002,9 @@ export declare type UpdateConnection = (({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -8665,6 +9059,9 @@ export declare type UpdateConnection = (({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 }) | ({
@@ -8721,6 +9118,9 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -8761,6 +9161,9 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -8797,6 +9200,9 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -8849,6 +9255,9 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -8894,6 +9303,9 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -8938,6 +9350,9 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -8990,6 +9405,9 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 }) | ({
@@ -9006,6 +9424,9 @@ export declare type UpdateConnection = (({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9020,6 +9441,9 @@ export declare type UpdateConnection = (({
         key_id?: string;
         private_key?: string;
         team_id?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -9036,6 +9460,9 @@ export declare type UpdateConnection = (({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9048,6 +9475,9 @@ export declare type UpdateConnection = (({
         };
         client_id?: string;
         client_secret?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -9064,6 +9494,9 @@ export declare type UpdateConnection = (({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9092,6 +9525,9 @@ export declare type UpdateConnection = (({
         client_secret?: string;
         authorization_url?: string;
         token_url?: string;
+        /**
+         * @maxItems 1000
+         */
         scopes?: string[];
     };
 } | {
@@ -9108,6 +9544,9 @@ export declare type UpdateConnection = (({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9120,6 +9559,9 @@ export declare type UpdateConnection = (({
         };
         app_key?: string;
         app_secret?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -9136,6 +9578,9 @@ export declare type UpdateConnection = (({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9148,6 +9593,9 @@ export declare type UpdateConnection = (({
         };
         consumer_key?: string;
         consumer_secret?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 }) | ({
@@ -9158,6 +9606,9 @@ export declare type UpdateConnection = (({
     type: "enterprise";
     provider: "ldap";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9227,6 +9678,9 @@ export declare type UpdateConnection = (({
     type: "enterprise";
     provider: "saml";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9298,6 +9752,9 @@ export declare type UpdateConnection = (({
     type: "enterprise";
     provider: "e-devlet";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9310,6 +9767,9 @@ export declare type UpdateConnection = (({
         };
         client_id?: string;
         client_secret?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
         is_test?: boolean;
     };
@@ -9383,6 +9843,9 @@ export declare type UpdateConnection = (({
             bundle_id?: string;
             production?: boolean;
         };
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Push notification strategy
@@ -9402,6 +9865,9 @@ export declare interface UpdateEDevletConnection {
     type: "enterprise";
     provider: "e-devlet";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9414,6 +9880,9 @@ export declare interface UpdateEDevletConnection {
         };
         client_id?: string;
         client_secret?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
         is_test?: boolean;
     };
@@ -9472,6 +9941,9 @@ export declare type UpdateEmailConnection = ({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -9513,6 +9985,9 @@ export declare type UpdateEmailConnection = ({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -9558,6 +10033,9 @@ export declare type UpdateEmailConnection = ({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -9612,6 +10090,9 @@ export declare type UpdateEmailConnection = ({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 }));
@@ -9734,6 +10215,9 @@ export declare type UpdateEnterpriseConnection = ({
     type: "enterprise";
     provider: "ldap";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9803,6 +10287,9 @@ export declare type UpdateEnterpriseConnection = ({
     type: "enterprise";
     provider: "saml";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9874,6 +10361,9 @@ export declare type UpdateEnterpriseConnection = ({
     type: "enterprise";
     provider: "e-devlet";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -9886,6 +10376,9 @@ export declare type UpdateEnterpriseConnection = ({
         };
         client_id?: string;
         client_secret?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
         is_test?: boolean;
     };
@@ -9907,6 +10400,9 @@ export declare interface UpdateESignConnection {
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 }
@@ -9927,6 +10423,9 @@ export declare interface UpdateFvConnection {
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         seed?: string;
     };
@@ -9969,6 +10468,9 @@ export declare interface UpdateLDAPConnection {
     type: "enterprise";
     provider: "ldap";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -10098,6 +10600,9 @@ export declare type UpdateMFA = ({
             bundle_id?: string;
             production?: boolean;
         };
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Push notification strategy
@@ -10146,6 +10651,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -10182,6 +10690,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -10222,6 +10733,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -10271,6 +10785,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 }) | ({
@@ -10323,6 +10840,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -10359,6 +10879,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -10391,6 +10914,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -10439,6 +10965,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -10480,6 +11009,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -10520,6 +11052,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -10568,6 +11103,9 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 }) | ({
@@ -10588,6 +11126,9 @@ export declare type UpdateMFA = ({
     type?: "otp";
     provider?: "hotp";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * The length of the OTP code.
@@ -10615,6 +11156,9 @@ export declare type UpdateMFA = ({
     type?: "otp";
     provider?: "totp";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * The length of the OTP code.
@@ -10637,6 +11181,9 @@ export declare type UpdateMFA = ({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         seed?: string;
     };
@@ -10653,6 +11200,9 @@ export declare type UpdateMFA = ({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -10668,6 +11218,9 @@ export declare type UpdateMFA = ({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 });
@@ -10721,6 +11274,9 @@ export declare type UpdateOTPConnection = ({
     type?: "otp";
     provider?: "hotp";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * The length of the OTP code.
@@ -10752,6 +11308,9 @@ export declare type UpdateOTPConnection = ({
     type?: "otp";
     provider?: "totp";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * The length of the OTP code.
@@ -11183,6 +11742,9 @@ export declare type UpdatePushConnection = ({
             bundle_id?: string;
             production?: boolean;
         };
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Push notification strategy
@@ -11323,6 +11885,9 @@ export declare interface UpdateSAMLConnection {
     type: "enterprise";
     provider: "saml";
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -11445,6 +12010,9 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -11485,6 +12053,9 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -11521,6 +12092,9 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -11573,6 +12147,9 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -11618,6 +12195,9 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -11662,6 +12242,9 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 } | {
@@ -11714,6 +12297,9 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 }));
@@ -11931,6 +12517,9 @@ export declare type UpdateSocialConnection = ({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -11945,6 +12534,9 @@ export declare type UpdateSocialConnection = ({
         key_id?: string;
         private_key?: string;
         team_id?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -11961,6 +12553,9 @@ export declare type UpdateSocialConnection = ({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -11973,6 +12568,9 @@ export declare type UpdateSocialConnection = ({
         };
         client_id?: string;
         client_secret?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -11989,6 +12587,9 @@ export declare type UpdateSocialConnection = ({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -12017,6 +12618,9 @@ export declare type UpdateSocialConnection = ({
         client_secret?: string;
         authorization_url?: string;
         token_url?: string;
+        /**
+         * @maxItems 1000
+         */
         scopes?: string[];
     };
 } | {
@@ -12033,6 +12637,9 @@ export declare type UpdateSocialConnection = ({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -12045,6 +12652,9 @@ export declare type UpdateSocialConnection = ({
         };
         app_key?: string;
         app_secret?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 } | {
@@ -12061,6 +12671,9 @@ export declare type UpdateSocialConnection = ({
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
         /**
          * Enable/Disable user profile synchronization on each login
@@ -12073,6 +12686,9 @@ export declare type UpdateSocialConnection = ({
         };
         consumer_key?: string;
         consumer_secret?: string;
+        /**
+         * @maxItems 50
+         */
         scopes?: string[];
     };
 }));
@@ -12134,8 +12750,17 @@ export declare interface UpdateTenantSettings {
     expose_unsafe_errors?: boolean;
     welcome_emails_enabled?: boolean;
     force_email_verification?: boolean;
+    /**
+     * @maxItems 50
+     */
     extra_params?: string[];
+    /**
+     * @maxItems 50
+     */
     acr_values?: string[];
+    /**
+     * @maxItems 50
+     */
     extra_scopes?: string[];
     api_version?: "2021-07-04";
     tenant_login_url?: (string | null);
@@ -12248,6 +12873,8 @@ export declare interface UpdateTenantSettings {
             notification?: boolean;
             /**
              * Whitelisted IP addresses.
+             *
+             * @maxItems 1000
              */
             white_list?: string[];
         };
@@ -12419,6 +13046,9 @@ export declare interface UpdateWebAuthNConnection {
      */
     created_at?: string;
     settings?: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 }
@@ -13377,6 +14007,9 @@ export declare interface WebAuthNConnection {
      */
     created_at?: string;
     settings: {
+        /**
+         * @maxItems 1000
+         */
         enabled_clients?: string[];
     };
 }
