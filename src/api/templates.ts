@@ -8,7 +8,7 @@ export class TemplateService extends HttpService {
    * @param name
    */
   async get(
-    type: "email" | "sms",
+    type: "sms" | "email",
     name:
       | "welcome"
       | "verification-code"
@@ -31,7 +31,7 @@ export class TemplateService extends HttpService {
    * @param data Object containing to be updated values
    */
   async update(
-    type: "email" | "sms",
+    type: "sms" | "email",
     name:
       | "welcome"
       | "verification-code"
@@ -54,7 +54,7 @@ export class TemplateService extends HttpService {
    * @param name
    */
   async reset(
-    type: "email" | "sms",
+    type: "sms" | "email",
     name:
       | "welcome"
       | "verification-code"

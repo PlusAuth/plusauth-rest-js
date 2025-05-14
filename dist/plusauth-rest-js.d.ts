@@ -7808,18 +7808,18 @@ declare class TemplateService extends HttpService {
      * @param type
      * @param name
      */
-    get(type: "email" | "sms", name: "welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test"): Promise<Template>;
+    get(type: "sms" | "email", name: "welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test"): Promise<Template>;
     /**
      * @param type
      * @param name
      * @param data Object containing to be updated values
      */
-    update(type: "email" | "sms", name: "welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test", data: UpdateTemplate): Promise<Template>;
+    update(type: "sms" | "email", name: "welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test", data: UpdateTemplate): Promise<Template>;
     /**
      * @param type
      * @param name
      */
-    reset(type: "email" | "sms", name: "welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test"): Promise<void>;
+    reset(type: "sms" | "email", name: "welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test"): Promise<void>;
 }
 
 /**
