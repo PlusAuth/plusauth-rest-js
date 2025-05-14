@@ -1,5 +1,6 @@
 import { HttpService } from "../http"
 import type { User } from "../models"
+import type { CreateUser } from "../models"
 import type { UpdateUser } from "../models"
 import type { UserRbacTree } from "../models"
 import type { Permission } from "../models"
@@ -30,9 +31,10 @@ export class UserService extends HttpService {
   /**
  * For user creation at least one of identifier is required. Available identifiers are `username`, `email` and `phone_number`.
 
+ * @param data User object
  */
-  async create(): Promise<User> {
-    return await this.http.post(`/users/`)
+  async create(data: CreateUser): Promise<User> {
+    return await this.http.post(`/users/`, data)
   }
 
   /**

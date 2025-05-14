@@ -380,20 +380,20 @@ var MfaService = class extends HttpService {
     return await this.http.post(`/mfa/`, data);
   }
   /**
-   * @param type t of MFA
+   * @param type MFA Type
    */
   async get(type) {
     return await this.http.get(`/mfa/${type}`);
   }
   /**
-   * @param type t of MFA
+   * @param type MFA Type
    * @param data Object containing to be updated values
    */
   async update(type, data) {
     return await this.http.patch(`/mfa/${type}`, data);
   }
   /**
-   * @param type t of MFA
+   * @param type MFA Type
    */
   async remove(type) {
     return await this.http.delete(`/mfa/${type}`);
@@ -820,9 +820,10 @@ var UserService = class extends HttpService {
   /**
    * For user creation at least one of identifier is required. Available identifiers are `username`, `email` and `phone_number`.
   
+   * @param data User object
    */
-  async create() {
-    return await this.http.post(`/users/`);
+  async create(data) {
+    return await this.http.post(`/users/`, data);
   }
   /**
    * @param userId User identifier

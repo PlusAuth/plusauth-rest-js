@@ -3136,7 +3136,7 @@ export declare interface CreateUser {
         }[];
     };
     /**
-     * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `"null"` as value to make metadata consistent across other users.
+     * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `null` as value to make metadata consistent across other users.
      */
     metadata?: {
         [k: string]: any;
@@ -5298,22 +5298,22 @@ declare class MfaService extends HttpService {
      */
     create(data: MFA): Promise<MFA>;
     /**
-     * @param type t of MFA
+     * @param type MFA Type
      */
     get(type: MFAType): Promise<MFA>;
     /**
-     * @param type t of MFA
+     * @param type MFA Type
      * @param data Object containing to be updated values
      */
     update(type: MFAType, data: UpdateMFA): Promise<MFA>;
     /**
-     * @param type t of MFA
+     * @param type MFA Type
      */
     remove(type: MFAType): Promise<void>;
 }
 
 /**
- * t of MFA
+ * MFA Type
  * @public
  */
 export declare type MFAType = ("sms" | "otp" | "push" | "webauthn" | "email" | "e-sign" | "fv");
@@ -12980,7 +12980,7 @@ export declare interface UpdateUser {
         }[];
     };
     /**
-     * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `"null"` as value to make metadata consistent across other users.
+     * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `null` as value to make metadata consistent across other users.
      */
     metadata?: {
         [k: string]: any;
@@ -13366,7 +13366,7 @@ export declare interface User {
      */
     updated_at: (string | null);
     /**
-     * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `"null"` as value to make metadata consistent across other users.
+     * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `null` as value to make metadata consistent across other users.
      */
     metadata?: {
         [k: string]: any;
@@ -13697,8 +13697,9 @@ declare class UserService extends HttpService {
     /**
      * For user creation at least one of identifier is required. Available identifiers are `username`, `email` and `phone_number`.
 
+     * @param data User object
      */
-    create(): Promise<User>;
+    create(data: CreateUser): Promise<User>;
     /**
      * @param userId User identifier
      */

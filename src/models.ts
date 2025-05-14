@@ -3393,7 +3393,7 @@ export interface CreateUser {
     }[]
   }
   /**
-   * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `"null"` as value to make metadata consistent across other users.
+   * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `null` as value to make metadata consistent across other users.
    */
   metadata?: {
     [k: string]: any
@@ -5312,7 +5312,7 @@ export type MFA =
     }
 
 /**
- * t of MFA
+ * MFA Type
  * @public
  */
 export type MFAType = "sms" | "otp" | "push" | "webauthn" | "email" | "e-sign" | "fv"
@@ -12855,7 +12855,7 @@ export interface UpdateUser {
     }[]
   }
   /**
-   * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `"null"` as value to make metadata consistent across other users.
+   * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `null` as value to make metadata consistent across other users.
    */
   metadata?: {
     [k: string]: any
@@ -13632,7 +13632,7 @@ export interface User {
    */
   updated_at: string | null
   /**
-   * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `"null"` as value to make metadata consistent across other users.
+   * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `null` as value to make metadata consistent across other users.
    */
   metadata?: {
     [k: string]: any
