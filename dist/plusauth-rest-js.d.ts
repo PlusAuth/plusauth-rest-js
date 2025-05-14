@@ -221,18 +221,16 @@ export declare interface Client {
             relay_state?: (string | null);
             mappings: {
                 /**
-                 * @minItems 1
-                 *
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: (string | (string | {
+                [k: string]: (string | boolean | {
                     value?: (string | boolean | number);
                     [k: string]: any;
-                })[] | {
+                } | (string | {
                     value?: (string | boolean | number);
                     [k: string]: any;
-                } | boolean);
+                })[]);
             };
             /**
              * Your SAML SP's metadata URL.
@@ -525,7 +523,7 @@ export declare type Connection = (({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: boolean;
+        secure?: (boolean | null);
         /**
          * The length of the OTP code.
          */
@@ -1170,21 +1168,19 @@ export declare type Connection = (({
         write_mode?: boolean;
         mappings: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 } | {
@@ -1299,21 +1295,19 @@ export declare type Connection = (({
         sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 }) | {
@@ -1617,18 +1611,16 @@ export declare interface CreateClient {
             relay_state?: (string | null);
             mappings: {
                 /**
-                 * @minItems 1
-                 *
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: (string | (string | {
+                [k: string]: (string | boolean | {
                     value?: (string | boolean | number);
                     [k: string]: any;
-                })[] | {
+                } | (string | {
                     value?: (string | boolean | number);
                     [k: string]: any;
-                } | boolean);
+                })[]);
             };
             /**
              * Your SAML SP's metadata URL.
@@ -1854,7 +1846,7 @@ export declare type CreateConnection = (({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: boolean;
+        secure?: (boolean | null);
         /**
          * The length of the OTP code.
          */
@@ -2499,21 +2491,19 @@ export declare type CreateConnection = (({
         write_mode?: boolean;
         mappings: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 } | {
@@ -2628,21 +2618,19 @@ export declare type CreateConnection = (({
         sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 }) | {
@@ -3670,7 +3658,7 @@ export declare type EmailConnection = ({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: boolean;
+        secure?: (boolean | null);
         /**
          * The length of the OTP code.
          */
@@ -3787,7 +3775,7 @@ export declare type EmailProvider = ({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: boolean;
+        secure?: (boolean | null);
     };
 }));
 
@@ -3890,21 +3878,19 @@ export declare type EnterpriseConnection = ({
         write_mode?: boolean;
         mappings: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 } | {
@@ -4019,21 +4005,19 @@ export declare type EnterpriseConnection = ({
         sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 }));
@@ -4239,15 +4223,15 @@ export declare interface HookContext {
             [k: string]: any;
         };
         response: {
-            body: (string | {
+            body: ({
                 [k: string]: any;
-            } | any[]);
+            } | string | any[]);
             headers: {
                 /**
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: string;
+                [k: string]: (string | null);
             };
         };
         [k: string]: any;
@@ -4506,18 +4490,16 @@ export declare interface LDAPConnection {
         write_mode?: boolean;
         mappings: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 }
@@ -4840,7 +4822,7 @@ export declare type MFA = ({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: boolean;
+        secure?: (boolean | null);
         /**
          * The length of the OTP code.
          */
@@ -5312,26 +5294,26 @@ declare class MfaService extends HttpService {
         results: MFA[];
     }>;
     /**
-     * @param data Object containing to be updated values
+     * @param data
      */
-    create(data: UpdateMFA): Promise<MFA>;
+    create(data: MFA): Promise<MFA>;
     /**
-     * @param type Type of MFA
+     * @param type t of MFA
      */
     get(type: MFAType): Promise<MFA>;
     /**
-     * @param type Type of MFA
+     * @param type t of MFA
      * @param data Object containing to be updated values
      */
     update(type: MFAType, data: UpdateMFA): Promise<MFA>;
     /**
-     * @param type Type of MFA
+     * @param type t of MFA
      */
     remove(type: MFAType): Promise<void>;
 }
 
 /**
- * Type of MFA
+ * t of MFA
  * @public
  */
 export declare type MFAType = ("sms" | "otp" | "push" | "webauthn" | "email" | "e-sign" | "fv");
@@ -5354,7 +5336,7 @@ export declare type ModuleSettings = {
         /**
          * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
          */
-        connection?: string;
+        connection?: (string | null);
         /**
          * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
          */
@@ -5879,7 +5861,7 @@ export declare type Provider = (({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: boolean;
+        secure?: (boolean | null);
     };
 }) | ({
     type: "sms";
@@ -6452,7 +6434,7 @@ export declare interface RadiusSettings {
         /**
          * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
          */
-        connection?: string;
+        connection?: (string | null);
         /**
          * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
          */
@@ -6895,18 +6877,16 @@ export declare interface SAMLConnection {
         sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 }
@@ -8808,18 +8788,16 @@ export declare interface UpdateClient {
             relay_state?: (string | null);
             mappings?: {
                 /**
-                 * @minItems 1
-                 *
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: (string | (string | {
+                [k: string]: (string | boolean | {
                     value?: (string | boolean | number);
                     [k: string]: any;
-                })[] | {
+                } | (string | {
                     value?: (string | boolean | number);
                     [k: string]: any;
-                } | boolean);
+                })[]);
             };
             /**
              * Your SAML SP's metadata URL.
@@ -9049,7 +9027,7 @@ export declare type UpdateConnection = (({
          * Password for SMTP authentication
          */
         password?: string;
-        secure?: boolean;
+        secure?: (boolean | null);
         /**
          * The length of the OTP code.
          */
@@ -9653,21 +9631,19 @@ export declare type UpdateConnection = (({
         write_mode?: boolean;
         mappings?: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 } | {
@@ -9727,21 +9703,19 @@ export declare type UpdateConnection = (({
         sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings?: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 } | {
@@ -10080,7 +10054,7 @@ export declare type UpdateEmailConnection = ({
          * Password for SMTP authentication
          */
         password?: string;
-        secure?: boolean;
+        secure?: (boolean | null);
         /**
          * The length of the OTP code.
          */
@@ -10197,7 +10171,7 @@ export declare type UpdateEmailProvider = ({
          * Password for SMTP authentication
          */
         password?: string;
-        secure?: boolean;
+        secure?: (boolean | null);
     };
 }));
 
@@ -10262,21 +10236,19 @@ export declare type UpdateEnterpriseConnection = ({
         write_mode?: boolean;
         mappings?: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 } | {
@@ -10336,21 +10308,19 @@ export declare type UpdateEnterpriseConnection = ({
         sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings?: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 } | {
@@ -10515,18 +10485,16 @@ export declare interface UpdateLDAPConnection {
         write_mode?: boolean;
         mappings?: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 }
@@ -10776,7 +10744,7 @@ export declare type UpdateMFA = ({
          * Password for SMTP authentication
          */
         password?: string;
-        secure?: boolean;
+        secure?: (boolean | null);
         /**
          * The length of the OTP code.
          */
@@ -11235,7 +11203,7 @@ export declare type UpdateModuleSettings = {
         /**
          * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
          */
-        connection?: string;
+        connection?: (string | null);
         /**
          * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
          */
@@ -11419,7 +11387,7 @@ export declare type UpdateProvider = (({
          * Password for SMTP authentication
          */
         password?: string;
-        secure?: boolean;
+        secure?: (boolean | null);
     };
 }) | ({
     type: "sms";
@@ -11934,18 +11902,16 @@ export declare interface UpdateSAMLConnection {
         sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
         mappings?: {
             /**
-             * @minItems 1
-             *
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | (string | {
+            [k: string]: (string | boolean | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            })[] | {
+            } | (string | {
                 value?: (string | boolean | number);
                 [k: string]: any;
-            } | boolean);
+            })[]);
         };
     };
 }
@@ -13731,9 +13697,8 @@ declare class UserService extends HttpService {
     /**
      * For user creation at least one of identifier is required. Available identifiers are `username`, `email` and `phone_number`.
 
-     * @param data User object
      */
-    create(data: CreateUser): Promise<User>;
+    create(): Promise<User>;
     /**
      * @param userId User identifier
      */

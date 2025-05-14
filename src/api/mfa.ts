@@ -1,7 +1,7 @@
 import { HttpService } from "../http"
 import type { MFA } from "../models"
-import type { UpdateMFA } from "../models"
 import type { MFAType } from "../models"
+import type { UpdateMFA } from "../models"
 import { encodedQueryString } from "../utils"
 
 export class MfaService extends HttpService {
@@ -24,21 +24,21 @@ export class MfaService extends HttpService {
   }
 
   /**
-   * @param data Object containing to be updated values
+   * @param data
    */
-  async create(data: UpdateMFA): Promise<MFA> {
+  async create(data: MFA): Promise<MFA> {
     return await this.http.post(`/mfa/`, data)
   }
 
   /**
-   * @param type Type of MFA
+   * @param type t of MFA
    */
   async get(type: MFAType): Promise<MFA> {
     return await this.http.get(`/mfa/${type}`)
   }
 
   /**
-   * @param type Type of MFA
+   * @param type t of MFA
    * @param data Object containing to be updated values
    */
   async update(type: MFAType, data: UpdateMFA): Promise<MFA> {
@@ -46,7 +46,7 @@ export class MfaService extends HttpService {
   }
 
   /**
-   * @param type Type of MFA
+   * @param type t of MFA
    */
   async remove(type: MFAType): Promise<void> {
     return await this.http.delete(`/mfa/${type}`)

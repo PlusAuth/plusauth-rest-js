@@ -231,13 +231,16 @@ export interface Client {
       relay_state?: string | null
       mappings: {
         /**
-         * @minItems 1
-         *
          * This interface was referenced by `undefined`'s JSON-Schema definition
          * via the `patternProperty` "^(.*)$".
          */
         [k: string]:
           | string
+          | boolean
+          | {
+              value?: string | boolean | number
+              [k: string]: any
+            }
           | (
               | string
               | {
@@ -245,11 +248,6 @@ export interface Client {
                   [k: string]: any
                 }
             )[]
-          | {
-              value?: string | boolean | number
-              [k: string]: any
-            }
-          | boolean
       }
       /**
        * Your SAML SP's metadata URL.
@@ -509,7 +507,7 @@ export type Connection =
              * Password for SMTP authentication
              */
             password: string
-            secure?: boolean
+            secure?: boolean | null
             /**
              * The length of the OTP code.
              */
@@ -1182,8 +1180,6 @@ export type Connection =
             write_mode?: boolean
             mappings: {
               /**
-               * @minItems 1
-               *
                * This interface was referenced by `undefined`'s JSON-Schema definition
                * via the `patternProperty` "^(.*)$".
                *
@@ -1192,6 +1188,11 @@ export type Connection =
                */
               [k: string]:
                 | string
+                | boolean
+                | {
+                    value?: string | boolean | number
+                    [k: string]: any
+                  }
                 | (
                     | string
                     | {
@@ -1199,11 +1200,6 @@ export type Connection =
                         [k: string]: any
                       }
                   )[]
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-                | boolean
             }
           }
         }
@@ -1320,8 +1316,6 @@ export type Connection =
             sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
             mappings: {
               /**
-               * @minItems 1
-               *
                * This interface was referenced by `undefined`'s JSON-Schema definition
                * via the `patternProperty` "^(.*)$".
                *
@@ -1330,6 +1324,11 @@ export type Connection =
                */
               [k: string]:
                 | string
+                | boolean
+                | {
+                    value?: string | boolean | number
+                    [k: string]: any
+                  }
                 | (
                     | string
                     | {
@@ -1337,11 +1336,6 @@ export type Connection =
                         [k: string]: any
                       }
                   )[]
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-                | boolean
             }
           }
         }
@@ -1614,13 +1608,16 @@ export interface CreateClient {
       relay_state?: string | null
       mappings: {
         /**
-         * @minItems 1
-         *
          * This interface was referenced by `undefined`'s JSON-Schema definition
          * via the `patternProperty` "^(.*)$".
          */
         [k: string]:
           | string
+          | boolean
+          | {
+              value?: string | boolean | number
+              [k: string]: any
+            }
           | (
               | string
               | {
@@ -1628,11 +1625,6 @@ export interface CreateClient {
                   [k: string]: any
                 }
             )[]
-          | {
-              value?: string | boolean | number
-              [k: string]: any
-            }
-          | boolean
       }
       /**
        * Your SAML SP's metadata URL.
@@ -1863,7 +1855,7 @@ export type CreateConnection =
              * Password for SMTP authentication
              */
             password: string
-            secure?: boolean
+            secure?: boolean | null
             /**
              * The length of the OTP code.
              */
@@ -2536,8 +2528,6 @@ export type CreateConnection =
             write_mode?: boolean
             mappings: {
               /**
-               * @minItems 1
-               *
                * This interface was referenced by `undefined`'s JSON-Schema definition
                * via the `patternProperty` "^(.*)$".
                *
@@ -2546,6 +2536,11 @@ export type CreateConnection =
                */
               [k: string]:
                 | string
+                | boolean
+                | {
+                    value?: string | boolean | number
+                    [k: string]: any
+                  }
                 | (
                     | string
                     | {
@@ -2553,11 +2548,6 @@ export type CreateConnection =
                         [k: string]: any
                       }
                   )[]
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-                | boolean
             }
           }
         }
@@ -2674,8 +2664,6 @@ export type CreateConnection =
             sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
             mappings: {
               /**
-               * @minItems 1
-               *
                * This interface was referenced by `undefined`'s JSON-Schema definition
                * via the `patternProperty` "^(.*)$".
                *
@@ -2684,6 +2672,11 @@ export type CreateConnection =
                */
               [k: string]:
                 | string
+                | boolean
+                | {
+                    value?: string | boolean | number
+                    [k: string]: any
+                  }
                 | (
                     | string
                     | {
@@ -2691,11 +2684,6 @@ export type CreateConnection =
                         [k: string]: any
                       }
                   )[]
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-                | boolean
             }
           }
         }
@@ -3800,7 +3788,7 @@ export type EmailConnection = {
          * Password for SMTP authentication
          */
         password: string
-        secure?: boolean
+        secure?: boolean | null
         /**
          * The length of the OTP code.
          */
@@ -3922,7 +3910,7 @@ export type EmailProvider = {
          * Password for SMTP authentication
          */
         password: string
-        secure?: boolean
+        secure?: boolean | null
       }
     }
 )
@@ -4038,8 +4026,6 @@ export type EnterpriseConnection = {
         write_mode?: boolean
         mappings: {
           /**
-           * @minItems 1
-           *
            * This interface was referenced by `undefined`'s JSON-Schema definition
            * via the `patternProperty` "^(.*)$".
            *
@@ -4048,6 +4034,11 @@ export type EnterpriseConnection = {
            */
           [k: string]:
             | string
+            | boolean
+            | {
+                value?: string | boolean | number
+                [k: string]: any
+              }
             | (
                 | string
                 | {
@@ -4055,11 +4046,6 @@ export type EnterpriseConnection = {
                     [k: string]: any
                   }
               )[]
-            | {
-                value?: string | boolean | number
-                [k: string]: any
-              }
-            | boolean
         }
       }
     }
@@ -4176,8 +4162,6 @@ export type EnterpriseConnection = {
         sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
         mappings: {
           /**
-           * @minItems 1
-           *
            * This interface was referenced by `undefined`'s JSON-Schema definition
            * via the `patternProperty` "^(.*)$".
            *
@@ -4186,6 +4170,11 @@ export type EnterpriseConnection = {
            */
           [k: string]:
             | string
+            | boolean
+            | {
+                value?: string | boolean | number
+                [k: string]: any
+              }
             | (
                 | string
                 | {
@@ -4193,11 +4182,6 @@ export type EnterpriseConnection = {
                     [k: string]: any
                   }
               )[]
-            | {
-                value?: string | boolean | number
-                [k: string]: any
-              }
-            | boolean
         }
       }
     }
@@ -4406,17 +4390,17 @@ export interface HookContext {
     }
     response: {
       body:
-        | string
         | {
             [k: string]: any
           }
+        | string
         | any[]
       headers: {
         /**
          * This interface was referenced by `undefined`'s JSON-Schema definition
          * via the `patternProperty` "^(.*)$".
          */
-        [k: string]: string
+        [k: string]: string | null
       }
     }
     [k: string]: any
@@ -4590,13 +4574,16 @@ export interface LDAPConnection {
     write_mode?: boolean
     mappings: {
       /**
-       * @minItems 1
-       *
        * This interface was referenced by `undefined`'s JSON-Schema definition
        * via the `patternProperty` "^(.*)$".
        */
       [k: string]:
         | string
+        | boolean
+        | {
+            value?: string | boolean | number
+            [k: string]: any
+          }
         | (
             | string
             | {
@@ -4604,11 +4591,6 @@ export interface LDAPConnection {
                 [k: string]: any
               }
           )[]
-        | {
-            value?: string | boolean | number
-            [k: string]: any
-          }
-        | boolean
     }
   }
 }
@@ -4860,7 +4842,7 @@ export type MFA =
              * Password for SMTP authentication
              */
             password: string
-            secure?: boolean
+            secure?: boolean | null
             /**
              * The length of the OTP code.
              */
@@ -5330,7 +5312,7 @@ export type MFA =
     }
 
 /**
- * Type of MFA
+ * t of MFA
  * @public
  */
 export type MFAType = "sms" | "otp" | "push" | "webauthn" | "email" | "e-sign" | "fv"
@@ -5378,7 +5360,7 @@ export type ModuleSettings = {
     /**
      * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
      */
-    connection?: string
+    connection?: string | null
     /**
      * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
      */
@@ -5824,7 +5806,7 @@ export type Provider =
              * Password for SMTP authentication
              */
             password: string
-            secure?: boolean
+            secure?: boolean | null
           }
         }
     )
@@ -6416,7 +6398,7 @@ export interface RadiusSettings {
     /**
      * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
      */
-    connection?: string
+    connection?: string | null
     /**
      * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
      */
@@ -6586,13 +6568,16 @@ export interface SAMLConnection {
     sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
     mappings: {
       /**
-       * @minItems 1
-       *
        * This interface was referenced by `undefined`'s JSON-Schema definition
        * via the `patternProperty` "^(.*)$".
        */
       [k: string]:
         | string
+        | boolean
+        | {
+            value?: string | boolean | number
+            [k: string]: any
+          }
         | (
             | string
             | {
@@ -6600,11 +6585,6 @@ export interface SAMLConnection {
                 [k: string]: any
               }
           )[]
-        | {
-            value?: string | boolean | number
-            [k: string]: any
-          }
-        | boolean
     }
   }
 }
@@ -8497,13 +8477,16 @@ export interface UpdateClient {
       relay_state?: string | null
       mappings?: {
         /**
-         * @minItems 1
-         *
          * This interface was referenced by `undefined`'s JSON-Schema definition
          * via the `patternProperty` "^(.*)$".
          */
         [k: string]:
           | string
+          | boolean
+          | {
+              value?: string | boolean | number
+              [k: string]: any
+            }
           | (
               | string
               | {
@@ -8511,11 +8494,6 @@ export interface UpdateClient {
                   [k: string]: any
                 }
             )[]
-          | {
-              value?: string | boolean | number
-              [k: string]: any
-            }
-          | boolean
       }
       /**
        * Your SAML SP's metadata URL.
@@ -8750,7 +8728,7 @@ export type UpdateConnection =
              * Password for SMTP authentication
              */
             password?: string
-            secure?: boolean
+            secure?: boolean | null
             /**
              * The length of the OTP code.
              */
@@ -9382,8 +9360,6 @@ export type UpdateConnection =
             write_mode?: boolean
             mappings?: {
               /**
-               * @minItems 1
-               *
                * This interface was referenced by `undefined`'s JSON-Schema definition
                * via the `patternProperty` "^(.*)$".
                *
@@ -9392,6 +9368,11 @@ export type UpdateConnection =
                */
               [k: string]:
                 | string
+                | boolean
+                | {
+                    value?: string | boolean | number
+                    [k: string]: any
+                  }
                 | (
                     | string
                     | {
@@ -9399,11 +9380,6 @@ export type UpdateConnection =
                         [k: string]: any
                       }
                   )[]
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-                | boolean
             }
           }
         }
@@ -9464,8 +9440,6 @@ export type UpdateConnection =
             sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
             mappings?: {
               /**
-               * @minItems 1
-               *
                * This interface was referenced by `undefined`'s JSON-Schema definition
                * via the `patternProperty` "^(.*)$".
                *
@@ -9474,6 +9448,11 @@ export type UpdateConnection =
                */
               [k: string]:
                 | string
+                | boolean
+                | {
+                    value?: string | boolean | number
+                    [k: string]: any
+                  }
                 | (
                     | string
                     | {
@@ -9481,11 +9460,6 @@ export type UpdateConnection =
                         [k: string]: any
                       }
                   )[]
-                | {
-                    value?: string | boolean | number
-                    [k: string]: any
-                  }
-                | boolean
             }
           }
         }
@@ -9854,7 +9828,7 @@ export type UpdateEmailConnection = {
          * Password for SMTP authentication
          */
         password?: string
-        secure?: boolean
+        secure?: boolean | null
         /**
          * The length of the OTP code.
          */
@@ -9976,7 +9950,7 @@ export type UpdateEmailProvider = {
          * Password for SMTP authentication
          */
         password?: string
-        secure?: boolean
+        secure?: boolean | null
       }
     }
 )
@@ -10043,8 +10017,6 @@ export type UpdateEnterpriseConnection = {
         write_mode?: boolean
         mappings?: {
           /**
-           * @minItems 1
-           *
            * This interface was referenced by `undefined`'s JSON-Schema definition
            * via the `patternProperty` "^(.*)$".
            *
@@ -10053,6 +10025,11 @@ export type UpdateEnterpriseConnection = {
            */
           [k: string]:
             | string
+            | boolean
+            | {
+                value?: string | boolean | number
+                [k: string]: any
+              }
             | (
                 | string
                 | {
@@ -10060,11 +10037,6 @@ export type UpdateEnterpriseConnection = {
                     [k: string]: any
                   }
               )[]
-            | {
-                value?: string | boolean | number
-                [k: string]: any
-              }
-            | boolean
         }
       }
     }
@@ -10125,8 +10097,6 @@ export type UpdateEnterpriseConnection = {
         sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
         mappings?: {
           /**
-           * @minItems 1
-           *
            * This interface was referenced by `undefined`'s JSON-Schema definition
            * via the `patternProperty` "^(.*)$".
            *
@@ -10135,6 +10105,11 @@ export type UpdateEnterpriseConnection = {
            */
           [k: string]:
             | string
+            | boolean
+            | {
+                value?: string | boolean | number
+                [k: string]: any
+              }
             | (
                 | string
                 | {
@@ -10142,11 +10117,6 @@ export type UpdateEnterpriseConnection = {
                     [k: string]: any
                   }
               )[]
-            | {
-                value?: string | boolean | number
-                [k: string]: any
-              }
-            | boolean
         }
       }
     }
@@ -10290,13 +10260,16 @@ export interface UpdateLDAPConnection {
     write_mode?: boolean
     mappings?: {
       /**
-       * @minItems 1
-       *
        * This interface was referenced by `undefined`'s JSON-Schema definition
        * via the `patternProperty` "^(.*)$".
        */
       [k: string]:
         | string
+        | boolean
+        | {
+            value?: string | boolean | number
+            [k: string]: any
+          }
         | (
             | string
             | {
@@ -10304,11 +10277,6 @@ export interface UpdateLDAPConnection {
                 [k: string]: any
               }
           )[]
-        | {
-            value?: string | boolean | number
-            [k: string]: any
-          }
-        | boolean
     }
   }
 }
@@ -10564,7 +10532,7 @@ export type UpdateMFA =
              * Password for SMTP authentication
              */
             password?: string
-            secure?: boolean
+            secure?: boolean | null
             /**
              * The length of the OTP code.
              */
@@ -11040,7 +11008,7 @@ export type UpdateModuleSettings = {
     /**
      * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
      */
-    connection?: string
+    connection?: string | null
     /**
      * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
      */
@@ -11232,7 +11200,7 @@ export type UpdateProvider =
              * Password for SMTP authentication
              */
             password?: string
-            secure?: boolean
+            secure?: boolean | null
           }
         }
     )
@@ -11758,13 +11726,16 @@ export interface UpdateSAMLConnection {
     sign_out_binding?: "HTTP-POST" | "HTTP-Redirect"
     mappings?: {
       /**
-       * @minItems 1
-       *
        * This interface was referenced by `undefined`'s JSON-Schema definition
        * via the `patternProperty` "^(.*)$".
        */
       [k: string]:
         | string
+        | boolean
+        | {
+            value?: string | boolean | number
+            [k: string]: any
+          }
         | (
             | string
             | {
@@ -11772,11 +11743,6 @@ export interface UpdateSAMLConnection {
                 [k: string]: any
               }
           )[]
-        | {
-            value?: string | boolean | number
-            [k: string]: any
-          }
-        | boolean
     }
   }
 }
