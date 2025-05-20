@@ -379,6 +379,15 @@ export declare type Connection = (({
          */
         region: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -387,10 +396,6 @@ export declare type Connection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -422,6 +427,15 @@ export declare type Connection = (({
          */
         api_key: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -430,10 +444,6 @@ export declare type Connection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -469,6 +479,15 @@ export declare type Connection = (({
          */
         api_user?: (string | null);
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -477,10 +496,6 @@ export declare type Connection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -525,6 +540,15 @@ export declare type Connection = (({
         password: string;
         secure?: (boolean | null);
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -533,10 +557,6 @@ export declare type Connection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 }) | ({
     enabled: boolean;
@@ -584,6 +604,15 @@ export declare type Connection = (({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -591,10 +620,6 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -626,6 +651,15 @@ export declare type Connection = (({
          */
         originator: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -633,10 +667,6 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -664,6 +694,15 @@ export declare type Connection = (({
          */
         hook_context: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -671,10 +710,6 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -718,6 +753,15 @@ export declare type Connection = (({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -725,10 +769,6 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -765,6 +805,15 @@ export declare type Connection = (({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -772,10 +821,6 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -811,6 +856,15 @@ export declare type Connection = (({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -818,10 +872,6 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -865,6 +915,15 @@ export declare type Connection = (({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -872,10 +931,6 @@ export declare type Connection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 }) | ({
     type: "social";
@@ -902,15 +957,15 @@ export declare type Connection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id: string;
         key_id: string;
         private_key: string;
@@ -945,15 +1000,15 @@ export declare type Connection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id: string;
         client_secret: string;
         /**
@@ -986,15 +1041,15 @@ export declare type Connection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         extra_params: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1043,15 +1098,15 @@ export declare type Connection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         app_key: string;
         app_secret: string;
         /**
@@ -1084,15 +1139,15 @@ export declare type Connection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         consumer_key: string;
         consumer_secret: string;
         /**
@@ -1125,15 +1180,15 @@ export declare type Connection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your LDAP server's URL in format `<ldap/s>://<host>:<port>`
          */
@@ -1212,15 +1267,15 @@ export declare type Connection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id: string;
         client_secret: string;
         /**
@@ -1254,15 +1309,15 @@ export declare type Connection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your SAML IDP's metadata URL.
          */
@@ -1388,10 +1443,46 @@ export declare type Connection = (({
          * @maxItems 1000
          */
         enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
         /**
          * Push notification strategy
          */
         strategy: ("code" | "prompt");
+    };
+} | {
+    type: "webauthn";
+    provider: "plusauth";
+    enabled: boolean;
+    /**
+     * Is connection using custom scripts
+     */
+    is_custom?: boolean;
+    /**
+     * Connection name
+     */
+    name: string;
+    /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
+    updated_at?: (string | null);
+    /**
+     * Creation date in the ISO 8601 format according to universal time.
+     */
+    created_at?: string;
+    settings: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
     };
 });
 
@@ -1706,6 +1797,15 @@ export declare type CreateConnection = (({
          */
         region: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -1714,10 +1814,6 @@ export declare type CreateConnection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -1749,6 +1845,15 @@ export declare type CreateConnection = (({
          */
         api_key: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -1757,10 +1862,6 @@ export declare type CreateConnection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -1796,6 +1897,15 @@ export declare type CreateConnection = (({
          */
         api_user?: (string | null);
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -1804,10 +1914,6 @@ export declare type CreateConnection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -1852,6 +1958,15 @@ export declare type CreateConnection = (({
         password: string;
         secure?: (boolean | null);
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -1860,10 +1975,6 @@ export declare type CreateConnection = (({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 }) | ({
     enabled: boolean;
@@ -1911,6 +2022,15 @@ export declare type CreateConnection = (({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -1918,10 +2038,6 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -1953,6 +2069,15 @@ export declare type CreateConnection = (({
          */
         originator: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -1960,10 +2085,6 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -1991,6 +2112,15 @@ export declare type CreateConnection = (({
          */
         hook_context: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -1998,10 +2128,6 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -2045,6 +2171,15 @@ export declare type CreateConnection = (({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -2052,10 +2187,6 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -2092,6 +2223,15 @@ export declare type CreateConnection = (({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -2099,10 +2239,6 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -2138,6 +2274,15 @@ export declare type CreateConnection = (({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -2145,10 +2290,6 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -2192,6 +2333,15 @@ export declare type CreateConnection = (({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -2199,10 +2349,6 @@ export declare type CreateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 }) | ({
     type: "social";
@@ -2229,15 +2375,15 @@ export declare type CreateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id: string;
         key_id: string;
         private_key: string;
@@ -2272,15 +2418,15 @@ export declare type CreateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id: string;
         client_secret: string;
         /**
@@ -2313,15 +2459,15 @@ export declare type CreateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         extra_params: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -2370,15 +2516,15 @@ export declare type CreateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         app_key: string;
         app_secret: string;
         /**
@@ -2411,15 +2557,15 @@ export declare type CreateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         consumer_key: string;
         consumer_secret: string;
         /**
@@ -2452,15 +2598,15 @@ export declare type CreateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your LDAP server's URL in format `<ldap/s>://<host>:<port>`
          */
@@ -2539,15 +2685,15 @@ export declare type CreateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id: string;
         client_secret: string;
         /**
@@ -2581,15 +2727,15 @@ export declare type CreateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your SAML IDP's metadata URL.
          */
@@ -2715,10 +2861,46 @@ export declare type CreateConnection = (({
          * @maxItems 1000
          */
         enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
         /**
          * Push notification strategy
          */
         strategy: ("code" | "prompt");
+    };
+} | {
+    type: "webauthn";
+    provider: "plusauth";
+    enabled: boolean;
+    /**
+     * Is connection using custom scripts
+     */
+    is_custom?: boolean;
+    /**
+     * Connection name
+     */
+    name: string;
+    /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
+    updated_at?: (string | null);
+    /**
+     * Creation date in the ISO 8601 format according to universal time.
+     */
+    created_at?: string;
+    settings: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
     };
 });
 
@@ -3459,15 +3641,15 @@ export declare interface EDevletConnection {
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id: string;
         client_secret: string;
         /**
@@ -3522,6 +3704,15 @@ export declare type EmailConnection = ({
          */
         region: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -3530,10 +3721,6 @@ export declare type EmailConnection = ({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -3565,6 +3752,15 @@ export declare type EmailConnection = ({
          */
         api_key: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -3573,10 +3769,6 @@ export declare type EmailConnection = ({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -3612,6 +3804,15 @@ export declare type EmailConnection = ({
          */
         api_user?: (string | null);
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -3620,10 +3821,6 @@ export declare type EmailConnection = ({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -3668,6 +3865,15 @@ export declare type EmailConnection = ({
         password: string;
         secure?: (boolean | null);
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -3676,10 +3882,6 @@ export declare type EmailConnection = ({
          */
         code_ttl: number;
         use_magic_link: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 }));
 
@@ -3843,15 +4045,15 @@ export declare type EnterpriseConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your LDAP server's URL in format `<ldap/s>://<host>:<port>`
          */
@@ -3930,15 +4132,15 @@ export declare type EnterpriseConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id: string;
         client_secret: string;
         /**
@@ -3972,15 +4174,15 @@ export declare type EnterpriseConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your SAML IDP's metadata URL.
          */
@@ -4459,15 +4661,15 @@ export declare interface LDAPConnection {
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your LDAP server's URL in format `<ldap/s>://<host>:<port>`
          */
@@ -4667,10 +4869,6 @@ export declare type MFA = ({
             production: boolean;
         };
         /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
-        /**
          * Push notification strategy
          */
         strategy: ("code" | "prompt");
@@ -4716,10 +4914,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -4754,10 +4948,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -4796,10 +4986,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -4847,10 +5033,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 }) | ({
     enabled: boolean;
@@ -4901,10 +5083,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -4939,10 +5117,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -4973,10 +5147,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -5023,10 +5193,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -5066,10 +5232,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -5108,10 +5270,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -5158,10 +5316,6 @@ export declare type MFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 }) | ({
     type: "otp";
@@ -5180,10 +5334,6 @@ export declare type MFA = ({
      */
     created_at?: string;
     settings: {
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
         /**
          * The length of the OTP code.
          */
@@ -5210,10 +5360,6 @@ export declare type MFA = ({
     created_at?: string;
     settings: {
         /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
-        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -5238,10 +5384,6 @@ export declare type MFA = ({
      */
     created_at?: string;
     settings: {
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
         seed: string;
     };
 } | {
@@ -5260,12 +5402,7 @@ export declare type MFA = ({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    settings: {
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
-    };
+    settings: {};
 } | {
     type: "e-sign";
     provider: "plusauth";
@@ -5282,12 +5419,7 @@ export declare type MFA = ({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    settings: {
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
-    };
+    settings: {};
 });
 
 declare class MfaService extends HttpService {
@@ -6295,6 +6427,11 @@ export declare type PushConnection = ({
          * @maxItems 1000
          */
         enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
         /**
          * Push notification strategy
          */
@@ -6848,15 +6985,15 @@ export declare interface SAMLConnection {
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your SAML IDP's metadata URL.
          */
@@ -6959,6 +7096,15 @@ export declare type SmsConnection = ({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -6966,10 +7112,6 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -7001,6 +7143,15 @@ export declare type SmsConnection = ({
          */
         originator: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -7008,10 +7159,6 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -7039,6 +7186,15 @@ export declare type SmsConnection = ({
          */
         hook_context: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -7046,10 +7202,6 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -7093,6 +7245,15 @@ export declare type SmsConnection = ({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -7100,10 +7261,6 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -7140,6 +7297,15 @@ export declare type SmsConnection = ({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -7147,10 +7313,6 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -7186,6 +7348,15 @@ export declare type SmsConnection = ({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -7193,10 +7364,6 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 } | {
     enabled: boolean;
@@ -7240,6 +7407,15 @@ export declare type SmsConnection = ({
          */
         from: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[];
+        branding: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length: number;
@@ -7247,10 +7423,6 @@ export declare type SmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
     };
 }));
 
@@ -7492,15 +7664,15 @@ export declare type SocialConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id: string;
         key_id: string;
         private_key: string;
@@ -7535,15 +7707,15 @@ export declare type SocialConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id: string;
         client_secret: string;
         /**
@@ -7576,15 +7748,15 @@ export declare type SocialConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         extra_params: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -7633,15 +7805,15 @@ export declare type SocialConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         app_key: string;
         app_secret: string;
         /**
@@ -7674,15 +7846,15 @@ export declare type SocialConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         consumer_key: string;
         consumer_secret: string;
         /**
@@ -8896,6 +9068,15 @@ export declare type UpdateConnection = (({
          */
         region?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -8904,10 +9085,6 @@ export declare type UpdateConnection = (({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -8940,6 +9117,15 @@ export declare type UpdateConnection = (({
          */
         api_key?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -8948,10 +9134,6 @@ export declare type UpdateConnection = (({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -8988,6 +9170,15 @@ export declare type UpdateConnection = (({
          */
         api_user?: (string | null);
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -8996,10 +9187,6 @@ export declare type UpdateConnection = (({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -9045,6 +9232,15 @@ export declare type UpdateConnection = (({
         password?: string;
         secure?: (boolean | null);
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -9053,10 +9249,6 @@ export declare type UpdateConnection = (({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 }) | ({
     enabled?: boolean;
@@ -9105,6 +9297,15 @@ export declare type UpdateConnection = (({
          */
         from?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -9112,10 +9313,6 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -9148,6 +9345,15 @@ export declare type UpdateConnection = (({
          */
         originator?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -9155,10 +9361,6 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -9187,6 +9389,15 @@ export declare type UpdateConnection = (({
          */
         hook_context?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -9194,10 +9405,6 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -9242,6 +9449,15 @@ export declare type UpdateConnection = (({
          */
         from?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -9249,10 +9465,6 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -9290,6 +9502,15 @@ export declare type UpdateConnection = (({
          */
         from?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -9297,10 +9518,6 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -9337,6 +9554,15 @@ export declare type UpdateConnection = (({
          */
         from?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -9344,10 +9570,6 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -9392,6 +9614,15 @@ export declare type UpdateConnection = (({
          */
         from?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -9399,10 +9630,6 @@ export declare type UpdateConnection = (({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 }) | ({
     is_default?: boolean;
@@ -9422,15 +9649,15 @@ export declare type UpdateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id?: string;
         key_id?: string;
         private_key?: string;
@@ -9458,15 +9685,15 @@ export declare type UpdateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id?: string;
         client_secret?: string;
         /**
@@ -9492,15 +9719,15 @@ export declare type UpdateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         extra_params?: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -9542,15 +9769,15 @@ export declare type UpdateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         app_key?: string;
         app_secret?: string;
         /**
@@ -9576,15 +9803,15 @@ export declare type UpdateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         consumer_key?: string;
         consumer_secret?: string;
         /**
@@ -9604,15 +9831,15 @@ export declare type UpdateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your LDAP server's URL in format `<ldap/s>://<host>:<port>`
          */
@@ -9678,15 +9905,15 @@ export declare type UpdateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your SAML IDP's metadata URL.
          */
@@ -9750,15 +9977,15 @@ export declare type UpdateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id?: string;
         client_secret?: string;
         /**
@@ -9841,10 +10068,38 @@ export declare type UpdateConnection = (({
          * @maxItems 1000
          */
         enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
         /**
          * Push notification strategy
          */
         strategy?: ("code" | "prompt");
+    };
+} | {
+    type?: "webauthn";
+    provider?: "plusauth";
+    enabled?: boolean;
+    /**
+     * Update date in the ISO 8601 format according to universal time.
+     */
+    updated_at?: (string | null);
+    /**
+     * Creation date in the ISO 8601 format according to universal time.
+     */
+    created_at?: string;
+    settings?: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
     };
 });
 
@@ -9863,15 +10118,15 @@ export declare interface UpdateEDevletConnection {
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id?: string;
         client_secret?: string;
         /**
@@ -9927,6 +10182,15 @@ export declare type UpdateEmailConnection = ({
          */
         region?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -9935,10 +10199,6 @@ export declare type UpdateEmailConnection = ({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -9971,6 +10231,15 @@ export declare type UpdateEmailConnection = ({
          */
         api_key?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -9979,10 +10248,6 @@ export declare type UpdateEmailConnection = ({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -10019,6 +10284,15 @@ export declare type UpdateEmailConnection = ({
          */
         api_user?: (string | null);
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -10027,10 +10301,6 @@ export declare type UpdateEmailConnection = ({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -10076,6 +10346,15 @@ export declare type UpdateEmailConnection = ({
         password?: string;
         secure?: (boolean | null);
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -10084,10 +10363,6 @@ export declare type UpdateEmailConnection = ({
          */
         code_ttl?: number;
         use_magic_link?: boolean;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 }));
 
@@ -10213,15 +10488,15 @@ export declare type UpdateEnterpriseConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your LDAP server's URL in format `<ldap/s>://<host>:<port>`
          */
@@ -10287,15 +10562,15 @@ export declare type UpdateEnterpriseConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your SAML IDP's metadata URL.
          */
@@ -10359,15 +10634,15 @@ export declare type UpdateEnterpriseConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id?: string;
         client_secret?: string;
         /**
@@ -10466,15 +10741,15 @@ export declare interface UpdateLDAPConnection {
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your LDAP server's URL in format `<ldap/s>://<host>:<port>`
          */
@@ -10597,10 +10872,6 @@ export declare type UpdateMFA = ({
             production?: boolean;
         };
         /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
-        /**
          * Push notification strategy
          */
         strategy?: ("code" | "prompt");
@@ -10647,10 +10918,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -10686,10 +10953,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -10729,10 +10992,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -10781,10 +11040,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 }) | ({
     enabled?: boolean;
@@ -10836,10 +11091,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -10875,10 +11126,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -10910,10 +11157,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -10961,10 +11204,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -11005,10 +11244,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -11048,10 +11283,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -11099,10 +11330,6 @@ export declare type UpdateMFA = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 }) | ({
     enabled?: boolean;
@@ -11122,10 +11349,6 @@ export declare type UpdateMFA = ({
     type?: "otp";
     provider?: "hotp";
     settings?: {
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
         /**
          * The length of the OTP code.
          */
@@ -11153,10 +11376,6 @@ export declare type UpdateMFA = ({
     provider?: "totp";
     settings?: {
         /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
-        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -11177,10 +11396,6 @@ export declare type UpdateMFA = ({
      */
     created_at?: string;
     settings?: {
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
         seed?: string;
     };
 } | {
@@ -11195,12 +11410,7 @@ export declare type UpdateMFA = ({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    settings?: {
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
-    };
+    settings?: {};
 } | {
     type?: "e-sign";
     provider?: "plusauth";
@@ -11213,12 +11423,7 @@ export declare type UpdateMFA = ({
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
-    settings?: {
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
-    };
+    settings?: {};
 });
 
 /**
@@ -11742,6 +11947,11 @@ export declare type UpdatePushConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
         /**
          * Push notification strategy
          */
@@ -11885,15 +12095,15 @@ export declare interface UpdateSAMLConnection {
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         /**
          * Your SAML IDP's metadata URL.
          */
@@ -11997,6 +12207,15 @@ export declare type UpdateSmsConnection = ({
          */
         from?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -12004,10 +12223,6 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -12040,6 +12255,15 @@ export declare type UpdateSmsConnection = ({
          */
         originator?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -12047,10 +12271,6 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -12079,6 +12299,15 @@ export declare type UpdateSmsConnection = ({
          */
         hook_context?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -12086,10 +12315,6 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -12134,6 +12359,15 @@ export declare type UpdateSmsConnection = ({
          */
         from?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -12141,10 +12375,6 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -12182,6 +12412,15 @@ export declare type UpdateSmsConnection = ({
          */
         from?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -12189,10 +12428,6 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -12229,6 +12464,15 @@ export declare type UpdateSmsConnection = ({
          */
         from?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -12236,10 +12480,6 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 } | {
     enabled?: boolean;
@@ -12284,6 +12524,15 @@ export declare type UpdateSmsConnection = ({
          */
         from?: string;
         /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
+        /**
          * The length of the OTP code.
          */
         code_length?: number;
@@ -12291,10 +12540,6 @@ export declare type UpdateSmsConnection = ({
          * The expiration of the generated code in seconds
          */
         code_ttl?: number;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
     };
 }));
 
@@ -12515,15 +12760,15 @@ export declare type UpdateSocialConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id?: string;
         key_id?: string;
         private_key?: string;
@@ -12551,15 +12796,15 @@ export declare type UpdateSocialConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         client_id?: string;
         client_secret?: string;
         /**
@@ -12585,15 +12830,15 @@ export declare type UpdateSocialConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         extra_params?: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -12635,15 +12880,15 @@ export declare type UpdateSocialConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         app_key?: string;
         app_secret?: string;
         /**
@@ -12669,15 +12914,15 @@ export declare type UpdateSocialConnection = ({
          * @maxItems 1000
          */
         enabled_clients?: string[];
-        /**
-         * Enable/Disable user profile synchronization on each login
-         */
-        sync_user_profile?: boolean;
         branding?: {
             show_in_login?: boolean;
             logo_url?: string;
             display_name?: string;
         };
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean;
         consumer_key?: string;
         consumer_secret?: string;
         /**
@@ -13044,6 +13289,11 @@ export declare interface UpdateWebAuthNConnection {
          * @maxItems 1000
          */
         enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
     };
 }
 
@@ -14005,6 +14255,11 @@ export declare interface WebAuthNConnection {
          * @maxItems 1000
          */
         enabled_clients?: string[];
+        branding?: {
+            show_in_login?: boolean;
+            logo_url?: string;
+            display_name?: string;
+        };
     };
 }
 
