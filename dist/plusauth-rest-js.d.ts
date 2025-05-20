@@ -1155,6 +1155,10 @@ export declare type Connection = (({
          */
         search_filter: string;
         /**
+         * An LDAP filter used to retrieve all user entries for synchronization. Narrow the filter to exclude non-human accounts such as system or service users.
+         */
+        search_all_filter?: string;
+        /**
          * Specify the portion of the target subtree that should be considered
          */
         search_scope?: ("base" | "one" | "sub" | "subordinate");
@@ -2477,6 +2481,10 @@ export declare type CreateConnection = (({
          * LDAP filter for user lookup. Make sure it is wrapped with parentheses. For ex: `(uid={{username}})`
          */
         search_filter: string;
+        /**
+         * An LDAP filter used to retrieve all user entries for synchronization. Narrow the filter to exclude non-human accounts such as system or service users.
+         */
+        search_all_filter?: string;
         /**
          * Specify the portion of the target subtree that should be considered
          */
@@ -3865,6 +3873,10 @@ export declare type EnterpriseConnection = ({
          */
         search_filter: string;
         /**
+         * An LDAP filter used to retrieve all user entries for synchronization. Narrow the filter to exclude non-human accounts such as system or service users.
+         */
+        search_all_filter?: string;
+        /**
          * Specify the portion of the target subtree that should be considered
          */
         search_scope?: ("base" | "one" | "sub" | "subordinate");
@@ -4476,6 +4488,10 @@ export declare interface LDAPConnection {
          * LDAP filter for user lookup. Make sure it is wrapped with parentheses. For ex: `(uid={{username}})`
          */
         search_filter: string;
+        /**
+         * An LDAP filter used to retrieve all user entries for synchronization. Narrow the filter to exclude non-human accounts such as system or service users.
+         */
+        search_all_filter?: string;
         /**
          * Specify the portion of the target subtree that should be considered
          */
@@ -9618,6 +9634,10 @@ export declare type UpdateConnection = (({
          */
         search_filter?: string;
         /**
+         * An LDAP filter used to retrieve all user entries for synchronization. Narrow the filter to exclude non-human accounts such as system or service users.
+         */
+        search_all_filter?: string;
+        /**
          * Specify the portion of the target subtree that should be considered
          */
         search_scope?: ("base" | "one" | "sub" | "subordinate");
@@ -10223,6 +10243,10 @@ export declare type UpdateEnterpriseConnection = ({
          */
         search_filter?: string;
         /**
+         * An LDAP filter used to retrieve all user entries for synchronization. Narrow the filter to exclude non-human accounts such as system or service users.
+         */
+        search_all_filter?: string;
+        /**
          * Specify the portion of the target subtree that should be considered
          */
         search_scope?: ("base" | "one" | "sub" | "subordinate");
@@ -10471,6 +10495,10 @@ export declare interface UpdateLDAPConnection {
          * LDAP filter for user lookup. Make sure it is wrapped with parentheses. For ex: `(uid={{username}})`
          */
         search_filter?: string;
+        /**
+         * An LDAP filter used to retrieve all user entries for synchronization. Narrow the filter to exclude non-human accounts such as system or service users.
+         */
+        search_all_filter?: string;
         /**
          * Specify the portion of the target subtree that should be considered
          */
