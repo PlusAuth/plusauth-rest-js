@@ -841,57 +841,6 @@ export declare type Connection = (({
      */
     created_at?: string;
     type: "sms";
-    provider: "vonage";
-    settings: {
-        /**
-         * Vonage API Key
-         */
-        api_key: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret: string;
-        /**
-         * Originating phone number
-         */
-        from: string;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
-        branding: {
-            show_in_login?: boolean;
-            logo_url?: string;
-            display_name?: string;
-        };
-        /**
-         * The length of the OTP code.
-         */
-        code_length: number;
-        /**
-         * The expiration of the generated code in seconds
-         */
-        code_ttl: number;
-    };
-} | {
-    enabled: boolean;
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    /**
-     * Connection name
-     */
-    name: string;
-    /**
-     * Update date in the ISO 8601 format according to universal time.
-     */
-    updated_at?: (string | null);
-    /**
-     * Creation date in the ISO 8601 format according to universal time.
-     */
-    created_at?: string;
-    type: "sms";
     provider: "netgsm";
     settings: {
         /**
@@ -2259,57 +2208,6 @@ export declare type CreateConnection = (({
      */
     created_at?: string;
     type: "sms";
-    provider: "vonage";
-    settings: {
-        /**
-         * Vonage API Key
-         */
-        api_key: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret: string;
-        /**
-         * Originating phone number
-         */
-        from: string;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
-        branding: {
-            show_in_login?: boolean;
-            logo_url?: string;
-            display_name?: string;
-        };
-        /**
-         * The length of the OTP code.
-         */
-        code_length: number;
-        /**
-         * The expiration of the generated code in seconds
-         */
-        code_ttl: number;
-    };
-} | {
-    enabled: boolean;
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    /**
-     * Connection name
-     */
-    name: string;
-    /**
-     * Update date in the ISO 8601 format according to universal time.
-     */
-    updated_at?: (string | null);
-    /**
-     * Creation date in the ISO 8601 format according to universal time.
-     */
-    created_at?: string;
-    type: "sms";
     provider: "netgsm";
     settings: {
         /**
@@ -3350,7 +3248,7 @@ export declare interface CreateUser {
          */
         connection: string;
         type: ("sms" | "push" | "webauthn" | "email" | "social" | "enterprise");
-        provider: ("twilio" | "vonage" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
+        provider: ("twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
         /**
          * Raw user object from the connection
          */
@@ -3492,7 +3390,7 @@ export declare interface CreateUserIdentity {
      */
     connection: string;
     type: ("sms" | "push" | "webauthn" | "email" | "social" | "enterprise");
-    provider: ("twilio" | "vonage" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
+    provider: ("twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
     /**
      * Raw user object from the connection
      */
@@ -5248,44 +5146,6 @@ export declare type MFA = ({
      */
     created_at?: string;
     type: "sms";
-    provider: "vonage";
-    settings: {
-        /**
-         * Vonage API Key
-         */
-        api_key: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret: string;
-        /**
-         * Originating phone number
-         */
-        from: string;
-        /**
-         * The length of the OTP code.
-         */
-        code_length: number;
-        /**
-         * The expiration of the generated code in seconds
-         */
-        code_ttl: number;
-    };
-} | {
-    enabled: boolean;
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    /**
-     * Update date in the ISO 8601 format according to universal time.
-     */
-    updated_at?: (string | null);
-    /**
-     * Creation date in the ISO 8601 format according to universal time.
-     */
-    created_at?: string;
-    type: "sms";
     provider: "netgsm";
     settings: {
         /**
@@ -6137,30 +5997,6 @@ export declare type Provider = (({
         strategy: ("copilot" | "from");
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
-         */
-        from: string;
-    };
-} | {
-    type: "sms";
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    provider: "vonage";
-    /**
-     * Vonage SMS service configuration settings.
-     */
-    settings: {
-        /**
-         * Vonage API Key
-         */
-        api_key: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret: string;
-        /**
-         * Originating phone number
          */
         from: string;
     };
@@ -7333,57 +7169,6 @@ export declare type SmsConnection = ({
      */
     created_at?: string;
     type: "sms";
-    provider: "vonage";
-    settings: {
-        /**
-         * Vonage API Key
-         */
-        api_key: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret: string;
-        /**
-         * Originating phone number
-         */
-        from: string;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[];
-        branding: {
-            show_in_login?: boolean;
-            logo_url?: string;
-            display_name?: string;
-        };
-        /**
-         * The length of the OTP code.
-         */
-        code_length: number;
-        /**
-         * The expiration of the generated code in seconds
-         */
-        code_ttl: number;
-    };
-} | {
-    enabled: boolean;
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    /**
-     * Connection name
-     */
-    name: string;
-    /**
-     * Update date in the ISO 8601 format according to universal time.
-     */
-    updated_at?: (string | null);
-    /**
-     * Creation date in the ISO 8601 format according to universal time.
-     */
-    created_at?: string;
-    type: "sms";
     provider: "netgsm";
     settings: {
         /**
@@ -7558,30 +7343,6 @@ export declare type SmsProvider = ({
         strategy: ("copilot" | "from");
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
-         */
-        from: string;
-    };
-} | {
-    type: "sms";
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    provider: "vonage";
-    /**
-     * Vonage SMS service configuration settings.
-     */
-    settings: {
-        /**
-         * Vonage API Key
-         */
-        api_key: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret: string;
-        /**
-         * Originating phone number
          */
         from: string;
     };
@@ -9539,58 +9300,6 @@ export declare type UpdateConnection = (({
     created_at?: string;
     is_default?: boolean;
     type?: "sms";
-    provider?: "vonage";
-    settings?: {
-        /**
-         * Vonage API Key
-         */
-        api_key?: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret?: string;
-        /**
-         * Originating phone number
-         */
-        from?: string;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
-        branding?: {
-            show_in_login?: boolean;
-            logo_url?: string;
-            display_name?: string;
-        };
-        /**
-         * The length of the OTP code.
-         */
-        code_length?: number;
-        /**
-         * The expiration of the generated code in seconds
-         */
-        code_ttl?: number;
-    };
-} | {
-    enabled?: boolean;
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    /**
-     * Connection name
-     */
-    name?: string;
-    /**
-     * Update date in the ISO 8601 format according to universal time.
-     */
-    updated_at?: (string | null);
-    /**
-     * Creation date in the ISO 8601 format according to universal time.
-     */
-    created_at?: string;
-    is_default?: boolean;
-    type?: "sms";
     provider?: "netgsm";
     settings?: {
         /**
@@ -11261,45 +10970,6 @@ export declare type UpdateMFA = ({
     created_at?: string;
     is_default?: boolean;
     type?: "sms";
-    provider?: "vonage";
-    settings?: {
-        /**
-         * Vonage API Key
-         */
-        api_key?: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret?: string;
-        /**
-         * Originating phone number
-         */
-        from?: string;
-        /**
-         * The length of the OTP code.
-         */
-        code_length?: number;
-        /**
-         * The expiration of the generated code in seconds
-         */
-        code_ttl?: number;
-    };
-} | {
-    enabled?: boolean;
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    /**
-     * Update date in the ISO 8601 format according to universal time.
-     */
-    updated_at?: (string | null);
-    /**
-     * Creation date in the ISO 8601 format according to universal time.
-     */
-    created_at?: string;
-    is_default?: boolean;
-    type?: "sms";
     provider?: "netgsm";
     settings?: {
         /**
@@ -11748,30 +11418,6 @@ export declare type UpdateProvider = (({
         strategy?: ("copilot" | "from");
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
-         */
-        from?: string;
-    };
-} | {
-    type: "sms";
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    provider: "vonage";
-    /**
-     * Vonage SMS service configuration settings.
-     */
-    settings?: {
-        /**
-         * Vonage API Key
-         */
-        api_key?: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret?: string;
-        /**
-         * Originating phone number
          */
         from?: string;
     };
@@ -12449,58 +12095,6 @@ export declare type UpdateSmsConnection = ({
     created_at?: string;
     is_default?: boolean;
     type?: "sms";
-    provider?: "vonage";
-    settings?: {
-        /**
-         * Vonage API Key
-         */
-        api_key?: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret?: string;
-        /**
-         * Originating phone number
-         */
-        from?: string;
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[];
-        branding?: {
-            show_in_login?: boolean;
-            logo_url?: string;
-            display_name?: string;
-        };
-        /**
-         * The length of the OTP code.
-         */
-        code_length?: number;
-        /**
-         * The expiration of the generated code in seconds
-         */
-        code_ttl?: number;
-    };
-} | {
-    enabled?: boolean;
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    /**
-     * Connection name
-     */
-    name?: string;
-    /**
-     * Update date in the ISO 8601 format according to universal time.
-     */
-    updated_at?: (string | null);
-    /**
-     * Creation date in the ISO 8601 format according to universal time.
-     */
-    created_at?: string;
-    is_default?: boolean;
-    type?: "sms";
     provider?: "netgsm";
     settings?: {
         /**
@@ -12675,30 +12269,6 @@ export declare type UpdateSmsProvider = ({
         strategy?: ("copilot" | "from");
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
-         */
-        from?: string;
-    };
-} | {
-    type: "sms";
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    provider: "vonage";
-    /**
-     * Vonage SMS service configuration settings.
-     */
-    settings?: {
-        /**
-         * Vonage API Key
-         */
-        api_key?: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret?: string;
-        /**
-         * Originating phone number
          */
         from?: string;
     };
@@ -13510,7 +13080,7 @@ export declare interface User {
          */
         user_id: string;
         type: ("sms" | "push" | "webauthn" | "email" | "social" | "enterprise");
-        provider: ("twilio" | "vonage" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
+        provider: ("twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
         /**
          * Raw user object from the connection
          */
@@ -13867,7 +13437,7 @@ export declare interface UserIdentity {
      */
     user_id: string;
     type: ("sms" | "push" | "webauthn" | "email" | "social" | "enterprise");
-    provider: ("twilio" | "vonage" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
+    provider: ("twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
     /**
      * Raw user object from the connection
      */
@@ -14196,35 +13766,6 @@ declare class ViewService extends HttpService {
      * @param data View content. Pass null or empty to reset to default
      */
     update(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error", data: string | null): Promise<View>;
-}
-
-/**
- * @public
- */
-export declare interface VonageSmsProvider {
-    type: "sms";
-    /**
-     * Is connection using custom scripts
-     */
-    is_custom?: boolean;
-    provider: "vonage";
-    /**
-     * Vonage SMS service configuration settings.
-     */
-    settings: {
-        /**
-         * Vonage API Key
-         */
-        api_key: string;
-        /**
-         * Vonage API Secret
-         */
-        api_secret: string;
-        /**
-         * Originating phone number
-         */
-        from: string;
-    };
 }
 
 /**
