@@ -1,4 +1,26 @@
+# Changelog
 
+## [2.3.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v2.2.0...v2.3.0) (2025-05-22)
+
+### Features
+
+* add module settings ([cf30a05](https://github.com/PlusAuth/plusauth-rest-js/commit/cf30a0595e87475f1b50c128c0b66aa25328913f))
+
+### Type Improvements
+
+* add branding settings for connections ([221e1eb](https://github.com/PlusAuth/plusauth-rest-js/commit/221e1ebb6f5d7e7a58e8dbf195b76884a3ccfe8b))
+* add radius plan metadata ([ae658f3](https://github.com/PlusAuth/plusauth-rest-js/commit/ae658f3f58a04fbdbb6c93d731a6a95ecee5c816))
+* include array max items ([7afc130](https://github.com/PlusAuth/plusauth-rest-js/commit/7afc130da1430dc2cf17c3b41d053c3888ff9744))
+* include radius server port in metadata ([2247f75](https://github.com/PlusAuth/plusauth-rest-js/commit/2247f75c1c3b8c1f7348873dfb2a62e75a02e876))
+* remove vonage sms adapter ([8513e9d](https://github.com/PlusAuth/plusauth-rest-js/commit/8513e9d6da19c6b1afffd7e027feae3552c78517))
+* search all filter for ad/ldap user synchronizing ([4f895c3](https://github.com/PlusAuth/plusauth-rest-js/commit/4f895c3ec713f2657dd4a68f028e61656e8c5762))
+
+### Bug Fixes
+
+* combobox always display chips ([4bea193](https://github.com/PlusAuth/plusauth-rest-js/commit/4bea193e90f027eb04dc16b4b401dc1248380629))
+* ldap sync job fails when split tcp packets ([8ac2387](https://github.com/PlusAuth/plusauth-rest-js/commit/8ac23875807b800cee5313cd007366125d2b79e0))
+* **regression:** create user missing data parameter ([b6f2fce](https://github.com/PlusAuth/plusauth-rest-js/commit/b6f2fced916d3e86c8512fe19b07b1a2cbea69e5))
+* runtime error when trying to create financial client ([e8b185f](https://github.com/PlusAuth/plusauth-rest-js/commit/e8b185f2400e3e40c9371893e1d84b98008d7518))
 
 ## [2.2.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v2.1.0...v2.2.0) (2024-12-20)
 
