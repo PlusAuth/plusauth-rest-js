@@ -12,7 +12,7 @@
     "import": "./dist/plusauth-rest-js.js",
     "require": "./dist/plusauth-rest-js.cjs"
   },
-  "packageManager": "pnpm@10.6.3",
+  "packageManager": "pnpm@10.11.0",
   "files": [
     "dist"
   ],
@@ -31,21 +31,21 @@
     "release": "cross-env GITHUB_TOKEN=$GITHUB_TOKEN release-it"
   },
   "dependencies": {
-    "@fastify/deepmerge": "^3.0.0",
+    "@fastify/deepmerge": "^3.1.0",
     "cross-fetch": "^4.1.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@commitlint/cli": "^19.8.0",
-    "@commitlint/config-conventional": "^19.8.0",
-    "@microsoft/api-extractor": "^7.52.1",
-    "@release-it/conventional-changelog": "^10.0.0",
-    "@swc/core": "^1.11.9",
-    "conventional-changelog-conventionalcommits": "^8.0.0",
-    "release-it": "^18.1.2",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@microsoft/api-extractor": "^7.52.8",
+    "@release-it/conventional-changelog": "^10.0.1",
+    "@swc/core": "^1.11.29",
+    "conventional-changelog-conventionalcommits": "^9.0.0",
+    "release-it": "^19.0.2",
     "rimraf": "^6.0.1",
-    "tsup": "^8.4.0",
-    "typescript": "^5.8.2"
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
