@@ -2915,6 +2915,9 @@ export declare interface CreateTenant {
     tenant_id: string;
     region: "tr-1";
     settings?: {
+        branding?: {
+            display_name?: (string | null);
+        };
         default_strategy?: (string | null);
         user_self_deletion?: {
             /**
@@ -7786,6 +7789,9 @@ export declare interface Tenant {
     tenant_id: string;
     region: "tr-1";
     settings: {
+        branding?: {
+            display_name?: (string | null);
+        };
         default_strategy?: (string | null);
         user_self_deletion?: {
             /**
@@ -8181,6 +8187,9 @@ declare class TenantService extends HttpService {
  * @public
  */
 export declare interface TenantSettings {
+    branding?: {
+        display_name?: (string | null);
+    };
     default_strategy?: (string | null);
     user_self_deletion?: {
         /**
@@ -12538,6 +12547,9 @@ export declare type UpdateTemplate = ({
  * @public
  */
 export declare interface UpdateTenantSettings {
+    branding?: {
+        display_name?: (string | null);
+    };
     default_strategy?: (string | null);
     user_self_deletion?: {
         /**

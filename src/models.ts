@@ -3009,6 +3009,9 @@ export interface CreateTenant {
   tenant_id: string
   region: "tr-1"
   settings?: {
+    branding?: {
+      display_name?: string | null
+    }
     default_strategy?: string | null
     user_self_deletion?: {
       /**
@@ -7613,6 +7616,9 @@ export interface Tenant {
   tenant_id: string
   region: "tr-1"
   settings: {
+    branding?: {
+      display_name?: string | null
+    }
     default_strategy?: string | null
     user_self_deletion?: {
       /**
@@ -7927,6 +7933,9 @@ export interface Tenant {
  * @public
  */
 export interface TenantSettings {
+  branding?: {
+    display_name?: string | null
+  }
   default_strategy?: string | null
   user_self_deletion?: {
     /**
@@ -12403,6 +12412,9 @@ export type UpdateTemplate =
  * @public
  */
 export interface UpdateTenantSettings {
+  branding?: {
+    display_name?: string | null
+  }
   default_strategy?: string | null
   user_self_deletion?: {
     /**
