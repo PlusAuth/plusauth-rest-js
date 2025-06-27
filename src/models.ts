@@ -4713,6 +4713,48 @@ export interface LDAPConnection {
 }
 
 /**
+ * Complete log entry representing a single event in the application
+ * @public
+ */
+export interface LogEntry {
+  /**
+   * Timestamp when the log event occurred in ISO format
+   */
+  time: string
+  /**
+   * Log level indicating the severity of the event
+   */
+  level: "debug" | "info" | "warn" | "error"
+  /**
+   * Numeric code identifying the specific type of event that occurred
+   */
+  event_type: string
+  /**
+   * Human-readable message describing the event (may be empty)
+   */
+  message: string
+  /**
+   * Unique identifier for the user associated with this event
+   */
+  user_id: string
+  /**
+   * UUID identifying the specific request that generated this log entry
+   */
+  request_id: string
+  /**
+   * IP address of the client that initiated the request
+   */
+  client_address: string
+  /**
+   * Additional details specific to the log event
+   */
+  details: {
+    [k: string]: any
+  }
+  [k: string]: any
+}
+
+/**
  * @public
  */
 export type MFA =
