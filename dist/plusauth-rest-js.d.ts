@@ -8733,10 +8733,6 @@ export declare interface UpdateAuthPlusDevice {
  */
 export declare interface UpdateClient {
     /**
-     * Update date in the ISO 8601 format according to universal time.
-     */
-    updated_at?: (string | null);
-    /**
      * Client name for displaying purposes.
      */
     client_name?: string;
