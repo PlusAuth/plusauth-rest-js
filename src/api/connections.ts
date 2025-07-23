@@ -1,7 +1,5 @@
 import { HttpService } from "../http"
-import type { Connection } from "../models"
-import type { CreateConnection } from "../models"
-import type { UpdateConnection } from "../models"
+import type { Connection, CreateConnection, UpdateConnection } from "../models"
 import { encodedQueryString } from "../utils"
 
 export class ConnectionService extends HttpService {

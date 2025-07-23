@@ -1,10 +1,12 @@
 import { HttpService } from "../http"
-import type { Tenant } from "../models"
-import type { CreateTenant } from "../models"
-import type { TenantStats } from "../models"
-import type { TenantSettings } from "../models"
-import type { UpdateTenantSettings } from "../models"
-import type { TenantSubscription } from "../models"
+import type {
+  CreateTenant,
+  Tenant,
+  TenantSettings,
+  TenantStats,
+  TenantSubscription,
+  UpdateTenantSettings,
+} from "../models"
 
 export class TenantService extends HttpService {
   /**

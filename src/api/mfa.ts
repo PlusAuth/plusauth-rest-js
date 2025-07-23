@@ -1,7 +1,5 @@
 import { HttpService } from "../http"
-import type { MFA } from "../models"
-import type { MFAType } from "../models"
-import type { UpdateMFA } from "../models"
+import type { MFA, MFAType, UpdateMFA } from "../models"
 import { encodedQueryString } from "../utils"
 
 export class MfaService extends HttpService {

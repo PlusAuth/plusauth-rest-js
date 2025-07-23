@@ -1,6 +1,5 @@
 import { HttpService } from "../http"
-import type { TenantCustomDomain } from "../models"
-import type { CreateTenantCustomDomain } from "../models"
+import type { CreateTenantCustomDomain, TenantCustomDomain } from "../models"
 import { encodedQueryString } from "../utils"
 
 export class CustomDomainService extends HttpService {

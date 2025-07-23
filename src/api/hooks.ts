@@ -1,7 +1,5 @@
 import { HttpService } from "../http"
-import type { Hook } from "../models"
-import type { CreateHook } from "../models"
-import type { UpdateHook } from "../models"
+import type { CreateHook, Hook, UpdateHook } from "../models"
 import { encodedQueryString } from "../utils"
 
 export class HookService extends HttpService {

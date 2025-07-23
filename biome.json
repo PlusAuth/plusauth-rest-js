@@ -1,17 +1,24 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
-  "vcs": {
-    "enabled": true,
-    "defaultBranch": "main",
-    "useIgnoreFile": true,
-    "clientKind": "git"
+  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "files": {
     "ignoreUnknown": true,
-    "ignore": ["node_modules", "**/*/node_modules", "dist/", "types/"]
+    "includes": ["**", "!**/dist/**", "!**/node_modules/**", "!**/types/**"]
   },
-  "organizeImports": {
-    "enabled": true
+  "formatter": {
+    "attributePosition": "auto",
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 100
   },
   "javascript": {
     "formatter": {
@@ -24,81 +31,78 @@
       "trailingCommas": "all"
     }
   },
-  "formatter": {
-    "enabled": true,
-    "formatWithErrors": false,
-    "attributePosition": "auto",
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineWidth": 100,
-    "lineEnding": "lf"
-  },
   "linter": {
     "enabled": true,
     "rules": {
       "a11y": {
         "useKeyWithClickEvents": "off"
       },
-      "recommended": true,
+      "complexity": {
+        "noArguments": "off",
+        "noBannedTypes": "off",
+        "useLiteralKeys": {
+          "level": "info"
+        },
+        "useOptionalChain": {
+          "fix": "safe",
+          "level": "error"
+        }
+      },
+      "correctness": {
+        "noSwitchDeclarations": {
+          "fix": "safe",
+          "level": "error"
+        },
+        "noUnusedImports": {
+          "level": "error"
+        }
+      },
       "performance": {
         "noDelete": "off"
       },
-      "correctness": {
-        "noUnusedImports": {
-          "level": "error"
-        },
-        "noSwitchDeclarations": {
-          "level": "error",
-          "fix": "safe"
-        }
-      },
-      "complexity": {
-        "noBannedTypes": "off",
-        "useOptionalChain": {
-          "level": "error",
-          "fix": "safe"
-        },
-        "useLiteralKeys": {
-          "level": "info"
-        }
-      },
+      "recommended": true,
       "style": {
-        "noArguments": "off",
         "noNonNullAssertion": "off",
         "noParameterAssign": "off",
         "noUnusedTemplateLiteral": "off",
         "noUselessElse": {
-          "level": "error",
-          "fix": "safe"
+          "fix": "safe",
+          "level": "error"
         },
         "useImportType": "error",
-        "useSingleVarDeclarator": {
-          "level": "error",
-          "fix": "safe"
-        },
         "useNodejsImportProtocol": {
-          "level": "error",
-          "fix": "safe"
+          "fix": "safe",
+          "level": "error"
+        },
+        "useSingleVarDeclarator": {
+          "fix": "safe",
+          "level": "error"
         },
         "useTemplate": {
-          "level": "error",
-          "fix": "safe"
+          "fix": "safe",
+          "level": "error"
         }
       },
       "suspicious": {
         "noAssignInExpressions": "off",
-        "noExplicitAny": "off",
         "noConfusingVoidType": "off",
+        "noExplicitAny": "off",
         "noGlobalIsFinite": {
-          "level": "error",
-          "fix": "safe"
+          "fix": "safe",
+          "level": "error"
         },
         "noGlobalIsNan": {
-          "level": "error",
-          "fix": "safe"
+          "fix": "safe",
+          "level": "error"
         },
         "noImplicitAnyLet": "off"
       }
     }
+  },
+  "vcs": {
+    "clientKind": "git",
+    "defaultBranch": "main",
+    "enabled": true,
+    "useIgnoreFile": true
   }
 }

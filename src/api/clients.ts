@@ -1,7 +1,5 @@
 import { HttpService } from "../http"
-import type { Client } from "../models"
-import type { CreateClient } from "../models"
-import type { UpdateClient } from "../models"
+import type { Client, CreateClient, UpdateClient } from "../models"
 import { encodedQueryString } from "../utils"
 
 export class ClientService extends HttpService {

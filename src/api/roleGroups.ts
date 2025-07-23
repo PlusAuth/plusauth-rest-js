@@ -1,9 +1,5 @@
 import { HttpService } from "../http"
-import type { RoleGroup } from "../models"
-import type { CreateRoleGroup } from "../models"
-import type { UpdateRoleGroup } from "../models"
-import type { Role } from "../models"
-import type { User } from "../models"
+import type { CreateRoleGroup, Role, RoleGroup, UpdateRoleGroup, User } from "../models"
 import { encodedQueryString } from "../utils"
 
 export class RoleGroupService extends HttpService {

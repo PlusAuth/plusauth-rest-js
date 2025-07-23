@@ -127,6 +127,5 @@ export class PlusAuthRestClient {
 export default (apiUri: string, options: Options = {}): PlusAuthRestClient =>
   new PlusAuthRestClient(apiUri, options)
 
-export type * from "./models.js"
-
 export * from "./error.js"
+export type * from "./models.js"

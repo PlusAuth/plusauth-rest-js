@@ -1,6 +1,5 @@
 import { HttpService } from "../http"
-import type { Template } from "../models"
-import type { UpdateTemplate } from "../models"
+import type { Template, UpdateTemplate } from "../models"
 
 export class TemplateService extends HttpService {
   /**

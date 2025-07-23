@@ -1,6 +1,5 @@
 import { HttpService } from "../http"
-import type { EmailProvider } from "../models"
-import type { UpdateEmailProvider } from "../models"
+import type { EmailProvider, UpdateEmailProvider } from "../models"
 
 export class ProviderService extends HttpService {
   /**

@@ -1,10 +1,12 @@
 import { HttpService } from "../http"
-import type { Permission } from "../models"
-import type { CreatePermission } from "../models"
-import type { ResourceAuthorizedClient } from "../models"
-import type { Resource } from "../models"
-import type { CreateResource } from "../models"
-import type { UpdateResource } from "../models"
+import type {
+  CreatePermission,
+  CreateResource,
+  Permission,
+  Resource,
+  ResourceAuthorizedClient,
+  UpdateResource,
+} from "../models"
 import { encodedQueryString } from "../utils"
 
 export class ResourceService extends HttpService {

@@ -1,6 +1,5 @@
 import { HttpService } from "../http"
-import type { ModuleSettings } from "../models"
-import type { UpdateModuleSettings } from "../models"
+import type { ModuleSettings, UpdateModuleSettings } from "../models"
 
 export class ModuleSettingService extends HttpService {
   /**
