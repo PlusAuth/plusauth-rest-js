@@ -12,7 +12,6 @@
     "import": "./dist/plusauth-rest-js.js",
     "require": "./dist/plusauth-rest-js.cjs"
   },
-  "packageManager": "pnpm@10.13.1",
   "files": [
     "dist"
   ],
@@ -22,7 +21,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "pnpm --filter . run --parallel \"/build:/\"",
+    "build": "concurrently --maxProcesses 1 'npm:build:*' 'npm:lint'",
     "build:browser": "tsup --entry.plusauth-rest-js src/index.ts --format iife --minify",
     "build:esm": "tsup --entry.plusauth-rest-js src/index.ts --format esm --target es2020,node20",
     "build:cjs": "tsup --entry.plusauth-rest-js src/index.ts --format cjs --target node20",
@@ -41,6 +40,7 @@
     "@microsoft/api-extractor": "^7.52.8",
     "@release-it/conventional-changelog": "^10.0.1",
     "@swc/core": "^1.13.2",
+    "concurrently": "^9.2.0",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "release-it": "^19.0.4",
     "rimraf": "^6.0.1",
