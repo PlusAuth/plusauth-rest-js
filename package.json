@@ -21,7 +21,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "concurrently --maxProcesses 1 'npm:build:*' 'npm:lint'",
+    "build": "npm run build:browser && npm run build:esm && npm run build:cjs && npm run build:dts",
     "build:browser": "tsup --entry.plusauth-rest-js src/index.ts --format iife --minify",
     "build:esm": "tsup --entry.plusauth-rest-js src/index.ts --format esm --target es2020,node20",
     "build:cjs": "tsup --entry.plusauth-rest-js src/index.ts --format cjs --target node20",
