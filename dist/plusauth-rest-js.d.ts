@@ -38,17 +38,17 @@ export declare interface AuthPlusAccount {
      * Unique identifier of entity
      */
     id: string;
-    name: (string | null);
+    name: string | null;
     details: {
         [k: string]: any;
     };
-    icon: (string | null);
-    category_id?: (string | null);
+    icon: string | null;
+    category_id?: string | null;
     /**
      * Category order
      */
     order?: number;
-    type: ("totp" | "hotp" | "push");
+    type: "totp" | "hotp" | "push";
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -56,7 +56,7 @@ export declare interface AuthPlusAccount {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
 }
 
 /**
@@ -75,11 +75,11 @@ export declare interface AuthPlusCategory {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Category name
      */
-    name: (string | null);
+    name: string | null;
     /**
      * Category order
      */
@@ -98,8 +98,8 @@ export declare interface AuthPlusDevice {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
-    name?: (string | null);
+    updated_at?: string | null;
+    name?: string | null;
     device_identifier: string;
     model: string;
     os: string;
@@ -146,7 +146,7 @@ export declare interface BruteForcePolicy {
  * @public
  */
 export declare interface Client {
-    type: ("web" | "server-to-server" | "single-page-application" | "financial" | "native");
+    type: "web" | "server-to-server" | "single-page-application" | "financial" | "native";
     /**
      * Unique client identifier.
      */
@@ -154,7 +154,7 @@ export declare interface Client {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Unique client identifier.
      */
@@ -166,15 +166,15 @@ export declare interface Client {
     /**
      * Additional description for the client
      */
-    description?: (string | null);
-    logo_uri?: (string | null);
+    description?: string | null;
+    logo_uri?: string | null;
     /**
      * Is client first party
      */
-    first_party?: (boolean | null);
+    first_party?: boolean | null;
     token_endpoint_auth_method: string;
     response_types: ("code id_token token" | "code id_token" | "code token" | "code" | "id_token token" | "id_token" | "none")[];
-    oidc_conformant?: (boolean | null);
+    oidc_conformant?: boolean | null;
     /**
      * @maxItems 50
      */
@@ -191,12 +191,12 @@ export declare interface Client {
         pkce_required?: boolean;
         devices?: {
             android?: {
-                package_name?: (string | null);
+                package_name?: string | null;
                 sha256_cert_fingerprints?: string[];
             };
             ios?: {
-                bundle_identifier?: (string | null);
-                team_id?: (string | null);
+                bundle_identifier?: string | null;
+                team_id?: string | null;
             };
         };
     };
@@ -205,7 +205,7 @@ export declare interface Client {
          * This interface was referenced by `undefined`'s JSON-Schema definition
          * via the `patternProperty` "^(.*)$".
          */
-        [k: string]: (string | boolean | number | null);
+        [k: string]: string | boolean | number | null;
     };
     connectors: {
         saml?: {
@@ -218,31 +218,31 @@ export declare interface Client {
             /**
              * Application specific resource in an IDP initiated Single Sign-On scenario. In most instances this is blank.
              */
-            relay_state?: (string | null);
+            relay_state?: string | null;
             mappings: {
                 /**
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: (string | boolean | {
-                    value?: (string | boolean | number);
+                [k: string]: string | boolean | {
+                    value?: string | boolean | number;
                     [k: string]: any;
                 } | (string | {
-                    value?: (string | boolean | number);
+                    value?: string | boolean | number;
                     [k: string]: any;
-                })[]);
+                })[];
             };
             /**
              * Your SAML SP's metadata URL.
              */
             metadata_url?: string;
-            request_binding: ("HTTP-POST" | "HTTP-Redirect");
+            request_binding: "HTTP-POST" | "HTTP-Redirect";
             sign_assertions?: boolean;
             sign_out_enabled?: boolean;
             sign_out_url?: string;
             signed_requests?: boolean;
-            signature_algorithm?: ("sha512" | "sha256" | "sha1");
-            signing_certificate?: (string | null);
+            signature_algorithm?: "sha512" | "sha256" | "sha1";
+            signing_certificate?: string | null;
         };
         wsfed?: {
             enabled?: boolean;
@@ -317,11 +317,11 @@ export declare interface CommonCredential {
      * Authenticator id
      */
     id: string;
-    type: ("e-sign" | "sms" | "email" | "custom");
+    type: "e-sign" | "sms" | "email" | "custom";
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Raw user object from the connection
      */
@@ -335,13 +335,13 @@ export declare interface CommonCredential {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
 }
 
 /**
  * @public
  */
-export declare type Connection = (({
+export declare type Connection = ({
     enabled: boolean;
     /**
      * Is connection using custom scripts
@@ -354,7 +354,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -410,7 +410,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -458,7 +458,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -477,7 +477,7 @@ export declare type Connection = (({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
         /**
          * @maxItems 1000
          */
@@ -510,7 +510,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -538,7 +538,7 @@ export declare type Connection = (({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
         /**
          * @maxItems 1000
          */
@@ -571,7 +571,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -594,7 +594,7 @@ export declare type Connection = (({
         /**
          * Operator identifier
          */
-        operator: ("1" | "2" | "3" | "4");
+        operator: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -634,7 +634,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -681,7 +681,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -724,7 +724,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -783,7 +783,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -799,7 +799,7 @@ export declare type Connection = (({
          * Your Twilio account sid.
          */
         sid: string;
-        strategy: ("copilot" | "from");
+        strategy: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -835,7 +835,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -896,7 +896,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -926,7 +926,7 @@ export declare type Connection = (({
     };
 } | {
     type: "social";
-    provider: ("amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify");
+    provider: "amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify";
     enabled: boolean;
     /**
      * Is connection using custom scripts
@@ -939,7 +939,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -980,7 +980,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1037,7 +1037,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1078,7 +1078,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1119,7 +1119,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1165,7 +1165,7 @@ export declare type Connection = (({
         /**
          * Specify the portion of the target subtree that should be considered
          */
-        search_scope?: ("base" | "one" | "sub" | "subordinate");
+        search_scope?: "base" | "one" | "sub" | "subordinate";
         /**
          * Encrypts the connection to LDAP using STARTTLS, which will disable connection pooling
          */
@@ -1182,13 +1182,13 @@ export declare type Connection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 } | {
@@ -1206,7 +1206,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1248,7 +1248,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1286,21 +1286,21 @@ export declare type Connection = (({
         /**
          * Your SAML IdP's sign out URL in format `<http/s>://<host>:<port?>`
          */
-        sign_out_url?: (string | null);
-        signing_certificate?: (string | null);
+        sign_out_url?: string | null;
+        signing_certificate?: string | null;
         /**
          * Enable/Disable the SAML authentication request signing.
          */
         sign_request?: boolean;
-        sign_request_algorithm: ("sha512" | "sha256" | "sha1");
+        sign_request_algorithm: "sha512" | "sha256" | "sha1";
         /**
          * SAML Request Binding
          */
-        request_binding: ("HTTP-POST" | "HTTP-Redirect");
+        request_binding: "HTTP-POST" | "HTTP-Redirect";
         /**
          * SAML Logout Request Binding
          */
-        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        sign_out_binding?: "HTTP-POST" | "HTTP-Redirect";
         mappings: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1309,13 +1309,13 @@ export declare type Connection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 }) | {
@@ -1331,7 +1331,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1400,7 +1400,7 @@ export declare type Connection = (({
         /**
          * Push notification strategy
          */
-        strategy: ("code" | "prompt");
+        strategy: "code" | "prompt";
     };
 } | {
     type: "webauthn";
@@ -1417,7 +1417,7 @@ export declare type Connection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1433,7 +1433,7 @@ export declare type Connection = (({
             display_name?: string;
         };
     };
-});
+};
 
 declare class ConnectionService extends HttpService {
     /**
@@ -1482,26 +1482,26 @@ declare class ConnectionService extends HttpService {
 /**
  * @public
  */
-export declare type CreateAuthPlusAccount = ({
-    name: (string | null);
+export declare type CreateAuthPlusAccount = {
+    name: string | null;
     details: {
         secret: string;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
         /**
          * The length of the OTP code.
          */
         code_length: number;
         ttl: number;
     };
-    icon: (string | null);
-    category_id?: (string | null);
+    icon: string | null;
+    category_id?: string | null;
     /**
      * Category order
      */
     order?: number;
     type: "totp";
 } | {
-    name: (string | null);
+    name: string | null;
     details: {
         secret: string;
         counter: number;
@@ -1509,20 +1509,20 @@ export declare type CreateAuthPlusAccount = ({
          * The length of the OTP code.
          */
         code_length: number;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
     };
-    icon: (string | null);
-    category_id?: (string | null);
+    icon: string | null;
+    category_id?: string | null;
     /**
      * Category order
      */
     order?: number;
     type: "hotp";
 } | {
-    name: (string | null);
+    name: string | null;
     details: {
         secret: string;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
         /**
          * The length of the OTP code.
          */
@@ -1538,14 +1538,14 @@ export declare type CreateAuthPlusAccount = ({
         fcm_token: string;
         device_identifier: string;
     };
-    icon: (string | null);
-    category_id?: (string | null);
+    icon: string | null;
+    category_id?: string | null;
     /**
      * Category order
      */
     order?: number;
     type: "push";
-});
+};
 
 /**
  * Category definition to AuthPlus application
@@ -1555,7 +1555,7 @@ export declare interface CreateAuthPlusCategory {
     /**
      * Category name
      */
-    name: (string | null);
+    name: string | null;
     /**
      * Category order
      */
@@ -1567,7 +1567,7 @@ export declare interface CreateAuthPlusCategory {
  * @public
  */
 export declare interface CreateAuthPlusDevice {
-    name?: (string | null);
+    name?: string | null;
     device_identifier: string;
     model: string;
     os: string;
@@ -1580,7 +1580,7 @@ export declare interface CreateAuthPlusDevice {
  * @public
  */
 export declare interface CreateClient {
-    type: ("web" | "server-to-server" | "single-page-application" | "financial" | "native");
+    type: "web" | "server-to-server" | "single-page-application" | "financial" | "native";
     /**
      * Unique client identifier.
      */
@@ -1588,7 +1588,7 @@ export declare interface CreateClient {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Unique client identifier.
      */
@@ -1600,15 +1600,15 @@ export declare interface CreateClient {
     /**
      * Additional description for the client
      */
-    description?: (string | null);
-    logo_uri?: (string | null);
+    description?: string | null;
+    logo_uri?: string | null;
     /**
      * Is client first party
      */
-    first_party?: (boolean | null);
+    first_party?: boolean | null;
     token_endpoint_auth_method?: string;
     response_types?: ("code id_token token" | "code id_token" | "code token" | "code" | "id_token token" | "id_token" | "none")[];
-    oidc_conformant?: (boolean | null);
+    oidc_conformant?: boolean | null;
     /**
      * @maxItems 50
      */
@@ -1625,12 +1625,12 @@ export declare interface CreateClient {
         pkce_required?: boolean;
         devices?: {
             android?: {
-                package_name?: (string | null);
+                package_name?: string | null;
                 sha256_cert_fingerprints?: string[];
             };
             ios?: {
-                bundle_identifier?: (string | null);
-                team_id?: (string | null);
+                bundle_identifier?: string | null;
+                team_id?: string | null;
             };
         };
     };
@@ -1639,7 +1639,7 @@ export declare interface CreateClient {
          * This interface was referenced by `undefined`'s JSON-Schema definition
          * via the `patternProperty` "^(.*)$".
          */
-        [k: string]: (string | boolean | number | null);
+        [k: string]: string | boolean | number | null;
     };
     connectors?: {
         saml?: {
@@ -1652,31 +1652,31 @@ export declare interface CreateClient {
             /**
              * Application specific resource in an IDP initiated Single Sign-On scenario. In most instances this is blank.
              */
-            relay_state?: (string | null);
+            relay_state?: string | null;
             mappings: {
                 /**
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: (string | boolean | {
-                    value?: (string | boolean | number);
+                [k: string]: string | boolean | {
+                    value?: string | boolean | number;
                     [k: string]: any;
                 } | (string | {
-                    value?: (string | boolean | number);
+                    value?: string | boolean | number;
                     [k: string]: any;
-                })[]);
+                })[];
             };
             /**
              * Your SAML SP's metadata URL.
              */
             metadata_url?: string;
-            request_binding: ("HTTP-POST" | "HTTP-Redirect");
+            request_binding: "HTTP-POST" | "HTTP-Redirect";
             sign_assertions?: boolean;
             sign_out_enabled?: boolean;
             sign_out_url?: string;
             signed_requests?: boolean;
-            signature_algorithm?: ("sha512" | "sha256" | "sha1");
-            signing_certificate?: (string | null);
+            signature_algorithm?: "sha512" | "sha256" | "sha1";
+            signing_certificate?: string | null;
         };
         wsfed?: {
             enabled?: boolean;
@@ -1708,7 +1708,7 @@ export declare interface CreateClient {
 /**
  * @public
  */
-export declare type CreateConnection = (({
+export declare type CreateConnection = ({
     enabled: boolean;
     /**
      * Is connection using custom scripts
@@ -1721,7 +1721,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1777,7 +1777,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1825,7 +1825,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1844,7 +1844,7 @@ export declare type CreateConnection = (({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
         /**
          * @maxItems 1000
          */
@@ -1877,7 +1877,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1905,7 +1905,7 @@ export declare type CreateConnection = (({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
         /**
          * @maxItems 1000
          */
@@ -1938,7 +1938,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -1961,7 +1961,7 @@ export declare type CreateConnection = (({
         /**
          * Operator identifier
          */
-        operator: ("1" | "2" | "3" | "4");
+        operator: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -2001,7 +2001,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2048,7 +2048,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2091,7 +2091,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2150,7 +2150,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2166,7 +2166,7 @@ export declare type CreateConnection = (({
          * Your Twilio account sid.
          */
         sid: string;
-        strategy: ("copilot" | "from");
+        strategy: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -2202,7 +2202,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2263,7 +2263,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2293,7 +2293,7 @@ export declare type CreateConnection = (({
     };
 } | {
     type: "social";
-    provider: ("amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify");
+    provider: "amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify";
     enabled: boolean;
     /**
      * Is connection using custom scripts
@@ -2306,7 +2306,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2347,7 +2347,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2404,7 +2404,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2445,7 +2445,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2486,7 +2486,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2532,7 +2532,7 @@ export declare type CreateConnection = (({
         /**
          * Specify the portion of the target subtree that should be considered
          */
-        search_scope?: ("base" | "one" | "sub" | "subordinate");
+        search_scope?: "base" | "one" | "sub" | "subordinate";
         /**
          * Encrypts the connection to LDAP using STARTTLS, which will disable connection pooling
          */
@@ -2549,13 +2549,13 @@ export declare type CreateConnection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 } | {
@@ -2573,7 +2573,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2615,7 +2615,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2653,21 +2653,21 @@ export declare type CreateConnection = (({
         /**
          * Your SAML IdP's sign out URL in format `<http/s>://<host>:<port?>`
          */
-        sign_out_url?: (string | null);
-        signing_certificate?: (string | null);
+        sign_out_url?: string | null;
+        signing_certificate?: string | null;
         /**
          * Enable/Disable the SAML authentication request signing.
          */
         sign_request?: boolean;
-        sign_request_algorithm: ("sha512" | "sha256" | "sha1");
+        sign_request_algorithm: "sha512" | "sha256" | "sha1";
         /**
          * SAML Request Binding
          */
-        request_binding: ("HTTP-POST" | "HTTP-Redirect");
+        request_binding: "HTTP-POST" | "HTTP-Redirect";
         /**
          * SAML Logout Request Binding
          */
-        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        sign_out_binding?: "HTTP-POST" | "HTTP-Redirect";
         mappings: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -2676,13 +2676,13 @@ export declare type CreateConnection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 }) | {
@@ -2698,7 +2698,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2767,7 +2767,7 @@ export declare type CreateConnection = (({
         /**
          * Push notification strategy
          */
-        strategy: ("code" | "prompt");
+        strategy: "code" | "prompt";
     };
 } | {
     type: "webauthn";
@@ -2784,7 +2784,7 @@ export declare type CreateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -2800,7 +2800,7 @@ export declare type CreateConnection = (({
             display_name?: string;
         };
     };
-});
+};
 
 /**
  * @public
@@ -2813,11 +2813,11 @@ export declare interface CreateHook {
     /**
      * Defines hook's area of usage
      */
-    type: ("sms" | "link-account" | "pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c");
+    type: "sms" | "link-account" | "pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c";
     /**
      * Additional information for the hook
      */
-    description?: (string | null);
+    description?: string | null;
     /**
      * Execution order of the hook. It applies to hook types. Lower ordered hooks executed first.
      */
@@ -2843,7 +2843,7 @@ export declare interface CreatePermission {
     /**
      * Additional information related with entity
      */
-    description?: (string | null);
+    description?: string | null;
 }
 
 /**
@@ -2862,7 +2862,7 @@ export declare interface CreateResource {
     /**
      * Additional information related with entity
      */
-    description?: (string | null);
+    description?: string | null;
     settings?: {
         access_token_ttl?: number;
         include_user_roles?: boolean;
@@ -2880,7 +2880,7 @@ export declare interface CreateRole {
     /**
      * Additional information related with entity
      */
-    description?: (string | null);
+    description?: string | null;
     /**
      * If `true` this role will be assigned to new users automatically.
      */
@@ -2898,7 +2898,7 @@ export declare interface CreateRoleGroup {
     /**
      * Additional information related with entity
      */
-    description?: (string | null);
+    description?: string | null;
     /**
      * If `true` this role group will be assigned to new users automatically.
      */
@@ -2916,9 +2916,9 @@ export declare interface CreateTenant {
     region: "tr-1";
     settings?: {
         branding?: {
-            display_name?: (string | null);
+            display_name?: string | null;
         };
-        default_strategy?: (string | null);
+        default_strategy?: string | null;
         user_self_deletion?: {
             /**
              * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -2952,7 +2952,7 @@ export declare interface CreateTenant {
          */
         extra_scopes?: string[];
         api_version?: "2021-07-04";
-        tenant_login_url?: (string | null);
+        tenant_login_url?: string | null;
         /**
          * PlusAuth Authenticator Application related settings
          */
@@ -2964,7 +2964,7 @@ export declare interface CreateTenant {
             [k: string]: any;
         };
         ciba?: {
-            delivery_mode?: ("ping" | "poll");
+            delivery_mode?: "ping" | "poll";
             notifier_endpoint?: string;
         };
         /**
@@ -2980,7 +2980,7 @@ export declare interface CreateTenant {
             refresh_token?: number;
             session?: number;
         };
-        hash_function?: ("bcrypt" | "argon2");
+        hash_function?: "bcrypt" | "argon2";
         policies?: {
             /**
              * Password policy settings to be enforced to your new users.
@@ -2989,31 +2989,31 @@ export declare interface CreateTenant {
                 /**
                  * Minimum number of characters
                  */
-                min?: (number | null);
+                min?: number | null;
                 /**
                  * Maximum number of characters
                  */
-                max?: (number | null);
+                max?: number | null;
                 /**
                  * Require at least on of the given characters
                  */
-                custom_chars?: (string | null);
+                custom_chars?: string | null;
                 /**
                  * The system will maintain a password history for each user and prevent the reuse of passwords included in the history. The password history can be up to 10 in size. When provided, the system will maintain existing and new users' password history going forward.
                  */
-                history?: (number | null);
+                history?: number | null;
                 /**
                  * Require at least given value of uppercase letters
                  */
-                upper_case?: (number | null);
+                upper_case?: number | null;
                 /**
                  * Require at least given value of lowercase letters
                  */
-                lower_case?: (number | null);
+                lower_case?: number | null;
                 /**
                  * Require at least given value of numbers
                  */
-                number?: (number | null);
+                number?: number | null;
             };
             account_blocking?: {
                 enabled?: boolean;
@@ -3074,7 +3074,7 @@ export declare interface CreateTenant {
 /**
  * @public
  */
-export declare type CreateTenantAdministrator = ({
+export declare type CreateTenantAdministrator = {
     email: string;
     user_id?: string;
     permissions?: string[];
@@ -3084,7 +3084,7 @@ export declare type CreateTenantAdministrator = ({
     user_id: string;
     permissions?: string[];
     [k: string]: any;
-});
+};
 
 /**
  * @public
@@ -3105,9 +3105,9 @@ export declare interface CreateTicket {
      */
     ttl?: number;
     details?: {
-        [k: string]: (string | number | boolean);
+        [k: string]: string | number | boolean;
     };
-    type: ("verify-email" | "forgot-password" | "invite-admin" | "unblock-ip" | "unblock-account");
+    type: "verify-email" | "forgot-password" | "invite-admin" | "unblock-ip" | "unblock-account";
     token?: string;
 }
 
@@ -3118,35 +3118,35 @@ export declare interface CreateUser {
     /**
      * End-User's username
      */
-    username?: (string | null);
+    username?: string | null;
     /**
      * End-User's e-mail address.
      */
-    email?: (string | null);
+    email?: string | null;
     /**
      * `true` if the End-User's e-mail address has been verified; otherwise `false`. If `force_email_verification` is enabled in your tenant's settings, it will check this value of user while performing email verification checks.
      */
-    email_verified?: (boolean | null);
+    email_verified?: boolean | null;
     /**
      * End-User's preferred phone number. It will be stored in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      */
-    phone_number?: (string | null);
+    phone_number?: string | null;
     /**
      * `true` if the End-User's phone number has been verified; otherwise `false`. If SMS MFA is enabled this value will be used to determine whether End-User has verified it's phone or not.
      */
-    phone_number_verified?: (boolean | null);
+    phone_number_verified?: boolean | null;
     /**
      * End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences.
      */
-    name?: (string | null);
+    name?: string | null;
     /**
      * URI reference of the End-User's profile picture.
      */
-    picture?: (string | null);
+    picture?: string | null;
     /**
      * Whether this End-User is blocked or not. If `true` End-User will not be able to login.
      */
-    blocked?: (boolean | null);
+    blocked?: boolean | null;
     /**
      * Failed login attempts of user. It will reset to `0` after successful login.
      */
@@ -3155,75 +3155,75 @@ export declare interface CreateUser {
         /**
          * Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.
          */
-        given_name?: (string | null);
+        given_name?: string | null;
         /**
          * Middle name(s) of the End-User. Note that in some cultures, people can have multiple middle names; all can be present, with the names being separated by space characters. Also note that in some cultures, middle names are not used.
          */
-        middle_name?: (string | null);
+        middle_name?: string | null;
         /**
          * Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.
          */
-        family_name?: (string | null);
+        family_name?: string | null;
         /**
          * Casual name of the End-User that may or may not be the same as the given_name. For instance, a nickname value of Mike might be returned alongside a given_name value of Michael.
          */
-        nickname?: (string | null);
+        nickname?: string | null;
         /**
          * URI reference for the End-User's profile page.
          */
-        profile_page?: (string | null);
+        profile_page?: string | null;
         /**
          * URI reference for the End-User's Web page or blog.
          */
-        website?: (string | null);
+        website?: string | null;
         /**
          * Short code of End-User's gender.
          */
-        gender?: (string | null);
+        gender?: string | null;
         /**
          * End-User's birthday. ISO 8601:2004 YYYY-MM-DD format. The year may be 0000, indicating that it is omitted. To represent only the year, YYYY format is preferred.
          */
-        birthdate?: (string | null);
+        birthdate?: string | null;
         /**
          * End-User's locale. For example, en-US or fr-CA.
          */
-        locale?: (string | null);
+        locale?: string | null;
         /**
          * String from zoneinfo time zone database representing the End-User's time zone. For example, Europe/Paris or America/Los_Angeles.
          */
-        zoneinfo?: (string | null);
+        zoneinfo?: string | null;
         addresses?: {
             /**
              * Identifier for user address. Example: `Delivery Address`, `Billing Address` etc.
              */
-            id: (string | null);
-            is_primary: (boolean | null);
-            first_name: (string | null);
-            last_name: (string | null);
+            id: string | null;
+            is_primary: boolean | null;
+            first_name: string | null;
+            last_name: string | null;
             /**
              * State, province, prefecture or region component.
              */
-            state: (string | null);
+            state: string | null;
             /**
              * Country name component.
              */
-            country: (string | null);
+            country: string | null;
             /**
              * City or locality component.
              */
-            city: (string | null);
+            city: string | null;
             /**
              * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
              */
-            street_address: (string | null);
+            street_address: string | null;
             /**
              * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
              */
-            street_address_2: (string | null);
+            street_address_2: string | null;
             /**
              * Zip code or postal code component.
              */
-            zip_code: (string | null);
+            zip_code: string | null;
         }[];
     };
     /**
@@ -3232,15 +3232,15 @@ export declare interface CreateUser {
     metadata?: {
         [k: string]: any;
     };
-    verify_email?: (boolean | null);
+    verify_email?: boolean | null;
     /**
      * End-User's password in plaintext. Defined password policy rules will be enforced.
      */
-    password?: (string | null);
+    password?: string | null;
     /**
      * Used password hash function identifier.
      */
-    hash_fn?: ("bcrypt" | "argon2");
+    hash_fn?: "bcrypt" | "argon2";
     identities?: {
         /**
          * External user's id coming from the connection.
@@ -3250,8 +3250,8 @@ export declare interface CreateUser {
          * Connection name
          */
         connection: string;
-        type: ("sms" | "push" | "webauthn" | "email" | "social" | "enterprise");
-        provider: ("twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
+        type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
+        provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap";
         /**
          * Raw user object from the connection
          */
@@ -3264,12 +3264,12 @@ export declare interface CreateUser {
 /**
  * @public
  */
-export declare type CreateUserCredential = ({
-    type: ("e-sign" | "sms" | "email" | "custom");
+export declare type CreateUserCredential = {
+    type: "e-sign" | "sms" | "email" | "custom";
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Raw user object from the connection
      */
@@ -3280,20 +3280,20 @@ export declare type CreateUserCredential = ({
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     type: "password";
     details: {
         /**
          * Hashed value of user's password.
          */
         hash: string;
-        hash_fn: ("bcrypt" | "argon2");
+        hash_fn: "bcrypt" | "argon2";
     };
 } | {
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     type: "otp";
     details: {
         /**
@@ -3305,7 +3305,7 @@ export declare type CreateUserCredential = ({
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     type: "push";
     details: {
         device: {
@@ -3352,7 +3352,7 @@ export declare type CreateUserCredential = ({
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     type: "fv";
     details: {
         hash?: string;
@@ -3364,7 +3364,7 @@ export declare type CreateUserCredential = ({
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     type: "webauthn";
     details: {
         id: string;
@@ -3378,7 +3378,7 @@ export declare type CreateUserCredential = ({
         counter: number;
         transports?: ("ble" | "cable" | "hybrid" | "internal" | "nfc" | "smart-card" | "usb")[];
     };
-});
+};
 
 /**
  * @public
@@ -3392,8 +3392,8 @@ export declare interface CreateUserIdentity {
      * Connection name
      */
     connection: string;
-    type: ("sms" | "push" | "webauthn" | "email" | "social" | "enterprise");
-    provider: ("twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
+    type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
+    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap";
     /**
      * Raw user object from the connection
      */
@@ -3499,7 +3499,7 @@ export declare interface DataportSmsProvider {
         /**
          * Operator identifier
          */
-        operator: ("1" | "2" | "3" | "4");
+        operator: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -3532,7 +3532,7 @@ export declare interface EDevletConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -3564,7 +3564,7 @@ export declare interface EDevletConnection {
 /**
  * @public
  */
-export declare type EmailConnection = ({
+export declare type EmailConnection = {
     type?: "email";
     [k: string]: any;
 } & ({
@@ -3580,7 +3580,7 @@ export declare type EmailConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -3636,7 +3636,7 @@ export declare type EmailConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -3684,7 +3684,7 @@ export declare type EmailConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -3703,7 +3703,7 @@ export declare type EmailConnection = ({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
         /**
          * @maxItems 1000
          */
@@ -3736,7 +3736,7 @@ export declare type EmailConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -3764,7 +3764,7 @@ export declare type EmailConnection = ({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
         /**
          * @maxItems 1000
          */
@@ -3784,12 +3784,12 @@ export declare type EmailConnection = ({
         code_ttl: number;
         use_magic_link: boolean;
     };
-}));
+});
 
 /**
  * @public
  */
-export declare type EmailProvider = ({
+export declare type EmailProvider = {
     type?: "email";
     [k: string]: any;
 } & ({
@@ -3856,7 +3856,7 @@ export declare type EmailProvider = ({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
     };
 } | {
     type: "email";
@@ -3886,9 +3886,9 @@ export declare type EmailProvider = ({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
     };
-}));
+});
 
 /**
  * @public
@@ -3897,11 +3897,11 @@ export declare interface EmailTemplate {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     content: string;
-    is_default?: (boolean | null);
+    is_default?: boolean | null;
     type: "email";
-    name: ("welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test");
+    name: "welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test";
     details: {
         /**
          * `from` field for your emails
@@ -3918,7 +3918,7 @@ export declare interface EmailTemplate {
 /**
  * @public
  */
-export declare type EnterpriseConnection = ({
+export declare type EnterpriseConnection = {
     type?: "enterprise";
     [k: string]: any;
 } & ({
@@ -3936,7 +3936,7 @@ export declare type EnterpriseConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -3982,7 +3982,7 @@ export declare type EnterpriseConnection = ({
         /**
          * Specify the portion of the target subtree that should be considered
          */
-        search_scope?: ("base" | "one" | "sub" | "subordinate");
+        search_scope?: "base" | "one" | "sub" | "subordinate";
         /**
          * Encrypts the connection to LDAP using STARTTLS, which will disable connection pooling
          */
@@ -3999,13 +3999,13 @@ export declare type EnterpriseConnection = ({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 } | {
@@ -4023,7 +4023,7 @@ export declare type EnterpriseConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4065,7 +4065,7 @@ export declare type EnterpriseConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4103,21 +4103,21 @@ export declare type EnterpriseConnection = ({
         /**
          * Your SAML IdP's sign out URL in format `<http/s>://<host>:<port?>`
          */
-        sign_out_url?: (string | null);
-        signing_certificate?: (string | null);
+        sign_out_url?: string | null;
+        signing_certificate?: string | null;
         /**
          * Enable/Disable the SAML authentication request signing.
          */
         sign_request?: boolean;
-        sign_request_algorithm: ("sha512" | "sha256" | "sha1");
+        sign_request_algorithm: "sha512" | "sha256" | "sha1";
         /**
          * SAML Request Binding
          */
-        request_binding: ("HTTP-POST" | "HTTP-Redirect");
+        request_binding: "HTTP-POST" | "HTTP-Redirect";
         /**
          * SAML Logout Request Binding
          */
-        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        sign_out_binding?: "HTTP-POST" | "HTTP-Redirect";
         mappings: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -4126,16 +4126,16 @@ export declare type EnterpriseConnection = ({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
-}));
+});
 
 /**
  * @public
@@ -4155,7 +4155,7 @@ export declare interface ESignConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4186,7 +4186,7 @@ export declare interface FvConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4211,7 +4211,7 @@ export declare interface FVCredential {
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4219,7 +4219,7 @@ export declare interface FVCredential {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     type: "fv";
     details: {
         hash?: string;
@@ -4244,11 +4244,11 @@ export declare interface Hook {
     /**
      * Defines hook's area of usage
      */
-    type: ("sms" | "link-account" | "pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c");
+    type: "sms" | "link-account" | "pre-register" | "post-register" | "pre-login" | "post-login" | "pre-mfa" | "pre-access-token" | "pre-id-token" | "pre-fc-import" | "post-fc-import" | "pre-fc-export" | "ciba-auth-prompt" | "ciba-validate-r-c" | "ciba-validate-u-c";
     /**
      * Additional information for the hook
      */
-    description: (string | null);
+    description: string | null;
     /**
      * Execution order of the hook. It applies to hook types. Lower ordered hooks executed first.
      */
@@ -4268,7 +4268,7 @@ export declare interface Hook {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
 }
 
 /**
@@ -4338,15 +4338,15 @@ export declare interface HookContext {
             [k: string]: any;
         };
         response: {
-            body: ({
+            body: {
                 [k: string]: any;
-            } | string | any[]);
+            } | string | any[];
             headers: {
                 /**
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: (string | null);
+                [k: string]: string | null;
             };
         };
         [k: string]: any;
@@ -4406,7 +4406,7 @@ export declare interface HOTPAuthPlusAccount {
      * Unique identifier of entity
      */
     id: string;
-    name: (string | null);
+    name: string | null;
     details: {
         secret: string;
         counter: number;
@@ -4414,10 +4414,10 @@ export declare interface HOTPAuthPlusAccount {
          * The length of the OTP code.
          */
         code_length: number;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
     };
-    icon: (string | null);
-    category_id?: (string | null);
+    icon: string | null;
+    category_id?: string | null;
     /**
      * Category order
      */
@@ -4430,7 +4430,7 @@ export declare interface HOTPAuthPlusAccount {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
 }
 
 /**
@@ -4451,7 +4451,7 @@ export declare interface HOTPConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4465,7 +4465,7 @@ export declare interface HOTPConnection {
          * The length of the OTP code.
          */
         code_length: number;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
         window: number;
         initial_counter: number;
     };
@@ -4531,7 +4531,7 @@ declare class KeyService extends HttpService {
 /**
  * @public
  */
-declare type KeyType_2 = ("signing" | "encryption");
+declare type KeyType_2 = "signing" | "encryption";
 export { KeyType_2 as KeyType }
 
 /**
@@ -4552,7 +4552,7 @@ export declare interface LDAPConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4598,7 +4598,7 @@ export declare interface LDAPConnection {
         /**
          * Specify the portion of the target subtree that should be considered
          */
-        search_scope?: ("base" | "one" | "sub" | "subordinate");
+        search_scope?: "base" | "one" | "sub" | "subordinate";
         /**
          * Encrypts the connection to LDAP using STARTTLS, which will disable connection pooling
          */
@@ -4612,13 +4612,13 @@ export declare interface LDAPConnection {
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 }
@@ -4635,7 +4635,7 @@ export declare interface LogEntry {
     /**
      * Log level indicating the severity of the event
      */
-    level: ("debug" | "info" | "warn" | "error");
+    level: "debug" | "info" | "warn" | "error";
     /**
      * Numeric code identifying the specific type of event that occurred
      */
@@ -4755,7 +4755,7 @@ export declare interface MessagebirdSmsProvider {
 /**
  * @public
  */
-export declare type MFA = ({
+export declare type MFA = {
     enabled: boolean;
     /**
      * Is connection using custom scripts
@@ -4764,7 +4764,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4824,7 +4824,7 @@ export declare type MFA = ({
         /**
          * Push notification strategy
          */
-        strategy: ("code" | "prompt");
+        strategy: "code" | "prompt";
     };
 } | ({
     enabled: boolean;
@@ -4835,7 +4835,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4877,7 +4877,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4911,7 +4911,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4930,7 +4930,7 @@ export declare type MFA = ({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
         /**
          * The length of the OTP code.
          */
@@ -4949,7 +4949,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -4977,7 +4977,7 @@ export declare type MFA = ({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
         /**
          * The length of the OTP code.
          */
@@ -4996,7 +4996,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5019,7 +5019,7 @@ export declare type MFA = ({
         /**
          * Operator identifier
          */
-        operator: ("1" | "2" | "3" | "4");
+        operator: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -5046,7 +5046,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5080,7 +5080,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5110,7 +5110,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5156,7 +5156,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5172,7 +5172,7 @@ export declare type MFA = ({
          * Your Twilio account sid.
          */
         sid: string;
-        strategy: ("copilot" | "from");
+        strategy: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -5195,7 +5195,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5243,7 +5243,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5253,7 +5253,7 @@ export declare type MFA = ({
          * The length of the OTP code.
          */
         code_length: number;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
         window: number;
         initial_counter: number;
     };
@@ -5268,7 +5268,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5278,7 +5278,7 @@ export declare type MFA = ({
          * The length of the OTP code.
          */
         code_length: number;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
         window: number;
         ttl: number;
     };
@@ -5293,7 +5293,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5312,7 +5312,7 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5329,13 +5329,13 @@ export declare type MFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
     settings: {};
-});
+};
 
 declare class MfaService extends HttpService {
     /**
@@ -5379,7 +5379,7 @@ declare class MfaService extends HttpService {
  * MFA Type
  * @public
  */
-export declare type MFAType = ("sms" | "otp" | "push" | "webauthn" | "email" | "e-sign" | "fv");
+export declare type MFAType = "sms" | "otp" | "push" | "webauthn" | "email" | "e-sign" | "fv";
 
 /**
  * @public
@@ -5388,7 +5388,7 @@ export declare type ModuleSettings = {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     name: "radius";
     metadata: {
         port: number;
@@ -5399,7 +5399,7 @@ export declare type ModuleSettings = {
         /**
          * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
          */
-        connection?: (string | null);
+        connection?: string | null;
         /**
          * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
          */
@@ -5531,7 +5531,7 @@ declare interface Options {
 /**
  * @public
  */
-export declare type OTPConnection = ({
+export declare type OTPConnection = {
     type?: "otp";
     [k: string]: any;
 } & ({
@@ -5549,7 +5549,7 @@ export declare type OTPConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5563,7 +5563,7 @@ export declare type OTPConnection = ({
          * The length of the OTP code.
          */
         code_length: number;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
         window: number;
         initial_counter: number;
     };
@@ -5582,7 +5582,7 @@ export declare type OTPConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5596,11 +5596,11 @@ export declare type OTPConnection = ({
          * The length of the OTP code.
          */
         code_length: number;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
         window: number;
         ttl: number;
     };
-}));
+});
 
 /**
  * @public
@@ -5613,7 +5613,7 @@ export declare interface OTPCredential {
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5621,7 +5621,7 @@ export declare interface OTPCredential {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     type: "otp";
     details: {
         /**
@@ -5657,11 +5657,11 @@ export declare interface Pagination {
     /**
      * Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    sort_by?: (string | string[]);
+    sort_by?: string | string[];
     /**
      * Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
      */
-    fields?: (string | string[]);
+    fields?: string | string[];
     [k: string]: any;
 }
 
@@ -5676,7 +5676,7 @@ export declare interface PasswordCredential {
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -5684,14 +5684,14 @@ export declare interface PasswordCredential {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     type: "password";
     details: {
         /**
          * Hashed value of user's password.
          */
         hash: string;
-        hash_fn: ("bcrypt" | "argon2");
+        hash_fn: "bcrypt" | "argon2";
     };
 }
 
@@ -5703,31 +5703,31 @@ export declare interface PasswordPolicy {
     /**
      * Minimum number of characters
      */
-    min?: (number | null);
+    min?: number | null;
     /**
      * Maximum number of characters
      */
-    max?: (number | null);
+    max?: number | null;
     /**
      * Require at least on of the given characters
      */
-    custom_chars?: (string | null);
+    custom_chars?: string | null;
     /**
      * The system will maintain a password history for each user and prevent the reuse of passwords included in the history. The password history can be up to 10 in size. When provided, the system will maintain existing and new users' password history going forward.
      */
-    history?: (number | null);
+    history?: number | null;
     /**
      * Require at least given value of uppercase letters
      */
-    upper_case?: (number | null);
+    upper_case?: number | null;
     /**
      * Require at least given value of lowercase letters
      */
-    lower_case?: (number | null);
+    lower_case?: number | null;
     /**
      * Require at least given value of numbers
      */
-    number?: (number | null);
+    number?: number | null;
 }
 
 /**
@@ -5749,14 +5749,14 @@ export declare interface Permission {
     /**
      * Additional information related with entity
      */
-    description: (string | null);
+    description: string | null;
 }
 
 /**
  * Applied plan name
  * @public
  */
-export declare type PlanType = ("free" | "basic" | "pro" | "enterprise" | "on-premise");
+export declare type PlanType = "free" | "basic" | "pro" | "enterprise" | "on-premise";
 
 /**
  *
@@ -5830,7 +5830,7 @@ export declare class PlusAuthRestError extends Error {
 /**
  * @public
  */
-export declare type Provider = (({
+export declare type Provider = ({
     type: "email";
     /**
      * Is connection using custom scripts
@@ -5894,7 +5894,7 @@ export declare type Provider = (({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
     };
 } | {
     type: "email";
@@ -5924,7 +5924,7 @@ export declare type Provider = (({
          * Password for SMTP authentication
          */
         password: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
     };
 }) | ({
     type: "sms";
@@ -5952,7 +5952,7 @@ export declare type Provider = (({
         /**
          * Operator identifier
          */
-        operator: ("1" | "2" | "3" | "4");
+        operator: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -6049,7 +6049,7 @@ export declare type Provider = (({
          * Your Twilio account sid.
          */
         sid: string;
-        strategy: ("copilot" | "from");
+        strategy: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -6145,7 +6145,7 @@ export declare type Provider = (({
             production: boolean;
         };
     };
-});
+};
 
 declare class ProviderService extends HttpService {
     /**
@@ -6185,11 +6185,11 @@ export declare interface PublicKey {
     /**
      * Rotation time in milliseconds since the epoch
      */
-    rotated_at?: (number | null);
+    rotated_at?: number | null;
     /**
      * Revocation time in milliseconds since the epoch
      */
-    revoked_at?: (number | null);
+    revoked_at?: number | null;
     [k: string]: any;
 }
 
@@ -6202,10 +6202,10 @@ export declare interface PushAuthPlusAccount {
      * Unique identifier of entity
      */
     id: string;
-    name: (string | null);
+    name: string | null;
     details: {
         secret: string;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
         /**
          * The length of the OTP code.
          */
@@ -6221,8 +6221,8 @@ export declare interface PushAuthPlusAccount {
         fcm_token: string;
         device_identifier: string;
     };
-    icon: (string | null);
-    category_id?: (string | null);
+    icon: string | null;
+    category_id?: string | null;
     /**
      * Category order
      */
@@ -6235,13 +6235,13 @@ export declare interface PushAuthPlusAccount {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
 }
 
 /**
  * @public
  */
-export declare type PushConnection = ({
+export declare type PushConnection = {
     type?: "push";
     [k: string]: any;
 } & {
@@ -6257,7 +6257,7 @@ export declare type PushConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -6326,9 +6326,9 @@ export declare type PushConnection = ({
         /**
          * Push notification strategy
          */
-        strategy: ("code" | "prompt");
+        strategy: "code" | "prompt";
     };
-});
+};
 
 /**
  * @public
@@ -6341,7 +6341,7 @@ export declare interface PushCredential {
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -6349,7 +6349,7 @@ export declare interface PushCredential {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     type: "push";
     details: {
         device: {
@@ -6397,7 +6397,7 @@ export declare interface PushCredential {
 /**
  * @public
  */
-export declare type PushNotificationProvider = ({
+export declare type PushNotificationProvider = {
     type?: "push";
     [k: string]: any;
 } & {
@@ -6458,7 +6458,7 @@ export declare type PushNotificationProvider = ({
             production: boolean;
         };
     };
-});
+};
 
 /**
  * @public
@@ -6467,7 +6467,7 @@ export declare interface RadiusSettings {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     name: "radius";
     metadata: {
         port: number;
@@ -6478,7 +6478,7 @@ export declare interface RadiusSettings {
         /**
          * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
          */
-        connection?: (string | null);
+        connection?: string | null;
         /**
          * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
          */
@@ -6509,7 +6509,7 @@ export declare interface Resource {
     /**
      * Additional information related with entity
      */
-    description: (string | null);
+    description: string | null;
     system: boolean;
     settings?: {
         access_token_ttl?: number;
@@ -6659,7 +6659,7 @@ export declare interface Role {
     /**
      * Additional information related with entity
      */
-    description: (string | null);
+    description: string | null;
     /**
      * If `true` this role will be assigned to new users automatically.
      */
@@ -6681,7 +6681,7 @@ export declare interface RoleGroup {
     /**
      * Additional information related with entity
      */
-    description: (string | null);
+    description: string | null;
     /**
      * If `true` this role group will be assigned to new users automatically.
      */
@@ -6866,7 +6866,7 @@ export declare interface SAMLConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -6904,33 +6904,33 @@ export declare interface SAMLConnection {
         /**
          * Your SAML IdP's sign out URL in format `<http/s>://<host>:<port?>`
          */
-        sign_out_url?: (string | null);
-        signing_certificate?: (string | null);
+        sign_out_url?: string | null;
+        signing_certificate?: string | null;
         /**
          * Enable/Disable the SAML authentication request signing.
          */
         sign_request?: boolean;
-        sign_request_algorithm: ("sha512" | "sha256" | "sha1");
+        sign_request_algorithm: "sha512" | "sha256" | "sha1";
         /**
          * SAML Request Binding
          */
-        request_binding: ("HTTP-POST" | "HTTP-Redirect");
+        request_binding: "HTTP-POST" | "HTTP-Redirect";
         /**
          * SAML Logout Request Binding
          */
-        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        sign_out_binding?: "HTTP-POST" | "HTTP-Redirect";
         mappings: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 }
@@ -6938,7 +6938,7 @@ export declare interface SAMLConnection {
 /**
  * @public
  */
-export declare type SmsConnection = ({
+export declare type SmsConnection = {
     type?: "sms";
     [k: string]: any;
 } & ({
@@ -6954,7 +6954,7 @@ export declare type SmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -6977,7 +6977,7 @@ export declare type SmsConnection = ({
         /**
          * Operator identifier
          */
-        operator: ("1" | "2" | "3" | "4");
+        operator: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -7017,7 +7017,7 @@ export declare type SmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -7064,7 +7064,7 @@ export declare type SmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -7107,7 +7107,7 @@ export declare type SmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -7166,7 +7166,7 @@ export declare type SmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -7182,7 +7182,7 @@ export declare type SmsConnection = ({
          * Your Twilio account sid.
          */
         sid: string;
-        strategy: ("copilot" | "from");
+        strategy: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -7218,7 +7218,7 @@ export declare type SmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -7264,12 +7264,12 @@ export declare type SmsConnection = ({
          */
         code_ttl: number;
     };
-}));
+});
 
 /**
  * @public
  */
-export declare type SmsProvider = ({
+export declare type SmsProvider = {
     type?: "sms";
     [k: string]: any;
 } & ({
@@ -7298,7 +7298,7 @@ export declare type SmsProvider = ({
         /**
          * Operator identifier
          */
-        operator: ("1" | "2" | "3" | "4");
+        operator: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -7395,7 +7395,7 @@ export declare type SmsProvider = ({
          * Your Twilio account sid.
          */
         sid: string;
-        strategy: ("copilot" | "from");
+        strategy: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -7433,7 +7433,7 @@ export declare type SmsProvider = ({
          */
         from?: string;
     };
-}));
+});
 
 /**
  * @public
@@ -7442,17 +7442,17 @@ export declare interface SmsTemplate {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     content: string;
-    is_default?: (boolean | null);
+    is_default?: boolean | null;
     type: "sms";
-    name: ("verification-code" | "test");
+    name: "verification-code" | "test";
 }
 
 /**
  * @public
  */
-export declare type SocialConnection = ({
+export declare type SocialConnection = {
     type?: "social";
     [k: string]: any;
 } & ({
@@ -7470,7 +7470,7 @@ export declare type SocialConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -7500,7 +7500,7 @@ export declare type SocialConnection = ({
     };
 } | {
     type: "social";
-    provider: ("amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify");
+    provider: "amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify";
     enabled: boolean;
     /**
      * Is connection using custom scripts
@@ -7513,7 +7513,7 @@ export declare type SocialConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -7554,7 +7554,7 @@ export declare type SocialConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -7611,7 +7611,7 @@ export declare type SocialConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -7652,7 +7652,7 @@ export declare type SocialConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -7678,34 +7678,34 @@ export declare type SocialConnection = ({
          */
         scopes?: string[];
     };
-}));
+});
 
 /**
  * Details about the subscription usage
  * @public
  */
 export declare interface SubscriptionUsage {
-    active_user?: (boolean | number | {
+    active_user?: boolean | number | {
         max: number;
         min: number;
         step: number;
         type: "range";
-    });
-    administrators?: (boolean | number);
+    };
+    administrators?: boolean | number;
     /**
      * Is feature enabled or not
      */
     ciba?: boolean;
-    "connections.passwordless"?: (boolean | number);
-    "connections.social"?: (boolean | number);
-    "connections.enterprise.saml"?: (boolean | number);
-    "connections.enterprise.e_devlet"?: (boolean | number);
-    "connections.enterprise.ldap"?: (boolean | number);
+    "connections.passwordless"?: boolean | number;
+    "connections.social"?: boolean | number;
+    "connections.enterprise.saml"?: boolean | number;
+    "connections.enterprise.e_devlet"?: boolean | number;
+    "connections.enterprise.ldap"?: boolean | number;
     /**
      * Is feature enabled or not
      */
     custom_algorithm?: boolean;
-    custom_domain?: (boolean | number);
+    custom_domain?: boolean | number;
     /**
      * Is feature enabled or not
      */
@@ -7718,7 +7718,7 @@ export declare interface SubscriptionUsage {
      * Is feature enabled or not
      */
     fapi?: boolean;
-    hooks?: (boolean | number);
+    hooks?: boolean | number;
     /**
      * Log retention period in days
      */
@@ -7747,7 +7747,7 @@ export declare interface SubscriptionUsage {
      * Number of defined feature
      */
     max_users?: number;
-    mfa?: (boolean | number);
+    mfa?: boolean | number;
     "mfa.sms"?: boolean;
     "mfa.otp"?: boolean;
     "mfa.fv"?: boolean;
@@ -7776,15 +7776,15 @@ export declare interface SubscriptionUsage {
 /**
  * @public
  */
-export declare type Template = ({
+export declare type Template = {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     content: string;
-    is_default?: (boolean | null);
+    is_default?: boolean | null;
     type: "email";
-    name: ("welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test");
+    name: "welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test";
     details: {
         /**
          * `from` field for your emails
@@ -7800,12 +7800,12 @@ export declare type Template = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     content: string;
-    is_default?: (boolean | null);
+    is_default?: boolean | null;
     type: "sms";
-    name: ("verification-code" | "test");
-});
+    name: "verification-code" | "test";
+};
 
 declare class TemplateService extends HttpService {
     /**
@@ -7829,7 +7829,7 @@ declare class TemplateService extends HttpService {
 /**
  * @public
  */
-export declare type TemplateType = ("email" | "sms");
+export declare type TemplateType = "email" | "sms";
 
 /**
  * @public
@@ -7842,9 +7842,9 @@ export declare interface Tenant {
     region: "tr-1";
     settings: {
         branding?: {
-            display_name?: (string | null);
+            display_name?: string | null;
         };
-        default_strategy?: (string | null);
+        default_strategy?: string | null;
         user_self_deletion?: {
             /**
              * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -7878,7 +7878,7 @@ export declare interface Tenant {
          */
         extra_scopes: string[];
         api_version?: "2021-07-04";
-        tenant_login_url: (string | null);
+        tenant_login_url: string | null;
         /**
          * PlusAuth Authenticator Application related settings
          */
@@ -7890,7 +7890,7 @@ export declare interface Tenant {
             [k: string]: any;
         };
         ciba: {
-            delivery_mode: ("ping" | "poll");
+            delivery_mode: "ping" | "poll";
             notifier_endpoint: string;
         };
         /**
@@ -7906,7 +7906,7 @@ export declare interface Tenant {
             refresh_token: number;
             session: number;
         };
-        hash_function: ("bcrypt" | "argon2");
+        hash_function: "bcrypt" | "argon2";
         policies: {
             /**
              * Password policy settings to be enforced to your new users.
@@ -7915,31 +7915,31 @@ export declare interface Tenant {
                 /**
                  * Minimum number of characters
                  */
-                min?: (number | null);
+                min?: number | null;
                 /**
                  * Maximum number of characters
                  */
-                max?: (number | null);
+                max?: number | null;
                 /**
                  * Require at least on of the given characters
                  */
-                custom_chars?: (string | null);
+                custom_chars?: string | null;
                 /**
                  * The system will maintain a password history for each user and prevent the reuse of passwords included in the history. The password history can be up to 10 in size. When provided, the system will maintain existing and new users' password history going forward.
                  */
-                history?: (number | null);
+                history?: number | null;
                 /**
                  * Require at least given value of uppercase letters
                  */
-                upper_case?: (number | null);
+                upper_case?: number | null;
                 /**
                  * Require at least given value of lowercase letters
                  */
-                lower_case?: (number | null);
+                lower_case?: number | null;
                 /**
                  * Require at least given value of numbers
                  */
-                number?: (number | null);
+                number?: number | null;
             };
             account_blocking: {
                 enabled: boolean;
@@ -8002,7 +8002,7 @@ export declare interface Tenant {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     keystore: {
         /**
          * Public JWK. You can look at JWK specification from [here](https://www.rfc-editor.org/rfc/rfc7517)
@@ -8028,48 +8028,48 @@ export declare interface Tenant {
         /**
          * Rotation time in milliseconds since the epoch
          */
-        rotated_at?: (number | null);
+        rotated_at?: number | null;
         /**
          * Revocation time in milliseconds since the epoch
          */
-        revoked_at?: (number | null);
+        revoked_at?: number | null;
         [k: string]: any;
     }[];
     /**
      * Subscription details of tenant
      */
     subscription: {
-        issued_at?: (string | null);
-        expires_at?: (string | null);
+        issued_at?: string | null;
+        expires_at?: string | null;
         /**
          * Applied plan name
          */
-        plan: ("free" | "basic" | "pro" | "enterprise" | "on-premise");
+        plan: "free" | "basic" | "pro" | "enterprise" | "on-premise";
         /**
          * Details about the subscription usage
          */
         plan_details: {
-            active_user?: (boolean | number | {
+            active_user?: boolean | number | {
                 max: number;
                 min: number;
                 step: number;
                 type: "range";
-            });
-            administrators?: (boolean | number);
+            };
+            administrators?: boolean | number;
             /**
              * Is feature enabled or not
              */
             ciba?: boolean;
-            "connections.passwordless"?: (boolean | number);
-            "connections.social"?: (boolean | number);
-            "connections.enterprise.saml"?: (boolean | number);
-            "connections.enterprise.e_devlet"?: (boolean | number);
-            "connections.enterprise.ldap"?: (boolean | number);
+            "connections.passwordless"?: boolean | number;
+            "connections.social"?: boolean | number;
+            "connections.enterprise.saml"?: boolean | number;
+            "connections.enterprise.e_devlet"?: boolean | number;
+            "connections.enterprise.ldap"?: boolean | number;
             /**
              * Is feature enabled or not
              */
             custom_algorithm?: boolean;
-            custom_domain?: (boolean | number);
+            custom_domain?: boolean | number;
             /**
              * Is feature enabled or not
              */
@@ -8082,7 +8082,7 @@ export declare interface Tenant {
              * Is feature enabled or not
              */
             fapi?: boolean;
-            hooks?: (boolean | number);
+            hooks?: boolean | number;
             /**
              * Log retention period in days
              */
@@ -8111,7 +8111,7 @@ export declare interface Tenant {
              * Number of defined feature
              */
             max_users?: number;
-            mfa?: (boolean | number);
+            mfa?: boolean | number;
             "mfa.sms"?: boolean;
             "mfa.otp"?: boolean;
             "mfa.fv"?: boolean;
@@ -8202,7 +8202,7 @@ export declare interface TenantCustomDomain {
     verification_value?: string;
     mx_record: {
         value: string;
-        type: ("CNAME" | "TXT");
+        type: "CNAME" | "TXT";
         [k: string]: any;
     };
 }
@@ -8240,9 +8240,9 @@ declare class TenantService extends HttpService {
  */
 export declare interface TenantSettings {
     branding?: {
-        display_name?: (string | null);
+        display_name?: string | null;
     };
-    default_strategy?: (string | null);
+    default_strategy?: string | null;
     user_self_deletion?: {
         /**
          * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -8276,7 +8276,7 @@ export declare interface TenantSettings {
      */
     extra_scopes: string[];
     api_version?: "2021-07-04";
-    tenant_login_url: (string | null);
+    tenant_login_url: string | null;
     /**
      * PlusAuth Authenticator Application related settings
      */
@@ -8288,7 +8288,7 @@ export declare interface TenantSettings {
         [k: string]: any;
     };
     ciba: {
-        delivery_mode: ("ping" | "poll");
+        delivery_mode: "ping" | "poll";
         notifier_endpoint: string;
     };
     /**
@@ -8304,7 +8304,7 @@ export declare interface TenantSettings {
         refresh_token: number;
         session: number;
     };
-    hash_function: ("bcrypt" | "argon2");
+    hash_function: "bcrypt" | "argon2";
     policies: {
         /**
          * Password policy settings to be enforced to your new users.
@@ -8313,31 +8313,31 @@ export declare interface TenantSettings {
             /**
              * Minimum number of characters
              */
-            min?: (number | null);
+            min?: number | null;
             /**
              * Maximum number of characters
              */
-            max?: (number | null);
+            max?: number | null;
             /**
              * Require at least on of the given characters
              */
-            custom_chars?: (string | null);
+            custom_chars?: string | null;
             /**
              * The system will maintain a password history for each user and prevent the reuse of passwords included in the history. The password history can be up to 10 in size. When provided, the system will maintain existing and new users' password history going forward.
              */
-            history?: (number | null);
+            history?: number | null;
             /**
              * Require at least given value of uppercase letters
              */
-            upper_case?: (number | null);
+            upper_case?: number | null;
             /**
              * Require at least given value of lowercase letters
              */
-            lower_case?: (number | null);
+            lower_case?: number | null;
             /**
              * Require at least given value of numbers
              */
-            number?: (number | null);
+            number?: number | null;
         };
         account_blocking: {
             enabled: boolean;
@@ -8420,37 +8420,37 @@ export declare interface TenantStats {
  * @public
  */
 export declare interface TenantSubscription {
-    issued_at?: (string | null);
-    expires_at?: (string | null);
+    issued_at?: string | null;
+    expires_at?: string | null;
     /**
      * Applied plan name
      */
-    plan: ("free" | "basic" | "pro" | "enterprise" | "on-premise");
+    plan: "free" | "basic" | "pro" | "enterprise" | "on-premise";
     /**
      * Details about the subscription usage
      */
     plan_details: {
-        active_user?: (boolean | number | {
+        active_user?: boolean | number | {
             max: number;
             min: number;
             step: number;
             type: "range";
-        });
-        administrators?: (boolean | number);
+        };
+        administrators?: boolean | number;
         /**
          * Is feature enabled or not
          */
         ciba?: boolean;
-        "connections.passwordless"?: (boolean | number);
-        "connections.social"?: (boolean | number);
-        "connections.enterprise.saml"?: (boolean | number);
-        "connections.enterprise.e_devlet"?: (boolean | number);
-        "connections.enterprise.ldap"?: (boolean | number);
+        "connections.passwordless"?: boolean | number;
+        "connections.social"?: boolean | number;
+        "connections.enterprise.saml"?: boolean | number;
+        "connections.enterprise.e_devlet"?: boolean | number;
+        "connections.enterprise.ldap"?: boolean | number;
         /**
          * Is feature enabled or not
          */
         custom_algorithm?: boolean;
-        custom_domain?: (boolean | number);
+        custom_domain?: boolean | number;
         /**
          * Is feature enabled or not
          */
@@ -8463,7 +8463,7 @@ export declare interface TenantSubscription {
          * Is feature enabled or not
          */
         fapi?: boolean;
-        hooks?: (boolean | number);
+        hooks?: boolean | number;
         /**
          * Log retention period in days
          */
@@ -8492,7 +8492,7 @@ export declare interface TenantSubscription {
          * Number of defined feature
          */
         max_users?: number;
-        mfa?: (boolean | number);
+        mfa?: boolean | number;
         "mfa.sms"?: boolean;
         "mfa.otp"?: boolean;
         "mfa.fv"?: boolean;
@@ -8574,9 +8574,9 @@ export declare interface Ticket {
     email?: string;
     client_id?: string;
     details?: {
-        [k: string]: (string | number | boolean);
+        [k: string]: string | number | boolean;
     };
-    type: ("verify-email" | "forgot-password" | "invite-admin" | "unblock-ip" | "unblock-account");
+    type: "verify-email" | "forgot-password" | "invite-admin" | "unblock-ip" | "unblock-account";
     token?: string;
 }
 
@@ -8589,18 +8589,18 @@ export declare interface TOTPAuthPlusAccount {
      * Unique identifier of entity
      */
     id: string;
-    name: (string | null);
+    name: string | null;
     details: {
         secret: string;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
         /**
          * The length of the OTP code.
          */
         code_length: number;
         ttl: number;
     };
-    icon: (string | null);
-    category_id?: (string | null);
+    icon: string | null;
+    category_id?: string | null;
     /**
      * Category order
      */
@@ -8613,7 +8613,7 @@ export declare interface TOTPAuthPlusAccount {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
 }
 
 /**
@@ -8634,7 +8634,7 @@ export declare interface TOTPConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -8648,7 +8648,7 @@ export declare interface TOTPConnection {
          * The length of the OTP code.
          */
         code_length: number;
-        hash_alg: ("sha1" | "sha256" | "sha512");
+        hash_alg: "sha1" | "sha256" | "sha512";
         window: number;
         ttl: number;
     };
@@ -8676,7 +8676,7 @@ export declare interface TwilioSmsProvider {
          * Your Twilio account sid.
          */
         sid: string;
-        strategy: ("copilot" | "from");
+        strategy: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -8689,13 +8689,13 @@ export declare interface TwilioSmsProvider {
  * @public
  */
 export declare interface UpdateAuthPlusAccount {
-    name: (string | null);
-    icon: (string | null);
+    name: string | null;
+    icon: string | null;
     /**
      * Category order
      */
     order?: number;
-    category_id?: (string | null);
+    category_id?: string | null;
     details: {
         [k: string]: any;
     };
@@ -8709,7 +8709,7 @@ export declare interface UpdateAuthPlusCategory {
     /**
      * Category name
      */
-    name: (string | null);
+    name: string | null;
     /**
      * Category order
      */
@@ -8721,7 +8721,7 @@ export declare interface UpdateAuthPlusCategory {
  * @public
  */
 export declare interface UpdateAuthPlusDevice {
-    name?: (string | null);
+    name?: string | null;
     details: {
         [k: string]: any;
     };
@@ -8739,15 +8739,15 @@ export declare interface UpdateClient {
     /**
      * Additional description for the client
      */
-    description?: (string | null);
-    logo_uri?: (string | null);
+    description?: string | null;
+    logo_uri?: string | null;
     /**
      * Is client first party
      */
-    first_party?: (boolean | null);
+    first_party?: boolean | null;
     token_endpoint_auth_method?: string;
     response_types?: ("code id_token token" | "code id_token" | "code token" | "code" | "id_token token" | "id_token" | "none")[];
-    oidc_conformant?: (boolean | null);
+    oidc_conformant?: boolean | null;
     /**
      * @maxItems 50
      */
@@ -8764,12 +8764,12 @@ export declare interface UpdateClient {
         pkce_required?: boolean;
         devices?: {
             android?: {
-                package_name?: (string | null);
+                package_name?: string | null;
                 sha256_cert_fingerprints?: string[];
             };
             ios?: {
-                bundle_identifier?: (string | null);
-                team_id?: (string | null);
+                bundle_identifier?: string | null;
+                team_id?: string | null;
             };
         };
     };
@@ -8778,7 +8778,7 @@ export declare interface UpdateClient {
          * This interface was referenced by `undefined`'s JSON-Schema definition
          * via the `patternProperty` "^(.*)$".
          */
-        [k: string]: (string | boolean | number | null);
+        [k: string]: string | boolean | number | null;
     };
     connectors?: {
         saml?: {
@@ -8791,31 +8791,31 @@ export declare interface UpdateClient {
             /**
              * Application specific resource in an IDP initiated Single Sign-On scenario. In most instances this is blank.
              */
-            relay_state?: (string | null);
+            relay_state?: string | null;
             mappings?: {
                 /**
                  * This interface was referenced by `undefined`'s JSON-Schema definition
                  * via the `patternProperty` "^(.*)$".
                  */
-                [k: string]: (string | boolean | {
-                    value?: (string | boolean | number);
+                [k: string]: string | boolean | {
+                    value?: string | boolean | number;
                     [k: string]: any;
                 } | (string | {
-                    value?: (string | boolean | number);
+                    value?: string | boolean | number;
                     [k: string]: any;
-                })[]);
+                })[];
             };
             /**
              * Your SAML SP's metadata URL.
              */
             metadata_url?: string;
-            request_binding?: ("HTTP-POST" | "HTTP-Redirect");
+            request_binding?: "HTTP-POST" | "HTTP-Redirect";
             sign_assertions?: boolean;
             sign_out_enabled?: boolean;
             sign_out_url?: string;
             signed_requests?: boolean;
-            signature_algorithm?: ("sha512" | "sha256" | "sha1");
-            signing_certificate?: (string | null);
+            signature_algorithm?: "sha512" | "sha256" | "sha1";
+            signing_certificate?: string | null;
         };
         wsfed?: {
             enabled?: boolean;
@@ -8847,7 +8847,7 @@ export declare interface UpdateClient {
 /**
  * @public
  */
-export declare type UpdateConnection = (({
+export declare type UpdateConnection = ({
     enabled?: boolean;
     /**
      * Is connection using custom scripts
@@ -8860,7 +8860,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -8917,7 +8917,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -8966,7 +8966,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -8986,7 +8986,7 @@ export declare type UpdateConnection = (({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
         /**
          * @maxItems 1000
          */
@@ -9019,7 +9019,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9048,7 +9048,7 @@ export declare type UpdateConnection = (({
          * Password for SMTP authentication
          */
         password?: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
         /**
          * @maxItems 1000
          */
@@ -9081,7 +9081,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9105,7 +9105,7 @@ export declare type UpdateConnection = (({
         /**
          * Operator identifier
          */
-        operator?: ("1" | "2" | "3" | "4");
+        operator?: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -9145,7 +9145,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9193,7 +9193,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9237,7 +9237,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9297,7 +9297,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9314,7 +9314,7 @@ export declare type UpdateConnection = (({
          * Your Twilio account sid.
          */
         sid?: string;
-        strategy?: ("copilot" | "from");
+        strategy?: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -9350,7 +9350,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9405,7 +9405,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9436,12 +9436,12 @@ export declare type UpdateConnection = (({
 } | {
     is_default?: boolean;
     type: "social";
-    provider?: ("amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify");
+    provider?: "amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify";
     enabled?: boolean;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9475,7 +9475,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9525,7 +9525,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9559,7 +9559,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9587,7 +9587,7 @@ export declare type UpdateConnection = (({
     };
 }) | ({
     enabled?: boolean;
-    updated_at?: (string | null);
+    updated_at?: string | null;
     created_at?: string;
     is_default?: boolean;
     type: "enterprise";
@@ -9633,7 +9633,7 @@ export declare type UpdateConnection = (({
         /**
          * Specify the portion of the target subtree that should be considered
          */
-        search_scope?: ("base" | "one" | "sub" | "subordinate");
+        search_scope?: "base" | "one" | "sub" | "subordinate";
         /**
          * Encrypts the connection to LDAP using STARTTLS, which will disable connection pooling
          */
@@ -9650,18 +9650,18 @@ export declare type UpdateConnection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 } | {
     enabled?: boolean;
-    updated_at?: (string | null);
+    updated_at?: string | null;
     created_at?: string;
     is_default?: boolean;
     type: "enterprise";
@@ -9699,21 +9699,21 @@ export declare type UpdateConnection = (({
         /**
          * Your SAML IdP's sign out URL in format `<http/s>://<host>:<port?>`
          */
-        sign_out_url?: (string | null);
-        signing_certificate?: (string | null);
+        sign_out_url?: string | null;
+        signing_certificate?: string | null;
         /**
          * Enable/Disable the SAML authentication request signing.
          */
         sign_request?: boolean;
-        sign_request_algorithm?: ("sha512" | "sha256" | "sha1");
+        sign_request_algorithm?: "sha512" | "sha256" | "sha1";
         /**
          * SAML Request Binding
          */
-        request_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        request_binding?: "HTTP-POST" | "HTTP-Redirect";
         /**
          * SAML Logout Request Binding
          */
-        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        sign_out_binding?: "HTTP-POST" | "HTTP-Redirect";
         mappings?: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -9722,18 +9722,18 @@ export declare type UpdateConnection = (({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 } | {
     enabled?: boolean;
-    updated_at?: (string | null);
+    updated_at?: string | null;
     created_at?: string;
     is_default?: boolean;
     type: "enterprise";
@@ -9773,7 +9773,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9842,7 +9842,7 @@ export declare type UpdateConnection = (({
         /**
          * Push notification strategy
          */
-        strategy?: ("code" | "prompt");
+        strategy?: "code" | "prompt";
     };
 } | {
     type?: "webauthn";
@@ -9851,7 +9851,7 @@ export declare type UpdateConnection = (({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9867,14 +9867,14 @@ export declare type UpdateConnection = (({
             display_name?: string;
         };
     };
-});
+};
 
 /**
  * @public
  */
 export declare interface UpdateEDevletConnection {
     enabled?: boolean;
-    updated_at?: (string | null);
+    updated_at?: string | null;
     created_at?: string;
     is_default?: boolean;
     type: "enterprise";
@@ -9906,7 +9906,7 @@ export declare interface UpdateEDevletConnection {
 /**
  * @public
  */
-export declare type UpdateEmailConnection = ({
+export declare type UpdateEmailConnection = {
     type?: "email";
     [k: string]: any;
 } & ({
@@ -9922,7 +9922,7 @@ export declare type UpdateEmailConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -9979,7 +9979,7 @@ export declare type UpdateEmailConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10028,7 +10028,7 @@ export declare type UpdateEmailConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10048,7 +10048,7 @@ export declare type UpdateEmailConnection = ({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
         /**
          * @maxItems 1000
          */
@@ -10081,7 +10081,7 @@ export declare type UpdateEmailConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10110,7 +10110,7 @@ export declare type UpdateEmailConnection = ({
          * Password for SMTP authentication
          */
         password?: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
         /**
          * @maxItems 1000
          */
@@ -10130,12 +10130,12 @@ export declare type UpdateEmailConnection = ({
         code_ttl?: number;
         use_magic_link?: boolean;
     };
-}));
+});
 
 /**
  * @public
  */
-export declare type UpdateEmailProvider = ({
+export declare type UpdateEmailProvider = {
     type?: "email";
     [k: string]: any;
 } & ({
@@ -10202,7 +10202,7 @@ export declare type UpdateEmailProvider = ({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
     };
 } | {
     type: "email";
@@ -10232,19 +10232,19 @@ export declare type UpdateEmailProvider = ({
          * Password for SMTP authentication
          */
         password?: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
     };
-}));
+});
 
 /**
  * @public
  */
-export declare type UpdateEnterpriseConnection = ({
+export declare type UpdateEnterpriseConnection = {
     type?: "enterprise";
     [k: string]: any;
 } & ({
     enabled?: boolean;
-    updated_at?: (string | null);
+    updated_at?: string | null;
     created_at?: string;
     is_default?: boolean;
     type: "enterprise";
@@ -10290,7 +10290,7 @@ export declare type UpdateEnterpriseConnection = ({
         /**
          * Specify the portion of the target subtree that should be considered
          */
-        search_scope?: ("base" | "one" | "sub" | "subordinate");
+        search_scope?: "base" | "one" | "sub" | "subordinate";
         /**
          * Encrypts the connection to LDAP using STARTTLS, which will disable connection pooling
          */
@@ -10307,18 +10307,18 @@ export declare type UpdateEnterpriseConnection = ({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 } | {
     enabled?: boolean;
-    updated_at?: (string | null);
+    updated_at?: string | null;
     created_at?: string;
     is_default?: boolean;
     type: "enterprise";
@@ -10356,21 +10356,21 @@ export declare type UpdateEnterpriseConnection = ({
         /**
          * Your SAML IdP's sign out URL in format `<http/s>://<host>:<port?>`
          */
-        sign_out_url?: (string | null);
-        signing_certificate?: (string | null);
+        sign_out_url?: string | null;
+        signing_certificate?: string | null;
         /**
          * Enable/Disable the SAML authentication request signing.
          */
         sign_request?: boolean;
-        sign_request_algorithm?: ("sha512" | "sha256" | "sha1");
+        sign_request_algorithm?: "sha512" | "sha256" | "sha1";
         /**
          * SAML Request Binding
          */
-        request_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        request_binding?: "HTTP-POST" | "HTTP-Redirect";
         /**
          * SAML Logout Request Binding
          */
-        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        sign_out_binding?: "HTTP-POST" | "HTTP-Redirect";
         mappings?: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -10379,18 +10379,18 @@ export declare type UpdateEnterpriseConnection = ({
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 } | {
     enabled?: boolean;
-    updated_at?: (string | null);
+    updated_at?: string | null;
     created_at?: string;
     is_default?: boolean;
     type: "enterprise";
@@ -10417,7 +10417,7 @@ export declare type UpdateEnterpriseConnection = ({
         scopes?: string[];
         is_test?: boolean;
     };
-}));
+});
 
 /**
  * @public
@@ -10429,7 +10429,7 @@ export declare interface UpdateESignConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10452,7 +10452,7 @@ export declare interface UpdateFvConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10477,7 +10477,7 @@ export declare interface UpdateHook {
     /**
      * Additional information for the hook
      */
-    description?: (string | null);
+    description?: string | null;
     /**
      * Execution order of the hook. It applies to hook types. Lower ordered hooks executed first.
      */
@@ -10497,7 +10497,7 @@ export declare interface UpdateHook {
  */
 export declare interface UpdateLDAPConnection {
     enabled?: boolean;
-    updated_at?: (string | null);
+    updated_at?: string | null;
     created_at?: string;
     is_default?: boolean;
     type: "enterprise";
@@ -10543,7 +10543,7 @@ export declare interface UpdateLDAPConnection {
         /**
          * Specify the portion of the target subtree that should be considered
          */
-        search_scope?: ("base" | "one" | "sub" | "subordinate");
+        search_scope?: "base" | "one" | "sub" | "subordinate";
         /**
          * Encrypts the connection to LDAP using STARTTLS, which will disable connection pooling
          */
@@ -10557,13 +10557,13 @@ export declare interface UpdateLDAPConnection {
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 }
@@ -10571,7 +10571,7 @@ export declare interface UpdateLDAPConnection {
 /**
  * @public
  */
-export declare type UpdateMFA = ({
+export declare type UpdateMFA = {
     enabled?: boolean;
     /**
      * Is connection using custom scripts
@@ -10580,7 +10580,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10640,7 +10640,7 @@ export declare type UpdateMFA = ({
         /**
          * Push notification strategy
          */
-        strategy?: ("code" | "prompt");
+        strategy?: "code" | "prompt";
     };
 } | ({
     enabled?: boolean;
@@ -10651,7 +10651,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10694,7 +10694,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10729,7 +10729,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10749,7 +10749,7 @@ export declare type UpdateMFA = ({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
         /**
          * The length of the OTP code.
          */
@@ -10768,7 +10768,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10797,7 +10797,7 @@ export declare type UpdateMFA = ({
          * Password for SMTP authentication
          */
         password?: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
         /**
          * The length of the OTP code.
          */
@@ -10816,7 +10816,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10840,7 +10840,7 @@ export declare type UpdateMFA = ({
         /**
          * Operator identifier
          */
-        operator?: ("1" | "2" | "3" | "4");
+        operator?: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -10867,7 +10867,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10902,7 +10902,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10933,7 +10933,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10980,7 +10980,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -10997,7 +10997,7 @@ export declare type UpdateMFA = ({
          * Your Twilio account sid.
          */
         sid?: string;
-        strategy?: ("copilot" | "from");
+        strategy?: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -11020,7 +11020,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -11067,7 +11067,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -11080,7 +11080,7 @@ export declare type UpdateMFA = ({
          * The length of the OTP code.
          */
         code_length?: number;
-        hash_alg?: ("sha1" | "sha256" | "sha512");
+        hash_alg?: "sha1" | "sha256" | "sha512";
         window?: number;
         initial_counter?: number;
     };
@@ -11093,7 +11093,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -11106,7 +11106,7 @@ export declare type UpdateMFA = ({
          * The length of the OTP code.
          */
         code_length?: number;
-        hash_alg?: ("sha1" | "sha256" | "sha512");
+        hash_alg?: "sha1" | "sha256" | "sha512";
         window?: number;
         ttl?: number;
     };
@@ -11117,7 +11117,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -11132,7 +11132,7 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -11145,13 +11145,13 @@ export declare type UpdateMFA = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
     created_at?: string;
     settings?: {};
-});
+};
 
 /**
  * @public
@@ -11163,7 +11163,7 @@ export declare type UpdateModuleSettings = {
         /**
          * Only users of the selected connection will be able to authenticate through RADIUS. Leave empty if you would like to allow any user in your tenant.
          */
-        connection?: (string | null);
+        connection?: string | null;
         /**
          * If true RADIUS server expects both a password and an MFA factor in the same login request from your radiusclient For Eg - If radius client sends Password + MFA token in same string e.g. password123456
          */
@@ -11177,7 +11177,7 @@ export declare type UpdateModuleSettings = {
 /**
  * @public
  */
-export declare type UpdateOTPConnection = ({
+export declare type UpdateOTPConnection = {
     type?: "otp";
     [k: string]: any;
 } & ({
@@ -11193,7 +11193,7 @@ export declare type UpdateOTPConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -11210,7 +11210,7 @@ export declare type UpdateOTPConnection = ({
          * The length of the OTP code.
          */
         code_length?: number;
-        hash_alg?: ("sha1" | "sha256" | "sha512");
+        hash_alg?: "sha1" | "sha256" | "sha512";
         window?: number;
         initial_counter?: number;
     };
@@ -11227,7 +11227,7 @@ export declare type UpdateOTPConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -11244,16 +11244,16 @@ export declare type UpdateOTPConnection = ({
          * The length of the OTP code.
          */
         code_length?: number;
-        hash_alg?: ("sha1" | "sha256" | "sha512");
+        hash_alg?: "sha1" | "sha256" | "sha512";
         window?: number;
         ttl?: number;
     };
-}));
+});
 
 /**
  * @public
  */
-export declare type UpdateProvider = (({
+export declare type UpdateProvider = ({
     type: "email";
     /**
      * Is connection using custom scripts
@@ -11317,7 +11317,7 @@ export declare type UpdateProvider = (({
         /**
          * SendGrid API User
          */
-        api_user?: (string | null);
+        api_user?: string | null;
     };
 } | {
     type: "email";
@@ -11347,7 +11347,7 @@ export declare type UpdateProvider = (({
          * Password for SMTP authentication
          */
         password?: string;
-        secure?: (boolean | null);
+        secure?: boolean | null;
     };
 }) | ({
     type: "sms";
@@ -11375,7 +11375,7 @@ export declare type UpdateProvider = (({
         /**
          * Operator identifier
          */
-        operator?: ("1" | "2" | "3" | "4");
+        operator?: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -11472,7 +11472,7 @@ export declare type UpdateProvider = (({
          * Your Twilio account sid.
          */
         sid?: string;
-        strategy?: ("copilot" | "from");
+        strategy?: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -11568,12 +11568,12 @@ export declare type UpdateProvider = (({
             production?: boolean;
         };
     };
-});
+};
 
 /**
  * @public
  */
-export declare type UpdatePushConnection = ({
+export declare type UpdatePushConnection = {
     type?: "push";
     [k: string]: any;
 } & {
@@ -11589,7 +11589,7 @@ export declare type UpdatePushConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -11658,14 +11658,14 @@ export declare type UpdatePushConnection = ({
         /**
          * Push notification strategy
          */
-        strategy?: ("code" | "prompt");
+        strategy?: "code" | "prompt";
     };
-});
+};
 
 /**
  * @public
  */
-export declare type UpdatePushNotificationProvider = ({
+export declare type UpdatePushNotificationProvider = {
     type?: "push";
     [k: string]: any;
 } & {
@@ -11726,7 +11726,7 @@ export declare type UpdatePushNotificationProvider = ({
             production?: boolean;
         };
     };
-});
+};
 
 /**
  * Resource Object with name and description properties.
@@ -11740,7 +11740,7 @@ export declare interface UpdateResource {
     /**
      * Additional information related with entity
      */
-    description?: (string | null);
+    description?: string | null;
     settings?: {
         access_token_ttl?: number;
         include_user_roles?: boolean;
@@ -11758,7 +11758,7 @@ export declare interface UpdateRole {
     /**
      * Additional information related with entity
      */
-    description?: (string | null);
+    description?: string | null;
     /**
      * If `true` this role will be assigned to new users automatically.
      */
@@ -11776,7 +11776,7 @@ export declare interface UpdateRoleGroup {
     /**
      * Additional information related with entity
      */
-    description?: (string | null);
+    description?: string | null;
     /**
      * If `true` this role group will be assigned to new users automatically.
      */
@@ -11788,7 +11788,7 @@ export declare interface UpdateRoleGroup {
  */
 export declare interface UpdateSAMLConnection {
     enabled?: boolean;
-    updated_at?: (string | null);
+    updated_at?: string | null;
     created_at?: string;
     is_default?: boolean;
     type: "enterprise";
@@ -11826,33 +11826,33 @@ export declare interface UpdateSAMLConnection {
         /**
          * Your SAML IdP's sign out URL in format `<http/s>://<host>:<port?>`
          */
-        sign_out_url?: (string | null);
-        signing_certificate?: (string | null);
+        sign_out_url?: string | null;
+        signing_certificate?: string | null;
         /**
          * Enable/Disable the SAML authentication request signing.
          */
         sign_request?: boolean;
-        sign_request_algorithm?: ("sha512" | "sha256" | "sha1");
+        sign_request_algorithm?: "sha512" | "sha256" | "sha1";
         /**
          * SAML Request Binding
          */
-        request_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        request_binding?: "HTTP-POST" | "HTTP-Redirect";
         /**
          * SAML Logout Request Binding
          */
-        sign_out_binding?: ("HTTP-POST" | "HTTP-Redirect");
+        sign_out_binding?: "HTTP-POST" | "HTTP-Redirect";
         mappings?: {
             /**
              * This interface was referenced by `undefined`'s JSON-Schema definition
              * via the `patternProperty` "^(.*)$".
              */
-            [k: string]: (string | boolean | {
-                value?: (string | boolean | number);
+            [k: string]: string | boolean | {
+                value?: string | boolean | number;
                 [k: string]: any;
             } | (string | {
-                value?: (string | boolean | number);
+                value?: string | boolean | number;
                 [k: string]: any;
-            })[]);
+            })[];
         };
     };
 }
@@ -11860,7 +11860,7 @@ export declare interface UpdateSAMLConnection {
 /**
  * @public
  */
-export declare type UpdateSmsConnection = ({
+export declare type UpdateSmsConnection = {
     type?: "sms";
     [k: string]: any;
 } & ({
@@ -11876,7 +11876,7 @@ export declare type UpdateSmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -11900,7 +11900,7 @@ export declare type UpdateSmsConnection = ({
         /**
          * Operator identifier
          */
-        operator?: ("1" | "2" | "3" | "4");
+        operator?: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -11940,7 +11940,7 @@ export declare type UpdateSmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -11988,7 +11988,7 @@ export declare type UpdateSmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -12032,7 +12032,7 @@ export declare type UpdateSmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -12092,7 +12092,7 @@ export declare type UpdateSmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -12109,7 +12109,7 @@ export declare type UpdateSmsConnection = ({
          * Your Twilio account sid.
          */
         sid?: string;
-        strategy?: ("copilot" | "from");
+        strategy?: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -12145,7 +12145,7 @@ export declare type UpdateSmsConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -12192,12 +12192,12 @@ export declare type UpdateSmsConnection = ({
          */
         code_ttl?: number;
     };
-}));
+});
 
 /**
  * @public
  */
-export declare type UpdateSmsProvider = ({
+export declare type UpdateSmsProvider = {
     type?: "sms";
     [k: string]: any;
 } & ({
@@ -12226,7 +12226,7 @@ export declare type UpdateSmsProvider = ({
         /**
          * Operator identifier
          */
-        operator?: ("1" | "2" | "3" | "4");
+        operator?: "1" | "2" | "3" | "4";
         /**
          * Short code of operator used for sendind messages
          */
@@ -12323,7 +12323,7 @@ export declare type UpdateSmsProvider = ({
          * Your Twilio account sid.
          */
         sid?: string;
-        strategy?: ("copilot" | "from");
+        strategy?: "copilot" | "from";
         /**
          * If strategy is `copilot` than this value needs to be your Twilio messaging service SID. Otherwise it is phone number for originating your messages.
          */
@@ -12361,12 +12361,12 @@ export declare type UpdateSmsProvider = ({
          */
         from?: string;
     };
-}));
+});
 
 /**
  * @public
  */
-export declare type UpdateSocialConnection = ({
+export declare type UpdateSocialConnection = {
     type?: "social";
     [k: string]: any;
 } & ({
@@ -12377,7 +12377,7 @@ export declare type UpdateSocialConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -12408,12 +12408,12 @@ export declare type UpdateSocialConnection = ({
 } | {
     is_default?: boolean;
     type: "social";
-    provider?: ("amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify");
+    provider?: "amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify";
     enabled?: boolean;
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -12447,7 +12447,7 @@ export declare type UpdateSocialConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -12497,7 +12497,7 @@ export declare type UpdateSocialConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -12531,7 +12531,7 @@ export declare type UpdateSocialConnection = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -12557,19 +12557,19 @@ export declare type UpdateSocialConnection = ({
          */
         scopes?: string[];
     };
-}));
+});
 
 /**
  * @public
  */
-export declare type UpdateTemplate = ({
+export declare type UpdateTemplate = {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     content?: string;
     type: "email";
-    name?: ("welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test");
+    name?: "welcome" | "verification-code" | "magic-link" | "verify-email" | "reset-password" | "invite-admin" | "payment-failed" | "plan-downgraded" | "blocked-account" | "blocked-ip" | "test";
     details?: {
         /**
          * `from` field for your emails
@@ -12585,20 +12585,20 @@ export declare type UpdateTemplate = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     content?: string;
     type: "sms";
-    name?: ("verification-code" | "test");
-});
+    name?: "verification-code" | "test";
+};
 
 /**
  * @public
  */
 export declare interface UpdateTenantSettings {
     branding?: {
-        display_name?: (string | null);
+        display_name?: string | null;
     };
-    default_strategy?: (string | null);
+    default_strategy?: string | null;
     user_self_deletion?: {
         /**
          * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -12632,7 +12632,7 @@ export declare interface UpdateTenantSettings {
      */
     extra_scopes?: string[];
     api_version?: "2021-07-04";
-    tenant_login_url?: (string | null);
+    tenant_login_url?: string | null;
     /**
      * PlusAuth Authenticator Application related settings
      */
@@ -12644,7 +12644,7 @@ export declare interface UpdateTenantSettings {
         [k: string]: any;
     };
     ciba?: {
-        delivery_mode?: ("ping" | "poll");
+        delivery_mode?: "ping" | "poll";
         notifier_endpoint?: string;
     };
     /**
@@ -12660,7 +12660,7 @@ export declare interface UpdateTenantSettings {
         refresh_token?: number;
         session?: number;
     };
-    hash_function?: ("bcrypt" | "argon2");
+    hash_function?: "bcrypt" | "argon2";
     policies?: {
         /**
          * Password policy settings to be enforced to your new users.
@@ -12669,31 +12669,31 @@ export declare interface UpdateTenantSettings {
             /**
              * Minimum number of characters
              */
-            min?: (number | null);
+            min?: number | null;
             /**
              * Maximum number of characters
              */
-            max?: (number | null);
+            max?: number | null;
             /**
              * Require at least on of the given characters
              */
-            custom_chars?: (string | null);
+            custom_chars?: string | null;
             /**
              * The system will maintain a password history for each user and prevent the reuse of passwords included in the history. The password history can be up to 10 in size. When provided, the system will maintain existing and new users' password history going forward.
              */
-            history?: (number | null);
+            history?: number | null;
             /**
              * Require at least given value of uppercase letters
              */
-            upper_case?: (number | null);
+            upper_case?: number | null;
             /**
              * Require at least given value of lowercase letters
              */
-            lower_case?: (number | null);
+            lower_case?: number | null;
             /**
              * Require at least given value of numbers
              */
-            number?: (number | null);
+            number?: number | null;
         };
         account_blocking?: {
             enabled?: boolean;
@@ -12762,7 +12762,7 @@ export declare interface UpdateTicket {
      */
     ttl?: number;
     details?: {
-        [k: string]: (string | number | boolean);
+        [k: string]: string | number | boolean;
     };
     used?: boolean;
 }
@@ -12774,35 +12774,35 @@ export declare interface UpdateUser {
     /**
      * End-User's username
      */
-    username?: (string | null);
+    username?: string | null;
     /**
      * End-User's e-mail address.
      */
-    email?: (string | null);
+    email?: string | null;
     /**
      * `true` if the End-User's e-mail address has been verified; otherwise `false`. If `force_email_verification` is enabled in your tenant's settings, it will check this value of user while performing email verification checks.
      */
-    email_verified?: (boolean | null);
+    email_verified?: boolean | null;
     /**
      * End-User's preferred phone number. It will be stored in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      */
-    phone_number?: (string | null);
+    phone_number?: string | null;
     /**
      * `true` if the End-User's phone number has been verified; otherwise `false`. If SMS MFA is enabled this value will be used to determine whether End-User has verified it's phone or not.
      */
-    phone_number_verified?: (boolean | null);
+    phone_number_verified?: boolean | null;
     /**
      * End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences.
      */
-    name?: (string | null);
+    name?: string | null;
     /**
      * URI reference of the End-User's profile picture.
      */
-    picture?: (string | null);
+    picture?: string | null;
     /**
      * Whether this End-User is blocked or not. If `true` End-User will not be able to login.
      */
-    blocked?: (boolean | null);
+    blocked?: boolean | null;
     /**
      * Failed login attempts of user. It will reset to `0` after successful login.
      */
@@ -12811,75 +12811,75 @@ export declare interface UpdateUser {
         /**
          * Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.
          */
-        given_name?: (string | null);
+        given_name?: string | null;
         /**
          * Middle name(s) of the End-User. Note that in some cultures, people can have multiple middle names; all can be present, with the names being separated by space characters. Also note that in some cultures, middle names are not used.
          */
-        middle_name?: (string | null);
+        middle_name?: string | null;
         /**
          * Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.
          */
-        family_name?: (string | null);
+        family_name?: string | null;
         /**
          * Casual name of the End-User that may or may not be the same as the given_name. For instance, a nickname value of Mike might be returned alongside a given_name value of Michael.
          */
-        nickname?: (string | null);
+        nickname?: string | null;
         /**
          * URI reference for the End-User's profile page.
          */
-        profile_page?: (string | null);
+        profile_page?: string | null;
         /**
          * URI reference for the End-User's Web page or blog.
          */
-        website?: (string | null);
+        website?: string | null;
         /**
          * Short code of End-User's gender.
          */
-        gender?: (string | null);
+        gender?: string | null;
         /**
          * End-User's birthday. ISO 8601:2004 YYYY-MM-DD format. The year may be 0000, indicating that it is omitted. To represent only the year, YYYY format is preferred.
          */
-        birthdate?: (string | null);
+        birthdate?: string | null;
         /**
          * End-User's locale. For example, en-US or fr-CA.
          */
-        locale?: (string | null);
+        locale?: string | null;
         /**
          * String from zoneinfo time zone database representing the End-User's time zone. For example, Europe/Paris or America/Los_Angeles.
          */
-        zoneinfo?: (string | null);
+        zoneinfo?: string | null;
         addresses?: {
             /**
              * Identifier for user address. Example: `Delivery Address`, `Billing Address` etc.
              */
-            id: (string | null);
-            is_primary: (boolean | null);
-            first_name: (string | null);
-            last_name: (string | null);
+            id: string | null;
+            is_primary: boolean | null;
+            first_name: string | null;
+            last_name: string | null;
             /**
              * State, province, prefecture or region component.
              */
-            state: (string | null);
+            state: string | null;
             /**
              * Country name component.
              */
-            country: (string | null);
+            country: string | null;
             /**
              * City or locality component.
              */
-            city: (string | null);
+            city: string | null;
             /**
              * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
              */
-            street_address: (string | null);
+            street_address: string | null;
             /**
              * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
              */
-            street_address_2: (string | null);
+            street_address_2: string | null;
             /**
              * Zip code or postal code component.
              */
-            zip_code: (string | null);
+            zip_code: string | null;
         }[];
     };
     /**
@@ -12888,15 +12888,15 @@ export declare interface UpdateUser {
     metadata?: {
         [k: string]: any;
     };
-    verify_email?: (boolean | null);
+    verify_email?: boolean | null;
     /**
      * End-User's password in plaintext. Defined password policy rules will be enforced.
      */
-    password?: (string | null);
+    password?: string | null;
     /**
      * Used password hash function identifier.
      */
-    hash_fn?: ("bcrypt" | "argon2");
+    hash_fn?: "bcrypt" | "argon2";
 }
 
 /**
@@ -12909,7 +12909,7 @@ export declare interface UpdateWebAuthNConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -12936,11 +12936,11 @@ export declare interface User {
          * Authenticator id
          */
         id: string;
-        type: ("e-sign" | "sms" | "email" | "custom");
+        type: "e-sign" | "sms" | "email" | "custom";
         /**
          * Connection name
          */
-        connection?: (string | null);
+        connection?: string | null;
         /**
          * Raw user object from the connection
          */
@@ -12954,7 +12954,7 @@ export declare interface User {
         /**
          * Update date in the ISO 8601 format according to universal time.
          */
-        updated_at?: (string | null);
+        updated_at?: string | null;
     } | {
         /**
          * Authenticator id
@@ -12963,7 +12963,7 @@ export declare interface User {
         /**
          * Connection name
          */
-        connection?: (string | null);
+        connection?: string | null;
         /**
          * Creation date in the ISO 8601 format according to universal time.
          */
@@ -12971,14 +12971,14 @@ export declare interface User {
         /**
          * Update date in the ISO 8601 format according to universal time.
          */
-        updated_at?: (string | null);
+        updated_at?: string | null;
         type: "password";
         details: {
             /**
              * Hashed value of user's password.
              */
             hash: string;
-            hash_fn: ("bcrypt" | "argon2");
+            hash_fn: "bcrypt" | "argon2";
         };
     } | {
         /**
@@ -12988,7 +12988,7 @@ export declare interface User {
         /**
          * Connection name
          */
-        connection?: (string | null);
+        connection?: string | null;
         /**
          * Creation date in the ISO 8601 format according to universal time.
          */
@@ -12996,7 +12996,7 @@ export declare interface User {
         /**
          * Update date in the ISO 8601 format according to universal time.
          */
-        updated_at?: (string | null);
+        updated_at?: string | null;
         type: "push";
         details: {
             device: {
@@ -13047,7 +13047,7 @@ export declare interface User {
         /**
          * Connection name
          */
-        connection?: (string | null);
+        connection?: string | null;
         /**
          * Creation date in the ISO 8601 format according to universal time.
          */
@@ -13055,7 +13055,7 @@ export declare interface User {
         /**
          * Update date in the ISO 8601 format according to universal time.
          */
-        updated_at?: (string | null);
+        updated_at?: string | null;
         type: "otp";
         details: {
             /**
@@ -13071,7 +13071,7 @@ export declare interface User {
         /**
          * Connection name
          */
-        connection?: (string | null);
+        connection?: string | null;
         /**
          * Creation date in the ISO 8601 format according to universal time.
          */
@@ -13079,7 +13079,7 @@ export declare interface User {
         /**
          * Update date in the ISO 8601 format according to universal time.
          */
-        updated_at?: (string | null);
+        updated_at?: string | null;
         type: "fv";
         details: {
             hash?: string;
@@ -13095,7 +13095,7 @@ export declare interface User {
         /**
          * Connection name
          */
-        connection?: (string | null);
+        connection?: string | null;
         /**
          * Creation date in the ISO 8601 format according to universal time.
          */
@@ -13103,7 +13103,7 @@ export declare interface User {
         /**
          * Update date in the ISO 8601 format according to universal time.
          */
-        updated_at?: (string | null);
+        updated_at?: string | null;
         type: "webauthn";
         details: {
             id: string;
@@ -13130,7 +13130,7 @@ export declare interface User {
         /**
          * Update date in the ISO 8601 format according to universal time.
          */
-        updated_at?: (string | null);
+        updated_at?: string | null;
         /**
          * Connection name
          */
@@ -13139,8 +13139,8 @@ export declare interface User {
          * PlusAuth user's id
          */
         user_id: string;
-        type: ("sms" | "push" | "webauthn" | "email" | "social" | "enterprise");
-        provider: ("twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
+        type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
+        provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap";
         /**
          * Raw user object from the connection
          */
@@ -13152,117 +13152,117 @@ export declare interface User {
     /**
      * End-User's username
      */
-    username?: (string | null);
+    username?: string | null;
     /**
      * End-User's e-mail address.
      */
-    email?: (string | null);
+    email?: string | null;
     /**
      * `true` if the End-User's e-mail address has been verified; otherwise `false`. If `force_email_verification` is enabled in your tenant's settings, it will check this value of user while performing email verification checks.
      */
-    email_verified?: (boolean | null);
+    email_verified?: boolean | null;
     /**
      * End-User's preferred phone number. It will be stored in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      */
-    phone_number?: (string | null);
+    phone_number?: string | null;
     /**
      * `true` if the End-User's phone number has been verified; otherwise `false`. If SMS MFA is enabled this value will be used to determine whether End-User has verified it's phone or not.
      */
-    phone_number_verified?: (boolean | null);
+    phone_number_verified?: boolean | null;
     /**
      * End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences.
      */
-    name?: (string | null);
+    name?: string | null;
     /**
      * URI reference of the End-User's profile picture.
      */
-    picture?: (string | null);
+    picture?: string | null;
     /**
      * Whether this End-User is blocked or not. If `true` End-User will not be able to login.
      */
-    blocked?: (boolean | null);
+    blocked?: boolean | null;
     /**
      * Failed login attempts of user. It will reset to `0` after successful login.
      */
     login_attempts?: number;
-    last_ip: (string | null);
+    last_ip: string | null;
     /**
      * User's last login datetime in the ISO 8601 format according to universal time
      */
-    last_login?: (string | null);
+    last_login?: string | null;
     profile?: {
         /**
          * Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.
          */
-        given_name?: (string | null);
+        given_name?: string | null;
         /**
          * Middle name(s) of the End-User. Note that in some cultures, people can have multiple middle names; all can be present, with the names being separated by space characters. Also note that in some cultures, middle names are not used.
          */
-        middle_name?: (string | null);
+        middle_name?: string | null;
         /**
          * Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.
          */
-        family_name?: (string | null);
+        family_name?: string | null;
         /**
          * Casual name of the End-User that may or may not be the same as the given_name. For instance, a nickname value of Mike might be returned alongside a given_name value of Michael.
          */
-        nickname?: (string | null);
+        nickname?: string | null;
         /**
          * URI reference for the End-User's profile page.
          */
-        profile_page?: (string | null);
+        profile_page?: string | null;
         /**
          * URI reference for the End-User's Web page or blog.
          */
-        website?: (string | null);
+        website?: string | null;
         /**
          * Short code of End-User's gender.
          */
-        gender?: (string | null);
+        gender?: string | null;
         /**
          * End-User's birthday. ISO 8601:2004 YYYY-MM-DD format. The year may be 0000, indicating that it is omitted. To represent only the year, YYYY format is preferred.
          */
-        birthdate?: (string | null);
+        birthdate?: string | null;
         /**
          * End-User's locale. For example, en-US or fr-CA.
          */
-        locale?: (string | null);
+        locale?: string | null;
         /**
          * String from zoneinfo time zone database representing the End-User's time zone. For example, Europe/Paris or America/Los_Angeles.
          */
-        zoneinfo?: (string | null);
+        zoneinfo?: string | null;
         addresses?: {
             /**
              * Identifier for user address. Example: `Delivery Address`, `Billing Address` etc.
              */
-            id: (string | null);
-            is_primary: (boolean | null);
-            first_name: (string | null);
-            last_name: (string | null);
+            id: string | null;
+            is_primary: boolean | null;
+            first_name: string | null;
+            last_name: string | null;
             /**
              * State, province, prefecture or region component.
              */
-            state: (string | null);
+            state: string | null;
             /**
              * Country name component.
              */
-            country: (string | null);
+            country: string | null;
             /**
              * City or locality component.
              */
-            city: (string | null);
+            city: string | null;
             /**
              * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
              */
-            street_address: (string | null);
+            street_address: string | null;
             /**
              * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
              */
-            street_address_2: (string | null);
+            street_address_2: string | null;
             /**
              * Zip code or postal code component.
              */
-            zip_code: (string | null);
+            zip_code: string | null;
         }[];
     };
     /**
@@ -13272,7 +13272,7 @@ export declare interface User {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at: (string | null);
+    updated_at: string | null;
     /**
      * Additional metadata for your End-User. It must be an object containing **10** fields at max with keys and values no more than 1024 characters. Values can be only one of the types `string`, `number` and `boolean`. You can also use `null` as value to make metadata consistent across other users.
      */
@@ -13284,16 +13284,16 @@ export declare interface User {
 /**
  * @public
  */
-export declare type UserCredential = ({
+export declare type UserCredential = {
     /**
      * Authenticator id
      */
     id: string;
-    type: ("e-sign" | "sms" | "email" | "custom");
+    type: "e-sign" | "sms" | "email" | "custom";
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Raw user object from the connection
      */
@@ -13307,7 +13307,7 @@ export declare type UserCredential = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
 } | {
     /**
      * Authenticator id
@@ -13316,7 +13316,7 @@ export declare type UserCredential = ({
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -13324,14 +13324,14 @@ export declare type UserCredential = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     type: "password";
     details: {
         /**
          * Hashed value of user's password.
          */
         hash: string;
-        hash_fn: ("bcrypt" | "argon2");
+        hash_fn: "bcrypt" | "argon2";
     };
 } | {
     /**
@@ -13341,7 +13341,7 @@ export declare type UserCredential = ({
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -13349,7 +13349,7 @@ export declare type UserCredential = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     type: "push";
     details: {
         device: {
@@ -13400,7 +13400,7 @@ export declare type UserCredential = ({
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -13408,7 +13408,7 @@ export declare type UserCredential = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     type: "otp";
     details: {
         /**
@@ -13424,7 +13424,7 @@ export declare type UserCredential = ({
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -13432,7 +13432,7 @@ export declare type UserCredential = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     type: "fv";
     details: {
         hash?: string;
@@ -13448,7 +13448,7 @@ export declare type UserCredential = ({
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -13456,7 +13456,7 @@ export declare type UserCredential = ({
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     type: "webauthn";
     details: {
         id: string;
@@ -13470,7 +13470,7 @@ export declare type UserCredential = ({
         counter: number;
         transports?: ("ble" | "cable" | "hybrid" | "internal" | "nfc" | "smart-card" | "usb")[];
     };
-});
+};
 
 /**
  * @public
@@ -13487,7 +13487,7 @@ export declare interface UserIdentity {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Connection name
      */
@@ -13496,8 +13496,8 @@ export declare interface UserIdentity {
      * PlusAuth user's id
      */
     user_id: string;
-    type: ("sms" | "push" | "webauthn" | "email" | "social" | "enterprise");
-    provider: ("twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap");
+    type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
+    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap";
     /**
      * Raw user object from the connection
      */
@@ -13519,7 +13519,7 @@ export declare interface UserPasswordHistory {
      */
     created_at: string;
     hash: string;
-    hash_fn: ("bcrypt" | "argon2");
+    hash_fn: "bcrypt" | "argon2";
     salt: string;
 }
 
@@ -13539,7 +13539,7 @@ export declare interface UserRbacTree {
         /**
          * Additional information related with entity
          */
-        description: (string | null);
+        description: string | null;
         /**
          * If `true` this role group will be assigned to new users automatically.
          */
@@ -13557,7 +13557,7 @@ export declare interface UserRbacTree {
         /**
          * Additional information related with entity
          */
-        description: (string | null);
+        description: string | null;
         /**
          * If `true` this role will be assigned to new users automatically.
          */
@@ -13579,7 +13579,7 @@ export declare interface UserRbacTree {
         /**
          * Additional information related with entity
          */
-        description: (string | null);
+        description: string | null;
     };
 }
 
@@ -13753,7 +13753,7 @@ export declare interface UserSession {
     /**
      * End-User's IP address.
      */
-    ip?: (string | null);
+    ip?: string | null;
     /**
      * End-User's User-Agent string.
      */
@@ -13773,7 +13773,7 @@ export declare interface UserSession {
     /**
      * Location details associated with the IP address.
      */
-    location: (null | {
+    location: null | {
         /**
          * English localized name for the city associated with the IP address.
          */
@@ -13804,7 +13804,7 @@ export declare interface UserSession {
              */
             time_zone?: string;
         };
-    });
+    };
 }
 
 /**
@@ -13813,7 +13813,7 @@ export declare interface UserSession {
 export declare interface View {
     is_default: boolean;
     content: string;
-    type: ("account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error");
+    type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error";
 }
 
 declare class ViewService extends HttpService {
@@ -13846,7 +13846,7 @@ export declare interface WebAuthNConnection {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -13875,7 +13875,7 @@ export declare interface WebAuthNCredential {
     /**
      * Connection name
      */
-    connection?: (string | null);
+    connection?: string | null;
     /**
      * Creation date in the ISO 8601 format according to universal time.
      */
@@ -13883,7 +13883,7 @@ export declare interface WebAuthNCredential {
     /**
      * Update date in the ISO 8601 format according to universal time.
      */
-    updated_at?: (string | null);
+    updated_at?: string | null;
     type: "webauthn";
     details: {
         id: string;
