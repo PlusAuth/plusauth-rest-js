@@ -5415,6 +5415,10 @@ export type ModuleSettings = {
      */
     use_inline_factor_challenge?: boolean
     challenge_separator?: string
+    /**
+     * The attribute name for the client IP address lookup. It could be multiple attributes separated by semicolon.
+     */
+    client_ip_attr?: string
     address_allow_list?: string[]
   }
   [k: string]: any
@@ -6433,6 +6437,10 @@ export interface RadiusSettings {
      */
     use_inline_factor_challenge?: boolean
     challenge_separator?: string
+    /**
+     * The attribute name for the client IP address lookup. It could be multiple attributes separated by semicolon.
+     */
+    client_ip_attr?: string
     address_allow_list?: string[]
   }
   [k: string]: any
@@ -10956,6 +10964,10 @@ export type UpdateModuleSettings = {
      */
     use_inline_factor_challenge?: boolean
     challenge_separator?: string
+    /**
+     * The attribute name for the client IP address lookup. It could be multiple attributes separated by semicolon.
+     */
+    client_ip_attr?: string
     address_allow_list?: string[]
   }
   [k: string]: any
