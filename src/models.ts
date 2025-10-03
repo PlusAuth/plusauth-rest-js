@@ -201,7 +201,7 @@ export interface Client {
     devices?: {
       android?: {
         package_name?: string | null
-        sha256_cert_fingerprints?: string[]
+        sha256_fingerprints?: string[]
       }
       ios?: {
         bundle_identifier?: string | null
@@ -1622,7 +1622,7 @@ export interface CreateClient {
     devices?: {
       android?: {
         package_name?: string | null
-        sha256_cert_fingerprints?: string[]
+        sha256_fingerprints?: string[]
       }
       ios?: {
         bundle_identifier?: string | null
@@ -8445,7 +8445,7 @@ export interface UpdateClient {
     devices?: {
       android?: {
         package_name?: string | null
-        sha256_cert_fingerprints?: string[]
+        sha256_fingerprints?: string[]
       }
       ios?: {
         bundle_identifier?: string | null
