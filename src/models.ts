@@ -13403,6 +13403,82 @@ export interface User {
       [k: string]: any
     }
   }[]
+  roles?: string[]
+  role_groups?: string[]
+  sessions?: {
+    /**
+     * Session identifier.
+     */
+    id: string
+    /**
+     * End-User's IP address.
+     */
+    ip?: string | null
+    /**
+     * End-User's User-Agent string.
+     */
+    ua: string
+    /**
+     * Date time of session expiration in UTC milliseconds.
+     */
+    exp: number
+    /**
+     * Date time of session creation in UTC milliseconds.
+     */
+    created_at: number
+    /**
+     * Date time of session's last activity in UTC milliseconds.
+     */
+    last_activity: number
+    /**
+     * Location details associated with the IP address.
+     */
+    location: null | {
+      /**
+       * English localized name for the city associated with the IP address.
+       */
+      city?: string
+      /**
+       * A two-character ISO 3166-1 country code for the country associated with the IP address.
+       */
+      country?: string
+      /**
+       * Resolved postal code.
+       */
+      postal_code?: string
+      pos?: {
+        /**
+         * The approximate WGS84 latitude of the postal code, city, subdivision or country associated with the IP address.
+         */
+        latitude?: number
+        /**
+         * The approximate WGS84 longitude of the postal code, city, subdivision or country associated with the IP address.
+         */
+        longitude?: number
+        /**
+         * The approximate accuracy radius, in kilometers, around the latitude and longitude for the geographical entity (country, subdivision, city or postal code).
+         */
+        accuracy_radius?: number
+        /**
+         * The time zone associated with location, as specified by the IANA Time Zone Database, e.g., “America/New_York”.
+         */
+        time_zone?: string
+      }
+    }
+  }[]
+  password_history?: {
+    /**
+     * Unique identifier of entity
+     */
+    id: string
+    /**
+     * Creation date in the ISO 8601 format according to universal time.
+     */
+    created_at: string
+    hash: string
+    hash_fn: "bcrypt" | "argon2"
+    salt: string
+  }[]
   id: string
   /**
    * End-User's username
