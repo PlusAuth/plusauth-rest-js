@@ -40,6 +40,7 @@
     "@microsoft/api-extractor": "^7.52.8",
     "@release-it/conventional-changelog": "^10.0.1",
     "@swc/core": "^1.13.2",
+    "@types/node": "^24.10.0",
     "concurrently": "^9.2.0",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "release-it": "^19.0.4",
