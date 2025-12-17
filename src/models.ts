@@ -2914,7 +2914,7 @@ export interface CreateJob {
    */
   name: string
   /**
-   * Cron pattern. Null/undefined for one-time jobs.
+   * Cron pattern, seconds are not supported. Null/undefined for one-time jobs.
    */
   pattern?: string | null
   /**
@@ -4729,7 +4729,7 @@ export interface Job {
    */
   name: string
   /**
-   * Cron pattern. Null/undefined for one-time jobs.
+   * Cron pattern, seconds are not supported. Null/undefined for one-time jobs.
    */
   pattern?: string | null
   /**

@@ -348,13 +348,6 @@ var JobService = class extends HttpService {
   async getExecutionLogs(jobId, executionId, queryParams) {
     return await this.http.get(`/jobs/${jobId}/runs/${executionId}/logs${encodedQueryString(queryParams)}`);
   }
-  /**
-   * @param jobId Job identifier
-   * @param executionId Job Execution identifier
-   */
-  async retryExecution(jobId, executionId) {
-    return await this.http.post(`/jobs/${jobId}/runs/${executionId}/retry`);
-  }
 };
 
 // src/api/keys.ts

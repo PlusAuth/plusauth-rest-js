@@ -2839,7 +2839,7 @@ export declare interface CreateJob {
      */
     name: string;
     /**
-     * Cron pattern. Null/undefined for one-time jobs.
+     * Cron pattern, seconds are not supported. Null/undefined for one-time jobs.
      */
     pattern?: string | null;
     /**
@@ -4551,7 +4551,7 @@ export declare interface Job {
      */
     name: string;
     /**
-     * Cron pattern. Null/undefined for one-time jobs.
+     * Cron pattern, seconds are not supported. Null/undefined for one-time jobs.
      */
     pattern?: string | null;
     /**
@@ -4760,11 +4760,6 @@ declare class JobService extends HttpService {
         length: number;
         fields: string[];
     }>;
-    /**
-     * @param jobId Job identifier
-     * @param executionId Job Execution identifier
-     */
-    retryExecution(jobId: string, executionId: string): Promise<void>;
 }
 
 /**

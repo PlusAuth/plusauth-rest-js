@@ -113,12 +113,4 @@ export class JobService extends HttpService {
       `/jobs/${jobId}/runs/${executionId}/logs${encodedQueryString(queryParams)}`,
     )
   }
-
-  /**
-   * @param jobId Job identifier
-   * @param executionId Job Execution identifier
-   */
-  async retryExecution(jobId: string, executionId: string): Promise<void> {
-    return await this.http.post(`/jobs/${jobId}/runs/${executionId}/retry`)
-  }
 }
