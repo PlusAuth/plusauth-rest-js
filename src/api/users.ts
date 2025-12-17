@@ -202,10 +202,18 @@ export class UserService extends HttpService {
   }
 
   /**
-   * @param userId User identifier
-   */
-  async getSessions(userId: string): Promise<UserSession[]> {
-    return await this.http.get(`/users/${userId}/session/`)
+ * Retrieve a list of user sessions with optional pagination. If no pagination parameters are provided, all sessions are returned.
+
+ * @param userId User identifier
+ * @param queryParams Query parameters
+ * @param queryParams.limit Limit the number of results returned
+ * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+ */
+  async getSessions(
+    userId: string,
+    queryParams?: { limit?: number; offset?: number },
+  ): Promise<UserSession[] | { total: number; results: UserSession[] }> {
+    return await this.http.get(`/users/${userId}/session/${encodedQueryString(queryParams)}`)
   }
 
   /**

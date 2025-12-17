@@ -3,6 +3,7 @@ import {
   ConnectionService,
   CustomDomainService,
   HookService,
+  JobService,
   KeyService,
   LogService,
   MfaService,
@@ -71,6 +72,8 @@ export class PlusAuthRestClient {
 
   readonly logs: InstanceType<typeof LogService>
 
+  readonly jobs: InstanceType<typeof JobService>
+
   readonly mfa: InstanceType<typeof MfaService>
 
   readonly moduleSettings: InstanceType<typeof ModuleSettingService>
@@ -110,6 +113,7 @@ export class PlusAuthRestClient {
     this.customDomains = new CustomDomainService(apiUri, this.options)
     this.hooks = new HookService(apiUri, this.options)
     this.keys = new KeyService(apiUri, this.options)
+    this.jobs = new JobService(apiUri, this.options)
     this.logs = new LogService(apiUri, this.options)
     this.mfa = new MfaService(apiUri, this.options)
     this.moduleSettings = new ModuleSettingService(apiUri, this.options)

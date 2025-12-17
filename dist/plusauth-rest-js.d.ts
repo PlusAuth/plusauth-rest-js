@@ -1471,12 +1471,6 @@ declare class ConnectionService extends HttpService {
      * @param name Connection name
      */
     remove(name: string): Promise<void>;
-    /**
-     * Only available for AD/LDAP connections
-
-     * @param name Connection name
-     */
-    sync(name: string): Promise<void>;
 }
 
 /**
@@ -2835,6 +2829,46 @@ export declare interface CreateHook {
 /**
  * @public
  */
+export declare interface CreateJob {
+    /**
+     * Job type
+     */
+    type?: "slu";
+    /**
+     * Logical job name unique per tenant.
+     */
+    name: string;
+    /**
+     * Cron pattern. Null/undefined for one-time jobs.
+     */
+    pattern?: string | null;
+    /**
+     * Timezone identifier used for cron-based scheduling.
+     */
+    tz?: string | null;
+    /**
+     * Start boundary for job schedule.
+     */
+    start_at?: string | null;
+    /**
+     * End boundary for job schedule.
+     */
+    end_at?: string | null;
+    /**
+     * Maximum allowed executions for scheduled jobs.
+     */
+    max_runs?: number | null;
+    /**
+     * Custom metadata, input payload templates, tags, or execution options.
+     */
+    metadata?: {
+        [k: string]: any;
+    };
+}
+
+/**
+ * @public
+ */
 export declare interface CreatePermission {
     /**
      * Permission identifier. This field is unique and cannot contain **spaces**. Ex. `read:user`
@@ -4171,6 +4205,13 @@ export declare interface ESignConnection {
 /**
  * @public
  */
+export declare interface ExtendedPaginatedResult {
+    [k: string]: any;
+}
+
+/**
+ * @public
+ */
 export declare interface FvConnection {
     type: "fv";
     provider: "hitachi-h1";
@@ -4494,6 +4535,239 @@ declare class HttpService {
 }
 
 /**
+ * @public
+ */
+export declare interface Job {
+    /**
+     * Unique identifier of entity
+     */
+    id: string;
+    /**
+     * Job type
+     */
+    type: "slu";
+    /**
+     * Logical job name unique per tenant.
+     */
+    name: string;
+    /**
+     * Cron pattern. Null/undefined for one-time jobs.
+     */
+    pattern?: string | null;
+    /**
+     * Timezone identifier used for cron-based scheduling.
+     */
+    tz?: string | null;
+    /**
+     * Start boundary for job schedule.
+     */
+    start_at?: string | null;
+    /**
+     * End boundary for job schedule.
+     */
+    end_at?: string | null;
+    /**
+     * Maximum allowed executions for scheduled jobs.
+     */
+    max_runs?: number | null;
+    /**
+     * Total number of times the job has been executed.
+     */
+    runs_count: number;
+    /**
+     * Next planned run time for scheduled jobs.
+     */
+    next_run_at?: string | null;
+    /**
+     * Timestamp of the most recent execution.
+     */
+    last_run_at?: string | null;
+    /**
+     * Creation timestamp.
+     */
+    created_at: string;
+    /**
+     * Last update timestamp.
+     */
+    updated_at: string | null;
+    /**
+     * Custom metadata, input payload templates, tags, or execution options.
+     */
+    metadata: {
+        [k: string]: any;
+    };
+}
+
+/**
+ * @public
+ */
+export declare interface JobExecutionLogs {
+    /**
+     * Log level indicating the severity of the event
+     */
+    level: "debug" | "info" | "warn" | "error";
+    /**
+     * Unique identifier for the job record
+     */
+    job_id: string;
+    /**
+     * Unique identifier for the execution record
+     */
+    execution_id: string;
+    event: "create.success" | "create.failed" | "update.success" | "update.failed" | "delete.success" | "delete.failed";
+    error?: string;
+    [k: string]: any;
+}
+
+/**
+ * @public
+ */
+export declare interface JobRun {
+    /**
+     * Unique identifier of entity
+     */
+    id: string;
+    /**
+     * Job ID
+     */
+    job_id: string;
+    /**
+     * Execution state (e.g. `waiting`, `active`, `completed`, `failed`, `delayed`, `canceled`).
+     */
+    status: string;
+    /**
+     * Run count if this execution belongs to a scheduled job
+     */
+    run_count?: number | null;
+    /**
+     * Timestamp when the execution record was created.
+     */
+    created_at: string;
+    /**
+     * When this run becomes eligible to be processed (delays, retries).
+     */
+    available_at?: string | null;
+    /**
+     * Timestamp when execution actually began.
+     */
+    started_at?: string | null;
+    /**
+     * Timestamp when execution ended or reached terminal state.
+     */
+    finished_at?: string | null;
+    /**
+     * When the job should next be attempted (for retries).
+     */
+    next_attempt_at?: string | null;
+    /**
+     * Total attempts made for this execution.
+     */
+    attempts_made: number;
+    /**
+     * Maximum attempts allowed before marking failed.
+     */
+    max_attempts?: number | null;
+    /**
+     * Execution-specific metadata such as payload snapshot, error info, worker logs.
+     */
+    metadata: {
+        [k: string]: any;
+    };
+}
+
+declare class JobService extends HttpService {
+    /**
+     * @param queryParams Query parameters
+     * @param queryParams.limit Limit the number of results returned
+     * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+     * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+     * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+     * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+     */
+    getAll(queryParams?: {
+        limit?: number;
+        offset?: number;
+        q?: string;
+        sort_by?: string | string[];
+        fields?: string | string[];
+    }): Promise<{
+        total: number;
+        results: Job[];
+    }>;
+    /**
+     * @param data Job object
+     */
+    create(data: CreateJob): Promise<void>;
+    /**
+     * @param jobId Job identifier
+     */
+    get(jobId: string): Promise<Job>;
+    /**
+     * @param jobId Job identifier
+     */
+    remove(jobId: string): Promise<void>;
+    /**
+     * @param jobId Job identifier
+     * @param queryParams Query parameters
+     * @param queryParams.limit Limit the number of results returned
+     * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+     * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+     * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+     * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+     */
+    getExecutions(jobId: string, queryParams?: {
+        limit?: number;
+        offset?: number;
+        q?: string;
+        sort_by?: string | string[];
+        fields?: string | string[];
+    }): Promise<{
+        total: number;
+        results: JobRun[];
+    }>;
+    /**
+     * @param jobId Job identifier
+     * @param executionId Job Execution identifier
+     * @param queryParams Query parameters
+     * @param queryParams.limit Limit the number of results returned
+     * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+     * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+     * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+     * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+     */
+    getExecutionDetails(jobId: string, executionId: string, queryParams?: {
+        limit?: number;
+        offset?: number;
+        q?: string;
+        sort_by?: string | string[];
+        fields?: string | string[];
+    }): Promise<JobRun>;
+    /**
+     * @param jobId Job identifier
+     * @param executionId Job Execution identifier
+     * @param queryParams Query parameters
+     * @param queryParams.limit Limit the number of results returned
+     * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+     */
+    getExecutionLogs(jobId: string, executionId: string, queryParams?: {
+        limit?: number;
+        offset?: number;
+    }): Promise<{
+        total: number;
+        results: JobRun[];
+        limit: number;
+        offset: number;
+        length: number;
+        fields: string[];
+    }>;
+    /**
+     * @param jobId Job identifier
+     * @param executionId Job Execution identifier
+     */
+    retryExecution(jobId: string, executionId: string): Promise<void>;
+}
+
+/**
  * Public JWK. You can look at JWK specification from [here](https://www.rfc-editor.org/rfc/rfc7517)
  * @public
  */
@@ -4718,6 +4992,9 @@ declare class LogService extends HttpService {
         include_api?: boolean;
     }): Promise<{
         logs: LogEntry[];
+        limit: number;
+        offset: number;
+        length: number;
         interval?: string | number;
         stacked?: {
             interval: string;
@@ -5384,6 +5661,21 @@ export declare type MFAType = "sms" | "otp" | "push" | "webauthn" | "email" | "e
 /**
  * @public
  */
+export declare interface MinimalPagination {
+    /**
+     * Limit the number of results returned
+     */
+    limit?: number;
+    /**
+     * Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+     */
+    offset?: number;
+    [k: string]: any;
+}
+
+/**
+ * @public
+ */
 export declare type ModuleSettings = {
     /**
      * Update date in the ISO 8601 format according to universal time.
@@ -5802,6 +6094,7 @@ export declare class PlusAuthRestClient {
     readonly hooks: InstanceType<typeof HookService>;
     readonly keys: InstanceType<typeof KeyService>;
     readonly logs: InstanceType<typeof LogService>;
+    readonly jobs: InstanceType<typeof JobService>;
     readonly mfa: InstanceType<typeof MfaService>;
     readonly moduleSettings: InstanceType<typeof ModuleSettingService>;
     readonly providers: InstanceType<typeof ProviderService>;
@@ -7779,6 +8072,31 @@ export declare interface SubscriptionUsage {
      * Is feature enabled or not
      */
     user_management?: boolean;
+}
+
+/**
+ * @public
+ */
+export declare interface SyncLdapUsersJobLog {
+    /**
+     * Log level indicating the severity of the event
+     */
+    level: "debug" | "info" | "warn" | "error";
+    /**
+     * Unique identifier for the job record
+     */
+    job_id: string;
+    /**
+     * Unique identifier for the execution record
+     */
+    execution_id: string;
+    event: "create.success" | "create.failed" | "update.success" | "update.failed" | "delete.success" | "delete.failed";
+    error?: string;
+    user_id?: string;
+    external_user_id?: string;
+    user_name?: string;
+    fields?: string;
+    [k: string]: any;
 }
 
 /**
@@ -13816,9 +14134,20 @@ declare class UserService extends HttpService {
      */
     unassignRoleGroups(userId: string, roleGroupIdList: string[]): Promise<void>;
     /**
+     * Retrieve a list of user sessions with optional pagination. If no pagination parameters are provided, all sessions are returned.
+
      * @param userId User identifier
+     * @param queryParams Query parameters
+     * @param queryParams.limit Limit the number of results returned
+     * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
      */
-    getSessions(userId: string): Promise<UserSession[]>;
+    getSessions(userId: string, queryParams?: {
+        limit?: number;
+        offset?: number;
+    }): Promise<UserSession[] | {
+        total: number;
+        results: UserSession[];
+    }>;
     /**
      * @param userId User identifier
      */

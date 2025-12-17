@@ -2904,6 +2904,46 @@ export interface CreateHook {
 /**
  * @public
  */
+export interface CreateJob {
+  /**
+   * Job type
+   */
+  type?: "slu"
+  /**
+   * Logical job name unique per tenant.
+   */
+  name: string
+  /**
+   * Cron pattern. Null/undefined for one-time jobs.
+   */
+  pattern?: string | null
+  /**
+   * Timezone identifier used for cron-based scheduling.
+   */
+  tz?: string | null
+  /**
+   * Start boundary for job schedule.
+   */
+  start_at?: string | null
+  /**
+   * End boundary for job schedule.
+   */
+  end_at?: string | null
+  /**
+   * Maximum allowed executions for scheduled jobs.
+   */
+  max_runs?: number | null
+  /**
+   * Custom metadata, input payload templates, tags, or execution options.
+   */
+  metadata?: {
+    [k: string]: any
+  }
+}
+
+/**
+ * @public
+ */
 export interface CreatePermission {
   /**
    * Permission identifier. This field is unique and cannot contain **spaces**. Ex. `read:user`
@@ -4302,6 +4342,13 @@ export type EnterpriseConnection = {
 /**
  * @public
  */
+export interface ExtendedPaginatedResult {
+  [k: string]: any
+}
+
+/**
+ * @public
+ */
 export interface FVCredential {
   /**
    * Authenticator id
@@ -4580,6 +4627,153 @@ export interface Hook {
    * Update date in the ISO 8601 format according to universal time.
    */
   updated_at?: string | null
+}
+
+/**
+ * @public
+ */
+export interface JobExecutionLogs {
+  /**
+   * Log level indicating the severity of the event
+   */
+  level: "debug" | "info" | "warn" | "error"
+  /**
+   * Unique identifier for the job record
+   */
+  job_id: string
+  /**
+   * Unique identifier for the execution record
+   */
+  execution_id: string
+  event:
+    | "create.success"
+    | "create.failed"
+    | "update.success"
+    | "update.failed"
+    | "delete.success"
+    | "delete.failed"
+  error?: string
+  [k: string]: any
+}
+
+/**
+ * @public
+ */
+export interface JobRun {
+  /**
+   * Unique identifier of entity
+   */
+  id: string
+  /**
+   * Job ID
+   */
+  job_id: string
+  /**
+   * Execution state (e.g. `waiting`, `active`, `completed`, `failed`, `delayed`, `canceled`).
+   */
+  status: string
+  /**
+   * Run count if this execution belongs to a scheduled job
+   */
+  run_count?: number | null
+  /**
+   * Timestamp when the execution record was created.
+   */
+  created_at: string
+  /**
+   * When this run becomes eligible to be processed (delays, retries).
+   */
+  available_at?: string | null
+  /**
+   * Timestamp when execution actually began.
+   */
+  started_at?: string | null
+  /**
+   * Timestamp when execution ended or reached terminal state.
+   */
+  finished_at?: string | null
+  /**
+   * When the job should next be attempted (for retries).
+   */
+  next_attempt_at?: string | null
+  /**
+   * Total attempts made for this execution.
+   */
+  attempts_made: number
+  /**
+   * Maximum attempts allowed before marking failed.
+   */
+  max_attempts?: number | null
+  /**
+   * Execution-specific metadata such as payload snapshot, error info, worker logs.
+   */
+  metadata: {
+    [k: string]: any
+  }
+}
+
+/**
+ * @public
+ */
+export interface Job {
+  /**
+   * Unique identifier of entity
+   */
+  id: string
+  /**
+   * Job type
+   */
+  type: "slu"
+  /**
+   * Logical job name unique per tenant.
+   */
+  name: string
+  /**
+   * Cron pattern. Null/undefined for one-time jobs.
+   */
+  pattern?: string | null
+  /**
+   * Timezone identifier used for cron-based scheduling.
+   */
+  tz?: string | null
+  /**
+   * Start boundary for job schedule.
+   */
+  start_at?: string | null
+  /**
+   * End boundary for job schedule.
+   */
+  end_at?: string | null
+  /**
+   * Maximum allowed executions for scheduled jobs.
+   */
+  max_runs?: number | null
+  /**
+   * Total number of times the job has been executed.
+   */
+  runs_count: number
+  /**
+   * Next planned run time for scheduled jobs.
+   */
+  next_run_at?: string | null
+  /**
+   * Timestamp of the most recent execution.
+   */
+  last_run_at?: string | null
+  /**
+   * Creation timestamp.
+   */
+  created_at: string
+  /**
+   * Last update timestamp.
+   */
+  updated_at: string | null
+  /**
+   * Custom metadata, input payload templates, tags, or execution options.
+   */
+  metadata: {
+    [k: string]: any
+  }
 }
 
 /**
@@ -5389,6 +5583,21 @@ export interface MessagebirdSmsProvider {
      */
     originator: string
   }
+}
+
+/**
+ * @public
+ */
+export interface MinimalPagination {
+  /**
+   * Limit the number of results returned
+   */
+  limit?: number
+  /**
+   * Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   */
+  offset?: number
+  [k: string]: any
 }
 
 /**
@@ -7494,6 +7703,37 @@ export interface SubscriptionUsage {
    * Is feature enabled or not
    */
   user_management?: boolean
+}
+
+/**
+ * @public
+ */
+export interface SyncLdapUsersJobLog {
+  /**
+   * Log level indicating the severity of the event
+   */
+  level: "debug" | "info" | "warn" | "error"
+  /**
+   * Unique identifier for the job record
+   */
+  job_id: string
+  /**
+   * Unique identifier for the execution record
+   */
+  execution_id: string
+  event:
+    | "create.success"
+    | "create.failed"
+    | "update.success"
+    | "update.failed"
+    | "delete.success"
+    | "delete.failed"
+  error?: string
+  user_id?: string
+  external_user_id?: string
+  user_name?: string
+  fields?: string
+  [k: string]: any
 }
 
 /**

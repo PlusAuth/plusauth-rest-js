@@ -49,13 +49,4 @@ export class ConnectionService extends HttpService {
   async remove(name: string): Promise<void> {
     return await this.http.delete(`/connections/${name}`)
   }
-
-  /**
- * Only available for AD/LDAP connections
-
- * @param name Connection name
- */
-  async sync(name: string): Promise<void> {
-    return await this.http.get(`/connections/${name}/sync`)
-  }
 }

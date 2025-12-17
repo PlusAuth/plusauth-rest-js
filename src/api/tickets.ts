@@ -4,8 +4,10 @@ import { encodedQueryString } from "../utils"
 
 export class TicketService extends HttpService {
   /**
-   * @param data Ticket object
-   */
+ * One of `user_id` or `email` is required.
+
+ * @param data Ticket object
+ */
   async createPasswordResetTicket(data: CreateTicket): Promise<{ link: string }> {
     return await this.http.post(`/tickets/reset-password`, data)
   }
@@ -43,8 +45,10 @@ export class TicketService extends HttpService {
   }
 
   /**
-   * @param data Ticket object
-   */
+ * One of `user_id` or `email` is required.
+
+ * @param data Ticket object
+ */
   async createVerifyEmailTicket(data: CreateTicket): Promise<{ link: string }> {
     return await this.http.post(`/tickets/verify-email`, data)
   }

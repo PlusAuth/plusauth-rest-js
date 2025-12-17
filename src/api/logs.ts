@@ -55,6 +55,9 @@ Ex.: authorization.error,create.user
     include_api?: boolean
   }): Promise<{
     logs: LogEntry[]
+    limit: number
+    offset: number
+    length: number
     interval?: string | number
     stacked?: { interval: string; level: string; count: string | number }[]
   }> {

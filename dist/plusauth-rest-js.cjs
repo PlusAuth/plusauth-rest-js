@@ -241,14 +241,6 @@ var ConnectionService = class extends HttpService {
   async remove(name) {
     return await this.http.delete(`/connections/${name}`);
   }
-  /**
-   * Only available for AD/LDAP connections
-  
-   * @param name Connection name
-   */
-  async sync(name) {
-    return await this.http.get(`/connections/${name}/sync`);
-  }
 };
 
 // src/api/customDomains.ts
@@ -327,6 +319,81 @@ var HookService = class extends HttpService {
    */
   async remove(hookId) {
     return await this.http.delete(`/hooks/${hookId}`);
+  }
+};
+
+// src/api/jobs.ts
+var JobService = class extends HttpService {
+  /**
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getAll(queryParams) {
+    return await this.http.get(`/jobs/${encodedQueryString(queryParams)}`);
+  }
+  /**
+   * @param data Job object
+   */
+  async create(data) {
+    return await this.http.post(`/jobs/`, data);
+  }
+  /**
+   * @param jobId Job identifier
+   */
+  async get(jobId) {
+    return await this.http.get(`/jobs/${jobId}`);
+  }
+  /**
+   * @param jobId Job identifier
+   */
+  async remove(jobId) {
+    return await this.http.delete(`/jobs/${jobId}`);
+  }
+  /**
+   * @param jobId Job identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getExecutions(jobId, queryParams) {
+    return await this.http.get(`/jobs/${jobId}/runs${encodedQueryString(queryParams)}`);
+  }
+  /**
+   * @param jobId Job identifier
+   * @param executionId Job Execution identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
+   * @param queryParams.sort_by Properties that should be ordered by, with their ordering type. To define order type append it to the field with dot. You can pass this parameter multiple times or you can include all values separated by commas.
+   * @param queryParams.fields Include only defined fields. You can pass this parameter multiple times or you can include all values separated by commas.
+   */
+  async getExecutionDetails(jobId, executionId, queryParams) {
+    return await this.http.get(`/jobs/${jobId}/runs/${executionId}${encodedQueryString(queryParams)}`);
+  }
+  /**
+   * @param jobId Job identifier
+   * @param executionId Job Execution identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+   */
+  async getExecutionLogs(jobId, executionId, queryParams) {
+    return await this.http.get(`/jobs/${jobId}/runs/${executionId}/logs${encodedQueryString(queryParams)}`);
+  }
+  /**
+   * @param jobId Job identifier
+   * @param executionId Job Execution identifier
+   */
+  async retryExecution(jobId, executionId) {
+    return await this.http.post(`/jobs/${jobId}/runs/${executionId}/retry`);
   }
 };
 
@@ -984,10 +1051,15 @@ var UserService = class extends HttpService {
     return await this.http.delete(`/users/${userId}/role-groups/`, roleGroupIdList);
   }
   /**
+   * Retrieve a list of user sessions with optional pagination. If no pagination parameters are provided, all sessions are returned.
+  
    * @param userId User identifier
+   * @param queryParams Query parameters
+   * @param queryParams.limit Limit the number of results returned
+   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
    */
-  async getSessions(userId) {
-    return await this.http.get(`/users/${userId}/session/`);
+  async getSessions(userId, queryParams) {
+    return await this.http.get(`/users/${userId}/session/${encodedQueryString(queryParams)}`);
   }
   /**
    * @param userId User identifier
@@ -1038,6 +1110,7 @@ var PlusAuthRestClient = class {
     this.customDomains = new CustomDomainService(apiUri, this.options);
     this.hooks = new HookService(apiUri, this.options);
     this.keys = new KeyService(apiUri, this.options);
+    this.jobs = new JobService(apiUri, this.options);
     this.logs = new LogService(apiUri, this.options);
     this.mfa = new MfaService(apiUri, this.options);
     this.moduleSettings = new ModuleSettingService(apiUri, this.options);
