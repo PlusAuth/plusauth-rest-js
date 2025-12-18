@@ -38,7 +38,7 @@ Assuming `now` is `2001-01-01 12:00:00`, some examples are:
  * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
  * @param queryParams.from Filter logs occurred after this date. This can be a datetime string or date math expression.
  * @param queryParams.to Filter logs occurred until this date. This can be a datetime string or date math expression.
- * @param queryParams.q Filter logs occurred until this date. This can be a datetime string or date math expression.
+ * @param queryParams.q Additional query in [PlusAuth Query Language](/api/core/query-syntax) format.
  * @param queryParams.type Type/s of logs to be retrieved. Comma separated. Comma separated.
 Ex.: error,warning,info
  * @param queryParams.operation Retrieve logs belongs to one or more operation. Comma separated.
@@ -56,11 +56,12 @@ Ex.: authorization.error,create.user
     include_api?: boolean
   }): Promise<{
     logs: LogEntry[]
+    total: number
     limit: number
     offset: number
     length: number
-    interval?: string | number
-    stacked?: { interval: string; level: string; count: string | number }[]
+    interval?: number
+    stacked?: { interval: string; level: string; count: number }[]
   }> {
     return await this.http.get(`/logs/${encodedQueryString(queryParams)}`)
   }
