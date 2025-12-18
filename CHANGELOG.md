@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.4.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v2.3.0...v2.4.0) (2025-12-18)
+
+### Features
+
+* add job service ([ece41bb](https://github.com/PlusAuth/plusauth-rest-js/commit/ece41bbc4f70e6bd25a8e7a599c9e7301f34bfae))
+* add job service ([180ac2a](https://github.com/PlusAuth/plusauth-rest-js/commit/180ac2addcc4a9ce49d4ff74b6531cead162ac7b))
+
+### Type Improvements
+
+* client_ip_attr for radius ([a42cd79](https://github.com/PlusAuth/plusauth-rest-js/commit/a42cd79dd5816a880fba00f5933aebb2c2078035))
+* incorrect value for android sha25 fingerprint setting ([9241999](https://github.com/PlusAuth/plusauth-rest-js/commit/924199955aae19d8d54caf6265d84bb702b590fa))
+* invalid key for android sha25 fingerprint setting ([01ab62f](https://github.com/PlusAuth/plusauth-rest-js/commit/01ab62ff7d2a292ffa84d3881ed04eeefa1b1705))
+* log response model ([f84c1d1](https://github.com/PlusAuth/plusauth-rest-js/commit/f84c1d1b39171a39da117b66fc85b94badaea981))
+* remove updated_at from update client schema ([6f627c7](https://github.com/PlusAuth/plusauth-rest-js/commit/6f627c7514c3e6d1c277df05037ea83173723bd8))
+* tenant branding settings ([8ac4647](https://github.com/PlusAuth/plusauth-rest-js/commit/8ac46477562b283b6df23d925175d33b7864106d))
+* update job execution log interface ([e03d2d4](https://github.com/PlusAuth/plusauth-rest-js/commit/e03d2d46455dab05c79985f4e60da2fcacc5fdef))
+* update user schema ([af42feb](https://github.com/PlusAuth/plusauth-rest-js/commit/af42feb51080f7bfab95cad842412bf38a992fff))
+
 ## [2.3.0](https://github.com/PlusAuth/plusauth-rest-js/compare/v2.2.0...v2.3.0) (2025-05-22)
 
 ### Features

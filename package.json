@@ -1,6 +1,6 @@
 {
   "name": "@plusauth/plusauth-rest-js",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "PlusAuth JavaScript Rest Client",
   "type": "module",
   "browser": "./dist/plusauth-rest-js.iife.js",
