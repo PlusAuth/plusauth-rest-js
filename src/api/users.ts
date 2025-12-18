@@ -212,7 +212,10 @@ export class UserService extends HttpService {
   async getSessions(
     userId: string,
     queryParams?: { limit?: number; offset?: number },
-  ): Promise<UserSession[] | { total: number; results: UserSession[] }> {
+  ): Promise<
+    | UserSession[]
+    | { total: number; results: UserSession[]; limit: number; offset: number; length: number }
+  > {
     return await this.http.get(`/users/${userId}/session/${encodedQueryString(queryParams)}`)
   }
 
