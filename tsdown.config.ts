@@ -4,7 +4,7 @@ export default defineConfig([
   // Browser (IIFE)
   {
     entry: {
-      "plusauth-rest-js": "src/index.ts"
+      "plusauth-rest-js": "src/index.ts",
     },
     format: "iife",
     globalName: "PlusAuthRest",
@@ -12,26 +12,26 @@ export default defineConfig([
     target: "es2020",
     minify: true,
     sourcemap: false,
-    outDir: "dist"
+    outDir: "dist",
   },
 
   // ESM (Node / modern)
   {
     entry: {
-      "plusauth-rest-js": "src/index.ts"
+      "plusauth-rest-js": "src/index.ts",
     },
     format: "esm",
     platform: "node",
     target: ["es2020", "node20"],
     minify: false,
     sourcemap: true,
-    outDir: "dist"
+    outDir: "dist",
   },
 
   // CJS (Node)
   {
     entry: {
-      "plusauth-rest-js": "src/index.ts"
+      "plusauth-rest-js": "src/index.ts",
     },
     dts: false,
     format: "cjs",
@@ -39,6 +39,6 @@ export default defineConfig([
     target: "node20",
     minify: false,
     sourcemap: true,
-    outDir: "dist"
-  }
+    outDir: "dist",
+  },
 ])
