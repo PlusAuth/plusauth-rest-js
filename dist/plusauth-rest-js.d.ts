@@ -4614,8 +4614,15 @@ export declare interface JobExecutionLogs {
      * Unique identifier for the execution record
      */
     execution_id: string;
-    event: "create.success" | "create.failed" | "update.success" | "update.failed" | "delete.success" | "delete.failed";
-    error?: string;
+    /**
+     * Event identifier of the job execution log
+     */
+    event: string;
+    error?: string | {
+        error: string;
+        error_description: string;
+        [k: string]: any;
+    };
     [k: string]: any;
 }
 
@@ -4743,6 +4750,8 @@ declare class JobService extends HttpService {
         fields?: string | string[];
     }): Promise<JobRun>;
     /**
+     * Execution logs may contain additional properties depending on the job type.
+
      * @param jobId Job identifier
      * @param executionId Job Execution identifier
      * @param queryParams Query parameters
@@ -4754,7 +4763,7 @@ declare class JobService extends HttpService {
         offset?: number;
     }): Promise<{
         total: number;
-        results: JobRun[];
+        results: JobExecutionLogs[];
         limit: number;
         offset: number;
         length: number;
@@ -8086,7 +8095,11 @@ export declare interface SyncLdapUsersJobLog {
      */
     execution_id: string;
     event: "create.success" | "create.failed" | "update.success" | "update.failed" | "delete.success" | "delete.failed";
-    error?: string;
+    error?: string | {
+        error: string;
+        error_description: string;
+        [k: string]: any;
+    };
     user_id?: string;
     external_user_id?: string;
     user_name?: string;

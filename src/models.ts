@@ -4645,14 +4645,17 @@ export interface JobExecutionLogs {
    * Unique identifier for the execution record
    */
   execution_id: string
-  event:
-    | "create.success"
-    | "create.failed"
-    | "update.success"
-    | "update.failed"
-    | "delete.success"
-    | "delete.failed"
-  error?: string
+  /**
+   * Event identifier of the job execution log
+   */
+  event: string
+  error?:
+    | string
+    | {
+        error: string
+        error_description: string
+        [k: string]: any
+      }
   [k: string]: any
 }
 
@@ -7728,7 +7731,13 @@ export interface SyncLdapUsersJobLog {
     | "update.failed"
     | "delete.success"
     | "delete.failed"
-  error?: string
+  error?:
+    | string
+    | {
+        error: string
+        error_description: string
+        [k: string]: any
+      }
   user_id?: string
   external_user_id?: string
   user_name?: string

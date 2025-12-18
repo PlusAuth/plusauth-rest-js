@@ -1,5 +1,5 @@
 import { HttpService } from "../http"
-import type { CreateJob, Job, JobRun } from "../models"
+import type { CreateJob, Job, JobExecutionLogs, JobRun } from "../models"
 import { encodedQueryString } from "../utils"
 
 export class JobService extends HttpService {
@@ -91,19 +91,21 @@ export class JobService extends HttpService {
   }
 
   /**
-   * @param jobId Job identifier
-   * @param executionId Job Execution identifier
-   * @param queryParams Query parameters
-   * @param queryParams.limit Limit the number of results returned
-   * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
-   */
+ * Execution logs may contain additional properties depending on the job type.
+
+ * @param jobId Job identifier
+ * @param executionId Job Execution identifier
+ * @param queryParams Query parameters
+ * @param queryParams.limit Limit the number of results returned
+ * @param queryParams.offset Page number of records you wish to skip before selecting records. Final skipped records count would be `limit * offset`.
+ */
   async getExecutionLogs(
     jobId: string,
     executionId: string,
     queryParams?: { limit?: number; offset?: number },
   ): Promise<{
     total: number
-    results: JobRun[]
+    results: JobExecutionLogs[]
     limit: number
     offset: number
     length: number

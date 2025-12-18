@@ -339,6 +339,8 @@ var JobService = class extends HttpService {
     return await this.http.get(`/jobs/${jobId}/runs/${executionId}${encodedQueryString(queryParams)}`);
   }
   /**
+   * Execution logs may contain additional properties depending on the job type.
+  
    * @param jobId Job identifier
    * @param executionId Job Execution identifier
    * @param queryParams Query parameters
