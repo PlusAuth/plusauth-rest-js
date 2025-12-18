@@ -1,35 +1,5 @@
-Object.defineProperty(exports, '__esModule', { value: true });
-//#region rolldown:runtime
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __copyProps = (to, from, except, desc) => {
-	if (from && typeof from === "object" || typeof from === "function") {
-		for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
-			key = keys[i];
-			if (!__hasOwnProp.call(to, key) && key !== except) {
-				__defProp(to, key, {
-					get: ((k) => from[k]).bind(null, key),
-					enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
-				});
-			}
-		}
-	}
-	return to;
-};
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", {
-	value: mod,
-	enumerable: true
-}) : target, mod));
-
-//#endregion
-let _fastify_deepmerge = require("@fastify/deepmerge");
-_fastify_deepmerge = __toESM(_fastify_deepmerge);
-let cross_fetch = require("cross-fetch");
-cross_fetch = __toESM(cross_fetch);
+import deepmerger from "@fastify/deepmerge";
+import fetchW from "cross-fetch";
 
 //#region src/error.ts
 /**
@@ -45,11 +15,11 @@ var PlusAuthRestError = class extends Error {
 
 //#endregion
 //#region src/utils/fetch_wrapper.ts
-const fetchPn = cross_fetch.default;
+const fetchPn = fetchW;
 
 //#endregion
 //#region src/http.ts
-const deepmerge = (0, _fastify_deepmerge.default)();
+const deepmerge = deepmerger();
 /**
 * @internal
 */
@@ -82,9 +52,6 @@ async function fetchAsPromise(url, options) {
 * @public
 */
 var HttpService = class {
-	static {
-		this.prefix = "";
-	}
 	constructor(apiURL, options = {}) {
 		if (!apiURL) throw new Error("'apiURL' must be provided");
 		try {
@@ -130,6 +97,7 @@ var HttpService = class {
 		return this._baseUrl;
 	}
 };
+HttpService.prefix = "";
 
 //#endregion
 //#region src/utils/index.ts
@@ -1155,7 +1123,5 @@ var PlusAuthRestClient = class {
 var src_default = (apiUri, options = {}) => new PlusAuthRestClient(apiUri, options);
 
 //#endregion
-exports.PlusAuthRestClient = PlusAuthRestClient;
-exports.PlusAuthRestError = PlusAuthRestError;
-exports.default = src_default;
-//# sourceMappingURL=plusauth-rest-js.cjs.map
+export { PlusAuthRestClient, PlusAuthRestError, src_default as default };
+//# sourceMappingURL=plusauth-rest-js.mjs.map

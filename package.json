@@ -3,14 +3,17 @@
   "version": "2.3.0",
   "description": "PlusAuth JavaScript Rest Client",
   "type": "module",
-  "browser": "./dist/plusauth-rest-js.global.js",
+  "browser": "./dist/plusauth-rest-js.iife.js",
   "main": "./dist/plusauth-rest-js.cjs",
-  "module": "./dist/plusauth-rest-js.js",
-  "types": "./dist/plusauth-rest-js.d.ts",
-  "typings": "./dist/plusauth-rest-js.d.ts",
+  "module": "./dist/plusauth-rest-js.mjs",
+  "types": "./dist/plusauth-rest-js.d.mts",
+  "typings": "./dist/plusauth-rest-js.d.mts",
   "exports": {
-    "import": "./dist/plusauth-rest-js.js",
-    "require": "./dist/plusauth-rest-js.cjs"
+    ".": {
+      "import": "./dist/plusauth-rest-js.mjs",
+      "require": "./dist/plusauth-rest-js.cjs",
+      "types": "./dist/plusauth-rest-js.d.mts"
+    }
   },
   "files": [
     "dist"
@@ -21,11 +24,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npm run build:browser && npm run build:esm && npm run build:cjs && npm run build:dts",
-    "build:browser": "tsup --entry.plusauth-rest-js src/index.ts --format iife --minify",
-    "build:esm": "tsup --entry.plusauth-rest-js src/index.ts --format esm --target es2020,node20",
-    "build:cjs": "tsup --entry.plusauth-rest-js src/index.ts --format cjs --target node20",
-    "build:dts": "rimraf types && tsc --emitDeclarationOnly && api-extractor run",
+    "build": "tsdown",
     "lint": "biome check --fix --diagnostic-level=error",
     "release": "cross-env GITHUB_TOKEN=$GITHUB_TOKEN release-it"
   },
@@ -34,19 +33,15 @@
     "cross-fetch": "^4.1.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.1.2",
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@microsoft/api-extractor": "^7.52.8",
-    "@release-it/conventional-changelog": "^10.0.1",
-    "@swc/core": "^1.13.2",
-    "@types/node": "^24.10.0",
-    "concurrently": "^9.2.0",
+    "@biomejs/biome": "^2.3.10",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
+    "@release-it/conventional-changelog": "^10.0.4",
+    "@types/node": "^25.0.3",
     "conventional-changelog-conventionalcommits": "^9.1.0",
-    "release-it": "^19.0.4",
-    "rimraf": "^6.0.1",
-    "tsup": "^8.5.0",
-    "typescript": "^5.8.3"
+    "release-it": "^19.1.0",
+    "tsdown": "^0.18.1",
+    "typescript": "^5.9.3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

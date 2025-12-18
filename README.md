@@ -13,7 +13,7 @@ Table Of Content
 From PlusAuth CDN:
 ```html
 <!-- Latest release -->
-<script src="https://unpkg.com/@plusauth/plusauth-rest-js@2.2.0/dist/plusauth-rest-js.min.js"></script>
+<script src="https://unpkg.com/@plusauth/plusauth-rest-js@2.3.0/dist/plusauth-rest-js.iife.js"></script>
 ```
 
 With npm:
@@ -28,7 +28,7 @@ $ yarn add @plusauth/plusauth-rest-js
 
 # Usage
 
-## CDN Usage
+## Browser (CDN Usage)
 The library will be exposed to global as `PlusAuthRestClient`
 
 Initialize it like following:
@@ -37,7 +37,7 @@ const authToken = '<ACCESS_TOKEN>'
 const plusAuth = PlusAuthRestClient('https://<YOUR_TENANT_ID>.plusauth.com', { token: authToken })
 ```
 
-## NPM Usage
+## ESM (Modern Bundlers)
 ```js
 import { PlusAuthRestClient } from '@plusauth/plusauth-rest-js'
 
