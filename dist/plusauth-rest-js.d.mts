@@ -7407,7 +7407,6 @@ interface TenantAdministrator {
   id: string;
   owner: boolean;
   email: string;
-  user_id: string;
   invite_accepted: boolean;
 }
 /**
