@@ -22,12 +22,6 @@ async function parseFetchResponse(response: Response, options: CustomRequestOpti
   return await response.text()
 }
 
-function wrapInError(reject: (...args: any) => void) {
-  return (err: Error): void => {
-    reject(new PlusAuthRestError(err))
-  }
-}
-
 /**
  * @internal
  */
