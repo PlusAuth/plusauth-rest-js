@@ -1301,6 +1301,48 @@ type Connection = ({
       })[];
     };
   };
+} | {
+  type: "enterprise";
+  provider: "entra-id";
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id: string;
+    client_secret: string;
+    directory_id?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
 }) | {
   enabled: boolean;
   /**
@@ -2619,6 +2661,48 @@ type CreateConnection = ({
       })[];
     };
   };
+} | {
+  type: "enterprise";
+  provider: "entra-id";
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id: string;
+    client_secret: string;
+    directory_id?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
 }) | {
   enabled: boolean;
   /**
@@ -3205,7 +3289,7 @@ interface CreateUserIdentity {
    */
   connection: string;
   type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap";
+  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap" | "entra-id";
   /**
    * Raw user object from the connection
    */
@@ -3353,7 +3437,7 @@ interface CreateUser {
      */
     connection: string;
     type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap";
+    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap" | "entra-id";
     /**
      * Raw user object from the connection
      */
@@ -4069,7 +4153,95 @@ type EnterpriseConnection = {
       })[];
     };
   };
+} | {
+  type: "enterprise";
+  provider: "entra-id";
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id: string;
+    client_secret: string;
+    directory_id?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
 });
+/**
+ * @public
+ */
+interface EntraIdConnection {
+  type: "enterprise";
+  provider: "entra-id";
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id: string;
+    client_secret: string;
+    directory_id?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+}
 /**
  * @public
  */
@@ -7189,6 +7361,7 @@ interface SubscriptionUsage {
   "connections.enterprise.saml"?: boolean | number;
   "connections.enterprise.e_devlet"?: boolean | number;
   "connections.enterprise.ldap"?: boolean | number;
+  "connections.enterprise.entra_id"?: boolean | number;
   /**
    * Is feature enabled or not
    */
@@ -7661,6 +7834,7 @@ interface Tenant {
       "connections.enterprise.saml"?: boolean | number;
       "connections.enterprise.e_devlet"?: boolean | number;
       "connections.enterprise.ldap"?: boolean | number;
+      "connections.enterprise.entra_id"?: boolean | number;
       /**
        * Is feature enabled or not
        */
@@ -7946,6 +8120,7 @@ interface TenantSubscription {
     "connections.enterprise.saml"?: boolean | number;
     "connections.enterprise.e_devlet"?: boolean | number;
     "connections.enterprise.ldap"?: boolean | number;
+    "connections.enterprise.entra_id"?: boolean | number;
     /**
      * Is feature enabled or not
      */
@@ -9178,6 +9353,35 @@ type UpdateConnection = ({
     scopes?: string[];
     is_test?: boolean;
   };
+} | {
+  enabled?: boolean;
+  updated_at?: string | null;
+  created_at?: string;
+  is_default?: boolean;
+  type: "enterprise";
+  provider: "entra-id";
+  settings?: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id?: string;
+    client_secret?: string;
+    directory_id?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
 }) | {
   enabled?: boolean;
   /**
@@ -9853,7 +10057,69 @@ type UpdateEnterpriseConnection = {
     scopes?: string[];
     is_test?: boolean;
   };
+} | {
+  enabled?: boolean;
+  updated_at?: string | null;
+  created_at?: string;
+  is_default?: boolean;
+  type: "enterprise";
+  provider: "entra-id";
+  settings?: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id?: string;
+    client_secret?: string;
+    directory_id?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
 });
+/**
+ * @public
+ */
+interface UpdateEntraIdConnection {
+  enabled?: boolean;
+  updated_at?: string | null;
+  created_at?: string;
+  is_default?: boolean;
+  type: "enterprise";
+  provider: "entra-id";
+  settings?: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id?: string;
+    client_secret?: string;
+    directory_id?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+}
 /**
  * @public
  */
@@ -12537,7 +12803,7 @@ interface UserIdentity {
    */
   user_id: string;
   type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap";
+  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap" | "entra-id";
   /**
    * Raw user object from the connection
    */
@@ -12833,7 +13099,7 @@ interface User {
      */
     user_id: string;
     type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap";
+    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap" | "entra-id";
     /**
      * Raw user object from the connection
      */
@@ -14210,5 +14476,5 @@ declare class PlusAuthRestClient {
 }
 declare const _default: (apiUri: string, options?: Options) => PlusAuthRestClient;
 //#endregion
-export { AccountBlockingPolicy, AuthPlusAccount, AuthPlusCategory, AuthPlusDevice, BruteForcePolicy, Client, CommonCredential, Connection, CreateAuthPlusAccount, CreateAuthPlusCategory, CreateAuthPlusDevice, CreateClient, CreateConnection, CreateHook, CreateJob, CreatePermission, CreateResource, CreateRole, CreateRoleGroup, CreateTenant, CreateTenantAdministrator, CreateTenantCustomDomain, CreateTicket, CreateUser, CreateUserCredential, CreateUserIdentity, CustomSmsProvider, DataportSmsProvider, EDevletConnection, ESignConnection, EmailConnection, EmailProvider, EmailTemplate, EnterpriseConnection, ExtendedPaginatedResult, FVCredential, FvConnection, HOTPAuthPlusAccount, HOTPConnection, Hook, HookContext, Job, JobExecutionLogs, JobRun, Key, KeyType, LDAPConnection, LogEntry, MFA, MFAType, MessagebirdSmsProvider, MinimalPagination, ModuleSettings, NativePushProvider, NetGSMSmsProvider, OTPConnection, OTPCredential, PaginatedResult, Pagination, PasswordCredential, PasswordPolicy, Permission, PlanType, PlusAuthRestClient, PlusAuthRestError, Provider, PublicKey, PushAuthPlusAccount, PushConnection, PushCredential, PushNotificationProvider, RadiusSettings, Resource, ResourceAuthorizedClient, Role, RoleGroup, SAMLConnection, SmsConnection, SmsProvider, SmsTemplate, SocialConnection, SubscriptionUsage, SyncLdapUsersJobLog, TOTPAuthPlusAccount, TOTPConnection, Template, TemplateType, Tenant, TenantAdministrator, TenantCustomDomain, TenantSettings, TenantStats, TenantSubscription, ThreeGBilisimSmsProvider, Ticket, TwilioSmsProvider, UpdateAuthPlusAccount, UpdateAuthPlusCategory, UpdateAuthPlusDevice, UpdateClient, UpdateConnection, UpdateEDevletConnection, UpdateESignConnection, UpdateEmailConnection, UpdateEmailProvider, UpdateEnterpriseConnection, UpdateFvConnection, UpdateHook, UpdateLDAPConnection, UpdateMFA, UpdateModuleSettings, UpdateOTPConnection, UpdateProvider, UpdatePushConnection, UpdatePushNotificationProvider, UpdateResource, UpdateRole, UpdateRoleGroup, UpdateSAMLConnection, UpdateSmsConnection, UpdateSmsProvider, UpdateSocialConnection, UpdateTemplate, UpdateTenantSettings, UpdateTicket, UpdateUser, UpdateWebAuthNConnection, User, UserCredential, UserIdentity, UserPasswordHistory, UserRbacTree, UserSession, View, WebAuthNConnection, WebAuthNCredential, _default as default };
+export { AccountBlockingPolicy, AuthPlusAccount, AuthPlusCategory, AuthPlusDevice, BruteForcePolicy, Client, CommonCredential, Connection, CreateAuthPlusAccount, CreateAuthPlusCategory, CreateAuthPlusDevice, CreateClient, CreateConnection, CreateHook, CreateJob, CreatePermission, CreateResource, CreateRole, CreateRoleGroup, CreateTenant, CreateTenantAdministrator, CreateTenantCustomDomain, CreateTicket, CreateUser, CreateUserCredential, CreateUserIdentity, CustomSmsProvider, DataportSmsProvider, EDevletConnection, ESignConnection, EmailConnection, EmailProvider, EmailTemplate, EnterpriseConnection, EntraIdConnection, ExtendedPaginatedResult, FVCredential, FvConnection, HOTPAuthPlusAccount, HOTPConnection, Hook, HookContext, Job, JobExecutionLogs, JobRun, Key, KeyType, LDAPConnection, LogEntry, MFA, MFAType, MessagebirdSmsProvider, MinimalPagination, ModuleSettings, NativePushProvider, NetGSMSmsProvider, OTPConnection, OTPCredential, PaginatedResult, Pagination, PasswordCredential, PasswordPolicy, Permission, PlanType, PlusAuthRestClient, PlusAuthRestError, Provider, PublicKey, PushAuthPlusAccount, PushConnection, PushCredential, PushNotificationProvider, RadiusSettings, Resource, ResourceAuthorizedClient, Role, RoleGroup, SAMLConnection, SmsConnection, SmsProvider, SmsTemplate, SocialConnection, SubscriptionUsage, SyncLdapUsersJobLog, TOTPAuthPlusAccount, TOTPConnection, Template, TemplateType, Tenant, TenantAdministrator, TenantCustomDomain, TenantSettings, TenantStats, TenantSubscription, ThreeGBilisimSmsProvider, Ticket, TwilioSmsProvider, UpdateAuthPlusAccount, UpdateAuthPlusCategory, UpdateAuthPlusDevice, UpdateClient, UpdateConnection, UpdateEDevletConnection, UpdateESignConnection, UpdateEmailConnection, UpdateEmailProvider, UpdateEnterpriseConnection, UpdateEntraIdConnection, UpdateFvConnection, UpdateHook, UpdateLDAPConnection, UpdateMFA, UpdateModuleSettings, UpdateOTPConnection, UpdateProvider, UpdatePushConnection, UpdatePushNotificationProvider, UpdateResource, UpdateRole, UpdateRoleGroup, UpdateSAMLConnection, UpdateSmsConnection, UpdateSmsProvider, UpdateSocialConnection, UpdateTemplate, UpdateTenantSettings, UpdateTicket, UpdateUser, UpdateWebAuthNConnection, User, UserCredential, UserIdentity, UserPasswordHistory, UserRbacTree, UserSession, View, WebAuthNConnection, WebAuthNCredential, _default as default };
 //# sourceMappingURL=plusauth-rest-js.d.mts.map

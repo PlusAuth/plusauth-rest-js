@@ -1345,6 +1345,49 @@ export type Connection =
             }
           }
         }
+      | {
+          type: "enterprise"
+          provider: "entra-id"
+          enabled: boolean
+          /**
+           * Is connection using custom scripts
+           */
+          is_custom?: boolean
+          /**
+           * Connection name
+           */
+          name: string
+          /**
+           * Update date in the ISO 8601 format according to universal time.
+           */
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          settings: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Enable/Disable user profile synchronization on each login
+             */
+            sync_user_profile?: boolean
+            client_id: string
+            client_secret: string
+            directory_id?: string
+            /**
+             * @maxItems 50
+             */
+            scopes?: string[]
+          }
+        }
     )
   | {
       enabled: boolean
@@ -2737,6 +2780,49 @@ export type CreateConnection =
             }
           }
         }
+      | {
+          type: "enterprise"
+          provider: "entra-id"
+          enabled: boolean
+          /**
+           * Is connection using custom scripts
+           */
+          is_custom?: boolean
+          /**
+           * Connection name
+           */
+          name: string
+          /**
+           * Update date in the ISO 8601 format according to universal time.
+           */
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          settings: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Enable/Disable user profile synchronization on each login
+             */
+            sync_user_profile?: boolean
+            client_id: string
+            client_secret: string
+            directory_id?: string
+            /**
+             * @maxItems 50
+             */
+            scopes?: string[]
+          }
+        }
     )
   | {
       enabled: boolean
@@ -3398,6 +3484,7 @@ export interface CreateUserIdentity {
     | "saml"
     | "e-devlet"
     | "ldap"
+    | "entra-id"
   /**
    * Raw user object from the connection
    */
@@ -3575,6 +3662,7 @@ export interface CreateUser {
       | "saml"
       | "e-devlet"
       | "ldap"
+      | "entra-id"
     /**
      * Raw user object from the connection
      */
@@ -4337,7 +4425,97 @@ export type EnterpriseConnection = {
         }
       }
     }
+  | {
+      type: "enterprise"
+      provider: "entra-id"
+      enabled: boolean
+      /**
+       * Is connection using custom scripts
+       */
+      is_custom?: boolean
+      /**
+       * Connection name
+       */
+      name: string
+      /**
+       * Update date in the ISO 8601 format according to universal time.
+       */
+      updated_at?: string | null
+      /**
+       * Creation date in the ISO 8601 format according to universal time.
+       */
+      created_at?: string
+      settings: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[]
+        branding?: {
+          show_in_login?: boolean
+          logo_url?: string
+          display_name?: string
+        }
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean
+        client_id: string
+        client_secret: string
+        directory_id?: string
+        /**
+         * @maxItems 50
+         */
+        scopes?: string[]
+      }
+    }
 )
+
+/**
+ * @public
+ */
+export interface EntraIdConnection {
+  type: "enterprise"
+  provider: "entra-id"
+  enabled: boolean
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean
+  /**
+   * Connection name
+   */
+  name: string
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[]
+    branding?: {
+      show_in_login?: boolean
+      logo_url?: string
+      display_name?: string
+    }
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean
+    client_id: string
+    client_secret: string
+    directory_id?: string
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[]
+  }
+}
 
 /**
  * @public
@@ -7636,6 +7814,7 @@ export interface SubscriptionUsage {
   "connections.enterprise.saml"?: boolean | number
   "connections.enterprise.e_devlet"?: boolean | number
   "connections.enterprise.ldap"?: boolean | number
+  "connections.enterprise.entra_id"?: boolean | number
   /**
    * Is feature enabled or not
    */
@@ -8149,6 +8328,7 @@ export interface Tenant {
       "connections.enterprise.saml"?: boolean | number
       "connections.enterprise.e_devlet"?: boolean | number
       "connections.enterprise.ldap"?: boolean | number
+      "connections.enterprise.entra_id"?: boolean | number
       /**
        * Is feature enabled or not
        */
@@ -8440,6 +8620,7 @@ export interface TenantSubscription {
     "connections.enterprise.saml"?: boolean | number
     "connections.enterprise.e_devlet"?: boolean | number
     "connections.enterprise.ldap"?: boolean | number
+    "connections.enterprise.entra_id"?: boolean | number
     /**
      * Is feature enabled or not
      */
@@ -9744,6 +9925,36 @@ export type UpdateConnection =
             is_test?: boolean
           }
         }
+      | {
+          enabled?: boolean
+          updated_at?: string | null
+          created_at?: string
+          is_default?: boolean
+          type: "enterprise"
+          provider: "entra-id"
+          settings?: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Enable/Disable user profile synchronization on each login
+             */
+            sync_user_profile?: boolean
+            client_id?: string
+            client_secret?: string
+            directory_id?: string
+            /**
+             * @maxItems 50
+             */
+            scopes?: string[]
+          }
+        }
     )
   | {
       enabled?: boolean
@@ -10454,7 +10665,71 @@ export type UpdateEnterpriseConnection = {
         is_test?: boolean
       }
     }
+  | {
+      enabled?: boolean
+      updated_at?: string | null
+      created_at?: string
+      is_default?: boolean
+      type: "enterprise"
+      provider: "entra-id"
+      settings?: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[]
+        branding?: {
+          show_in_login?: boolean
+          logo_url?: string
+          display_name?: string
+        }
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean
+        client_id?: string
+        client_secret?: string
+        directory_id?: string
+        /**
+         * @maxItems 50
+         */
+        scopes?: string[]
+      }
+    }
 )
+
+/**
+ * @public
+ */
+export interface UpdateEntraIdConnection {
+  enabled?: boolean
+  updated_at?: string | null
+  created_at?: string
+  is_default?: boolean
+  type: "enterprise"
+  provider: "entra-id"
+  settings?: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[]
+    branding?: {
+      show_in_login?: boolean
+      logo_url?: string
+      display_name?: string
+    }
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean
+    client_id?: string
+    client_secret?: string
+    directory_id?: string
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[]
+  }
+}
 
 /**
  * @public
@@ -13301,6 +13576,7 @@ export interface UserIdentity {
     | "saml"
     | "e-devlet"
     | "ldap"
+    | "entra-id"
   /**
    * Raw user object from the connection
    */
@@ -13644,6 +13920,7 @@ export interface User {
       | "saml"
       | "e-devlet"
       | "ldap"
+      | "entra-id"
     /**
      * Raw user object from the connection
      */
