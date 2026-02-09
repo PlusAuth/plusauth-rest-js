@@ -923,14 +923,30 @@ export type Connection =
           type: "social"
           provider:
             | "amazon"
+            | "asana"
+            | "bitbucket"
+            | "discord"
             | "dribbble"
             | "facebook"
+            | "figma"
+            | "fresh-books"
             | "github"
             | "google"
+            | "hubspot"
+            | "hugging-face"
+            | "linear"
             | "linkedin"
+            | "mastodon"
+            | "notion"
             | "microsoft"
+            | "patreon"
             | "slack"
             | "spotify"
+            | "twitch"
+            | "gitlab"
+            | "wordpress"
+            | "yandex"
+            | "zoom"
           enabled: boolean
           /**
            * Is connection using custom scripts
@@ -1106,6 +1122,91 @@ export type Connection =
             sync_user_profile?: boolean
             consumer_key: string
             consumer_secret: string
+            /**
+             * @maxItems 50
+             */
+            scopes?: string[]
+          }
+        }
+      | {
+          type: "social"
+          provider: "tiktok"
+          enabled: boolean
+          /**
+           * Is connection using custom scripts
+           */
+          is_custom?: boolean
+          /**
+           * Connection name
+           */
+          name: string
+          /**
+           * Update date in the ISO 8601 format according to universal time.
+           */
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          settings: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Enable/Disable user profile synchronization on each login
+             */
+            sync_user_profile?: boolean
+            client_key: string
+            client_secret: string
+            /**
+             * @maxItems 50
+             */
+            scopes?: string[]
+          }
+        }
+      | {
+          type: "social"
+          provider: "zitadel"
+          enabled: boolean
+          /**
+           * Is connection using custom scripts
+           */
+          is_custom?: boolean
+          /**
+           * Connection name
+           */
+          name: string
+          /**
+           * Update date in the ISO 8601 format according to universal time.
+           */
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          settings: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Enable/Disable user profile synchronization on each login
+             */
+            sync_user_profile?: boolean
+            client_id: string
+            client_secret: string
+            issuer: string
             /**
              * @maxItems 50
              */
@@ -2358,14 +2459,30 @@ export type CreateConnection =
           type: "social"
           provider:
             | "amazon"
+            | "asana"
+            | "bitbucket"
+            | "discord"
             | "dribbble"
             | "facebook"
+            | "figma"
+            | "fresh-books"
             | "github"
             | "google"
+            | "hubspot"
+            | "hugging-face"
+            | "linear"
             | "linkedin"
+            | "mastodon"
+            | "notion"
             | "microsoft"
+            | "patreon"
             | "slack"
             | "spotify"
+            | "twitch"
+            | "gitlab"
+            | "wordpress"
+            | "yandex"
+            | "zoom"
           enabled: boolean
           /**
            * Is connection using custom scripts
@@ -2541,6 +2658,91 @@ export type CreateConnection =
             sync_user_profile?: boolean
             consumer_key: string
             consumer_secret: string
+            /**
+             * @maxItems 50
+             */
+            scopes?: string[]
+          }
+        }
+      | {
+          type: "social"
+          provider: "tiktok"
+          enabled: boolean
+          /**
+           * Is connection using custom scripts
+           */
+          is_custom?: boolean
+          /**
+           * Connection name
+           */
+          name: string
+          /**
+           * Update date in the ISO 8601 format according to universal time.
+           */
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          settings: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Enable/Disable user profile synchronization on each login
+             */
+            sync_user_profile?: boolean
+            client_key: string
+            client_secret: string
+            /**
+             * @maxItems 50
+             */
+            scopes?: string[]
+          }
+        }
+      | {
+          type: "social"
+          provider: "zitadel"
+          enabled: boolean
+          /**
+           * Is connection using custom scripts
+           */
+          is_custom?: boolean
+          /**
+           * Connection name
+           */
+          name: string
+          /**
+           * Update date in the ISO 8601 format according to universal time.
+           */
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          settings: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Enable/Disable user profile synchronization on each login
+             */
+            sync_user_profile?: boolean
+            client_id: string
+            client_secret: string
+            issuer: string
             /**
              * @maxItems 50
              */
@@ -3471,16 +3673,34 @@ export interface CreateUserIdentity {
     | "custom-oauth2"
     | "amazon"
     | "apple"
+    | "asana"
+    | "bitbucket"
+    | "discord"
     | "dribbble"
     | "dropbox"
     | "facebook"
+    | "figma"
+    | "fresh-books"
     | "github"
     | "google"
+    | "hubspot"
+    | "hugging-face"
+    | "linear"
     | "linkedin"
+    | "mastodon"
     | "microsoft"
+    | "notion"
+    | "patreon"
     | "slack"
     | "spotify"
+    | "tiktok"
     | "twitter"
+    | "twitch"
+    | "yandex"
+    | "gitlab"
+    | "wordpress"
+    | "zitadel"
+    | "zoom"
     | "saml"
     | "e-devlet"
     | "ldap"
@@ -3578,34 +3798,34 @@ export interface CreateUser {
       /**
        * Identifier for user address. Example: `Delivery Address`, `Billing Address` etc.
        */
-      id: string | null
-      is_primary: boolean | null
-      first_name: string | null
-      last_name: string | null
+      id?: string | null
+      is_primary?: boolean | null
+      first_name?: string | null
+      last_name?: string | null
       /**
        * State, province, prefecture or region component.
        */
-      state: string | null
+      state?: string | null
       /**
        * Country name component.
        */
-      country: string | null
+      country?: string | null
       /**
        * City or locality component.
        */
-      city: string | null
+      city?: string | null
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address: string | null
+      street_address?: string | null
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address_2: string | null
+      street_address_2?: string | null
       /**
        * Zip code or postal code component.
        */
-      zip_code: string | null
+      zip_code?: string | null
     }[]
   }
   /**
@@ -3649,16 +3869,34 @@ export interface CreateUser {
       | "custom-oauth2"
       | "amazon"
       | "apple"
+      | "asana"
+      | "bitbucket"
+      | "discord"
       | "dribbble"
       | "dropbox"
       | "facebook"
+      | "figma"
+      | "fresh-books"
       | "github"
       | "google"
+      | "hubspot"
+      | "hugging-face"
+      | "linear"
       | "linkedin"
+      | "mastodon"
       | "microsoft"
+      | "notion"
+      | "patreon"
       | "slack"
       | "spotify"
+      | "tiktok"
       | "twitter"
+      | "twitch"
+      | "yandex"
+      | "gitlab"
+      | "wordpress"
+      | "zitadel"
+      | "zoom"
       | "saml"
       | "e-devlet"
       | "ldap"
@@ -7599,14 +7837,30 @@ export type SocialConnection = {
       type: "social"
       provider:
         | "amazon"
+        | "asana"
+        | "bitbucket"
+        | "discord"
         | "dribbble"
         | "facebook"
+        | "figma"
+        | "fresh-books"
         | "github"
         | "google"
+        | "hubspot"
+        | "hugging-face"
+        | "linear"
         | "linkedin"
+        | "mastodon"
+        | "notion"
         | "microsoft"
+        | "patreon"
         | "slack"
         | "spotify"
+        | "twitch"
+        | "gitlab"
+        | "wordpress"
+        | "yandex"
+        | "zoom"
       enabled: boolean
       /**
        * Is connection using custom scripts
@@ -7782,6 +8036,91 @@ export type SocialConnection = {
         sync_user_profile?: boolean
         consumer_key: string
         consumer_secret: string
+        /**
+         * @maxItems 50
+         */
+        scopes?: string[]
+      }
+    }
+  | {
+      type: "social"
+      provider: "tiktok"
+      enabled: boolean
+      /**
+       * Is connection using custom scripts
+       */
+      is_custom?: boolean
+      /**
+       * Connection name
+       */
+      name: string
+      /**
+       * Update date in the ISO 8601 format according to universal time.
+       */
+      updated_at?: string | null
+      /**
+       * Creation date in the ISO 8601 format according to universal time.
+       */
+      created_at?: string
+      settings: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[]
+        branding?: {
+          show_in_login?: boolean
+          logo_url?: string
+          display_name?: string
+        }
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean
+        client_key: string
+        client_secret: string
+        /**
+         * @maxItems 50
+         */
+        scopes?: string[]
+      }
+    }
+  | {
+      type: "social"
+      provider: "zitadel"
+      enabled: boolean
+      /**
+       * Is connection using custom scripts
+       */
+      is_custom?: boolean
+      /**
+       * Connection name
+       */
+      name: string
+      /**
+       * Update date in the ISO 8601 format according to universal time.
+       */
+      updated_at?: string | null
+      /**
+       * Creation date in the ISO 8601 format according to universal time.
+       */
+      created_at?: string
+      settings: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[]
+        branding?: {
+          show_in_login?: boolean
+          logo_url?: string
+          display_name?: string
+        }
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean
+        client_id: string
+        client_secret: string
+        issuer: string
         /**
          * @maxItems 50
          */
@@ -9571,14 +9910,30 @@ export type UpdateConnection =
           type: "social"
           provider?:
             | "amazon"
+            | "asana"
+            | "bitbucket"
+            | "discord"
             | "dribbble"
             | "facebook"
+            | "figma"
+            | "fresh-books"
             | "github"
             | "google"
+            | "hubspot"
+            | "hugging-face"
+            | "linear"
             | "linkedin"
+            | "mastodon"
+            | "notion"
             | "microsoft"
+            | "patreon"
             | "slack"
             | "spotify"
+            | "twitch"
+            | "gitlab"
+            | "wordpress"
+            | "yandex"
+            | "zoom"
           enabled?: boolean
           /**
            * Update date in the ISO 8601 format according to universal time.
@@ -9725,6 +10080,77 @@ export type UpdateConnection =
             sync_user_profile?: boolean
             consumer_key?: string
             consumer_secret?: string
+            /**
+             * @maxItems 50
+             */
+            scopes?: string[]
+          }
+        }
+      | {
+          is_default?: boolean
+          type: "social"
+          provider?: "tiktok"
+          enabled?: boolean
+          /**
+           * Update date in the ISO 8601 format according to universal time.
+           */
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          settings?: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Enable/Disable user profile synchronization on each login
+             */
+            sync_user_profile?: boolean
+            client_key?: string
+            client_secret?: string
+            /**
+             * @maxItems 50
+             */
+            scopes?: string[]
+          }
+        }
+      | {
+          is_default?: boolean
+          type: "social"
+          provider?: "zitadel"
+          enabled?: boolean
+          /**
+           * Update date in the ISO 8601 format according to universal time.
+           */
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          settings?: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Enable/Disable user profile synchronization on each login
+             */
+            sync_user_profile?: boolean
+            client_id?: string
+            client_secret?: string
+            issuer?: string
             /**
              * @maxItems 50
              */
@@ -12773,14 +13199,30 @@ export type UpdateSocialConnection = {
       type: "social"
       provider?:
         | "amazon"
+        | "asana"
+        | "bitbucket"
+        | "discord"
         | "dribbble"
         | "facebook"
+        | "figma"
+        | "fresh-books"
         | "github"
         | "google"
+        | "hubspot"
+        | "hugging-face"
+        | "linear"
         | "linkedin"
+        | "mastodon"
+        | "notion"
         | "microsoft"
+        | "patreon"
         | "slack"
         | "spotify"
+        | "twitch"
+        | "gitlab"
+        | "wordpress"
+        | "yandex"
+        | "zoom"
       enabled?: boolean
       /**
        * Update date in the ISO 8601 format according to universal time.
@@ -12927,6 +13369,77 @@ export type UpdateSocialConnection = {
         sync_user_profile?: boolean
         consumer_key?: string
         consumer_secret?: string
+        /**
+         * @maxItems 50
+         */
+        scopes?: string[]
+      }
+    }
+  | {
+      is_default?: boolean
+      type: "social"
+      provider?: "tiktok"
+      enabled?: boolean
+      /**
+       * Update date in the ISO 8601 format according to universal time.
+       */
+      updated_at?: string | null
+      /**
+       * Creation date in the ISO 8601 format according to universal time.
+       */
+      created_at?: string
+      settings?: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[]
+        branding?: {
+          show_in_login?: boolean
+          logo_url?: string
+          display_name?: string
+        }
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean
+        client_key?: string
+        client_secret?: string
+        /**
+         * @maxItems 50
+         */
+        scopes?: string[]
+      }
+    }
+  | {
+      is_default?: boolean
+      type: "social"
+      provider?: "zitadel"
+      enabled?: boolean
+      /**
+       * Update date in the ISO 8601 format according to universal time.
+       */
+      updated_at?: string | null
+      /**
+       * Creation date in the ISO 8601 format according to universal time.
+       */
+      created_at?: string
+      settings?: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[]
+        branding?: {
+          show_in_login?: boolean
+          logo_url?: string
+          display_name?: string
+        }
+        /**
+         * Enable/Disable user profile synchronization on each login
+         */
+        sync_user_profile?: boolean
+        client_id?: string
+        client_secret?: string
+        issuer?: string
         /**
          * @maxItems 50
          */
@@ -13241,34 +13754,34 @@ export interface UpdateUser {
       /**
        * Identifier for user address. Example: `Delivery Address`, `Billing Address` etc.
        */
-      id: string | null
-      is_primary: boolean | null
-      first_name: string | null
-      last_name: string | null
+      id?: string | null
+      is_primary?: boolean | null
+      first_name?: string | null
+      last_name?: string | null
       /**
        * State, province, prefecture or region component.
        */
-      state: string | null
+      state?: string | null
       /**
        * Country name component.
        */
-      country: string | null
+      country?: string | null
       /**
        * City or locality component.
        */
-      city: string | null
+      city?: string | null
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address: string | null
+      street_address?: string | null
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address_2: string | null
+      street_address_2?: string | null
       /**
        * Zip code or postal code component.
        */
-      zip_code: string | null
+      zip_code?: string | null
     }[]
   }
   /**
@@ -13563,16 +14076,34 @@ export interface UserIdentity {
     | "custom-oauth2"
     | "amazon"
     | "apple"
+    | "asana"
+    | "bitbucket"
+    | "discord"
     | "dribbble"
     | "dropbox"
     | "facebook"
+    | "figma"
+    | "fresh-books"
     | "github"
     | "google"
+    | "hubspot"
+    | "hugging-face"
+    | "linear"
     | "linkedin"
+    | "mastodon"
     | "microsoft"
+    | "notion"
+    | "patreon"
     | "slack"
     | "spotify"
+    | "tiktok"
     | "twitter"
+    | "twitch"
+    | "yandex"
+    | "gitlab"
+    | "wordpress"
+    | "zitadel"
+    | "zoom"
     | "saml"
     | "e-devlet"
     | "ldap"
@@ -13907,16 +14438,34 @@ export interface User {
       | "custom-oauth2"
       | "amazon"
       | "apple"
+      | "asana"
+      | "bitbucket"
+      | "discord"
       | "dribbble"
       | "dropbox"
       | "facebook"
+      | "figma"
+      | "fresh-books"
       | "github"
       | "google"
+      | "hubspot"
+      | "hugging-face"
+      | "linear"
       | "linkedin"
+      | "mastodon"
       | "microsoft"
+      | "notion"
+      | "patreon"
       | "slack"
       | "spotify"
+      | "tiktok"
       | "twitter"
+      | "twitch"
+      | "yandex"
+      | "gitlab"
+      | "wordpress"
+      | "zitadel"
+      | "zoom"
       | "saml"
       | "e-devlet"
       | "ldap"
@@ -14091,34 +14640,34 @@ export interface User {
       /**
        * Identifier for user address. Example: `Delivery Address`, `Billing Address` etc.
        */
-      id: string | null
-      is_primary: boolean | null
-      first_name: string | null
-      last_name: string | null
+      id?: string | null
+      is_primary?: boolean | null
+      first_name?: string | null
+      last_name?: string | null
       /**
        * State, province, prefecture or region component.
        */
-      state: string | null
+      state?: string | null
       /**
        * Country name component.
        */
-      country: string | null
+      country?: string | null
       /**
        * City or locality component.
        */
-      city: string | null
+      city?: string | null
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address: string | null
+      street_address?: string | null
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address_2: string | null
+      street_address_2?: string | null
       /**
        * Zip code or postal code component.
        */
-      zip_code: string | null
+      zip_code?: string | null
     }[]
   }
   /**

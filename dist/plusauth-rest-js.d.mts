@@ -909,7 +909,7 @@ type Connection = ({
   };
 } | {
   type: "social";
-  provider: "amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify";
+  provider: "amazon" | "asana" | "bitbucket" | "discord" | "dribbble" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "notion" | "microsoft" | "patreon" | "slack" | "spotify" | "twitch" | "gitlab" | "wordpress" | "yandex" | "zoom";
   enabled: boolean;
   /**
    * Is connection using custom scripts
@@ -1082,6 +1082,89 @@ type Connection = ({
     sync_user_profile?: boolean;
     consumer_key: string;
     consumer_secret: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+} | {
+  type: "social";
+  provider: "tiktok";
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_key: string;
+    client_secret: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+} | {
+  type: "social";
+  provider: "zitadel";
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id: string;
+    client_secret: string;
+    issuer: string;
     /**
      * @maxItems 50
      */
@@ -2269,7 +2352,7 @@ type CreateConnection = ({
   };
 } | {
   type: "social";
-  provider: "amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify";
+  provider: "amazon" | "asana" | "bitbucket" | "discord" | "dribbble" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "notion" | "microsoft" | "patreon" | "slack" | "spotify" | "twitch" | "gitlab" | "wordpress" | "yandex" | "zoom";
   enabled: boolean;
   /**
    * Is connection using custom scripts
@@ -2442,6 +2525,89 @@ type CreateConnection = ({
     sync_user_profile?: boolean;
     consumer_key: string;
     consumer_secret: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+} | {
+  type: "social";
+  provider: "tiktok";
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_key: string;
+    client_secret: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+} | {
+  type: "social";
+  provider: "zitadel";
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id: string;
+    client_secret: string;
+    issuer: string;
     /**
      * @maxItems 50
      */
@@ -3289,7 +3455,7 @@ interface CreateUserIdentity {
    */
   connection: string;
   type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap" | "entra-id";
+  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
   /**
    * Raw user object from the connection
    */
@@ -3382,34 +3548,34 @@ interface CreateUser {
       /**
        * Identifier for user address. Example: `Delivery Address`, `Billing Address` etc.
        */
-      id: string | null;
-      is_primary: boolean | null;
-      first_name: string | null;
-      last_name: string | null;
+      id?: string | null;
+      is_primary?: boolean | null;
+      first_name?: string | null;
+      last_name?: string | null;
       /**
        * State, province, prefecture or region component.
        */
-      state: string | null;
+      state?: string | null;
       /**
        * Country name component.
        */
-      country: string | null;
+      country?: string | null;
       /**
        * City or locality component.
        */
-      city: string | null;
+      city?: string | null;
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address: string | null;
+      street_address?: string | null;
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address_2: string | null;
+      street_address_2?: string | null;
       /**
        * Zip code or postal code component.
        */
-      zip_code: string | null;
+      zip_code?: string | null;
     }[];
   };
   /**
@@ -3437,7 +3603,7 @@ interface CreateUser {
      */
     connection: string;
     type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap" | "entra-id";
+    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
     /**
      * Raw user object from the connection
      */
@@ -7161,7 +7327,7 @@ type SocialConnection = {
   };
 } | {
   type: "social";
-  provider: "amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify";
+  provider: "amazon" | "asana" | "bitbucket" | "discord" | "dribbble" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "notion" | "microsoft" | "patreon" | "slack" | "spotify" | "twitch" | "gitlab" | "wordpress" | "yandex" | "zoom";
   enabled: boolean;
   /**
    * Is connection using custom scripts
@@ -7334,6 +7500,89 @@ type SocialConnection = {
     sync_user_profile?: boolean;
     consumer_key: string;
     consumer_secret: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+} | {
+  type: "social";
+  provider: "tiktok";
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_key: string;
+    client_secret: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+} | {
+  type: "social";
+  provider: "zitadel";
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id: string;
+    client_secret: string;
+    issuer: string;
     /**
      * @maxItems 50
      */
@@ -9029,7 +9278,7 @@ type UpdateConnection = ({
 } | {
   is_default?: boolean;
   type: "social";
-  provider?: "amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify";
+  provider?: "amazon" | "asana" | "bitbucket" | "discord" | "dribbble" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "notion" | "microsoft" | "patreon" | "slack" | "spotify" | "twitch" | "gitlab" | "wordpress" | "yandex" | "zoom";
   enabled?: boolean;
   /**
    * Update date in the ISO 8601 format according to universal time.
@@ -9173,6 +9422,75 @@ type UpdateConnection = ({
     sync_user_profile?: boolean;
     consumer_key?: string;
     consumer_secret?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+} | {
+  is_default?: boolean;
+  type: "social";
+  provider?: "tiktok";
+  enabled?: boolean;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings?: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_key?: string;
+    client_secret?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+} | {
+  is_default?: boolean;
+  type: "social";
+  provider?: "zitadel";
+  enabled?: boolean;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings?: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id?: string;
+    client_secret?: string;
+    issuer?: string;
     /**
      * @maxItems 50
      */
@@ -12075,7 +12393,7 @@ type UpdateSocialConnection = {
 } | {
   is_default?: boolean;
   type: "social";
-  provider?: "amazon" | "dribbble" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify";
+  provider?: "amazon" | "asana" | "bitbucket" | "discord" | "dribbble" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "notion" | "microsoft" | "patreon" | "slack" | "spotify" | "twitch" | "gitlab" | "wordpress" | "yandex" | "zoom";
   enabled?: boolean;
   /**
    * Update date in the ISO 8601 format according to universal time.
@@ -12219,6 +12537,75 @@ type UpdateSocialConnection = {
     sync_user_profile?: boolean;
     consumer_key?: string;
     consumer_secret?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+} | {
+  is_default?: boolean;
+  type: "social";
+  provider?: "tiktok";
+  enabled?: boolean;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings?: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_key?: string;
+    client_secret?: string;
+    /**
+     * @maxItems 50
+     */
+    scopes?: string[];
+  };
+} | {
+  is_default?: boolean;
+  type: "social";
+  provider?: "zitadel";
+  enabled?: boolean;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  settings?: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Enable/Disable user profile synchronization on each login
+     */
+    sync_user_profile?: boolean;
+    client_id?: string;
+    client_secret?: string;
+    issuer?: string;
     /**
      * @maxItems 50
      */
@@ -12515,34 +12902,34 @@ interface UpdateUser {
       /**
        * Identifier for user address. Example: `Delivery Address`, `Billing Address` etc.
        */
-      id: string | null;
-      is_primary: boolean | null;
-      first_name: string | null;
-      last_name: string | null;
+      id?: string | null;
+      is_primary?: boolean | null;
+      first_name?: string | null;
+      last_name?: string | null;
       /**
        * State, province, prefecture or region component.
        */
-      state: string | null;
+      state?: string | null;
       /**
        * Country name component.
        */
-      country: string | null;
+      country?: string | null;
       /**
        * City or locality component.
        */
-      city: string | null;
+      city?: string | null;
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address: string | null;
+      street_address?: string | null;
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address_2: string | null;
+      street_address_2?: string | null;
       /**
        * Zip code or postal code component.
        */
-      zip_code: string | null;
+      zip_code?: string | null;
     }[];
   };
   /**
@@ -12803,7 +13190,7 @@ interface UserIdentity {
    */
   user_id: string;
   type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap" | "entra-id";
+  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
   /**
    * Raw user object from the connection
    */
@@ -13099,7 +13486,7 @@ interface User {
      */
     user_id: string;
     type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "dribbble" | "dropbox" | "facebook" | "github" | "google" | "linkedin" | "microsoft" | "slack" | "spotify" | "twitter" | "saml" | "e-devlet" | "ldap" | "entra-id";
+    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
     /**
      * Raw user object from the connection
      */
@@ -13270,34 +13657,34 @@ interface User {
       /**
        * Identifier for user address. Example: `Delivery Address`, `Billing Address` etc.
        */
-      id: string | null;
-      is_primary: boolean | null;
-      first_name: string | null;
-      last_name: string | null;
+      id?: string | null;
+      is_primary?: boolean | null;
+      first_name?: string | null;
+      last_name?: string | null;
       /**
        * State, province, prefecture or region component.
        */
-      state: string | null;
+      state?: string | null;
       /**
        * Country name component.
        */
-      country: string | null;
+      country?: string | null;
       /**
        * City or locality component.
        */
-      city: string | null;
+      city?: string | null;
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address: string | null;
+      street_address?: string | null;
       /**
        * Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field may contain multiple lines, separated by newline characters.
        */
-      street_address_2: string | null;
+      street_address_2?: string | null;
       /**
        * Zip code or postal code component.
        */
-      zip_code: string | null;
+      zip_code?: string | null;
     }[];
   };
   /**
