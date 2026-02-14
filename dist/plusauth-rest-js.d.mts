@@ -4754,6 +4754,12 @@ interface JobRun {
   metadata: {
     [k: string]: any;
   };
+  /**
+   * Execution result
+   */
+  result: {
+    [k: string]: any;
+  };
 }
 /**
  * @public
