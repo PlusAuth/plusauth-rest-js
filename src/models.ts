@@ -5130,6 +5130,16 @@ export interface JobRun {
     [k: string]: any
   }
   /**
+   * Current progress of the job execution. Returned only when the job is running.
+   */
+  progress?:
+    | string
+    | boolean
+    | number
+    | {
+        [k: string]: any
+      }
+  /**
    * Execution result
    */
   result: {
