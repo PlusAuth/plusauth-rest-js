@@ -1605,6 +1605,10 @@ export type Connection =
           logo_url?: string
           display_name?: string
         }
+        attestation_type?: ("direct" | "enterprise" | "none") | null
+        user_verification?: ("required" | "preferred" | "discouraged") | null
+        authenticator_attachment?: ("platform" | "cross-platform") | null
+        timeout?: number | null
       }
     }
 
@@ -3141,6 +3145,10 @@ export type CreateConnection =
           logo_url?: string
           display_name?: string
         }
+        attestation_type?: ("direct" | "enterprise" | "none") | null
+        user_verification?: ("required" | "preferred" | "discouraged") | null
+        authenticator_attachment?: ("platform" | "cross-platform") | null
+        timeout?: number | null
       }
     }
 
@@ -3632,13 +3640,15 @@ export type CreateUserCredential =
       type: "webauthn"
       details: {
         id: string
-        publicKey: {
-          /**
-           * This interface was referenced by `undefined`'s JSON-Schema definition
-           * via the `patternProperty` "^(0|[1-9][0-9]*)$".
-           */
-          [k: string]: number
-        }
+        publicKey:
+          | string
+          | {
+              /**
+               * This interface was referenced by `undefined`'s JSON-Schema definition
+               * via the `patternProperty` "^(0|[1-9][0-9]*)$".
+               */
+              [k: string]: number
+            }
         counter: number
         transports?: ("ble" | "cable" | "hybrid" | "internal" | "nfc" | "smart-card" | "usb")[]
       }
@@ -5968,7 +5978,12 @@ export type MFA =
        * Creation date in the ISO 8601 format according to universal time.
        */
       created_at?: string
-      settings: {}
+      settings: {
+        attestation_type?: ("direct" | "enterprise" | "none") | null
+        user_verification?: ("required" | "preferred" | "discouraged") | null
+        authenticator_attachment?: ("platform" | "cross-platform") | null
+        timeout?: number | null
+      }
     }
   | {
       type: "e-sign"
@@ -10505,6 +10520,10 @@ export type UpdateConnection =
           logo_url?: string
           display_name?: string
         }
+        attestation_type?: ("direct" | "enterprise" | "none") | null
+        user_verification?: ("required" | "preferred" | "discouraged") | null
+        authenticator_attachment?: ("platform" | "cross-platform") | null
+        timeout?: number | null
       }
     }
 
@@ -11896,7 +11915,12 @@ export type UpdateMFA =
        * Creation date in the ISO 8601 format according to universal time.
        */
       created_at?: string
-      settings?: {}
+      settings?: {
+        attestation_type?: ("direct" | "enterprise" | "none") | null
+        user_verification?: ("required" | "preferred" | "discouraged") | null
+        authenticator_attachment?: ("platform" | "cross-platform") | null
+        timeout?: number | null
+      }
     }
   | {
       type?: "e-sign"
@@ -13842,6 +13866,10 @@ export interface UpdateWebAuthNConnection {
       logo_url?: string
       display_name?: string
     }
+    attestation_type?: ("direct" | "enterprise" | "none") | null
+    user_verification?: ("required" | "preferred" | "discouraged") | null
+    authenticator_attachment?: ("platform" | "cross-platform") | null
+    timeout?: number | null
   }
 }
 
@@ -14039,13 +14067,15 @@ export type UserCredential =
       type: "webauthn"
       details: {
         id: string
-        publicKey: {
-          /**
-           * This interface was referenced by `undefined`'s JSON-Schema definition
-           * via the `patternProperty` "^(0|[1-9][0-9]*)$".
-           */
-          [k: string]: number
-        }
+        publicKey:
+          | string
+          | {
+              /**
+               * This interface was referenced by `undefined`'s JSON-Schema definition
+               * via the `patternProperty` "^(0|[1-9][0-9]*)$".
+               */
+              [k: string]: number
+            }
         counter: number
         transports?: ("ble" | "cable" | "hybrid" | "internal" | "nfc" | "smart-card" | "usb")[]
       }
@@ -14404,13 +14434,15 @@ export interface User {
         type: "webauthn"
         details: {
           id: string
-          publicKey: {
-            /**
-             * This interface was referenced by `undefined`'s JSON-Schema definition
-             * via the `patternProperty` "^(0|[1-9][0-9]*)$".
-             */
-            [k: string]: number
-          }
+          publicKey:
+            | string
+            | {
+                /**
+                 * This interface was referenced by `undefined`'s JSON-Schema definition
+                 * via the `patternProperty` "^(0|[1-9][0-9]*)$".
+                 */
+                [k: string]: number
+              }
           counter: number
           transports?: ("ble" | "cable" | "hybrid" | "internal" | "nfc" | "smart-card" | "usb")[]
         }
@@ -14790,9 +14822,11 @@ export interface View {
     | "mfa-webauthn"
     | "password-recovery"
     | "passwordless-email"
+    | "passwordless-webauthn"
     | "passwordless-otp"
     | "passwordless-push"
     | "passwordless-sms"
+    | "password-challenge"
     | "register"
     | "reset-password"
     | "verify-email"
@@ -14832,6 +14866,10 @@ export interface WebAuthNConnection {
       logo_url?: string
       display_name?: string
     }
+    attestation_type?: ("direct" | "enterprise" | "none") | null
+    user_verification?: ("required" | "preferred" | "discouraged") | null
+    authenticator_attachment?: ("platform" | "cross-platform") | null
+    timeout?: number | null
   }
 }
 
@@ -14858,13 +14896,15 @@ export interface WebAuthNCredential {
   type: "webauthn"
   details: {
     id: string
-    publicKey: {
-      /**
-       * This interface was referenced by `undefined`'s JSON-Schema definition
-       * via the `patternProperty` "^(0|[1-9][0-9]*)$".
-       */
-      [k: string]: number
-    }
+    publicKey:
+      | string
+      | {
+          /**
+           * This interface was referenced by `undefined`'s JSON-Schema definition
+           * via the `patternProperty` "^(0|[1-9][0-9]*)$".
+           */
+          [k: string]: number
+        }
     counter: number
     transports?: ("ble" | "cable" | "hybrid" | "internal" | "nfc" | "smart-card" | "usb")[]
   }

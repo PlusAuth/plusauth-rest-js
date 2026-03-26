@@ -1540,6 +1540,10 @@ type Connection = ({
       logo_url?: string;
       display_name?: string;
     };
+    attestation_type?: ("direct" | "enterprise" | "none") | null;
+    user_verification?: ("required" | "preferred" | "discouraged") | null;
+    authenticator_attachment?: ("platform" | "cross-platform") | null;
+    timeout?: number | null;
   };
 };
 /**
@@ -2983,6 +2987,10 @@ type CreateConnection = ({
       logo_url?: string;
       display_name?: string;
     };
+    attestation_type?: ("direct" | "enterprise" | "none") | null;
+    user_verification?: ("required" | "preferred" | "discouraged") | null;
+    authenticator_attachment?: ("platform" | "cross-platform") | null;
+    timeout?: number | null;
   };
 };
 /**
@@ -3431,7 +3439,7 @@ type CreateUserCredential = {
   type: "webauthn";
   details: {
     id: string;
-    publicKey: {
+    publicKey: string | {
       /**
        * This interface was referenced by `undefined`'s JSON-Schema definition
        * via the `patternProperty` "^(0|[1-9][0-9]*)$".
@@ -5546,7 +5554,12 @@ type MFA = {
    * Creation date in the ISO 8601 format according to universal time.
    */
   created_at?: string;
-  settings: {};
+  settings: {
+    attestation_type?: ("direct" | "enterprise" | "none") | null;
+    user_verification?: ("required" | "preferred" | "discouraged") | null;
+    authenticator_attachment?: ("platform" | "cross-platform") | null;
+    timeout?: number | null;
+  };
 } | {
   type: "e-sign";
   provider: "plusauth";
@@ -9818,6 +9831,10 @@ type UpdateConnection = ({
       logo_url?: string;
       display_name?: string;
     };
+    attestation_type?: ("direct" | "enterprise" | "none") | null;
+    user_verification?: ("required" | "preferred" | "discouraged") | null;
+    authenticator_attachment?: ("platform" | "cross-platform") | null;
+    timeout?: number | null;
   };
 };
 /**
@@ -11142,7 +11159,12 @@ type UpdateMFA = {
    * Creation date in the ISO 8601 format according to universal time.
    */
   created_at?: string;
-  settings?: {};
+  settings?: {
+    attestation_type?: ("direct" | "enterprise" | "none") | null;
+    user_verification?: ("required" | "preferred" | "discouraged") | null;
+    authenticator_attachment?: ("platform" | "cross-platform") | null;
+    timeout?: number | null;
+  };
 } | {
   type?: "e-sign";
   provider?: "plusauth";
@@ -12985,6 +13007,10 @@ interface UpdateWebAuthNConnection {
       logo_url?: string;
       display_name?: string;
     };
+    attestation_type?: ("direct" | "enterprise" | "none") | null;
+    user_verification?: ("required" | "preferred" | "discouraged") | null;
+    authenticator_attachment?: ("platform" | "cross-platform") | null;
+    timeout?: number | null;
   };
 }
 /**
@@ -13166,7 +13192,7 @@ type UserCredential = {
   type: "webauthn";
   details: {
     id: string;
-    publicKey: {
+    publicKey: string | {
       /**
        * This interface was referenced by `undefined`'s JSON-Schema definition
        * via the `patternProperty` "^(0|[1-9][0-9]*)$".
@@ -13465,7 +13491,7 @@ interface User {
     type: "webauthn";
     details: {
       id: string;
-      publicKey: {
+      publicKey: string | {
         /**
          * This interface was referenced by `undefined`'s JSON-Schema definition
          * via the `patternProperty` "^(0|[1-9][0-9]*)$".
@@ -13784,7 +13810,7 @@ interface UserSession {
 interface View {
   is_default: boolean;
   content: string;
-  type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error";
+  type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-webauthn" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "password-challenge" | "register" | "reset-password" | "verify-email" | "error";
 }
 /**
  * @public
@@ -13819,6 +13845,10 @@ interface WebAuthNConnection {
       logo_url?: string;
       display_name?: string;
     };
+    attestation_type?: ("direct" | "enterprise" | "none") | null;
+    user_verification?: ("required" | "preferred" | "discouraged") | null;
+    authenticator_attachment?: ("platform" | "cross-platform") | null;
+    timeout?: number | null;
   };
 }
 /**
@@ -13844,7 +13874,7 @@ interface WebAuthNCredential {
   type: "webauthn";
   details: {
     id: string;
-    publicKey: {
+    publicKey: string | {
       /**
        * This interface was referenced by `undefined`'s JSON-Schema definition
        * via the `patternProperty` "^(0|[1-9][0-9]*)$".
@@ -14789,12 +14819,12 @@ declare class ViewService extends HttpService {
   /**
    * @param type
    */
-  get(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error"): Promise<View>;
+  get(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-webauthn" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "password-challenge" | "register" | "reset-password" | "verify-email" | "error"): Promise<View>;
   /**
    * @param type
    * @param data View content. Pass null or empty to reset to default
    */
-  update(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "register" | "reset-password" | "verify-email" | "error", data: string | null): Promise<View>;
+  update(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-webauthn" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "password-challenge" | "register" | "reset-password" | "verify-email" | "error", data: string | null): Promise<View>;
 }
 //#endregion
 //#region src/error.d.ts
