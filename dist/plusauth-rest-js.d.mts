@@ -140,6 +140,18 @@ interface AuthPlusDevice {
 /**
  * @public
  */
+interface AuthPlusPushProvider {
+  type: "push";
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  provider: "auth_plus";
+  settings: {};
+}
+/**
+ * @public
+ */
 interface BruteForcePolicy {
   enabled: boolean;
   /**
@@ -1426,7 +1438,42 @@ type Connection = ({
      */
     scopes?: string[];
   };
-}) | {
+}) | ({
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  type: "push";
+  provider: "auth_plus";
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients: string[];
+    branding: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Push notification strategy
+     */
+    strategy: "code" | "prompt";
+  };
+} | {
   enabled: boolean;
   /**
    * Is connection using custom scripts
@@ -1510,7 +1557,7 @@ type Connection = ({
      */
     strategy: "code" | "prompt";
   };
-} | {
+}) | {
   type: "webauthn";
   provider: "plusauth";
   enabled: boolean;
@@ -2873,7 +2920,42 @@ type CreateConnection = ({
      */
     scopes?: string[];
   };
-}) | {
+}) | ({
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  type: "push";
+  provider: "auth_plus";
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients: string[];
+    branding: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Push notification strategy
+     */
+    strategy: "code" | "prompt";
+  };
+} | {
   enabled: boolean;
   /**
    * Is connection using custom scripts
@@ -2957,7 +3039,7 @@ type CreateConnection = ({
      */
     strategy: "code" | "prompt";
   };
-} | {
+}) | {
   type: "webauthn";
   provider: "plusauth";
   enabled: boolean;
@@ -3164,6 +3246,7 @@ interface CreateTenant {
       display_name?: string | null;
     };
     default_strategy?: string | null;
+    mfa_enforcement?: "enforced" | "optional" | "never";
     user_self_deletion?: {
       /**
        * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -3463,7 +3546,7 @@ interface CreateUserIdentity {
    */
   connection: string;
   type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
+  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "auth_plus" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
   /**
    * Raw user object from the connection
    */
@@ -3611,7 +3694,7 @@ interface CreateUser {
      */
     connection: string;
     type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
+    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "auth_plus" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
     /**
      * Raw user object from the connection
      */
@@ -4992,7 +5075,29 @@ interface LogEntry {
 /**
  * @public
  */
-type MFA = {
+type MFA = ({
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  type: "push";
+  provider: "auth_plus";
+  settings: {
+    /**
+     * Push notification strategy
+     */
+    strategy: "code" | "prompt";
+  };
+} | {
   enabled: boolean;
   /**
    * Is connection using custom scripts
@@ -5063,7 +5168,7 @@ type MFA = {
      */
     strategy: "code" | "prompt";
   };
-} | ({
+}) | ({
   enabled: boolean;
   /**
    * Is connection using custom scripts
@@ -6233,7 +6338,15 @@ type Provider = ({
      */
     from?: string;
   };
-}) | {
+}) | ({
+  type: "push";
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  provider: "auth_plus";
+  settings: {};
+} | {
   type: "push";
   /**
    * Is connection using custom scripts
@@ -6291,7 +6404,7 @@ type Provider = ({
       production: boolean;
     };
   };
-};
+});
 /**
  * @public
  */
@@ -6377,7 +6490,42 @@ interface PushAuthPlusAccount {
 type PushConnection = {
   type?: "push";
   [k: string]: any;
-} & {
+} & ({
+  enabled: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  type: "push";
+  provider: "auth_plus";
+  settings: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients: string[];
+    branding: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Push notification strategy
+     */
+    strategy: "code" | "prompt";
+  };
+} | {
   enabled: boolean;
   /**
    * Is connection using custom scripts
@@ -6461,7 +6609,7 @@ type PushConnection = {
      */
     strategy: "code" | "prompt";
   };
-};
+});
 /**
  * @public
  */
@@ -6531,7 +6679,15 @@ interface PushCredential {
 type PushNotificationProvider = {
   type?: "push";
   [k: string]: any;
-} & {
+} & ({
+  type: "push";
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  provider: "auth_plus";
+  settings: {};
+} | {
   type: "push";
   /**
    * Is connection using custom scripts
@@ -6589,7 +6745,7 @@ type PushNotificationProvider = {
       production: boolean;
     };
   };
-};
+});
 /**
  * @public
  */
@@ -7888,6 +8044,7 @@ interface Tenant {
       display_name?: string | null;
     };
     default_strategy?: string | null;
+    mfa_enforcement?: "enforced" | "optional" | "never";
     user_self_deletion?: {
       /**
        * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -8193,6 +8350,7 @@ interface TenantSettings {
     display_name?: string | null;
   };
   default_strategy?: string | null;
+  mfa_enforcement?: "enforced" | "optional" | "never";
   user_self_deletion?: {
     /**
      * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -9725,7 +9883,42 @@ type UpdateConnection = ({
      */
     scopes?: string[];
   };
-}) | {
+}) | ({
+  enabled?: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name?: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  type?: "push";
+  provider?: "auth_plus";
+  settings?: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Push notification strategy
+     */
+    strategy?: "code" | "prompt";
+  };
+} | {
   enabled?: boolean;
   /**
    * Is connection using custom scripts
@@ -9809,7 +10002,7 @@ type UpdateConnection = ({
      */
     strategy?: "code" | "prompt";
   };
-} | {
+}) | {
   type?: "webauthn";
   provider?: "plusauth";
   enabled?: boolean;
@@ -10593,7 +10786,29 @@ interface UpdateLDAPConnection {
 /**
  * @public
  */
-type UpdateMFA = {
+type UpdateMFA = ({
+  enabled?: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  type?: "push";
+  provider?: "auth_plus";
+  settings?: {
+    /**
+     * Push notification strategy
+     */
+    strategy?: "code" | "prompt";
+  };
+} | {
   enabled?: boolean;
   /**
    * Is connection using custom scripts
@@ -10664,7 +10879,7 @@ type UpdateMFA = {
      */
     strategy?: "code" | "prompt";
   };
-} | ({
+}) | ({
   enabled?: boolean;
   /**
    * Is connection using custom scripts
@@ -11538,7 +11753,15 @@ type UpdateProvider = ({
      */
     from?: string;
   };
-}) | {
+}) | ({
+  type: "push";
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  provider: "auth_plus";
+  settings?: {};
+} | {
   type: "push";
   /**
    * Is connection using custom scripts
@@ -11596,14 +11819,49 @@ type UpdateProvider = ({
       production?: boolean;
     };
   };
-};
+});
 /**
  * @public
  */
 type UpdatePushConnection = {
   type?: "push";
   [k: string]: any;
-} & {
+} & ({
+  enabled?: boolean;
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  /**
+   * Connection name
+   */
+  name?: string;
+  /**
+   * Update date in the ISO 8601 format according to universal time.
+   */
+  updated_at?: string | null;
+  /**
+   * Creation date in the ISO 8601 format according to universal time.
+   */
+  created_at?: string;
+  type?: "push";
+  provider?: "auth_plus";
+  settings?: {
+    /**
+     * @maxItems 1000
+     */
+    enabled_clients?: string[];
+    branding?: {
+      show_in_login?: boolean;
+      logo_url?: string;
+      display_name?: string;
+    };
+    /**
+     * Push notification strategy
+     */
+    strategy?: "code" | "prompt";
+  };
+} | {
   enabled?: boolean;
   /**
    * Is connection using custom scripts
@@ -11687,14 +11945,22 @@ type UpdatePushConnection = {
      */
     strategy?: "code" | "prompt";
   };
-};
+});
 /**
  * @public
  */
 type UpdatePushNotificationProvider = {
   type?: "push";
   [k: string]: any;
-} & {
+} & ({
+  type: "push";
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean;
+  provider: "auth_plus";
+  settings?: {};
+} | {
   type: "push";
   /**
    * Is connection using custom scripts
@@ -11752,7 +12018,7 @@ type UpdatePushNotificationProvider = {
       production?: boolean;
     };
   };
-};
+});
 /**
  * Resource Object with name and description properties.
  * @public
@@ -12685,6 +12951,7 @@ interface UpdateTenantSettings {
     display_name?: string | null;
   };
   default_strategy?: string | null;
+  mfa_enforcement?: "enforced" | "optional" | "never";
   user_self_deletion?: {
     /**
      * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -13228,7 +13495,7 @@ interface UserIdentity {
    */
   user_id: string;
   type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
+  provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "auth_plus" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
   /**
    * Raw user object from the connection
    */
@@ -13524,7 +13791,7 @@ interface User {
      */
     user_id: string;
     type: "sms" | "push" | "webauthn" | "email" | "social" | "enterprise";
-    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
+    provider: "twilio" | "netgsm" | "3gbilisim" | "dataport" | "messagebird" | "custom" | "auth_plus" | "native" | "plusauth" | "aws_ses" | "postmark" | "sendgrid" | "smtp" | "custom-oauth2" | "amazon" | "apple" | "asana" | "bitbucket" | "discord" | "dribbble" | "dropbox" | "facebook" | "figma" | "fresh-books" | "github" | "google" | "hubspot" | "hugging-face" | "linear" | "linkedin" | "mastodon" | "microsoft" | "notion" | "patreon" | "slack" | "spotify" | "tiktok" | "twitter" | "twitch" | "yandex" | "gitlab" | "wordpress" | "zitadel" | "zoom" | "saml" | "e-devlet" | "ldap" | "entra-id";
     /**
      * Raw user object from the connection
      */
@@ -13810,7 +14077,7 @@ interface UserSession {
 interface View {
   is_default: boolean;
   content: string;
-  type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-webauthn" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "password-challenge" | "register" | "reset-password" | "verify-email" | "error";
+  type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless" | "passwordless-email" | "passwordless-webauthn" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "password-challenge" | "register" | "reset-password" | "verify-email" | "error";
 }
 /**
  * @public
@@ -14819,12 +15086,12 @@ declare class ViewService extends HttpService {
   /**
    * @param type
    */
-  get(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-webauthn" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "password-challenge" | "register" | "reset-password" | "verify-email" | "error"): Promise<View>;
+  get(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless" | "passwordless-email" | "passwordless-webauthn" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "password-challenge" | "register" | "reset-password" | "verify-email" | "error"): Promise<View>;
   /**
    * @param type
    * @param data View content. Pass null or empty to reset to default
    */
-  update(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless-email" | "passwordless-webauthn" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "password-challenge" | "register" | "reset-password" | "verify-email" | "error", data: string | null): Promise<View>;
+  update(type: "account-linking" | "account-deletion" | "consent" | "fill-missing" | "login" | "logout-success" | "logout-confirm" | "mfa" | "mfa-email" | "mfa-fv" | "mfa-otp" | "mfa-push" | "mfa-sms" | "mfa-webauthn" | "password-recovery" | "passwordless" | "passwordless-email" | "passwordless-webauthn" | "passwordless-otp" | "passwordless-push" | "passwordless-sms" | "password-challenge" | "register" | "reset-password" | "verify-email" | "error", data: string | null): Promise<View>;
 }
 //#endregion
 //#region src/error.d.ts
@@ -14905,5 +15172,5 @@ declare class PlusAuthRestClient {
 }
 declare const _default: (apiUri: string, options?: Options) => PlusAuthRestClient;
 //#endregion
-export { AccountBlockingPolicy, AuthPlusAccount, AuthPlusCategory, AuthPlusDevice, BruteForcePolicy, Client, CommonCredential, Connection, CreateAuthPlusAccount, CreateAuthPlusCategory, CreateAuthPlusDevice, CreateClient, CreateConnection, CreateHook, CreateJob, CreatePermission, CreateResource, CreateRole, CreateRoleGroup, CreateTenant, CreateTenantAdministrator, CreateTenantCustomDomain, CreateTicket, CreateUser, CreateUserCredential, CreateUserIdentity, CustomSmsProvider, DataportSmsProvider, EDevletConnection, ESignConnection, EmailConnection, EmailProvider, EmailTemplate, EnterpriseConnection, EntraIdConnection, ExtendedPaginatedResult, FVCredential, FvConnection, HOTPAuthPlusAccount, HOTPConnection, Hook, HookContext, Job, JobExecutionLogs, JobRun, Key, KeyType, LDAPConnection, LogEntry, MFA, MFAType, MessagebirdSmsProvider, MinimalPagination, ModuleSettings, NativePushProvider, NetGSMSmsProvider, OTPConnection, OTPCredential, PaginatedResult, Pagination, PasswordCredential, PasswordPolicy, Permission, PlanType, PlusAuthRestClient, PlusAuthRestError, Provider, PublicKey, PushAuthPlusAccount, PushConnection, PushCredential, PushNotificationProvider, RadiusSettings, Resource, ResourceAuthorizedClient, Role, RoleGroup, SAMLConnection, SmsConnection, SmsProvider, SmsTemplate, SocialConnection, SubscriptionUsage, SyncLdapUsersJobLog, TOTPAuthPlusAccount, TOTPConnection, Template, TemplateType, Tenant, TenantAdministrator, TenantCustomDomain, TenantSettings, TenantStats, TenantSubscription, ThreeGBilisimSmsProvider, Ticket, TwilioSmsProvider, UpdateAuthPlusAccount, UpdateAuthPlusCategory, UpdateAuthPlusDevice, UpdateClient, UpdateConnection, UpdateEDevletConnection, UpdateESignConnection, UpdateEmailConnection, UpdateEmailProvider, UpdateEnterpriseConnection, UpdateEntraIdConnection, UpdateFvConnection, UpdateHook, UpdateLDAPConnection, UpdateMFA, UpdateModuleSettings, UpdateOTPConnection, UpdateProvider, UpdatePushConnection, UpdatePushNotificationProvider, UpdateResource, UpdateRole, UpdateRoleGroup, UpdateSAMLConnection, UpdateSmsConnection, UpdateSmsProvider, UpdateSocialConnection, UpdateTemplate, UpdateTenantSettings, UpdateTicket, UpdateUser, UpdateWebAuthNConnection, User, UserCredential, UserIdentity, UserPasswordHistory, UserRbacTree, UserSession, View, WebAuthNConnection, WebAuthNCredential, _default as default };
+export { AccountBlockingPolicy, AuthPlusAccount, AuthPlusCategory, AuthPlusDevice, AuthPlusPushProvider, BruteForcePolicy, Client, CommonCredential, Connection, CreateAuthPlusAccount, CreateAuthPlusCategory, CreateAuthPlusDevice, CreateClient, CreateConnection, CreateHook, CreateJob, CreatePermission, CreateResource, CreateRole, CreateRoleGroup, CreateTenant, CreateTenantAdministrator, CreateTenantCustomDomain, CreateTicket, CreateUser, CreateUserCredential, CreateUserIdentity, CustomSmsProvider, DataportSmsProvider, EDevletConnection, ESignConnection, EmailConnection, EmailProvider, EmailTemplate, EnterpriseConnection, EntraIdConnection, ExtendedPaginatedResult, FVCredential, FvConnection, HOTPAuthPlusAccount, HOTPConnection, Hook, HookContext, Job, JobExecutionLogs, JobRun, Key, KeyType, LDAPConnection, LogEntry, MFA, MFAType, MessagebirdSmsProvider, MinimalPagination, ModuleSettings, NativePushProvider, NetGSMSmsProvider, OTPConnection, OTPCredential, PaginatedResult, Pagination, PasswordCredential, PasswordPolicy, Permission, PlanType, PlusAuthRestClient, PlusAuthRestError, Provider, PublicKey, PushAuthPlusAccount, PushConnection, PushCredential, PushNotificationProvider, RadiusSettings, Resource, ResourceAuthorizedClient, Role, RoleGroup, SAMLConnection, SmsConnection, SmsProvider, SmsTemplate, SocialConnection, SubscriptionUsage, SyncLdapUsersJobLog, TOTPAuthPlusAccount, TOTPConnection, Template, TemplateType, Tenant, TenantAdministrator, TenantCustomDomain, TenantSettings, TenantStats, TenantSubscription, ThreeGBilisimSmsProvider, Ticket, TwilioSmsProvider, UpdateAuthPlusAccount, UpdateAuthPlusCategory, UpdateAuthPlusDevice, UpdateClient, UpdateConnection, UpdateEDevletConnection, UpdateESignConnection, UpdateEmailConnection, UpdateEmailProvider, UpdateEnterpriseConnection, UpdateEntraIdConnection, UpdateFvConnection, UpdateHook, UpdateLDAPConnection, UpdateMFA, UpdateModuleSettings, UpdateOTPConnection, UpdateProvider, UpdatePushConnection, UpdatePushNotificationProvider, UpdateResource, UpdateRole, UpdateRoleGroup, UpdateSAMLConnection, UpdateSmsConnection, UpdateSmsProvider, UpdateSocialConnection, UpdateTemplate, UpdateTenantSettings, UpdateTicket, UpdateUser, UpdateWebAuthNConnection, User, UserCredential, UserIdentity, UserPasswordHistory, UserRbacTree, UserSession, View, WebAuthNConnection, WebAuthNCredential, _default as default };
 //# sourceMappingURL=plusauth-rest-js.d.mts.map

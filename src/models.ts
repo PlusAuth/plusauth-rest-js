@@ -117,6 +117,19 @@ export interface AuthPlusDevice {
 /**
  * @public
  */
+export interface AuthPlusPushProvider {
+  type: "push"
+  /**
+   * Is connection using custom scripts
+   */
+  is_custom?: boolean
+  provider: "auth_plus"
+  settings: {}
+}
+
+/**
+ * @public
+ */
 export interface BruteForcePolicy {
   enabled: boolean
   /**
@@ -1490,91 +1503,129 @@ export type Connection =
           }
         }
     )
-  | {
-      enabled: boolean
-      /**
-       * Is connection using custom scripts
-       */
-      is_custom?: boolean
-      /**
-       * Connection name
-       */
-      name: string
-      /**
-       * Update date in the ISO 8601 format according to universal time.
-       */
-      updated_at?: string | null
-      /**
-       * Creation date in the ISO 8601 format according to universal time.
-       */
-      created_at?: string
-      type: "push"
-      provider: "native"
-      settings: {
-        /**
-         * Firebase Cloud Messaging configuration settings.
-         * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
-         * - Select your project, and click the gear icon on the top of the sidebar.
-         * - After opening "Project Settings", head to the "Service Accounts" tab.
-         * - Click "Generate new private key", then confirm by clicking "Generate key".
-         * - Clicking "Generate key" downloads the generated service account json file.
-         */
-        fcm: {
+  | (
+      | {
+          enabled: boolean
           /**
-           * `project_id` field located in your service account json
+           * Is connection using custom scripts
            */
-          project_id: string
+          is_custom?: boolean
           /**
-           * `client_email` field located in your service account json
+           * Connection name
            */
-          client_email: string
+          name: string
           /**
-           * `private_key` field located in your service account json
+           * Update date in the ISO 8601 format according to universal time.
            */
-          private_key: string
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          type: "push"
+          provider: "auth_plus"
+          settings: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients: string[]
+            branding: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Push notification strategy
+             */
+            strategy: "code" | "prompt"
+          }
         }
-        /**
-         * Apple Push Notification Service configuration settings.
-         */
-        apns: {
+      | {
+          enabled: boolean
           /**
-           * p8 of your Apple Developer account. To generate one follow these steps:
-           * - Head over to Certificates, Identifiers & Profiles > Keys.
-           * - Register a new key and give it a name.
-           * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
-           * - Click the Continue button and on the next page, select Register.
-           * - Download the .p8 key file.
+           * Is connection using custom scripts
            */
-          key: string
+          is_custom?: boolean
           /**
-           * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+           * Connection name
            */
-          key_id: string
+          name: string
           /**
-           * This is available in your Apple developer account.
+           * Update date in the ISO 8601 format according to universal time.
            */
-          team_id: string
+          updated_at?: string | null
           /**
-           * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+           * Creation date in the ISO 8601 format according to universal time.
            */
-          bundle_id: string
-          production: boolean
+          created_at?: string
+          type: "push"
+          provider: "native"
+          settings: {
+            /**
+             * Firebase Cloud Messaging configuration settings.
+             * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
+             * - Select your project, and click the gear icon on the top of the sidebar.
+             * - After opening "Project Settings", head to the "Service Accounts" tab.
+             * - Click "Generate new private key", then confirm by clicking "Generate key".
+             * - Clicking "Generate key" downloads the generated service account json file.
+             */
+            fcm: {
+              /**
+               * `project_id` field located in your service account json
+               */
+              project_id: string
+              /**
+               * `client_email` field located in your service account json
+               */
+              client_email: string
+              /**
+               * `private_key` field located in your service account json
+               */
+              private_key: string
+            }
+            /**
+             * Apple Push Notification Service configuration settings.
+             */
+            apns: {
+              /**
+               * p8 of your Apple Developer account. To generate one follow these steps:
+               * - Head over to Certificates, Identifiers & Profiles > Keys.
+               * - Register a new key and give it a name.
+               * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
+               * - Click the Continue button and on the next page, select Register.
+               * - Download the .p8 key file.
+               */
+              key: string
+              /**
+               * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+               */
+              key_id: string
+              /**
+               * This is available in your Apple developer account.
+               */
+              team_id: string
+              /**
+               * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+               */
+              bundle_id: string
+              production: boolean
+            }
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients: string[]
+            branding: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Push notification strategy
+             */
+            strategy: "code" | "prompt"
+          }
         }
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[]
-        branding: {
-          show_in_login?: boolean
-          logo_url?: string
-          display_name?: string
-        }
-        /**
-         * Push notification strategy
-         */
-        strategy: "code" | "prompt"
-      }
-    }
+    )
   | {
       type: "webauthn"
       provider: "plusauth"
@@ -3030,91 +3081,129 @@ export type CreateConnection =
           }
         }
     )
-  | {
-      enabled: boolean
-      /**
-       * Is connection using custom scripts
-       */
-      is_custom?: boolean
-      /**
-       * Connection name
-       */
-      name: string
-      /**
-       * Update date in the ISO 8601 format according to universal time.
-       */
-      updated_at?: string | null
-      /**
-       * Creation date in the ISO 8601 format according to universal time.
-       */
-      created_at?: string
-      type: "push"
-      provider: "native"
-      settings: {
-        /**
-         * Firebase Cloud Messaging configuration settings.
-         * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
-         * - Select your project, and click the gear icon on the top of the sidebar.
-         * - After opening "Project Settings", head to the "Service Accounts" tab.
-         * - Click "Generate new private key", then confirm by clicking "Generate key".
-         * - Clicking "Generate key" downloads the generated service account json file.
-         */
-        fcm: {
+  | (
+      | {
+          enabled: boolean
           /**
-           * `project_id` field located in your service account json
+           * Is connection using custom scripts
            */
-          project_id: string
+          is_custom?: boolean
           /**
-           * `client_email` field located in your service account json
+           * Connection name
            */
-          client_email: string
+          name: string
           /**
-           * `private_key` field located in your service account json
+           * Update date in the ISO 8601 format according to universal time.
            */
-          private_key: string
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          type: "push"
+          provider: "auth_plus"
+          settings: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients: string[]
+            branding: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Push notification strategy
+             */
+            strategy: "code" | "prompt"
+          }
         }
-        /**
-         * Apple Push Notification Service configuration settings.
-         */
-        apns: {
+      | {
+          enabled: boolean
           /**
-           * p8 of your Apple Developer account. To generate one follow these steps:
-           * - Head over to Certificates, Identifiers & Profiles > Keys.
-           * - Register a new key and give it a name.
-           * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
-           * - Click the Continue button and on the next page, select Register.
-           * - Download the .p8 key file.
+           * Is connection using custom scripts
            */
-          key: string
+          is_custom?: boolean
           /**
-           * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+           * Connection name
            */
-          key_id: string
+          name: string
           /**
-           * This is available in your Apple developer account.
+           * Update date in the ISO 8601 format according to universal time.
            */
-          team_id: string
+          updated_at?: string | null
           /**
-           * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+           * Creation date in the ISO 8601 format according to universal time.
            */
-          bundle_id: string
-          production: boolean
+          created_at?: string
+          type: "push"
+          provider: "native"
+          settings: {
+            /**
+             * Firebase Cloud Messaging configuration settings.
+             * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
+             * - Select your project, and click the gear icon on the top of the sidebar.
+             * - After opening "Project Settings", head to the "Service Accounts" tab.
+             * - Click "Generate new private key", then confirm by clicking "Generate key".
+             * - Clicking "Generate key" downloads the generated service account json file.
+             */
+            fcm: {
+              /**
+               * `project_id` field located in your service account json
+               */
+              project_id: string
+              /**
+               * `client_email` field located in your service account json
+               */
+              client_email: string
+              /**
+               * `private_key` field located in your service account json
+               */
+              private_key: string
+            }
+            /**
+             * Apple Push Notification Service configuration settings.
+             */
+            apns: {
+              /**
+               * p8 of your Apple Developer account. To generate one follow these steps:
+               * - Head over to Certificates, Identifiers & Profiles > Keys.
+               * - Register a new key and give it a name.
+               * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
+               * - Click the Continue button and on the next page, select Register.
+               * - Download the .p8 key file.
+               */
+              key: string
+              /**
+               * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+               */
+              key_id: string
+              /**
+               * This is available in your Apple developer account.
+               */
+              team_id: string
+              /**
+               * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+               */
+              bundle_id: string
+              production: boolean
+            }
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients: string[]
+            branding: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Push notification strategy
+             */
+            strategy: "code" | "prompt"
+          }
         }
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients: string[]
-        branding: {
-          show_in_login?: boolean
-          logo_url?: string
-          display_name?: string
-        }
-        /**
-         * Push notification strategy
-         */
-        strategy: "code" | "prompt"
-      }
-    }
+    )
   | {
       type: "webauthn"
       provider: "plusauth"
@@ -3348,6 +3437,7 @@ export interface CreateTenant {
       display_name?: string | null
     }
     default_strategy?: string | null
+    mfa_enforcement?: "enforced" | "optional" | "never"
     user_self_deletion?: {
       /**
        * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -3674,6 +3764,7 @@ export interface CreateUserIdentity {
     | "dataport"
     | "messagebird"
     | "custom"
+    | "auth_plus"
     | "native"
     | "plusauth"
     | "aws_ses"
@@ -3870,6 +3961,7 @@ export interface CreateUser {
       | "dataport"
       | "messagebird"
       | "custom"
+      | "auth_plus"
       | "native"
       | "plusauth"
       | "aws_ses"
@@ -5396,78 +5488,103 @@ export interface LogEntry {
  * @public
  */
 export type MFA =
-  | {
-      enabled: boolean
-      /**
-       * Is connection using custom scripts
-       */
-      is_custom?: boolean
-      /**
-       * Update date in the ISO 8601 format according to universal time.
-       */
-      updated_at?: string | null
-      /**
-       * Creation date in the ISO 8601 format according to universal time.
-       */
-      created_at?: string
-      type: "push"
-      provider: "native"
-      settings: {
-        /**
-         * Firebase Cloud Messaging configuration settings.
-         * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
-         * - Select your project, and click the gear icon on the top of the sidebar.
-         * - After opening "Project Settings", head to the "Service Accounts" tab.
-         * - Click "Generate new private key", then confirm by clicking "Generate key".
-         * - Clicking "Generate key" downloads the generated service account json file.
-         */
-        fcm: {
+  | (
+      | {
+          enabled: boolean
           /**
-           * `project_id` field located in your service account json
+           * Is connection using custom scripts
            */
-          project_id: string
+          is_custom?: boolean
           /**
-           * `client_email` field located in your service account json
+           * Update date in the ISO 8601 format according to universal time.
            */
-          client_email: string
+          updated_at?: string | null
           /**
-           * `private_key` field located in your service account json
+           * Creation date in the ISO 8601 format according to universal time.
            */
-          private_key: string
+          created_at?: string
+          type: "push"
+          provider: "auth_plus"
+          settings: {
+            /**
+             * Push notification strategy
+             */
+            strategy: "code" | "prompt"
+          }
         }
-        /**
-         * Apple Push Notification Service configuration settings.
-         */
-        apns: {
+      | {
+          enabled: boolean
           /**
-           * p8 of your Apple Developer account. To generate one follow these steps:
-           * - Head over to Certificates, Identifiers & Profiles > Keys.
-           * - Register a new key and give it a name.
-           * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
-           * - Click the Continue button and on the next page, select Register.
-           * - Download the .p8 key file.
+           * Is connection using custom scripts
            */
-          key: string
+          is_custom?: boolean
           /**
-           * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+           * Update date in the ISO 8601 format according to universal time.
            */
-          key_id: string
+          updated_at?: string | null
           /**
-           * This is available in your Apple developer account.
+           * Creation date in the ISO 8601 format according to universal time.
            */
-          team_id: string
-          /**
-           * This is the ID of your app. You can find it in the app info section of your Apple developer account.
-           */
-          bundle_id: string
-          production: boolean
+          created_at?: string
+          type: "push"
+          provider: "native"
+          settings: {
+            /**
+             * Firebase Cloud Messaging configuration settings.
+             * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
+             * - Select your project, and click the gear icon on the top of the sidebar.
+             * - After opening "Project Settings", head to the "Service Accounts" tab.
+             * - Click "Generate new private key", then confirm by clicking "Generate key".
+             * - Clicking "Generate key" downloads the generated service account json file.
+             */
+            fcm: {
+              /**
+               * `project_id` field located in your service account json
+               */
+              project_id: string
+              /**
+               * `client_email` field located in your service account json
+               */
+              client_email: string
+              /**
+               * `private_key` field located in your service account json
+               */
+              private_key: string
+            }
+            /**
+             * Apple Push Notification Service configuration settings.
+             */
+            apns: {
+              /**
+               * p8 of your Apple Developer account. To generate one follow these steps:
+               * - Head over to Certificates, Identifiers & Profiles > Keys.
+               * - Register a new key and give it a name.
+               * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
+               * - Click the Continue button and on the next page, select Register.
+               * - Download the .p8 key file.
+               */
+              key: string
+              /**
+               * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+               */
+              key_id: string
+              /**
+               * This is available in your Apple developer account.
+               */
+              team_id: string
+              /**
+               * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+               */
+              bundle_id: string
+              production: boolean
+            }
+            /**
+             * Push notification strategy
+             */
+            strategy: "code" | "prompt"
+          }
         }
-        /**
-         * Push notification strategy
-         */
-        strategy: "code" | "prompt"
-      }
-    }
+    )
   | (
       | {
           enabled: boolean
@@ -6691,65 +6808,76 @@ export type Provider =
           }
         }
     )
-  | {
-      type: "push"
-      /**
-       * Is connection using custom scripts
-       */
-      is_custom?: boolean
-      provider: "native"
-      settings: {
-        /**
-         * Firebase Cloud Messaging configuration settings.
-         * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
-         * - Select your project, and click the gear icon on the top of the sidebar.
-         * - After opening "Project Settings", head to the "Service Accounts" tab.
-         * - Click "Generate new private key", then confirm by clicking "Generate key".
-         * - Clicking "Generate key" downloads the generated service account json file.
-         */
-        fcm: {
+  | (
+      | {
+          type: "push"
           /**
-           * `project_id` field located in your service account json
+           * Is connection using custom scripts
            */
-          project_id: string
-          /**
-           * `client_email` field located in your service account json
-           */
-          client_email: string
-          /**
-           * `private_key` field located in your service account json
-           */
-          private_key: string
+          is_custom?: boolean
+          provider: "auth_plus"
+          settings: {}
         }
-        /**
-         * Apple Push Notification Service configuration settings.
-         */
-        apns: {
+      | {
+          type: "push"
           /**
-           * p8 of your Apple Developer account. To generate one follow these steps:
-           * - Head over to Certificates, Identifiers & Profiles > Keys.
-           * - Register a new key and give it a name.
-           * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
-           * - Click the Continue button and on the next page, select Register.
-           * - Download the .p8 key file.
+           * Is connection using custom scripts
            */
-          key: string
-          /**
-           * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
-           */
-          key_id: string
-          /**
-           * This is available in your Apple developer account.
-           */
-          team_id: string
-          /**
-           * This is the ID of your app. You can find it in the app info section of your Apple developer account.
-           */
-          bundle_id: string
-          production: boolean
+          is_custom?: boolean
+          provider: "native"
+          settings: {
+            /**
+             * Firebase Cloud Messaging configuration settings.
+             * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
+             * - Select your project, and click the gear icon on the top of the sidebar.
+             * - After opening "Project Settings", head to the "Service Accounts" tab.
+             * - Click "Generate new private key", then confirm by clicking "Generate key".
+             * - Clicking "Generate key" downloads the generated service account json file.
+             */
+            fcm: {
+              /**
+               * `project_id` field located in your service account json
+               */
+              project_id: string
+              /**
+               * `client_email` field located in your service account json
+               */
+              client_email: string
+              /**
+               * `private_key` field located in your service account json
+               */
+              private_key: string
+            }
+            /**
+             * Apple Push Notification Service configuration settings.
+             */
+            apns: {
+              /**
+               * p8 of your Apple Developer account. To generate one follow these steps:
+               * - Head over to Certificates, Identifiers & Profiles > Keys.
+               * - Register a new key and give it a name.
+               * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
+               * - Click the Continue button and on the next page, select Register.
+               * - Download the .p8 key file.
+               */
+              key: string
+              /**
+               * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+               */
+              key_id: string
+              /**
+               * This is available in your Apple developer account.
+               */
+              team_id: string
+              /**
+               * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+               */
+              bundle_id: string
+              production: boolean
+            }
+          }
         }
-      }
-    }
+    )
 
 /**
  * @public
@@ -6847,91 +6975,129 @@ export interface PushAuthPlusAccount {
 export type PushConnection = {
   type?: "push"
   [k: string]: any
-} & {
-  enabled: boolean
-  /**
-   * Is connection using custom scripts
-   */
-  is_custom?: boolean
-  /**
-   * Connection name
-   */
-  name: string
-  /**
-   * Update date in the ISO 8601 format according to universal time.
-   */
-  updated_at?: string | null
-  /**
-   * Creation date in the ISO 8601 format according to universal time.
-   */
-  created_at?: string
-  type: "push"
-  provider: "native"
-  settings: {
-    /**
-     * Firebase Cloud Messaging configuration settings.
-     * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
-     * - Select your project, and click the gear icon on the top of the sidebar.
-     * - After opening "Project Settings", head to the "Service Accounts" tab.
-     * - Click "Generate new private key", then confirm by clicking "Generate key".
-     * - Clicking "Generate key" downloads the generated service account json file.
-     */
-    fcm: {
+} & (
+  | {
+      enabled: boolean
       /**
-       * `project_id` field located in your service account json
+       * Is connection using custom scripts
        */
-      project_id: string
+      is_custom?: boolean
       /**
-       * `client_email` field located in your service account json
+       * Connection name
        */
-      client_email: string
+      name: string
       /**
-       * `private_key` field located in your service account json
+       * Update date in the ISO 8601 format according to universal time.
        */
-      private_key: string
+      updated_at?: string | null
+      /**
+       * Creation date in the ISO 8601 format according to universal time.
+       */
+      created_at?: string
+      type: "push"
+      provider: "auth_plus"
+      settings: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[]
+        branding: {
+          show_in_login?: boolean
+          logo_url?: string
+          display_name?: string
+        }
+        /**
+         * Push notification strategy
+         */
+        strategy: "code" | "prompt"
+      }
     }
-    /**
-     * Apple Push Notification Service configuration settings.
-     */
-    apns: {
+  | {
+      enabled: boolean
       /**
-       * p8 of your Apple Developer account. To generate one follow these steps:
-       * - Head over to Certificates, Identifiers & Profiles > Keys.
-       * - Register a new key and give it a name.
-       * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
-       * - Click the Continue button and on the next page, select Register.
-       * - Download the .p8 key file.
+       * Is connection using custom scripts
        */
-      key: string
+      is_custom?: boolean
       /**
-       * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+       * Connection name
        */
-      key_id: string
+      name: string
       /**
-       * This is available in your Apple developer account.
+       * Update date in the ISO 8601 format according to universal time.
        */
-      team_id: string
+      updated_at?: string | null
       /**
-       * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+       * Creation date in the ISO 8601 format according to universal time.
        */
-      bundle_id: string
-      production: boolean
+      created_at?: string
+      type: "push"
+      provider: "native"
+      settings: {
+        /**
+         * Firebase Cloud Messaging configuration settings.
+         * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
+         * - Select your project, and click the gear icon on the top of the sidebar.
+         * - After opening "Project Settings", head to the "Service Accounts" tab.
+         * - Click "Generate new private key", then confirm by clicking "Generate key".
+         * - Clicking "Generate key" downloads the generated service account json file.
+         */
+        fcm: {
+          /**
+           * `project_id` field located in your service account json
+           */
+          project_id: string
+          /**
+           * `client_email` field located in your service account json
+           */
+          client_email: string
+          /**
+           * `private_key` field located in your service account json
+           */
+          private_key: string
+        }
+        /**
+         * Apple Push Notification Service configuration settings.
+         */
+        apns: {
+          /**
+           * p8 of your Apple Developer account. To generate one follow these steps:
+           * - Head over to Certificates, Identifiers & Profiles > Keys.
+           * - Register a new key and give it a name.
+           * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
+           * - Click the Continue button and on the next page, select Register.
+           * - Download the .p8 key file.
+           */
+          key: string
+          /**
+           * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+           */
+          key_id: string
+          /**
+           * This is available in your Apple developer account.
+           */
+          team_id: string
+          /**
+           * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+           */
+          bundle_id: string
+          production: boolean
+        }
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients: string[]
+        branding: {
+          show_in_login?: boolean
+          logo_url?: string
+          display_name?: string
+        }
+        /**
+         * Push notification strategy
+         */
+        strategy: "code" | "prompt"
+      }
     }
-    /**
-     * @maxItems 1000
-     */
-    enabled_clients: string[]
-    branding: {
-      show_in_login?: boolean
-      logo_url?: string
-      display_name?: string
-    }
-    /**
-     * Push notification strategy
-     */
-    strategy: "code" | "prompt"
-  }
-}
+)
 
 /**
  * @public
@@ -7012,65 +7178,76 @@ export interface PushCredential {
 export type PushNotificationProvider = {
   type?: "push"
   [k: string]: any
-} & {
-  type: "push"
-  /**
-   * Is connection using custom scripts
-   */
-  is_custom?: boolean
-  provider: "native"
-  settings: {
-    /**
-     * Firebase Cloud Messaging configuration settings.
-     * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
-     * - Select your project, and click the gear icon on the top of the sidebar.
-     * - After opening "Project Settings", head to the "Service Accounts" tab.
-     * - Click "Generate new private key", then confirm by clicking "Generate key".
-     * - Clicking "Generate key" downloads the generated service account json file.
-     */
-    fcm: {
+} & (
+  | {
+      type: "push"
       /**
-       * `project_id` field located in your service account json
+       * Is connection using custom scripts
        */
-      project_id: string
-      /**
-       * `client_email` field located in your service account json
-       */
-      client_email: string
-      /**
-       * `private_key` field located in your service account json
-       */
-      private_key: string
+      is_custom?: boolean
+      provider: "auth_plus"
+      settings: {}
     }
-    /**
-     * Apple Push Notification Service configuration settings.
-     */
-    apns: {
+  | {
+      type: "push"
       /**
-       * p8 of your Apple Developer account. To generate one follow these steps:
-       * - Head over to Certificates, Identifiers & Profiles > Keys.
-       * - Register a new key and give it a name.
-       * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
-       * - Click the Continue button and on the next page, select Register.
-       * - Download the .p8 key file.
+       * Is connection using custom scripts
        */
-      key: string
-      /**
-       * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
-       */
-      key_id: string
-      /**
-       * This is available in your Apple developer account.
-       */
-      team_id: string
-      /**
-       * This is the ID of your app. You can find it in the app info section of your Apple developer account.
-       */
-      bundle_id: string
-      production: boolean
+      is_custom?: boolean
+      provider: "native"
+      settings: {
+        /**
+         * Firebase Cloud Messaging configuration settings.
+         * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
+         * - Select your project, and click the gear icon on the top of the sidebar.
+         * - After opening "Project Settings", head to the "Service Accounts" tab.
+         * - Click "Generate new private key", then confirm by clicking "Generate key".
+         * - Clicking "Generate key" downloads the generated service account json file.
+         */
+        fcm: {
+          /**
+           * `project_id` field located in your service account json
+           */
+          project_id: string
+          /**
+           * `client_email` field located in your service account json
+           */
+          client_email: string
+          /**
+           * `private_key` field located in your service account json
+           */
+          private_key: string
+        }
+        /**
+         * Apple Push Notification Service configuration settings.
+         */
+        apns: {
+          /**
+           * p8 of your Apple Developer account. To generate one follow these steps:
+           * - Head over to Certificates, Identifiers & Profiles > Keys.
+           * - Register a new key and give it a name.
+           * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
+           * - Click the Continue button and on the next page, select Register.
+           * - Download the .p8 key file.
+           */
+          key: string
+          /**
+           * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+           */
+          key_id: string
+          /**
+           * This is available in your Apple developer account.
+           */
+          team_id: string
+          /**
+           * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+           */
+          bundle_id: string
+          production: boolean
+        }
+      }
     }
-  }
-}
+)
 
 /**
  * @public
@@ -8466,6 +8643,7 @@ export interface Tenant {
       display_name?: string | null
     }
     default_strategy?: string | null
+    mfa_enforcement?: "enforced" | "optional" | "never"
     user_self_deletion?: {
       /**
        * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -8784,6 +8962,7 @@ export interface TenantSettings {
     display_name?: string | null
   }
   default_strategy?: string | null
+  mfa_enforcement?: "enforced" | "optional" | "never"
   user_self_deletion?: {
     /**
      * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -10413,91 +10592,129 @@ export type UpdateConnection =
           }
         }
     )
-  | {
-      enabled?: boolean
-      /**
-       * Is connection using custom scripts
-       */
-      is_custom?: boolean
-      /**
-       * Connection name
-       */
-      name?: string
-      /**
-       * Update date in the ISO 8601 format according to universal time.
-       */
-      updated_at?: string | null
-      /**
-       * Creation date in the ISO 8601 format according to universal time.
-       */
-      created_at?: string
-      type?: "push"
-      provider?: "native"
-      settings?: {
-        /**
-         * Firebase Cloud Messaging configuration settings.
-         * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
-         * - Select your project, and click the gear icon on the top of the sidebar.
-         * - After opening "Project Settings", head to the "Service Accounts" tab.
-         * - Click "Generate new private key", then confirm by clicking "Generate key".
-         * - Clicking "Generate key" downloads the generated service account json file.
-         */
-        fcm?: {
+  | (
+      | {
+          enabled?: boolean
           /**
-           * `project_id` field located in your service account json
+           * Is connection using custom scripts
            */
-          project_id?: string
+          is_custom?: boolean
           /**
-           * `client_email` field located in your service account json
+           * Connection name
            */
-          client_email?: string
+          name?: string
           /**
-           * `private_key` field located in your service account json
+           * Update date in the ISO 8601 format according to universal time.
            */
-          private_key?: string
+          updated_at?: string | null
+          /**
+           * Creation date in the ISO 8601 format according to universal time.
+           */
+          created_at?: string
+          type?: "push"
+          provider?: "auth_plus"
+          settings?: {
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Push notification strategy
+             */
+            strategy?: "code" | "prompt"
+          }
         }
-        /**
-         * Apple Push Notification Service configuration settings.
-         */
-        apns?: {
+      | {
+          enabled?: boolean
           /**
-           * p8 of your Apple Developer account. To generate one follow these steps:
-           * - Head over to Certificates, Identifiers & Profiles > Keys.
-           * - Register a new key and give it a name.
-           * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
-           * - Click the Continue button and on the next page, select Register.
-           * - Download the .p8 key file.
+           * Is connection using custom scripts
            */
-          key?: string
+          is_custom?: boolean
           /**
-           * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+           * Connection name
            */
-          key_id?: string
+          name?: string
           /**
-           * This is available in your Apple developer account.
+           * Update date in the ISO 8601 format according to universal time.
            */
-          team_id?: string
+          updated_at?: string | null
           /**
-           * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+           * Creation date in the ISO 8601 format according to universal time.
            */
-          bundle_id?: string
-          production?: boolean
+          created_at?: string
+          type?: "push"
+          provider?: "native"
+          settings?: {
+            /**
+             * Firebase Cloud Messaging configuration settings.
+             * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
+             * - Select your project, and click the gear icon on the top of the sidebar.
+             * - After opening "Project Settings", head to the "Service Accounts" tab.
+             * - Click "Generate new private key", then confirm by clicking "Generate key".
+             * - Clicking "Generate key" downloads the generated service account json file.
+             */
+            fcm?: {
+              /**
+               * `project_id` field located in your service account json
+               */
+              project_id?: string
+              /**
+               * `client_email` field located in your service account json
+               */
+              client_email?: string
+              /**
+               * `private_key` field located in your service account json
+               */
+              private_key?: string
+            }
+            /**
+             * Apple Push Notification Service configuration settings.
+             */
+            apns?: {
+              /**
+               * p8 of your Apple Developer account. To generate one follow these steps:
+               * - Head over to Certificates, Identifiers & Profiles > Keys.
+               * - Register a new key and give it a name.
+               * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
+               * - Click the Continue button and on the next page, select Register.
+               * - Download the .p8 key file.
+               */
+              key?: string
+              /**
+               * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+               */
+              key_id?: string
+              /**
+               * This is available in your Apple developer account.
+               */
+              team_id?: string
+              /**
+               * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+               */
+              bundle_id?: string
+              production?: boolean
+            }
+            /**
+             * @maxItems 1000
+             */
+            enabled_clients?: string[]
+            branding?: {
+              show_in_login?: boolean
+              logo_url?: string
+              display_name?: string
+            }
+            /**
+             * Push notification strategy
+             */
+            strategy?: "code" | "prompt"
+          }
         }
-        /**
-         * @maxItems 1000
-         */
-        enabled_clients?: string[]
-        branding?: {
-          show_in_login?: boolean
-          logo_url?: string
-          display_name?: string
-        }
-        /**
-         * Push notification strategy
-         */
-        strategy?: "code" | "prompt"
-      }
-    }
+    )
   | {
       type?: "webauthn"
       provider?: "plusauth"
@@ -11329,78 +11546,103 @@ export interface UpdateLDAPConnection {
  * @public
  */
 export type UpdateMFA =
-  | {
-      enabled?: boolean
-      /**
-       * Is connection using custom scripts
-       */
-      is_custom?: boolean
-      /**
-       * Update date in the ISO 8601 format according to universal time.
-       */
-      updated_at?: string | null
-      /**
-       * Creation date in the ISO 8601 format according to universal time.
-       */
-      created_at?: string
-      type?: "push"
-      provider?: "native"
-      settings?: {
-        /**
-         * Firebase Cloud Messaging configuration settings.
-         * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
-         * - Select your project, and click the gear icon on the top of the sidebar.
-         * - After opening "Project Settings", head to the "Service Accounts" tab.
-         * - Click "Generate new private key", then confirm by clicking "Generate key".
-         * - Clicking "Generate key" downloads the generated service account json file.
-         */
-        fcm?: {
+  | (
+      | {
+          enabled?: boolean
           /**
-           * `project_id` field located in your service account json
+           * Is connection using custom scripts
            */
-          project_id?: string
+          is_custom?: boolean
           /**
-           * `client_email` field located in your service account json
+           * Update date in the ISO 8601 format according to universal time.
            */
-          client_email?: string
+          updated_at?: string | null
           /**
-           * `private_key` field located in your service account json
+           * Creation date in the ISO 8601 format according to universal time.
            */
-          private_key?: string
+          created_at?: string
+          type?: "push"
+          provider?: "auth_plus"
+          settings?: {
+            /**
+             * Push notification strategy
+             */
+            strategy?: "code" | "prompt"
+          }
         }
-        /**
-         * Apple Push Notification Service configuration settings.
-         */
-        apns?: {
+      | {
+          enabled?: boolean
           /**
-           * p8 of your Apple Developer account. To generate one follow these steps:
-           * - Head over to Certificates, Identifiers & Profiles > Keys.
-           * - Register a new key and give it a name.
-           * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
-           * - Click the Continue button and on the next page, select Register.
-           * - Download the .p8 key file.
+           * Is connection using custom scripts
            */
-          key?: string
+          is_custom?: boolean
           /**
-           * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+           * Update date in the ISO 8601 format according to universal time.
            */
-          key_id?: string
+          updated_at?: string | null
           /**
-           * This is available in your Apple developer account.
+           * Creation date in the ISO 8601 format according to universal time.
            */
-          team_id?: string
-          /**
-           * This is the ID of your app. You can find it in the app info section of your Apple developer account.
-           */
-          bundle_id?: string
-          production?: boolean
+          created_at?: string
+          type?: "push"
+          provider?: "native"
+          settings?: {
+            /**
+             * Firebase Cloud Messaging configuration settings.
+             * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
+             * - Select your project, and click the gear icon on the top of the sidebar.
+             * - After opening "Project Settings", head to the "Service Accounts" tab.
+             * - Click "Generate new private key", then confirm by clicking "Generate key".
+             * - Clicking "Generate key" downloads the generated service account json file.
+             */
+            fcm?: {
+              /**
+               * `project_id` field located in your service account json
+               */
+              project_id?: string
+              /**
+               * `client_email` field located in your service account json
+               */
+              client_email?: string
+              /**
+               * `private_key` field located in your service account json
+               */
+              private_key?: string
+            }
+            /**
+             * Apple Push Notification Service configuration settings.
+             */
+            apns?: {
+              /**
+               * p8 of your Apple Developer account. To generate one follow these steps:
+               * - Head over to Certificates, Identifiers & Profiles > Keys.
+               * - Register a new key and give it a name.
+               * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
+               * - Click the Continue button and on the next page, select Register.
+               * - Download the .p8 key file.
+               */
+              key?: string
+              /**
+               * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+               */
+              key_id?: string
+              /**
+               * This is available in your Apple developer account.
+               */
+              team_id?: string
+              /**
+               * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+               */
+              bundle_id?: string
+              production?: boolean
+            }
+            /**
+             * Push notification strategy
+             */
+            strategy?: "code" | "prompt"
+          }
         }
-        /**
-         * Push notification strategy
-         */
-        strategy?: "code" | "prompt"
-      }
-    }
+    )
   | (
       | {
           enabled?: boolean
@@ -12316,6 +12558,223 @@ export type UpdateProvider =
           }
         }
     )
+  | (
+      | {
+          type: "push"
+          /**
+           * Is connection using custom scripts
+           */
+          is_custom?: boolean
+          provider: "auth_plus"
+          settings?: {}
+        }
+      | {
+          type: "push"
+          /**
+           * Is connection using custom scripts
+           */
+          is_custom?: boolean
+          provider: "native"
+          settings?: {
+            /**
+             * Firebase Cloud Messaging configuration settings.
+             * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
+             * - Select your project, and click the gear icon on the top of the sidebar.
+             * - After opening "Project Settings", head to the "Service Accounts" tab.
+             * - Click "Generate new private key", then confirm by clicking "Generate key".
+             * - Clicking "Generate key" downloads the generated service account json file.
+             */
+            fcm?: {
+              /**
+               * `project_id` field located in your service account json
+               */
+              project_id?: string
+              /**
+               * `client_email` field located in your service account json
+               */
+              client_email?: string
+              /**
+               * `private_key` field located in your service account json
+               */
+              private_key?: string
+            }
+            /**
+             * Apple Push Notification Service configuration settings.
+             */
+            apns?: {
+              /**
+               * p8 of your Apple Developer account. To generate one follow these steps:
+               * - Head over to Certificates, Identifiers & Profiles > Keys.
+               * - Register a new key and give it a name.
+               * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
+               * - Click the Continue button and on the next page, select Register.
+               * - Download the .p8 key file.
+               */
+              key?: string
+              /**
+               * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+               */
+              key_id?: string
+              /**
+               * This is available in your Apple developer account.
+               */
+              team_id?: string
+              /**
+               * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+               */
+              bundle_id?: string
+              production?: boolean
+            }
+          }
+        }
+    )
+
+/**
+ * @public
+ */
+export type UpdatePushConnection = {
+  type?: "push"
+  [k: string]: any
+} & (
+  | {
+      enabled?: boolean
+      /**
+       * Is connection using custom scripts
+       */
+      is_custom?: boolean
+      /**
+       * Connection name
+       */
+      name?: string
+      /**
+       * Update date in the ISO 8601 format according to universal time.
+       */
+      updated_at?: string | null
+      /**
+       * Creation date in the ISO 8601 format according to universal time.
+       */
+      created_at?: string
+      type?: "push"
+      provider?: "auth_plus"
+      settings?: {
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[]
+        branding?: {
+          show_in_login?: boolean
+          logo_url?: string
+          display_name?: string
+        }
+        /**
+         * Push notification strategy
+         */
+        strategy?: "code" | "prompt"
+      }
+    }
+  | {
+      enabled?: boolean
+      /**
+       * Is connection using custom scripts
+       */
+      is_custom?: boolean
+      /**
+       * Connection name
+       */
+      name?: string
+      /**
+       * Update date in the ISO 8601 format according to universal time.
+       */
+      updated_at?: string | null
+      /**
+       * Creation date in the ISO 8601 format according to universal time.
+       */
+      created_at?: string
+      type?: "push"
+      provider?: "native"
+      settings?: {
+        /**
+         * Firebase Cloud Messaging configuration settings.
+         * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
+         * - Select your project, and click the gear icon on the top of the sidebar.
+         * - After opening "Project Settings", head to the "Service Accounts" tab.
+         * - Click "Generate new private key", then confirm by clicking "Generate key".
+         * - Clicking "Generate key" downloads the generated service account json file.
+         */
+        fcm?: {
+          /**
+           * `project_id` field located in your service account json
+           */
+          project_id?: string
+          /**
+           * `client_email` field located in your service account json
+           */
+          client_email?: string
+          /**
+           * `private_key` field located in your service account json
+           */
+          private_key?: string
+        }
+        /**
+         * Apple Push Notification Service configuration settings.
+         */
+        apns?: {
+          /**
+           * p8 of your Apple Developer account. To generate one follow these steps:
+           * - Head over to Certificates, Identifiers & Profiles > Keys.
+           * - Register a new key and give it a name.
+           * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
+           * - Click the Continue button and on the next page, select Register.
+           * - Download the .p8 key file.
+           */
+          key?: string
+          /**
+           * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
+           */
+          key_id?: string
+          /**
+           * This is available in your Apple developer account.
+           */
+          team_id?: string
+          /**
+           * This is the ID of your app. You can find it in the app info section of your Apple developer account.
+           */
+          bundle_id?: string
+          production?: boolean
+        }
+        /**
+         * @maxItems 1000
+         */
+        enabled_clients?: string[]
+        branding?: {
+          show_in_login?: boolean
+          logo_url?: string
+          display_name?: string
+        }
+        /**
+         * Push notification strategy
+         */
+        strategy?: "code" | "prompt"
+      }
+    }
+)
+
+/**
+ * @public
+ */
+export type UpdatePushNotificationProvider = {
+  type?: "push"
+  [k: string]: any
+} & (
+  | {
+      type: "push"
+      /**
+       * Is connection using custom scripts
+       */
+      is_custom?: boolean
+      provider: "auth_plus"
+      settings?: {}
+    }
   | {
       type: "push"
       /**
@@ -12375,164 +12834,7 @@ export type UpdateProvider =
         }
       }
     }
-
-/**
- * @public
- */
-export type UpdatePushConnection = {
-  type?: "push"
-  [k: string]: any
-} & {
-  enabled?: boolean
-  /**
-   * Is connection using custom scripts
-   */
-  is_custom?: boolean
-  /**
-   * Connection name
-   */
-  name?: string
-  /**
-   * Update date in the ISO 8601 format according to universal time.
-   */
-  updated_at?: string | null
-  /**
-   * Creation date in the ISO 8601 format according to universal time.
-   */
-  created_at?: string
-  type?: "push"
-  provider?: "native"
-  settings?: {
-    /**
-     * Firebase Cloud Messaging configuration settings.
-     * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
-     * - Select your project, and click the gear icon on the top of the sidebar.
-     * - After opening "Project Settings", head to the "Service Accounts" tab.
-     * - Click "Generate new private key", then confirm by clicking "Generate key".
-     * - Clicking "Generate key" downloads the generated service account json file.
-     */
-    fcm?: {
-      /**
-       * `project_id` field located in your service account json
-       */
-      project_id?: string
-      /**
-       * `client_email` field located in your service account json
-       */
-      client_email?: string
-      /**
-       * `private_key` field located in your service account json
-       */
-      private_key?: string
-    }
-    /**
-     * Apple Push Notification Service configuration settings.
-     */
-    apns?: {
-      /**
-       * p8 of your Apple Developer account. To generate one follow these steps:
-       * - Head over to Certificates, Identifiers & Profiles > Keys.
-       * - Register a new key and give it a name.
-       * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
-       * - Click the Continue button and on the next page, select Register.
-       * - Download the .p8 key file.
-       */
-      key?: string
-      /**
-       * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
-       */
-      key_id?: string
-      /**
-       * This is available in your Apple developer account.
-       */
-      team_id?: string
-      /**
-       * This is the ID of your app. You can find it in the app info section of your Apple developer account.
-       */
-      bundle_id?: string
-      production?: boolean
-    }
-    /**
-     * @maxItems 1000
-     */
-    enabled_clients?: string[]
-    branding?: {
-      show_in_login?: boolean
-      logo_url?: string
-      display_name?: string
-    }
-    /**
-     * Push notification strategy
-     */
-    strategy?: "code" | "prompt"
-  }
-}
-
-/**
- * @public
- */
-export type UpdatePushNotificationProvider = {
-  type?: "push"
-  [k: string]: any
-} & {
-  type: "push"
-  /**
-   * Is connection using custom scripts
-   */
-  is_custom?: boolean
-  provider: "native"
-  settings?: {
-    /**
-     * Firebase Cloud Messaging configuration settings.
-     * To enable the FCM integration, you need to get your service account key from the [Firebase Console](https://console.firebase.google.com/).
-     * - Select your project, and click the gear icon on the top of the sidebar.
-     * - After opening "Project Settings", head to the "Service Accounts" tab.
-     * - Click "Generate new private key", then confirm by clicking "Generate key".
-     * - Clicking "Generate key" downloads the generated service account json file.
-     */
-    fcm?: {
-      /**
-       * `project_id` field located in your service account json
-       */
-      project_id?: string
-      /**
-       * `client_email` field located in your service account json
-       */
-      client_email?: string
-      /**
-       * `private_key` field located in your service account json
-       */
-      private_key?: string
-    }
-    /**
-     * Apple Push Notification Service configuration settings.
-     */
-    apns?: {
-      /**
-       * p8 of your Apple Developer account. To generate one follow these steps:
-       * - Head over to Certificates, Identifiers & Profiles > Keys.
-       * - Register a new key and give it a name.
-       * - Enable the Apple Push Notifications service (APNs) checkbox by selecting it.
-       * - Click the Continue button and on the next page, select Register.
-       * - Download the .p8 key file.
-       */
-      key?: string
-      /**
-       * This is a 10-character unique identifier for the authentication key. You can find it in the key details section of the newly created key in your Apple developer account.
-       */
-      key_id?: string
-      /**
-       * This is available in your Apple developer account.
-       */
-      team_id?: string
-      /**
-       * This is the ID of your app. You can find it in the app info section of your Apple developer account.
-       */
-      bundle_id?: string
-      production?: boolean
-    }
-  }
-}
+)
 
 /**
  * Resource Object with name and description properties.
@@ -13541,6 +13843,7 @@ export interface UpdateTenantSettings {
     display_name?: string | null
   }
   default_strategy?: string | null
+  mfa_enforcement?: "enforced" | "optional" | "never"
   user_self_deletion?: {
     /**
      * Allow end-users to delete their accounts. This enables the `delete-account` prompt which you can request to allow users delete their accounts.
@@ -14113,6 +14416,7 @@ export interface UserIdentity {
     | "dataport"
     | "messagebird"
     | "custom"
+    | "auth_plus"
     | "native"
     | "plusauth"
     | "aws_ses"
@@ -14477,6 +14781,7 @@ export interface User {
       | "dataport"
       | "messagebird"
       | "custom"
+      | "auth_plus"
       | "native"
       | "plusauth"
       | "aws_ses"
@@ -14821,6 +15126,7 @@ export interface View {
     | "mfa-sms"
     | "mfa-webauthn"
     | "password-recovery"
+    | "passwordless"
     | "passwordless-email"
     | "passwordless-webauthn"
     | "passwordless-otp"
